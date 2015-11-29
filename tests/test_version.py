@@ -12,8 +12,8 @@ import operator
 
 from io import BytesIO
 
-from ._versioning import getVersionString, IncomparableVersions
-from ._versioning import Version, _inf
+from incremental import getVersionString, IncomparableVersions
+from incremental import Version, _inf
 
 from twisted.python.filepath import FilePath
 from twisted.trial.unittest import TestCase
