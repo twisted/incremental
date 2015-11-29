@@ -9,7 +9,8 @@ See L{Version}.
 
 from __future__ import division, absolute_import
 
-import sys, os
+import os
+import sys
 
 #
 # Compat functions
@@ -64,7 +65,6 @@ except NameError:
             return 1
 
 
-
 def comparable(klass):
     """
     Class decorator that ensures support for the special C{__cmp__} method.
@@ -84,13 +84,11 @@ def comparable(klass):
             return c
         return c == 0
 
-
     def __ne__(self, other):
         c = self.__cmp__(other)
         if c is NotImplemented:
             return c
         return c != 0
-
 
     def __lt__(self, other):
         c = self.__cmp__(other)
@@ -98,20 +96,17 @@ def comparable(klass):
             return c
         return c < 0
 
-
     def __le__(self, other):
         c = self.__cmp__(other)
         if c is NotImplemented:
             return c
         return c <= 0
 
-
     def __gt__(self, other):
         c = self.__cmp__(other)
         if c is NotImplemented:
             return c
         return c > 0
-
 
     def __ge__(self, other):
         c = self.__cmp__(other)
@@ -130,6 +125,7 @@ def comparable(klass):
 #
 # Versioning
 #
+
 
 @comparable
 class _inf(object):
@@ -151,12 +147,10 @@ class _inf(object):
 _inf = _inf()
 
 
-
 class IncomparableVersions(TypeError):
     """
     Two versions could not be compared.
     """
-
 
 
 @comparable
@@ -186,7 +180,6 @@ class Version(object):
         self.micro = micro
         self.prerelease = prerelease
 
-
     def short(self):
         """
         Return a string in canonical short version format,
@@ -204,7 +197,6 @@ class Version(object):
             s += '@' + gitver
         return s
 
-
     def base(self):
         """
         Like L{short}, but without the +rSVNVer or @gitsha1.
@@ -217,7 +209,6 @@ class Version(object):
                                self.minor,
                                self.micro,
                                pre)
-
 
     def __repr__(self):
         svnver = self._formatSVNVersion()
@@ -236,12 +227,10 @@ class Version(object):
             prerelease,
             svnver)
 
-
     def __str__(self):
         return '[%s, version %s]' % (
             self.package,
             self.short())
-
 
     def __cmp__(self, other):
         """
@@ -278,15 +267,14 @@ class Version(object):
             otherpre = other.prerelease
 
         x = cmp((self.major,
-                    self.minor,
-                    self.micro,
-                    prerelease),
-                   (other.major,
-                    other.minor,
-                    other.micro,
-                    otherpre))
+                 self.minor,
+                 self.micro,
+                 prerelease),
+                (other.major,
+                 other.minor,
+                 other.micro,
+                 otherpre))
         return x
-
 
     def _parseGitDir(self, directory):
 
@@ -296,13 +284,12 @@ class Version(object):
             headContent = f.read()
 
         if headContent.startswith("ref: "):
-            with open(os.path.abspath(os.path.join(directory, headContent[5:-1]))) as f:
+            with open(os.path.abspath(os.path.join(directory,
+                                                   headContent[5:-1]))) as f:
                 commit = f.read()
                 return commit[:-1]
 
-
         return headContent
-
 
     def _getGitVersion(self):
         mod = sys.modules.get(self.package)
@@ -326,7 +313,6 @@ class Version(object):
 
                 upOne = upOneMore
 
-
     def _parseSVNEntries_4(self, entriesFile):
         """
         Given a readable file object which represents a .svn/entries file in
@@ -342,7 +328,6 @@ class Version(object):
                 if rev is not None:
                     return rev.encode('ascii')
 
-
     def _parseSVNEntries_8(self, entriesFile):
         """
         Given a readable file object which represents a .svn/entries file in
@@ -353,12 +338,10 @@ class Version(object):
         entriesFile.readline()
         return entriesFile.readline().strip()
 
-
     # Add handlers for version 9 and 10 formats, which are the same as
     # version 8 as far as revision information is concerned.
     _parseSVNEntries_9 = _parseSVNEntries_8
     _parseSVNEntriesTenPlus = _parseSVNEntries_8
-
 
     def _getSVNVersion(self):
         """
@@ -381,7 +364,9 @@ class Version(object):
                 # It looks like a less-than-version-10 working copy.
                 with open(formatFile, 'rb') as fObj:
                     format = fObj.read().strip()
-                parser = getattr(self, '_parseSVNEntries_' + format.decode('ascii'), None)
+                parser = getattr(self,
+                                 '_parseSVNEntries_' + format.decode('ascii'),
+                                 None)
             else:
                 # It looks like a version-10-or-greater working copy, which
                 # has version information in the entries file.
@@ -400,13 +385,11 @@ class Version(object):
             except:
                 return b'Unknown'
 
-
     def _formatSVNVersion(self):
         ver = self._getSVNVersion()
         if ver is None:
             return ''
         return ' (SVN r%s)' % (ver,)
-
 
 
 def getVersionString(version):
