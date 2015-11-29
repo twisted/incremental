@@ -84,7 +84,7 @@ class Version(object):
                 s += '+r' + nativeString(svnver)
 
         else:
-            d += gitver
+            s += '@' + gitver
         return s
 
 
@@ -172,8 +172,19 @@ class Version(object):
 
 
     def _parseGitDir(self, directory):
-        print('directory')
-        pass
+
+        headFile = os.path.abspath(os.path.join(directory, 'HEAD'))
+
+        with open(headFile, "r") as f:
+            headContent = f.read()
+
+        if headContent.startswith("ref: "):
+            with open(os.path.abspath(os.path.join(directory, headContent[5:-1]))) as f:
+                commit = f.read()
+                return commit[:-1]
+
+
+        return headContent
 
 
     def _getGitVersion(self):
@@ -183,8 +194,8 @@ class Version(object):
 
             upOne = os.path.abspath(os.path.join(basepath, '..'))
 
-            if ".git" in os.path.children(upOne):
-                return _parseGitDir(os.path.join(upOne, '.git'))
+            if ".git" in os.listdir(upOne):
+                return self._parseGitDir(os.path.join(upOne, '.git'))
 
             while True:
 
@@ -193,8 +204,8 @@ class Version(object):
                 if upOneMore == upOne:
                     return None
 
-                if ".git" in os.path.children(upOne):
-                    return _parseGitDir(os.path.join(upOneMore, '.git'))
+                if ".git" in os.listdir(upOneMore):
+                    return self._parseGitDir(os.path.join(upOneMore, '.git'))
 
                 upOne = upOneMore
 

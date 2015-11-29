@@ -248,12 +248,16 @@ class VersionsTests(TestCase):
 
         gitDir = FilePath(self.mktemp())
         gitDir.makedirs()
-        gitDir.child("HEAD").setContent(b"ref: refs/heads/master")
+        gitDir.child("HEAD").setContent(b"ref: refs/heads/master\n")
 
         heads = gitDir.child("refs").child("heads")
         heads.makedirs()
         heads.child("master").setContent(
-            b"a96d61d94949c0dc097d6e1c3515792e99a724d5")
+            b"a96d61d94949c0dc097d6e1c3515792e99a724d5\n")
+
+        version = Version("foo", 1, 0, 0)
+        self.assertEqual(version._parseGitDir(gitDir.path),
+                         "a96d61d94949c0dc097d6e1c3515792e99a724d5")
 
 
 
