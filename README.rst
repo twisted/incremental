@@ -3,6 +3,7 @@ Incremental
 
 |travis|
 |pypi|
+|coverage|
 
 Incremental is a small library that versions your Python projects.
 
@@ -67,6 +68,9 @@ Then in your project's ``__init__.py`` add:
 
 
 Subsequent installations of your project will use incremental for versioning.
+
+.. |coverage| image:: https://codecov.io/github/hawkowl/incremental/coverage.svg?branch=master
+.. _coverage: https://codecov.io/github/hawkowl/incremental
 
 .. |travis| image:: https://travis-ci.org/hawkowl/incremental.svg?branch=master
 .. _travis: http://travis-ci.org/hawkowl/incremental
