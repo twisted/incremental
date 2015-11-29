@@ -1,0 +1,7 @@
+include *.py
+include .coveragerc
+include LICENSE
+include tox.ini
+include src/incremental.py
+recursive-include src example_proj *.py
+recursive-include tests *.py
