@@ -1,0 +1,5 @@
+[run]
+include =
+        */incremental.py
+        tests/*
+branch = True

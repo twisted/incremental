@@ -190,7 +190,7 @@ class Version(object):
     def short(self):
         """
         Return a string in canonical short version format,
-        <major>.<minor>.<micro>[+rSVNVer/+gitsha1].
+        <major>.<minor>.<micro>[+rSVNVer/@gitsha1].
         """
         s = self.base()
         gitver = self._getGitVersion()
@@ -207,7 +207,7 @@ class Version(object):
 
     def base(self):
         """
-        Like L{short}, but without the +rSVNVer.
+        Like L{short}, but without the +rSVNVer or @gitsha1.
         """
         if self.prerelease is None:
             pre = ""
