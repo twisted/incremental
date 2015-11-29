@@ -34,5 +34,10 @@ setup(
     package_dir={"": "src"},
     py_modules=['incremental'],
     license="MIT",
-    long_description=open('README.rst').read()
+    zip_safe=False,
+    long_description=open('README.rst').read(),
+    entry_points="""
+    [distutils.setup_keywords]
+    use_incremental = incremental:_get_version
+    """,
 )

@@ -403,18 +403,31 @@ def getVersionString(version):
     return result
 
 
-def get_version_from_project(project, src_dir):
+def _get_version(dist, keyword, value):
     """
-    Get a L{Version} object from a flat source directory.
+    Get the version from the package listed in the Distribution.
     """
-    version_file = {}
+    if not value:
+        return
 
-    with open(os.path.join(src_dir, project, "_version.py")) as f:
-        exec(f.read(), version_file)
+    from distutils.command import build_py
 
-    return version_file["__version__"]
+    sp_command = build_py.build_py(dist)
+    sp_command.finalize_options()
+
+    for item in sp_command.find_all_modules():
+        if item[1] == "_version":
+            version_file = {}
+
+            with open(item[2]) as f:
+                exec(f.read(), version_file)
+
+            dist.metadata.version = version_file["__version__"].short()
+            return None
+
+    raise Exception("No _version.py found.")
 
 
-__version__ = Version("incremental", 15, 0, 0)
+__version__ = Version("incremental", 15, 2, 0)
 
-__all__ = ["__version__", "Version", "get_version_from_project"]
+__all__ = ["__version__", "Version"]
