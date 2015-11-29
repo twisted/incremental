@@ -403,6 +403,18 @@ def getVersionString(version):
     return result
 
 
-__version__ = Version("incremental", 0, 1, 0)
+def get_version_from_project(project, src_dir):
+    """
+    Get a L{Version} object from a flat source directory.
+    """
+    version_file = {}
 
-__all__ = ["__version__", "Version"]
+    with open(os.path.join(src_dir, project, "_version.py")) as f:
+        exec(f.read(), version_file)
+
+    return version_file["__version__"]
+
+
+__version__ = Version("incremental", 15, 0, 0)
+
+__all__ = ["__version__", "Version", "get_version_from_project"]

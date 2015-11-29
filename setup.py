@@ -17,6 +17,8 @@ import incremental
 setup(
     name='incremental',
     version=incremental.__version__.base(),
+    maintainer='Amber Brown',
+    maintainer_email='hawkowl@twistedmatrix.com',
     classifiers = [
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
