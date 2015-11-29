@@ -19,6 +19,7 @@ setup(
     version=incremental.__version__.base(),
     maintainer='Amber Brown',
     maintainer_email='hawkowl@twistedmatrix.com',
+    url="https://github.com/hawkowl/incremental",
     classifiers = [
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
@@ -31,6 +32,7 @@ setup(
         "Programming Language :: Python :: 3.5",
     ],
     package_dir={"": "src"},
-    py_modules=['incremental']
-
+    py_modules=['incremental'],
+    license="MIT",
+    long_description=open('README.rst').read()
 )
