@@ -1,9 +1,7 @@
 Incremental
 ===========
 
-.. image:: https://travis-ci.org/hawkowl/incremental.svg?branch=master
-    :target: http://travis-ci.org/hawkowl/incremental
-    :alt: Build Status
+|travis|
 |pypi|
 
 Incremental is a small library that versions your Python projects.
@@ -70,6 +68,8 @@ Then in your project's ``__init__.py`` add:
 
 Subsequent installations of your project will use incremental for versioning.
 
+.. |travis| image:: https://travis-ci.org/hawkowl/incremental.svg?branch=master
+.. _travis: http://travis-ci.org/hawkowl/incremental
 
 .. |pypi| image:: http://img.shields.io/pypi/v/incremental.svg
 .. _pypi: https://pypi.python.org/pypi/incremental
