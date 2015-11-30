@@ -20,4 +20,4 @@ class ExampleProjTests(TestCase):
 
         # We're in a git repo, so we should get a git-esque thing
         self.assertEqual(len(exampleproj.__version__.short()), 46,
-                         exampleproj.__version__.short())
+                         repr(exampleproj.__version__.short()))
