@@ -322,7 +322,7 @@ class Version(object):
             with open(os.path.abspath(os.path.join(directory,
                                                    headContent[5:-1]))) as f:
                 commit = f.read()
-                return commit[:-1]
+                return commit.strip()
 
         return headContent
 
