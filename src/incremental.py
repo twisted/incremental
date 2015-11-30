@@ -316,11 +316,12 @@ class Version(object):
         headFile = os.path.abspath(os.path.join(directory, 'HEAD'))
 
         with open(headFile, "r") as f:
-            headContent = f.read()
+            headContent = f.read().strip()
 
         if headContent.startswith("ref: "):
-            with open(os.path.abspath(os.path.join(directory,
-                                                   headContent[5:-1]))) as f:
+            with open(os.path.abspath(
+                    os.path.join(directory,
+                                 headContent.split(" ")[1]))) as f:
                 commit = f.read()
                 return commit.strip()
 
