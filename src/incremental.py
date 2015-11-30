@@ -301,14 +301,14 @@ class Version(object):
         else:
             otherpre = other.prerelease
 
-        x = cmp((self.major,
-                 self.minor,
-                 self.micro,
-                 prerelease),
-                (other.major,
-                 other.minor,
-                 other.micro,
-                 otherpre))
+        x = _cmp((self.major,
+                  self.minor,
+                  self.micro,
+                  prerelease),
+                 (other.major,
+                  other.minor,
+                  other.micro,
+                  otherpre))
         return x
 
     def _parseGitDir(self, directory):
