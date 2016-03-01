@@ -18,6 +18,7 @@ Add this to your ``setup.py``\ 's ``setup()`` call:
    setup(
        use_incremental=True,
        setup_requires=['incremental'],
+       install_requires=['incremental'], # along with any other install dependencies
        ...
    }
 
