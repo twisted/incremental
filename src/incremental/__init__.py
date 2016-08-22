@@ -22,7 +22,7 @@ else:
     _PY3 = True
 
 
-def nativeString(s):
+def _nativeString(s):
     """
     Convert C{bytes} or C{unicode} to the native C{str} type, using ASCII
     encoding if conversion is necessary.
@@ -48,9 +48,9 @@ def nativeString(s):
 
 
 try:
-    cmp = cmp
+    _cmp = cmp
 except NameError:
-    def cmp(a, b):
+    def _cmp(a, b):
         """
         Compare two objects.
 
@@ -65,7 +65,7 @@ except NameError:
             return 1
 
 
-def comparable(klass):
+def _comparable(klass):
     """
     Class decorator that ensures support for the special C{__cmp__} method.
 
@@ -127,7 +127,7 @@ def comparable(klass):
 #
 
 
-@comparable
+@_comparable
 class _inf(object):
     """
     An object that is bigger than all other objects.
@@ -153,13 +153,15 @@ class IncomparableVersions(TypeError):
     """
 
 
-@comparable
+@_comparable
 class Version(object):
     """
-    An object that represents a three-part version number.
+    An encapsulation of a version for a project, with support for outputting
+    PEP-440 compatible version strings.
 
-    If running from an SVN/Git checkout, include the revision number/commit in
-    the version string.
+    This class supports the standard major.minor.micro[preN] scheme of
+    versioning, with support for "local versions" which may include a SVN
+    revision or Git SHA1 hash.
     """
     def __init__(self, package, major, minor, micro, prerelease=None):
         """
@@ -183,7 +185,7 @@ class Version(object):
     def short(self):
         """
         Return a string in canonical short version format,
-        <major>.<minor>.<micro>[+rSVNVer/@gitsha1].
+        <major>.<minor>.<micro>[+rSVNVer/+gitsha1].
         """
         s = self.base()
         gitver = self._getGitVersion()
@@ -191,11 +193,36 @@ class Version(object):
         if not gitver:
             svnver = self._getSVNVersion()
             if svnver:
-                s += '+r' + nativeString(svnver)
-
+                s += '+r' + _nativeString(svnver)
         else:
-            s += '@' + gitver
+            s += '+' + gitver
         return s
+
+    def local(self):
+        """
+        Return a PEP440-compatible "local" representation of this L{Version}.
+
+        This includes a SVN revision or Git commit SHA1 hash, if available.
+
+        Examples:
+
+        - 14.4.0+r1223
+        - 1.2.3pre1+rb2e812003b5d5fcf08efd1dffed6afa98d44ac8c
+        - 12.10.1
+        - 3.4.8pre2
+        """
+        return self.short()
+
+    def public(self):
+        """
+        Return a PEP440-compatible "public" representation of this L{Version}.
+
+        Examples:
+
+        - 14.4.0
+        - 1.2.3pre1
+        """
+        return self.base()
 
     def base(self):
         """
@@ -211,13 +238,21 @@ class Version(object):
                                pre)
 
     def __repr__(self):
+        # Git repr
+        gitver = self._formatGitVersion()
+        if gitver:
+            gitver = '  #' + gitver
+
+        # SVN repr
         svnver = self._formatSVNVersion()
         if svnver:
             svnver = '  #' + svnver
+
         if self.prerelease is None:
             prerelease = ""
         else:
             prerelease = ", prerelease=%r" % (self.prerelease,)
+
         return '%s(%r, %d, %d, %d%s)%s' % (
             self.__class__.__name__,
             self.package,
@@ -225,7 +260,7 @@ class Version(object):
             self.minor,
             self.micro,
             prerelease,
-            svnver)
+            gitver or svnver)
 
     def __str__(self):
         return '[%s, version %s]' % (
@@ -266,14 +301,14 @@ class Version(object):
         else:
             otherpre = other.prerelease
 
-        x = cmp((self.major,
-                 self.minor,
-                 self.micro,
-                 prerelease),
-                (other.major,
-                 other.minor,
-                 other.micro,
-                 otherpre))
+        x = _cmp((self.major,
+                  self.minor,
+                  self.micro,
+                  prerelease),
+                 (other.major,
+                  other.minor,
+                  other.micro,
+                  otherpre))
         return x
 
     def _parseGitDir(self, directory):
@@ -281,17 +316,21 @@ class Version(object):
         headFile = os.path.abspath(os.path.join(directory, 'HEAD'))
 
         with open(headFile, "r") as f:
-            headContent = f.read()
+            headContent = f.read().strip()
 
         if headContent.startswith("ref: "):
-            with open(os.path.abspath(os.path.join(directory,
-                                                   headContent[5:-1]))) as f:
+            with open(os.path.abspath(
+                    os.path.join(directory,
+                                 headContent.split(" ")[1]))) as f:
                 commit = f.read()
-                return commit[:-1]
+                return commit.strip()
 
         return headContent
 
     def _getGitVersion(self):
+        """
+        Given a package directory, walk up and find the git commit sha.
+        """
         mod = sys.modules.get(self.package)
         if mod:
             basepath = os.path.dirname(mod.__file__)
@@ -391,6 +430,12 @@ class Version(object):
             return ''
         return ' (SVN r%s)' % (ver,)
 
+    def _formatGitVersion(self):
+        ver = self._getGitVersion()
+        if ver is None:
+            return ''
+        return ' (Git %s)' % (ver,)
+
 
 def getVersionString(version):
     """
@@ -422,12 +467,12 @@ def _get_version(dist, keyword, value):
             with open(item[2]) as f:
                 exec(f.read(), version_file)
 
-            dist.metadata.version = version_file["__version__"].short()
+            dist.metadata.version = version_file["__version__"].public()
             return None
 
     raise Exception("No _version.py found.")
 
 
-__version__ = Version("incremental", 15, 2, 0)
+__version__ = Version("incremental", 15, 3, 0)
 
-__all__ = ["__version__", "Version"]
+__all__ = ["__version__", "Version", "getVersionString"]
