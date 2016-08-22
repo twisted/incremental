@@ -11,6 +11,7 @@ from __future__ import division, absolute_import
 
 import os
 import sys
+import warnings
 
 #
 # Compat functions
@@ -159,11 +160,12 @@ class Version(object):
     An encapsulation of a version for a project, with support for outputting
     PEP-440 compatible version strings.
 
-    This class supports the standard major.minor.micro[preN] scheme of
+    This class supports the standard major.minor.micro[rcN] scheme of
     versioning, with support for "local versions" which may include a SVN
     revision or Git SHA1 hash.
     """
-    def __init__(self, package, major, minor, micro, prerelease=None):
+    def __init__(self, package, major, minor, micro, release_candidate=None,
+                 prerelease=None):
         """
         @param package: Name of the package that this is a version of.
         @type package: C{str}
@@ -173,14 +175,29 @@ class Version(object):
         @type minor: C{int}
         @param micro: The micro version number.
         @type micro: C{int}
-        @param prerelease: The prerelease number.
+        @param release_candidate: The release candidate number.
+        @type release_candidate: C{int}
+        @param prerelease: The prerelease number. (Deprecated)
         @type prerelease: C{int}
         """
+        if release_candidate and prerelease:
+            raise ValueError("Please only return one of these.")
+        elif prerelease and not release_candidate:
+            release_candidate = prerelease
+            warnings.warn(("Passing prerelease to incremental.Version was "
+                           "deprecated in Incremental 16.8. Please pass "
+                           "release_candidate instead."),
+                          DeprecationWarning, stacklevel=2),
+
         self.package = package
         self.major = major
         self.minor = minor
         self.micro = micro
-        self.prerelease = prerelease
+        self.release_candidate = release_candidate
+
+    @property
+    def prerelease(self):
+        return self.release_candidate
 
     def short(self):
         """
@@ -207,9 +224,9 @@ class Version(object):
         Examples:
 
         - 14.4.0+r1223
-        - 1.2.3pre1+rb2e812003b5d5fcf08efd1dffed6afa98d44ac8c
+        - 1.2.3rc1+rb2e812003b5d5fcf08efd1dffed6afa98d44ac8c
         - 12.10.1
-        - 3.4.8pre2
+        - 3.4.8rc2
         """
         return self.short()
 
@@ -220,7 +237,7 @@ class Version(object):
         Examples:
 
         - 14.4.0
-        - 1.2.3pre1
+        - 1.2.3rc1
         """
         return self.base()
 
@@ -228,14 +245,14 @@ class Version(object):
         """
         Like L{short}, but without the +rSVNVer or @gitsha1.
         """
-        if self.prerelease is None:
-            pre = ""
+        if self.release_candidate is None:
+            rc = ""
         else:
-            pre = "pre%s" % (self.prerelease,)
+            rc = "rc%s" % (self.release_candidate,)
         return '%d.%d.%d%s' % (self.major,
                                self.minor,
                                self.micro,
-                               pre)
+                               rc)
 
     def __repr__(self):
         # Git repr
@@ -248,10 +265,11 @@ class Version(object):
         if svnver:
             svnver = '  #' + svnver
 
-        if self.prerelease is None:
-            prerelease = ""
+        if self.release_candidate is None:
+            release_candidate = ""
         else:
-            prerelease = ", prerelease=%r" % (self.prerelease,)
+            release_candidate = ", release_candidate=%r" % (
+                self.release_candidate,)
 
         return '%s(%r, %d, %d, %d%s)%s' % (
             self.__class__.__name__,
@@ -259,7 +277,7 @@ class Version(object):
             self.major,
             self.minor,
             self.micro,
-            prerelease,
+            release_candidate,
             gitver or svnver)
 
     def __str__(self):
@@ -270,11 +288,11 @@ class Version(object):
     def __cmp__(self, other):
         """
         Compare two versions, considering major versions, minor versions, micro
-        versions, then prereleases.
+        versions, then release candidates.
 
-        A version with a prerelease is always less than a version without a
-        prerelease. If both versions have prereleases, they will be included in
-        the comparison.
+        A version with a release candidate is always less than a version
+        without a release candidate. If both versions have release candidates,
+        they will be included in the comparison.
 
         @param other: Another version.
         @type other: L{Version}
@@ -291,24 +309,24 @@ class Version(object):
             raise IncomparableVersions("%r != %r"
                                        % (self.package, other.package))
 
-        if self.prerelease is None:
-            prerelease = _inf
+        if self.release_candidate is None:
+            release_candidate = _inf
         else:
-            prerelease = self.prerelease
+            release_candidate = self.release_candidate
 
-        if other.prerelease is None:
-            otherpre = _inf
+        if other.release_candidate is None:
+            otherrc = _inf
         else:
-            otherpre = other.prerelease
+            otherrc = other.release_candidate
 
         x = _cmp((self.major,
                   self.minor,
                   self.micro,
-                  prerelease),
+                  release_candidate),
                  (other.major,
                   other.minor,
                   other.micro,
-                  otherpre))
+                  otherrc))
         return x
 
     def _parseGitDir(self, directory):
