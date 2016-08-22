@@ -86,18 +86,60 @@ class VersionsTests(TestCase):
         self.assertFalse(va > vb)
         self.assertNotEquals(vb, va)
 
-    def test_comparingPrereleases(self):
+    def test_prereleaseDeprecated(self):
         """
-        The value specified as the prerelease is used in version comparisons.
+        Passing 'prerelease' to Version is deprecated.
         """
         va = Version("whatever", 1, 0, 0, prerelease=1)
-        vb = Version("whatever", 1, 0, 0, prerelease=2)
+        warnings = self.flushWarnings([self.test_prereleaseDeprecated])
+        self.assertEqual(len(warnings), 1)
+        self.assertEqual(
+            warnings[0]['message'],
+            ("Passing prerelease to incremental.Version was deprecated in "
+             "Incremental 16.8. Please pass release_candidate instead."))
+
+    def test_comparingReleaseCandidatesWithReleases(self):
+        """
+        Release Candidates are always less than versions without release
+        candidates.
+        """
+        va = Version("whatever", 1, 0, 0, release_candidate=1)
+        vb = Version("whatever", 1, 0, 0)
+        self.assertTrue(va < vb)
+        self.assertFalse(va > vb)
+        self.assertNotEquals(vb, va)
+
+    def test_rcEqualspre(self):
+        """
+        Release Candidates are equal to prereleases.
+        """
+        va = Version("whatever", 1, 0, 0, release_candidate=1)
+        vb = Version("whatever", 1, 0, 0, prerelease=1)
+        self.assertTrue(va == vb)
+        self.assertFalse(va != vb)
+
+    def test_rcOrpreButNotBoth(self):
+        """
+        Release Candidate and prerelease can't both be given.
+        """
+        with self.assertRaises(ValueError):
+            va = Version("whatever", 1, 0, 0,
+                         prerelease=1, release_candidate=1)
+
+    def test_comparingReleaseCandidates(self):
+        """
+        The value specified as the release candidate is used in version
+        comparisons.
+        """
+        va = Version("whatever", 1, 0, 0, release_candidate=1)
+        vb = Version("whatever", 1, 0, 0, release_candidate=2)
         self.assertTrue(va < vb)
         self.assertTrue(vb > va)
         self.assertTrue(va <= vb)
         self.assertTrue(vb >= va)
         self.assertTrue(va != vb)
-        self.assertTrue(vb == Version("whatever", 1, 0, 0, prerelease=2))
+        self.assertTrue(vb == Version("whatever", 1, 0, 0,
+                                      release_candidate=2))
         self.assertTrue(va == va)
 
     def test_infComparison(self):
@@ -137,10 +179,19 @@ class VersionsTests(TestCase):
     def test_reprWithPrerelease(self):
         """
         Calling C{repr} on a version with a prerelease returns a human-readable
-        string representation of the version including the prerelease.
+        string representation of the version including the prerelease as a
+        release candidate..
         """
         self.assertEqual(repr(Version("dummy", 1, 2, 3, prerelease=4)),
-                         "Version('dummy', 1, 2, 3, prerelease=4)")
+                         "Version('dummy', 1, 2, 3, release_candidate=4)")
+
+    def test_reprWithReleaseCandidate(self):
+        """
+        Calling C{repr} on a version with a release candidate returns a
+        human-readable string representation of the version including the rc.
+        """
+        self.assertEqual(repr(Version("dummy", 1, 2, 3, release_candidate=4)),
+                         "Version('dummy', 1, 2, 3, release_candidate=4)")
 
     def test_str(self):
         """
@@ -152,10 +203,19 @@ class VersionsTests(TestCase):
 
     def test_strWithPrerelease(self):
         """
-        Calling C{str} on a version with a prerelease includes the prerelease.
+        Calling C{str} on a version with a prerelease includes the prerelease
+        as a release candidate.
         """
         self.assertEqual(str(Version("dummy", 1, 0, 0, prerelease=1)),
-                         "[dummy, version 1.0.0pre1]")
+                         "[dummy, version 1.0.0rc1]")
+
+    def test_strWithReleaseCandidate(self):
+        """
+        Calling C{str} on a version with a release candidate includes the
+        release candidate.
+        """
+        self.assertEqual(str(Version("dummy", 1, 0, 0, release_candidate=1)),
+                         "[dummy, version 1.0.0rc1]")
 
     def testShort(self):
         self.assertEqual(Version('dummy', 1, 2, 3).short(), '1.2.3')
@@ -203,11 +263,22 @@ class VersionsTests(TestCase):
 
     def test_getVersionStringWithPrerelease(self):
         """
-        L{getVersionString} includes the prerelease, if any.
+        L{getVersionString} includes the prerelease as a release candidate, if
+        any.
         """
         self.assertEqual(
             getVersionString(Version("whatever", 8, 0, 0, prerelease=1)),
-            "whatever 8.0.0pre1")
+            "whatever 8.0.0rc1")
+
+    def test_getVersionStringWithReleaseCandidate(self):
+        """
+        L{getVersionString} includes the release candidate, if
+        any.
+        """
+        self.assertEqual(
+            getVersionString(Version("whatever", 8, 0, 0,
+                                     release_candidate=1)),
+            "whatever 8.0.0rc1")
 
     def test_base(self):
         """
@@ -217,10 +288,17 @@ class VersionsTests(TestCase):
 
     def test_baseWithPrerelease(self):
         """
-        The base version includes 'preX' for versions with prereleases.
+        The base version includes 'rcX' for versions with prereleases.
         """
         self.assertEqual(Version("foo", 1, 0, 0, prerelease=8).base(),
-                         "1.0.0pre8")
+                         "1.0.0rc8")
+
+    def test_baseWithReleaseCandidate(self):
+        """
+        The base version includes 'rcX' for versions with prereleases.
+        """
+        self.assertEqual(Version("foo", 1, 0, 0, release_candidate=8).base(),
+                         "1.0.0rc8")
 
     def test_git(self):
 
