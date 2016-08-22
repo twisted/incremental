@@ -197,6 +197,10 @@ class Version(object):
 
     @property
     def prerelease(self):
+        warnings.warn(("Accessing incremental.Version.prerelease was "
+                       "deprecated in Incremental 16.8. Use "
+                       "Version.release_candidate instead."),
+                      DeprecationWarning, stacklevel=2),
         return self.release_candidate
 
     def short(self):

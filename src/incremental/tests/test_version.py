@@ -98,6 +98,20 @@ class VersionsTests(TestCase):
             ("Passing prerelease to incremental.Version was deprecated in "
              "Incremental 16.8. Please pass release_candidate instead."))
 
+    def test_prereleaseAttributeDeprecated(self):
+        """
+        Accessing 'prerelease' on a Version is deprecated.
+        """
+        va = Version("whatever", 1, 0, 0, release_candidate=1)
+        va.prerelease
+        warnings = self.flushWarnings(
+            [self.test_prereleaseAttributeDeprecated])
+        self.assertEqual(len(warnings), 1)
+        self.assertEqual(
+            warnings[0]['message'],
+            ("Accessing incremental.Version.prerelease was deprecated in "
+             "Incremental 16.8. Use Version.release_candidate instead."))
+
     def test_comparingReleaseCandidatesWithReleases(self):
         """
         Release Candidates are always less than versions without release
