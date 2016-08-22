@@ -130,7 +130,7 @@ class VersionsTests(TestCase):
         self.assertFalse(va > vb)
         self.assertNotEquals(vb, va)
 
-    def test_comparingReleaseCandidatesWithReleases(self):
+    def test_comparingDevReleasesWithReleases(self):
         """
         Dev releases are always less than versions without dev releases.
         """
@@ -392,7 +392,7 @@ class VersionsTests(TestCase):
                                      dev=1)),
             "whatever 8.0.0dev1")
 
-    def test_getVersionStringWithDev(self):
+    def test_getVersionStringWithDevAndRC(self):
         """
         L{getVersionString} includes the dev release and release candidate, if
         any.

@@ -341,7 +341,6 @@ class Version(object):
         else:
             dev = self.dev
 
-
         if other.release_candidate is None:
             otherrc = _inf
         else:
