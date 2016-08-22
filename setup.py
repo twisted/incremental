@@ -4,7 +4,7 @@ from __future__ import absolute_import, division, print_function
 
 import os, sys
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 base_dir = os.path.dirname(__file__)
 src_dir = os.path.join(base_dir, "src")
@@ -31,8 +31,8 @@ setup(
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
     ],
+    packages=find_packages('src'),
     package_dir={"": "src"},
-    py_modules=['incremental'],
     license="MIT",
     zip_safe=False,
     long_description=open('README.rst').read(),
