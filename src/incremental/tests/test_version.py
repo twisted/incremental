@@ -90,7 +90,7 @@ class VersionsTests(TestCase):
         """
         Passing 'prerelease' to Version is deprecated.
         """
-        va = Version("whatever", 1, 0, 0, prerelease=1)
+        Version("whatever", 1, 0, 0, prerelease=1)
         warnings = self.flushWarnings([self.test_prereleaseDeprecated])
         self.assertEqual(len(warnings), 1)
         self.assertEqual(
@@ -123,8 +123,8 @@ class VersionsTests(TestCase):
         Release Candidate and prerelease can't both be given.
         """
         with self.assertRaises(ValueError):
-            va = Version("whatever", 1, 0, 0,
-                         prerelease=1, release_candidate=1)
+            Version("whatever", 1, 0, 0,
+                    prerelease=1, release_candidate=1)
 
     def test_comparingReleaseCandidates(self):
         """
