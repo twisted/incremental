@@ -165,7 +165,7 @@ class Version(object):
     revision or Git SHA1 hash.
     """
     def __init__(self, package, major, minor, micro, release_candidate=None,
-                 prerelease=None):
+                 prerelease=None, dev=None):
         """
         @param package: Name of the package that this is a version of.
         @type package: C{str}
@@ -179,6 +179,8 @@ class Version(object):
         @type release_candidate: C{int}
         @param prerelease: The prerelease number. (Deprecated)
         @type prerelease: C{int}
+        @param dev: The development release number.
+        @type dev: C{int}
         """
         if release_candidate and prerelease:
             raise ValueError("Please only return one of these.")
@@ -194,6 +196,7 @@ class Version(object):
         self.minor = minor
         self.micro = micro
         self.release_candidate = release_candidate
+        self.dev = dev
 
     @property
     def prerelease(self):
@@ -231,6 +234,7 @@ class Version(object):
         - 1.2.3rc1+rb2e812003b5d5fcf08efd1dffed6afa98d44ac8c
         - 12.10.1
         - 3.4.8rc2
+        - 11.93.0rc1dev3
         """
         return self.short()
 
@@ -242,6 +246,8 @@ class Version(object):
 
         - 14.4.0
         - 1.2.3rc1
+        - 14.2.1rc1dev9
+        - 16.04.0dev0
         """
         return self.base()
 
@@ -253,10 +259,16 @@ class Version(object):
             rc = ""
         else:
             rc = "rc%s" % (self.release_candidate,)
-        return '%d.%d.%d%s' % (self.major,
-                               self.minor,
-                               self.micro,
-                               rc)
+
+        if self.dev is None:
+            dev = ""
+        else:
+            dev = "dev%s" % (self.dev,)
+
+        return '%d.%d.%d%s%s' % (self.major,
+                                 self.minor,
+                                 self.micro,
+                                 rc, dev)
 
     def __repr__(self):
         # Git repr
@@ -275,13 +287,19 @@ class Version(object):
             release_candidate = ", release_candidate=%r" % (
                 self.release_candidate,)
 
-        return '%s(%r, %d, %d, %d%s)%s' % (
+        if self.dev is None:
+            dev = ""
+        else:
+            dev = ", dev=%r" % (self.dev,)
+
+        return '%s(%r, %d, %d, %d%s%s)%s' % (
             self.__class__.__name__,
             self.package,
             self.major,
             self.minor,
             self.micro,
             release_candidate,
+            dev,
             gitver or svnver)
 
     def __str__(self):
@@ -318,19 +336,32 @@ class Version(object):
         else:
             release_candidate = self.release_candidate
 
+        if self.dev is None:
+            dev = _inf
+        else:
+            dev = self.dev
+
+
         if other.release_candidate is None:
             otherrc = _inf
         else:
             otherrc = other.release_candidate
 
+        if other.dev is None:
+            otherdev = _inf
+        else:
+            otherdev = other.dev
+
         x = _cmp((self.major,
                   self.minor,
                   self.micro,
-                  release_candidate),
+                  release_candidate,
+                  dev),
                  (other.major,
                   other.minor,
                   other.micro,
-                  otherrc))
+                  otherrc,
+                  otherdev))
         return x
 
     def _parseGitDir(self, directory):
