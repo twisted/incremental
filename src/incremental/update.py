@@ -1,7 +1,10 @@
 # Copyright (c) Twisted Matrix Laboratories.
 # See LICENSE for details.
 
+from __future__ import absolute_import, division
+
 import click
+import os
 
 from incremental import Version
 from datetime import date
@@ -11,17 +14,17 @@ _VERSIONPY_TEMPLATE = """# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update %s` to change this file.
 
 from incremental import Version
-__version__ = %s
 
+__version__ = %s
 __all__ = ["__version__"]
 """
 
 _YEAR_START = 2000
 
 
-def _findPath(package):
+def _findPath(path, package):
 
-    cwd = FilePath('.')
+    cwd = FilePath(path)
 
     src_dir = cwd.child("src").child(package.lower())
     current_dir = cwd.child(package.lower())
@@ -47,13 +50,15 @@ def _existing_version(path):
 
 
 def _run(package, path, newversion, patch, rc, dev, create,
-         _date=date.today()):
+         _date=date.today(), _getcwd=os.getcwd):
 
     if type(package) != str:
         package = package.encode('utf8')
 
+    update_NEXT = False
+
     if not path:
-        path = _findPath(package)
+        path = _findPath(_getcwd(), package)
     else:
         path = FilePath(path)
 
@@ -122,8 +127,12 @@ def _run(package, path, newversion, patch, rc, dev, create,
 
     NEXT_repr = repr(Version(package, "NEXT", 0, 0)).split("#")[0]
     NEXT_repr_bytes = NEXT_repr.encode('utf8')
+
     version_repr = repr(v).split("#")[0]
     version_repr_bytes = version_repr.encode('utf8')
+
+    existing_version_repr = repr(v).split("#")[0]
+    existing_version_repr_bytes = existing_version_repr.encode('utf8')
 
     print("Updating codebase to %s" % (v.public()))
 
@@ -135,7 +144,12 @@ def _run(package, path, newversion, patch, rc, dev, create,
         original_content = x.getContent()
         content = original_content
 
-        # Replace Version() calls with the new one
+        # Replace previous prerelease calls to the new one
+        if existing.prerelease:
+            content = content.replace(existing_version_repr_bytes,
+                                      version_repr_bytes)
+
+        # Replace NEXT Version calls with the new one
         content = content.replace(NEXT_repr_bytes,
                                   version_repr_bytes)
         content = content.replace(NEXT_repr_bytes.replace("'", '"'),
