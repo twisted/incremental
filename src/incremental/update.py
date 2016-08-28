@@ -1,3 +1,6 @@
+# Copyright (c) Twisted Matrix Laboratories.
+# See LICENSE for details.
+
 import click
 
 from incremental import Version
@@ -43,14 +46,6 @@ def _existing_version(path):
     return version_info["__version__"]
 
 
-@click.command()
-@click.argument('package')
-@click.option('--path', default=None)
-@click.option('--newversion', default=None)
-@click.option('--patch', is_flag=True)
-@click.option('--rc', is_flag=True)
-@click.option('--dev', is_flag=True)
-@click.option('--create', is_flag=True)
 def _run(package, path, newversion, patch, rc, dev, create,
          _date=date.today()):
 
@@ -62,14 +57,14 @@ def _run(package, path, newversion, patch, rc, dev, create,
     else:
         path = FilePath(path)
 
-
     if newversion and patch or newversion and dev or newversion and rc:
         raise ValueError("Only give --newversion")
 
     if dev and patch or dev and rc:
         raise ValueError("Only give --dev")
 
-    if create and dev or create and patch or create and rc or create and newversion:
+    if create and dev or create and patch or create and rc or \
+       create and newversion:
         raise ValueError("Only give --create")
 
     if newversion:
@@ -122,7 +117,6 @@ def _run(package, path, newversion, patch, rc, dev, create,
         else:
             raise ValueError("You need to issue a prerelease first!")
 
-
     if rc:
         v.release_candidate = (v.release_candidate or 0) + 1
 
@@ -161,6 +155,17 @@ def _run(package, path, newversion, patch, rc, dev, create,
         f.write(_VERSIONPY_TEMPLATE % (package, version_repr))
 
 
+@click.command()
+@click.argument('package')
+@click.option('--path', default=None)
+@click.option('--newversion', default=None)
+@click.option('--patch', is_flag=True)
+@click.option('--rc', is_flag=True)
+@click.option('--dev', is_flag=True)
+@click.option('--create', is_flag=True)
+def run(*args, **kwargs):
+    return _run(*args, **kwargs)
+
 
 if __name__ == '__main__':
-    _run()
+    run()

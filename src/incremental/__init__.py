@@ -260,6 +260,9 @@ class Version(object):
         """
         Like L{short}, but without the +rSVNVer or @gitsha1.
         """
+        if self.major == "NEXT":
+            return self.major
+
         if self.release_candidate is None:
             rc = ""
         else:
@@ -540,7 +543,7 @@ def _get_version(dist, keyword, value):
     raise Exception("No _version.py found.")
 
 
-from ._version import __version__
+from ._version import __version__ # noqa
 
 
 __all__ = ["__version__", "Version", "getVersionString"]

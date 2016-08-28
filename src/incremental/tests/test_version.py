@@ -436,6 +436,12 @@ class VersionsTests(TestCase):
                                      release_candidate=2, dev=1)),
             "whatever 8.0.0rc2dev1")
 
+    def test_baseWithNEXT(self):
+        """
+        The L{base} method returns just "NEXT" when NEXT is the major version.
+        """
+        self.assertEqual(Version("foo", "NEXT", 0, 0).base(), "NEXT")
+
     def test_base(self):
         """
         The L{base} method returns a very simple representation of the version.
