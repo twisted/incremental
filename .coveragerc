@@ -1,7 +1,6 @@
 [run]
 source =
        incremental
-       test_version
 branch = True
 
 
