@@ -8,7 +8,7 @@ _VERSIONPY_TEMPLATE = """# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update %s` to change this file.
 
 from incremental import Version
-version = %s
+__version__ = %s
 
 __all__ = ["__version__"]
 """
@@ -124,7 +124,8 @@ def _run(package, path, newversion, patch, rc, dev, create, _date=date.today()):
         if not x.isfile():
             continue
 
-        content = x.getContent()
+        original_content = x.getContent()
+        content = original_content
 
         # Replace Version() calls with the new one
         content = content.replace(NEXT_repr_bytes,
@@ -136,7 +137,10 @@ def _run(package, path, newversion, patch, rc, dev, create, _date=date.today()):
         content = content.replace(package.lower().encode('utf8') + b" NEXT",
                                   v.public().encode('utf8'))
 
-        x.setContent()
+        if content != original_content:
+            print("Updating %s" % (x.path,))
+            with x.open('w') as f:
+                f.write(content)
 
 
     with path.child("_version.py").open('w') as f:
