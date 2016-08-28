@@ -170,7 +170,7 @@ class Version(object):
         @param package: Name of the package that this is a version of.
         @type package: C{str}
         @param major: The major version number.
-        @type major: C{int}
+        @type major: C{int} or C{str} (for the "NEXT" symbol)
         @param minor: The minor version number.
         @type minor: C{int}
         @param micro: The micro version number.
@@ -189,7 +189,12 @@ class Version(object):
             warnings.warn(("Passing prerelease to incremental.Version was "
                            "deprecated in Incremental 16.8. Please pass "
                            "release_candidate instead."),
-                          DeprecationWarning, stacklevel=2),
+                          DeprecationWarning, stacklevel=2)
+
+        if major == "NEXT":
+            if minor or micro or release_candidate or dev:
+                raise ValueError(("When using NEXT, all other values except "
+                                  "Package must be 0."))
 
         self.package = package
         self.major = major
@@ -265,7 +270,7 @@ class Version(object):
         else:
             dev = "dev%s" % (self.dev,)
 
-        return '%d.%d.%d%s%s' % (self.major,
+        return '%s.%d.%d%s%s' % (self.major,
                                  self.minor,
                                  self.micro,
                                  rc, dev)
@@ -292,7 +297,7 @@ class Version(object):
         else:
             dev = ", dev=%r" % (self.dev,)
 
-        return '%s(%r, %d, %d, %d%s%s)%s' % (
+        return '%s(%r, %s, %d, %d%s%s)%s' % (
             self.__class__.__name__,
             self.package,
             self.major,
@@ -331,6 +336,11 @@ class Version(object):
             raise IncomparableVersions("%r != %r"
                                        % (self.package, other.package))
 
+        if self.major == "NEXT":
+            major = _inf
+        else:
+            major = self.major
+
         if self.release_candidate is None:
             release_candidate = _inf
         else:
@@ -340,6 +350,11 @@ class Version(object):
             dev = _inf
         else:
             dev = self.dev
+
+        if other.major == "NEXT":
+            othermajor = _inf
+        else:
+            othermajor = other.major
 
         if other.release_candidate is None:
             otherrc = _inf
@@ -351,12 +366,12 @@ class Version(object):
         else:
             otherdev = other.dev
 
-        x = _cmp((self.major,
+        x = _cmp((major,
                   self.minor,
                   self.micro,
                   release_candidate,
                   dev),
-                 (other.major,
+                 (othermajor,
                   other.minor,
                   other.micro,
                   otherrc,
@@ -525,6 +540,7 @@ def _get_version(dist, keyword, value):
     raise Exception("No _version.py found.")
 
 
-__version__ = Version("incremental", 15, 3, 0)
+from ._version import __version__
+
 
 __all__ = ["__version__", "Version", "getVersionString"]
