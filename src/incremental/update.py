@@ -51,7 +51,8 @@ def _existing_version(path):
 @click.option('--rc', is_flag=True)
 @click.option('--dev', is_flag=True)
 @click.option('--create', is_flag=True)
-def _run(package, path, newversion, patch, rc, dev, create, _date=date.today()):
+def _run(package, path, newversion, patch, rc, dev, create,
+         _date=date.today()):
 
     if type(package) != str:
         package = package.encode('utf8')
@@ -72,8 +73,21 @@ def _run(package, path, newversion, patch, rc, dev, create, _date=date.today()):
         raise ValueError("Only give --create")
 
     if newversion:
-        pass
-        # parse here
+        existing = _existing_version(path)
+        segments = newversion.split('.')
+
+        v = Version(package, int(segments.pop(0)), int(segments.pop(0)),
+                    int(segments.pop(0)))
+
+        while segments:
+            segment = segments.pop(0)
+
+            if segment.startswith("dev"):
+                v.dev = int(segment[3:])
+            elif segment.startswith("rc"):
+                v.release_candidate = int(segment[2:])
+            elif segment.startswith("pre"):
+                v.release_candidate = int(segment[3:])
 
     elif create:
         v = Version(package, _date.year - _YEAR_START, _date.month, 0)
