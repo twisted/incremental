@@ -112,12 +112,12 @@ def _run(package, path, newversion, patch, rc, dev, create, _date=date.today()):
     if rc:
         v.release_candidate = (v.release_candidate or 0) + 1
 
-    print("Updating %s/_version.py" % (path.path))
-
     NEXT_repr = repr(Version(package, "NEXT", 0, 0)).split("#")[0]
     NEXT_repr_bytes = NEXT_repr.encode('utf8')
     version_repr = repr(v).split("#")[0]
     version_repr_bytes = version_repr.encode('utf8')
+
+    print("Updating codebase to %s" % (v.public()))
 
     for x in path.walk():
 
@@ -130,7 +130,7 @@ def _run(package, path, newversion, patch, rc, dev, create, _date=date.today()):
         # Replace Version() calls with the new one
         content = content.replace(NEXT_repr_bytes,
                                   version_repr_bytes)
-        content = content.replace(NEXT_repr_bytes.replace('"', "'"),
+        content = content.replace(NEXT_repr_bytes.replace("'", '"'),
                                   version_repr_bytes)
 
         # Replace <package> NEXT with <package> <public>
@@ -142,7 +142,7 @@ def _run(package, path, newversion, patch, rc, dev, create, _date=date.today()):
             with x.open('w') as f:
                 f.write(content)
 
-
+    print("Updating %s/_version.py" % (path.path))
     with path.child("_version.py").open('w') as f:
         f.write(_VERSIONPY_TEMPLATE % (package, version_repr))
 

@@ -270,7 +270,7 @@ class Version(object):
         else:
             dev = "dev%s" % (self.dev,)
 
-        return '%s.%d.%d%s%s' % (self.major,
+        return '%r.%d.%d%s%s' % (self.major,
                                  self.minor,
                                  self.micro,
                                  rc, dev)
@@ -297,7 +297,7 @@ class Version(object):
         else:
             dev = ", dev=%r" % (self.dev,)
 
-        return '%s(%r, %s, %d, %d%s%s)%s' % (
+        return '%s(%r, %r, %d, %d%s%s)%s' % (
             self.__class__.__name__,
             self.package,
             self.major,
