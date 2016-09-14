@@ -59,6 +59,7 @@ __version__ = Version('inctestpkg', 16, 8, 0)
 __all__ = ["__version__"]
 """)
 
+
 class MissingTests(TestCase):
 
     def setUp(self):
@@ -98,8 +99,8 @@ __all__ = ["__version__"]
         out = []
         with self.assertRaises(ValueError):
             _run(u'inctestpkg', path=None, newversion=None,
-                patch=False, rc=False, dev=True, create=False, _date=self.date,
-                _getcwd=self.getcwd, _print=out.append)
+                 patch=False, rc=False, dev=True, create=False,
+                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
 
 
 class CreatedUpdateInSrcTests(TestCase):
@@ -277,6 +278,7 @@ from incremental import Version
 __version__ = Version('inctestpkg', 1, 2, 4)
 __all__ = ["__version__"]
 """)
+
     def test_rc_patch(self):
         """
         `incremental.update package --patch --rc` increments the patch

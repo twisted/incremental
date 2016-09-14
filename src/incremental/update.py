@@ -55,8 +55,6 @@ def _run(package, path, newversion, patch, rc, dev, create,
     if type(package) != str:
         package = package.encode('utf8')
 
-    update_NEXT = False
-
     if not path:
         path = _findPath(_getcwd(), package)
     else:
