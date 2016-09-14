@@ -5,9 +5,9 @@ from __future__ import absolute_import, division, print_function
 
 import click
 import os
+import datetime
 
 from incremental import Version
-from datetime import date
 from twisted.python.filepath import FilePath
 
 _VERSIONPY_TEMPLATE = """# This file is auto-generated! Do not edit!
@@ -50,7 +50,13 @@ def _existing_version(path):
 
 
 def _run(package, path, newversion, patch, rc, dev, create,
-         _date=date.today(), _getcwd=os.getcwd, _print=print):
+         _date=None, _getcwd=None, _print=print):
+
+    if not _getcwd:
+        _getcwd = os.getcwd
+
+    if not _date:
+        _date = datetime.date.today()
 
     if type(package) != str:
         package = package.encode('utf8')
@@ -71,21 +77,21 @@ def _run(package, path, newversion, patch, rc, dev, create,
         raise ValueError("Only give --create")
 
     if newversion:
+        from pkg_resources import parse_version
         existing = _existing_version(path)
-        segments = newversion.split('.')
+        st_version = parse_version(newversion)._version
 
-        v = Version(package, int(segments.pop(0)), int(segments.pop(0)),
-                    int(segments.pop(0)))
+        release = list(st_version.release)
 
-        while segments:
-            segment = segments.pop(0)
+        if len(release) == 1:
+            release.append(0)
+        if len(release) == 2:
+            release.append(0)
 
-            if segment.startswith("dev"):
-                v.dev = int(segment[3:])
-            elif segment.startswith("rc"):
-                v.release_candidate = int(segment[2:])
-            elif segment.startswith("pre"):
-                v.release_candidate = int(segment[3:])
+        v = Version(
+            package, *release,
+            release_candidate=st_version.pre[1] if st_version.pre else None,
+            dev=st_version.dev[1] if st_version.dev else None)
 
     elif create:
         v = Version(package, _date.year - _YEAR_START, _date.month, 0)
@@ -123,7 +129,8 @@ def _run(package, path, newversion, patch, rc, dev, create,
             v = Version(package,
                         existing.major, existing.minor, existing.micro)
         else:
-            raise ValueError("You need to issue a rc first!")
+            raise ValueError(
+                "You need to issue a rc before updating the major/minor")
 
     NEXT_repr = repr(Version(package, "NEXT", 0, 0)).split("#")[0]
     NEXT_repr_bytes = NEXT_repr.encode('utf8')
@@ -187,5 +194,5 @@ def run(*args, **kwargs):
     return _run(*args, **kwargs)
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     run()
