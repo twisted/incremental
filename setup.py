@@ -33,6 +33,11 @@ setup(
     ],
     packages=find_packages('src'),
     package_dir={"": "src"},
+    extras_require={
+        "scripts": [
+            "click>=6.0", "twisted>=16.4.0"
+        ]
+    },
     license="MIT",
     zip_safe=False,
     long_description=open('README.rst').read(),

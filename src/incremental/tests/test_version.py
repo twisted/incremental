@@ -83,6 +83,40 @@ class VersionsTests(TestCase):
         self.assertTrue(vb == Version("dummy", 0, 1, 0))
         self.assertTrue(vb == vb)
 
+    def test_comparingNEXTReleases(self):
+        """
+        NEXT releases are always larger than numbered releases.
+        """
+        va = Version("whatever", "NEXT", 0, 0)
+        vb = Version("whatever", 1, 0, 0)
+        self.assertTrue(va > vb)
+        self.assertFalse(va < vb)
+        self.assertNotEquals(vb, va)
+
+    def test_NEXTMustBeAlone(self):
+        """
+        NEXT releases must always have the rest of the numbers set to 0.
+        """
+        with self.assertRaises(ValueError):
+            Version("whatever", "NEXT", 1, 0, release_candidate=0, dev=0)
+
+        with self.assertRaises(ValueError):
+            Version("whatever", "NEXT", 0, 1, release_candidate=0, dev=0)
+
+        with self.assertRaises(ValueError):
+            Version("whatever", "NEXT", 0, 0, release_candidate=1, dev=0)
+
+        with self.assertRaises(ValueError):
+            Version("whatever", "NEXT", 0, 0, release_candidate=0, dev=1)
+
+    def test_comparingNEXTReleasesEqual(self):
+        """
+        NEXT releases are equal to each other.
+        """
+        va = Version("whatever", "NEXT", 0, 0)
+        vb = Version("whatever", "NEXT", 0, 0)
+        self.assertEquals(vb, va)
+
     def test_comparingPrereleasesWithReleases(self):
         """
         Prereleases are always less than versions without prereleases.
@@ -401,6 +435,12 @@ class VersionsTests(TestCase):
             getVersionString(Version("whatever", 8, 0, 0,
                                      release_candidate=2, dev=1)),
             "whatever 8.0.0rc2dev1")
+
+    def test_baseWithNEXT(self):
+        """
+        The L{base} method returns just "NEXT" when NEXT is the major version.
+        """
+        self.assertEqual(Version("foo", "NEXT", 0, 0).base(), "NEXT")
 
     def test_base(self):
         """
