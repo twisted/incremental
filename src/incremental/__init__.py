@@ -21,6 +21,7 @@ if sys.version_info < (3, 0):
     _PY3 = False
 else:
     _PY3 = True
+    unicode = str
 
 
 def _nativeString(s):

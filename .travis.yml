@@ -5,12 +5,18 @@ install:
   - pip install tox codecov
 
 env:
-  - TOX_ENV=flake8
+  - TOX_ENV=py27-flake8
   - TOX_ENV=py27-tests
   - TOX_ENV=py33-tests
   - TOX_ENV=py34-tests
-# Travis still lacks CPy 3.5 currently (09/25/15)
-#  - TOX_ENV=py35-tests
+
+matrix:
+  fast_finish: true
+  include:
+    - python: 3.5
+      env: TOX_ENV=py35-tests
+    - python: 3.5
+      env: TOX_ENV=py35-flake8
 
 script:
   - tox -c tox.ini -e $TOX_ENV
@@ -18,5 +24,6 @@ script:
 after_script:
   - codecov
 
-matrix:
-  fast_finish: true
+branches:
+  only:
+    - master

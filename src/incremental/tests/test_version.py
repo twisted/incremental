@@ -10,6 +10,8 @@ from __future__ import division, absolute_import
 import sys
 import operator
 
+from tempfile import mkdtemp
+
 from io import BytesIO
 
 from incremental import getVersionString, IncomparableVersions
@@ -498,22 +500,21 @@ class FormatDiscoveryTests(TestCase):
     """
     Tests which discover the parsing method based on the imported module name.
     """
-    def mktemp(self):
-        return TestCase.mktemp(self).encode("utf-8")
-
     def setUp(self):
         """
         Create a temporary directory with a package structure in it.
         """
-        self.entry = FilePath(self.mktemp())
+        self.entry = FilePath(mkdtemp())
+        self.addCleanup(self.entry.remove)
+
         self.preTestModules = sys.modules.copy()
-        sys.path.append(self.entry.path.decode('utf-8'))
-        pkg = self.entry.child(b"twisted_python_versions_package")
+        sys.path.append(self.entry.path)
+        pkg = self.entry.child("incremental_test_package")
         pkg.makedirs()
-        pkg.child(b"__init__.py").setContent(
-            b"from twisted.python.versions import Version\n"
-            b"version = Version('twisted_python_versions_package', 1, 0, 0)\n")
-        self.svnEntries = pkg.child(b".svn")
+        pkg.child("__init__.py").setContent(
+            b"from incremental import Version\n"
+            b"version = Version('incremental_test_package', 1, 0, 0)\n")
+        self.svnEntries = pkg.child(".svn")
         self.svnEntries.makedirs()
 
     def tearDown(self):
@@ -522,15 +523,15 @@ class FormatDiscoveryTests(TestCase):
         """
         sys.modules.clear()
         sys.modules.update(self.preTestModules)
-        sys.path.remove(self.entry.path.decode('utf-8'))
+        sys.path.remove(self.entry.path)
 
     def checkSVNFormat(self, formatVersion, entriesText, expectedRevision):
         """
         Check for the given revision being detected after setting the SVN
         entries text and format version of the test directory structure.
         """
-        self.svnEntries.child(b"format").setContent(formatVersion + b"\n")
-        self.svnEntries.child(b"entries").setContent(entriesText)
+        self.svnEntries.child("format").setContent(formatVersion + b"\n")
+        self.svnEntries.child("entries").setContent(entriesText)
         self.assertEqual(self.getVersion()._getSVNVersion(), expectedRevision)
 
     def getVersion(self):
@@ -538,8 +539,8 @@ class FormatDiscoveryTests(TestCase):
         Import and retrieve the Version object from our dynamically created
         package.
         """
-        import twisted_python_versions_package
-        return twisted_python_versions_package.version
+        import incremental_test_package
+        return incremental_test_package.version
 
     def test_detectVersion4(self):
         """
@@ -577,7 +578,7 @@ class FormatDiscoveryTests(TestCase):
         I{format} file and B{only} has the version information on the first
         line of the I{entries} file.
         """
-        self.svnEntries.child(b"entries").setContent(VERSION_10_ENTRIES)
+        self.svnEntries.child("entries").setContent(VERSION_10_ENTRIES)
         self.assertEqual(self.getVersion()._getSVNVersion(), b'22715')
 
     def test_detectUnknownVersion(self):
@@ -591,10 +592,10 @@ class FormatDiscoveryTests(TestCase):
         """
         L{getVersionString} includes the discovered revision number.
         """
-        self.svnEntries.child(b"format").setContent(b"9\n")
-        self.svnEntries.child(b"entries").setContent(VERSION_10_ENTRIES)
+        self.svnEntries.child("format").setContent(b"9\n")
+        self.svnEntries.child("entries").setContent(VERSION_10_ENTRIES)
         version = getVersionString(self.getVersion())
         self.assertEqual(
-            "twisted_python_versions_package 1.0.0+r22715",
+            "incremental_test_package 1.0.0+r22715",
             version)
         self.assertTrue(isinstance(version, type("")))
