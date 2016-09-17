@@ -1,9 +1,6 @@
 language: python
 sudo: false
 
-matrix:
-  fast_finish: true
-
 install:
   - pip install tox codecov
 
@@ -18,16 +15,18 @@ env:
     - TOX_ENV=py34-tests
     - TOX_ENV=apidocs
     - PUSH_DOCS=true
-    - include:
-      - python: 3.5
-        env: TOX_ENV=py35-tests
-      - python: 3.5
-        env: TOX_ENV=py35-flake8
+
+matrix:
+  fast_finish: true
+  include:
+    - python: 3.5
+      env: TOX_ENV=py35-tests
+    - python: 3.5
+      env: TOX_ENV=py35-flake8
 
 script:
   - if [[ -n "${TOX_ENV}" ]]; then tox -e $TOX_ENV; fi
   - if [[ "$PUSH_DOCS" == "true" ]]; then ./.travis/build_docs.sh; fi
-
 
 after_script:
   - codecov
