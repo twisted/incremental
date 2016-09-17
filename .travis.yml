@@ -5,10 +5,12 @@ install:
   - pip install tox codecov
 
 env:
+  - secure: LecqzHkkjNJ0GbLgvr/5YFy2U90JB1GAThqwr6WAab0c30z5w2EVJOubkASzREfMj6LKzUIdublskQC0x5kge46RVhsqVGZFIywR/7fUmqpaeaV3VvHBLk5vVLvFFYfbnRZQ9AtBEg6M7YAZwgAKRjE0mtJxKDP1Ksn5aV4wox4WZfeYKwPnjkHZQb/GrSdS93Uzi4Xe3TrtQ2m5lSMAaoeUFeKJbUEX6avqlfrsU1RZqvFTmDWhLiHSIvCVtG6DtrA2kGovC7qP6xVcjPcpx8D4aVpHzr7LqcCGaRQwLmO0aMe1YdegFQQeU7L7/c6m+UbVsobhxdjR8SWchdzAkmoE2QTdNTRTVbouvQL+uF8LvVKZoNBjUYxoeng0MqJLFfJUks8SnhN/wFujZmmlYv6Nm559GiR63i7hqCjbn2XFyE1mrvBPEpIMxpBc6kxN3GhCAyfHHRniyNbdD0e1eQ7JxQfzqqkQVMkdh2HRvpINIMZNM7247gsXEaGiJV/5ntGl138vuEXWjj8o0wdp0wBcqrHbEcPnjWBZIqexdevjiSpIJyMP0q4F2kv7eIfZLViLVfygRPQBpPcmETiNJtPJkXsxGFmTEtt/gdjT8dU/FvROTJRo3Iiz3rxHNsXJG8TGsZduLbBuzvGVadywLqD+Mb74CsizvdK0tdsP5Tg=
   - TOX_ENV=py27-flake8
   - TOX_ENV=py27-tests
   - TOX_ENV=py33-tests
   - TOX_ENV=py34-tests
+  - PUSH_DOCS=true
 
 matrix:
   fast_finish: true
@@ -19,7 +21,9 @@ matrix:
       env: TOX_ENV=py35-flake8
 
 script:
-  - tox -c tox.ini -e $TOX_ENV
+  - if [[ -n "${TOX_ENV}" ]]; then tox -e $TOX_ENV; fi
+  - if [[ "$PUSH_DOCS" == "true" ]]; then ./.travis/build_docs.sh; fi
+
 
 after_script:
   - codecov
