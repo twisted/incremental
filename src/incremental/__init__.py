@@ -188,7 +188,7 @@ class Version(object):
         elif prerelease and not release_candidate:
             release_candidate = prerelease
             warnings.warn(("Passing prerelease to incremental.Version was "
-                           "deprecated in Incremental 16.8. Please pass "
+                           "deprecated in Incremental NEXT. Please pass "
                            "release_candidate instead."),
                           DeprecationWarning, stacklevel=2)
 
@@ -207,7 +207,7 @@ class Version(object):
     @property
     def prerelease(self):
         warnings.warn(("Accessing incremental.Version.prerelease was "
-                       "deprecated in Incremental 16.8. Use "
+                       "deprecated in Incremental NEXT. Use "
                        "Version.release_candidate instead."),
                       DeprecationWarning, stacklevel=2),
         return self.release_candidate
