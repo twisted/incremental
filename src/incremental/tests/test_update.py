@@ -2,7 +2,7 @@
 # See LICENSE for details.
 
 """
-Tests for L{incremental._versioning}.
+Tests for L{incremental.update}.
 """
 
 from __future__ import division, absolute_import

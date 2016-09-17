@@ -2,7 +2,7 @@
 # See LICENSE for details.
 
 """
-Tests for L{incremental._versioning}.
+Tests for L{incremental}.
 """
 
 from __future__ import division, absolute_import
@@ -440,13 +440,13 @@ class VersionsTests(TestCase):
 
     def test_baseWithNEXT(self):
         """
-        The L{base} method returns just "NEXT" when NEXT is the major version.
+        The C{base} method returns just "NEXT" when NEXT is the major version.
         """
         self.assertEqual(Version("foo", "NEXT", 0, 0).base(), "NEXT")
 
     def test_base(self):
         """
-        The L{base} method returns a very simple representation of the version.
+        The C{base} method returns a very simple representation of the version.
         """
         self.assertEqual(Version("foo", 1, 0, 0).base(), "1.0.0")
 
