@@ -24,4 +24,6 @@ script:
 after_script:
   - codecov
 
-matrix:
+branches:
+  only:
+    - master
