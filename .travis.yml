@@ -18,7 +18,7 @@ env:
     - TOX_ENV=py34-tests
     - TOX_ENV=apidocs
     - PUSH_DOCS=true
-    include:
+    - include:
       - python: 3.5
         env: TOX_ENV=py35-tests
       - python: 3.5
