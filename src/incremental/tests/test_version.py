@@ -10,6 +10,8 @@ from __future__ import division, absolute_import
 import sys
 import operator
 
+from tempfile import mkdtemp
+
 from io import BytesIO
 
 from incremental import getVersionString, IncomparableVersions
@@ -498,21 +500,20 @@ class FormatDiscoveryTests(TestCase):
     """
     Tests which discover the parsing method based on the imported module name.
     """
-    def mktemp(self):
-        return TestCase.mktemp(self).encode("utf-8")
-
     def setUp(self):
         """
         Create a temporary directory with a package structure in it.
         """
-        self.entry = FilePath(self.mktemp())
+        self.entry = FilePath(mkdtemp())
+        self.addCleanup(self.entry.remove)
+
         self.preTestModules = sys.modules.copy()
-        sys.path.append(self.entry.path.decode('utf-8'))
-        pkg = self.entry.child(b"twisted_python_versions_package")
+        sys.path.append(self.entry.path)
+        pkg = self.entry.child(b"incremental_test_package")
         pkg.makedirs()
         pkg.child(b"__init__.py").setContent(
-            b"from twisted.python.versions import Version\n"
-            b"version = Version('twisted_python_versions_package', 1, 0, 0)\n")
+            b"from incremental import Version\n"
+            b"version = Version('incremental_test_package', 1, 0, 0)\n")
         self.svnEntries = pkg.child(b".svn")
         self.svnEntries.makedirs()
 
@@ -538,8 +539,8 @@ class FormatDiscoveryTests(TestCase):
         Import and retrieve the Version object from our dynamically created
         package.
         """
-        import twisted_python_versions_package
-        return twisted_python_versions_package.version
+        import incremental_test_package
+        return incremental_test_package.version
 
     def test_detectVersion4(self):
         """
@@ -595,6 +596,6 @@ class FormatDiscoveryTests(TestCase):
         self.svnEntries.child(b"entries").setContent(VERSION_10_ENTRIES)
         version = getVersionString(self.getVersion())
         self.assertEqual(
-            "twisted_python_versions_package 1.0.0+r22715",
+            "incremental_test_package 1.0.0+r22715",
             version)
         self.assertTrue(isinstance(version, type("")))
