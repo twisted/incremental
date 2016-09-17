@@ -236,11 +236,11 @@ class Version(object):
 
         Examples:
 
-        - 14.4.0+r1223
-        - 1.2.3rc1+rb2e812003b5d5fcf08efd1dffed6afa98d44ac8c
-        - 12.10.1
-        - 3.4.8rc2
-        - 11.93.0rc1dev3
+          - 14.4.0+r1223
+          - 1.2.3rc1+rb2e812003b5d5fcf08efd1dffed6afa98d44ac8c
+          - 12.10.1
+          - 3.4.8rc2
+          - 11.93.0rc1dev3
         """
         return self.short()
 
@@ -250,10 +250,10 @@ class Version(object):
 
         Examples:
 
-        - 14.4.0
-        - 1.2.3rc1
-        - 14.2.1rc1dev9
-        - 16.04.0dev0
+          - 14.4.0
+          - 1.2.3rc1
+          - 14.2.1rc1dev9
+          - 16.04.0dev0
         """
         return self.base()
 
