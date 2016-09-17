@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>incremental.__init__ : API documentation</title>
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="apidocs.css" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">
+            incremental API Documentation
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="showPrivate">
+      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+    </div>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="module"><code>incremental.__init__</code> <small>module documentation</small></h1>
+
+        <span id="partOf">
+          Part of <code><a class="code" data-type="Package" href="incremental.html">incremental</a></code>
+          
+          
+        </span>
+      </div>
+
+      <div class="extrasDocstring">
+        
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p>Versions for Python packages.</p>
+<p>See <a href="incremental.Version.html"><code>Version</code></a>.</p><table class="fieldTable"></table></div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id3">
+  
+  <tr class="class">
+    
+    <td>Class</td>
+    <td><a class="code" data-type="Class" href="incremental.IncomparableVersions.html">IncomparableVersions</a></td>
+    <td><span>Two versions could not be compared.</span></td>
+  </tr><tr class="class">
+    
+    <td>Class</td>
+    <td><a class="code" data-type="Class" href="incremental.Version.html">Version</a></td>
+    <td><span>An encapsulation of a version for a project, with support for outputting
+PEP-440 compatible version strings.</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a class="code" data-type="Function" href="incremental.html#getVersionString">getVersionString</a></td>
+    <td><span>Get a friendly string for the given version object.</span></td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
+    <td><a class="code" data-type="Function" href="incremental.html#_nativeString">_nativeString</a></td>
+    <td><span>Convert <code>bytes</code> or <code>unicode</code> to the native 
+<code>str</code> type, using ASCII encoding if conversion is necessary.</span></td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
+    <td><a class="code" data-type="Function" href="incremental.html#_cmp">_cmp</a></td>
+    <td><span>Compare two objects.</span></td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
+    <td><a class="code" data-type="Function" href="incremental.html#_comparable">_comparable</a></td>
+    <td><span>Class decorator that ensures support for the special 
+<code>__cmp__</code> method.</span></td>
+  </tr><tr class="class private">
+    
+    <td>Class</td>
+    <td><a class="code" data-type="Class" href="incremental._inf.html">_inf</a></td>
+    <td><span>An object that is bigger than all other objects.</span></td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
+    <td><a class="code" data-type="Function" href="incremental.html#_get_version">_get_version</a></td>
+    <td><span>Get the version from the package listed in the Distribution.</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basefunction private">
+  
+  <a name="incremental._nativeString">
+    
+  </a>
+  <a name="_nativeString">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    _nativeString(s):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Convert <code>bytes</code> or <code>unicode</code> to the native 
+<code>str</code> type, using ASCII encoding if conversion is necessary.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Raises</td><td class="fieldArg">UnicodeError</td><td>The input string is not ASCII encodable/decodable.</td></tr><tr><td></td><td class="fieldArg">TypeError</td><td>The input is neither <code>bytes</code> nor <code>unicode</code>.</td></tr></table></div>
+  </div>
+</div><div class="basefunction private">
+  
+  <a name="incremental._cmp">
+    
+  </a>
+  <a name="_cmp">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    _cmp(a, b):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Compare two objects.</p>
+<p>Returns a negative number if <code>a &lt; b</code>, zero if they are 
+equal, and a positive number if <code>a &gt; b</code>.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basefunction private">
+  
+  <a name="incremental._comparable">
+    
+  </a>
+  <a name="_comparable">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    _comparable(klass):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Class decorator that ensures support for the special 
+<code>__cmp__</code> method.</p>
+<p>On Python 2 this does nothing.</p>
+<p>On Python 3, <code>__eq__</code>, <code>__lt__</code>, etc. methods are 
+added to the class, relying on <code>__cmp__</code> to implement their 
+comparisons.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="incremental.getVersionString">
+    
+  </a>
+  <a name="getVersionString">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    getVersionString(version):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Get a friendly string for the given version object.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">version</td><td>A <a href="incremental.Version.html"><code>Version</code></a> object.</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2">A string containing the package and short version number.</td></tr></table></div>
+  </div>
+</div><div class="basefunction private">
+  
+  <a name="incremental._get_version">
+    
+  </a>
+  <a name="_get_version">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    _get_version(dist, keyword, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Get the version from the package listed in the Distribution.</p><table class="fieldTable"></table></div>
+  </div>
+</div>
+
+      </div>
+      <address>
+        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2016-09-17 21:22:27.
+      </address>
+
+    </div>
+
+    <script type="text/javascript" src="pydoctor.js"></script>
+
+  </body>
+</html>
