@@ -1,2 +1,2 @@
 from incremental import Version
-__version__ = Version("incremental", 15, 3, 0)
+__version__ = Version("Incremental", 15, 3, 0)
