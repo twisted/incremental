@@ -509,12 +509,12 @@ class FormatDiscoveryTests(TestCase):
 
         self.preTestModules = sys.modules.copy()
         sys.path.append(self.entry.path)
-        pkg = self.entry.child(b"incremental_test_package")
+        pkg = self.entry.child("incremental_test_package")
         pkg.makedirs()
-        pkg.child(b"__init__.py").setContent(
+        pkg.child("__init__.py").setContent(
             b"from incremental import Version\n"
             b"version = Version('incremental_test_package', 1, 0, 0)\n")
-        self.svnEntries = pkg.child(b".svn")
+        self.svnEntries = pkg.child(".svn")
         self.svnEntries.makedirs()
 
     def tearDown(self):
@@ -523,15 +523,15 @@ class FormatDiscoveryTests(TestCase):
         """
         sys.modules.clear()
         sys.modules.update(self.preTestModules)
-        sys.path.remove(self.entry.path.decode('utf-8'))
+        sys.path.remove(self.entry.path)
 
     def checkSVNFormat(self, formatVersion, entriesText, expectedRevision):
         """
         Check for the given revision being detected after setting the SVN
         entries text and format version of the test directory structure.
         """
-        self.svnEntries.child(b"format").setContent(formatVersion + b"\n")
-        self.svnEntries.child(b"entries").setContent(entriesText)
+        self.svnEntries.child("format").setContent(formatVersion + b"\n")
+        self.svnEntries.child("entries").setContent(entriesText)
         self.assertEqual(self.getVersion()._getSVNVersion(), expectedRevision)
 
     def getVersion(self):
@@ -578,7 +578,7 @@ class FormatDiscoveryTests(TestCase):
         I{format} file and B{only} has the version information on the first
         line of the I{entries} file.
         """
-        self.svnEntries.child(b"entries").setContent(VERSION_10_ENTRIES)
+        self.svnEntries.child("entries").setContent(VERSION_10_ENTRIES)
         self.assertEqual(self.getVersion()._getSVNVersion(), b'22715')
 
     def test_detectUnknownVersion(self):
@@ -592,8 +592,8 @@ class FormatDiscoveryTests(TestCase):
         """
         L{getVersionString} includes the discovered revision number.
         """
-        self.svnEntries.child(b"format").setContent(b"9\n")
-        self.svnEntries.child(b"entries").setContent(VERSION_10_ENTRIES)
+        self.svnEntries.child("format").setContent(b"9\n")
+        self.svnEntries.child("entries").setContent(VERSION_10_ENTRIES)
         version = getVersionString(self.getVersion())
         self.assertEqual(
             "incremental_test_package 1.0.0+r22715",
