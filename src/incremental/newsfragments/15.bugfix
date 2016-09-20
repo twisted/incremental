@@ -1,0 +1,1 @@
+python -m incremental.update <package> --dev now starts a dev-less package at 0, not 1.

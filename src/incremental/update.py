@@ -118,9 +118,14 @@ def _run(package, path, newversion, patch, rc, dev, create,
 
     elif dev:
         existing = _existing_version(path)
+
+        if existing.dev is None:
+            _dev = 0
+        else:
+            _dev = existing.dev + 1
+
         v = Version(package, existing.major, existing.minor,
-                    existing.micro, existing.release_candidate,
-                    dev=(existing.dev or 0) + 1)
+                    existing.micro, existing.release_candidate, dev=_dev)
 
     else:
         existing = _existing_version(path)
