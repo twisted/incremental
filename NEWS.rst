@@ -1,4 +1,14 @@
-Incremental 16.9.0 (2016-09-21)
+Incremental 16.9.1 (2016-09-21)
+===============================
+
+Bugfixes
+--------
+
+- python -m incremental.update <package> --dev now starts a dev-less
+  package at 0, not 1. (#15)
+
+
+Incremental 16.9.0 (2016-09-18)
 ===============================
 
 Features
