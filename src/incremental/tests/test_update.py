@@ -156,6 +156,21 @@ __all__ = ["__version__"]
 
 from incremental import Version
 
+__version__ = Version('inctestpkg', 1, 2, 3, dev=0)
+__all__ = ["__version__"]
+""")
+
+        _run(u'inctestpkg', path=None, newversion=None,
+             patch=False, rc=False, dev=True, create=False, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
+
+        self.assertTrue(self.packagedir.child("_version.py").exists())
+        self.assertEqual(self.packagedir.child("_version.py").getContent(),
+                         b"""# This file is auto-generated! Do not edit!
+# Use `python -m incremental.update inctestpkg` to change this file.
+
+from incremental import Version
+
 __version__ = Version('inctestpkg', 1, 2, 3, dev=1)
 __all__ = ["__version__"]
 """)
@@ -209,7 +224,7 @@ __all__ = ["__version__"]
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, dev=1)
+__version__ = Version('inctestpkg', 1, 2, 3, dev=0)
 __all__ = ["__version__"]
 """)
 
@@ -229,7 +244,7 @@ __all__ = ["__version__"]
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, dev=1)
+__version__ = Version('inctestpkg', 1, 2, 3, dev=0)
 __all__ = ["__version__"]
 """)
 
