@@ -10,14 +10,18 @@ import datetime
 from incremental import Version
 from twisted.python.filepath import FilePath
 
-_VERSIONPY_TEMPLATE = """# This file is auto-generated! Do not edit!
+_VERSIONPY_TEMPLATE = '''"""
+Provides %s version information.
+"""
+
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update %s` to change this file.
 
 from incremental import Version
 
 __version__ = %s
 __all__ = ["__version__"]
-"""
+'''
 
 _YEAR_START = 2000
 
@@ -184,7 +188,9 @@ def _run(package, path, newversion, patch, rc, dev, create,
 
     _print("Updating %s/_version.py" % (path.path))
     with path.child("_version.py").open('w') as f:
-        f.write((_VERSIONPY_TEMPLATE % (package, version_repr)).encode('utf8'))
+        f.write(
+            (_VERSIONPY_TEMPLATE % (
+                package, package, version_repr)).encode('utf8'))
 
 
 @click.command()
