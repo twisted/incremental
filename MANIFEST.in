@@ -19,3 +19,5 @@ recursive-exclude src/exampleproj *.py
 exclude src/incremental/newsfragments
 recursive-exclude src *.bugfix
 recursive-exclude src *.feature
+recursive-exclude src *.misc
+recursive-exclude src *.removal
