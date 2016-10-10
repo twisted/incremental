@@ -3,21 +3,13 @@ include LICENSE
 include NEWS.rst
 include towncrier.ini
 include tox.ini
-include src/incremental
 
 recursive-include src/incremental *.py
 
-exclude .travis
-recursive-exclude .travis *
+prune .travis
+prune tests
 
-exclude tests
-recursive-exclude tests *
 exclude examplesetup.py
-exclude src/exampleproj
-recursive-exclude src/exampleproj *.py
+prune src/exampleproj
 
-exclude src/incremental/newsfragments
-recursive-exclude src *.bugfix
-recursive-exclude src *.feature
-recursive-exclude src *.misc
-recursive-exclude src *.removal
+prune src/incremental/newsfragments

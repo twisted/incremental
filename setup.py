@@ -31,7 +31,7 @@ setup(
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
     ],
-    packages=["incremental"],
+    packages=find_packages("src", exclude=("exampleproj",)),
     package_dir={"": "src"},
     extras_require={
         "scripts": [
