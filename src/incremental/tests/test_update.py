@@ -55,14 +55,17 @@ next_released_version = "inctestpkg NEXT"
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 16, 8, 0)
 __all__ = ["__version__"]
-""")
+''')
 
 
 class MissingTests(TestCase):
@@ -151,14 +154,17 @@ __all__ = ["__version__"]
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 1, 2, 3, dev=0)
 __all__ = ["__version__"]
-""")
+''')
 
         _run(u'inctestpkg', path=None, newversion=None,
              patch=False, rc=False, dev=True, create=False, _date=self.date,
@@ -166,14 +172,17 @@ __all__ = ["__version__"]
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 1, 2, 3, dev=1)
 __all__ = ["__version__"]
-""")
+''')
 
 
 class CreatedUpdateTests(TestCase):
@@ -219,14 +228,17 @@ __all__ = ["__version__"]
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 1, 2, 3, dev=0)
 __all__ = ["__version__"]
-""")
+''')
 
     def test_dev(self):
         """
@@ -239,14 +251,17 @@ __all__ = ["__version__"]
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 1, 2, 3, dev=0)
 __all__ = ["__version__"]
-""")
+''')
 
     def test_patch(self):
         """
@@ -258,14 +273,17 @@ __all__ = ["__version__"]
              _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 1, 2, 4)
 __all__ = ["__version__"]
-""")
+''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
@@ -290,14 +308,17 @@ __all__ = ["__version__"]
              _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 1, 2, 4)
 __all__ = ["__version__"]
-""")
+''')
 
     def test_rc_patch(self):
         """
@@ -310,14 +331,17 @@ __all__ = ["__version__"]
              _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 1, 2, 4, release_candidate=1)
 __all__ = ["__version__"]
-""")
+''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
@@ -342,14 +366,17 @@ __all__ = ["__version__"]
              _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 1, 2, 3, release_candidate=2)
 __all__ = ["__version__"]
-""")
+''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
@@ -375,14 +402,17 @@ __all__ = ["__version__"]
              _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 16, 8, 0, release_candidate=1)
 __all__ = ["__version__"]
-""")
+''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
@@ -401,14 +431,17 @@ next_released_version = "inctestpkg 16.8.0rc1"
              _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 16, 8, 0, release_candidate=1)
 __all__ = ["__version__"]
-""")
+''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
@@ -421,14 +454,17 @@ next_released_version = "inctestpkg 16.8.0rc1"
              _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 16, 8, 0)
 __all__ = ["__version__"]
-""")
+''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
@@ -532,14 +568,17 @@ next_released_version = "inctestpkg 16.8.0"
              _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 1, 2, 3, release_candidate=1, dev=3)
 __all__ = ["__version__"]
-""")
+''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          (b"""
 from incremental import Version
@@ -559,14 +598,17 @@ next_released_version = "inctestpkg 1.2.3rc1dev3"
              _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 1, 0, 0)
 __all__ = ["__version__"]
-""")
+''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
@@ -639,14 +681,17 @@ __all__ = ["__version__"]
         self.assertIn("Updating codebase", stringio.getvalue())
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b"""# This file is auto-generated! Do not edit!
+                         b'''"""
+Provides inctestpkg version information.
+"""
+# This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
 from incremental import Version
 
 __version__ = Version('inctestpkg', 16, 8, 0, release_candidate=1)
 __all__ = ["__version__"]
-""")
+''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
