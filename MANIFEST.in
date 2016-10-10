@@ -1,7 +1,21 @@
-include *.py
 include .coveragerc
 include LICENSE
+include NEWS.rst
+include towncrier.ini
 include tox.ini
-include src/incremental.py
-recursive-include src example_proj *.py
-recursive-include tests *.py
+include src/incremental
+
+recursive-include src/incremental *.py
+
+exclude .travis
+recursive-exclude .travis *
+
+exclude tests
+recursive-exclude tests *
+exclude examplesetup.py
+exclude src/exampleproj
+recursive-exclude src/exampleproj *.py
+
+exclude src/incremental/newsfragments
+recursive-exclude src *.bugfix
+recursive-exclude src *.feature
