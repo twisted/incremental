@@ -58,6 +58,7 @@ next_released_version = "inctestpkg NEXT"
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -157,6 +158,7 @@ __all__ = ["__version__"]
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -175,6 +177,7 @@ __all__ = ["__version__"]
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -231,6 +234,7 @@ __all__ = ["__version__"]
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -254,6 +258,7 @@ __all__ = ["__version__"]
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -276,6 +281,7 @@ __all__ = ["__version__"]
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -311,6 +317,7 @@ __all__ = ["__version__"]
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -334,6 +341,7 @@ __all__ = ["__version__"]
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -369,6 +377,7 @@ __all__ = ["__version__"]
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -405,6 +414,7 @@ __all__ = ["__version__"]
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -434,6 +444,7 @@ next_released_version = "inctestpkg 16.8.0rc1"
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -457,6 +468,7 @@ next_released_version = "inctestpkg 16.8.0rc1"
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -571,6 +583,7 @@ next_released_version = "inctestpkg 16.8.0"
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -601,6 +614,7 @@ next_released_version = "inctestpkg 1.2.3rc1dev3"
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 
@@ -684,6 +698,7 @@ __all__ = ["__version__"]
                          b'''"""
 Provides inctestpkg version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update inctestpkg` to change this file.
 

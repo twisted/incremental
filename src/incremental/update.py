@@ -13,6 +13,7 @@ from twisted.python.filepath import FilePath
 _VERSIONPY_TEMPLATE = '''"""
 Provides %s version information.
 """
+
 # This file is auto-generated! Do not edit!
 # Use `python -m incremental.update %s` to change this file.
 
