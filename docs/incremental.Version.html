@@ -6,8 +6,8 @@
     <title>incremental.Version : API documentation</title>
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-    <link href="bootstrap.min.css" type="text/css" rel="stylesheet" />
-    <link href="apidocs.css" type="text/css" rel="stylesheet" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
 
@@ -22,7 +22,7 @@
     </nav>
 
     <div id="showPrivate">
-      <button onclick="togglePrivate()" class="btn btn-link">Toggle Private API</button>
+      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
     </div>
 
     <div class="container">
@@ -31,7 +31,7 @@
         <h1 class="class"><code>incremental.Version(<span title="object">object</span>)</code> <small>class documentation</small></h1>
 
         <span id="partOf">
-          Part of <code><a data-type="Package" href="incremental.html" class="code">incremental</a></code>
+          Part of <code><a class="code" href="incremental.html" data-type="Package">incremental</a></code>
           
           <a href="classIndex.html#incremental.Version">(View In Hierarchy)</a>
         </span>
@@ -55,86 +55,86 @@ SVN revision or Git SHA1 hash.</p><table class="fieldTable"></table></div>
   <tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#__init__" class="code">__init__</a></td>
+    <td><a class="code" href="incremental.Version.html#__init__" data-type="Method">__init__</a></td>
     <td><span class="undocumented">No summary</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#prerelease" class="code">prerelease</a></td>
+    <td><a class="code" href="incremental.Version.html#prerelease" data-type="Method">prerelease</a></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#short" class="code">short</a></td>
+    <td><a class="code" href="incremental.Version.html#short" data-type="Method">short</a></td>
     <td><span>Return a string in canonical short version format, 
 &lt;major&gt;.&lt;minor&gt;.&lt;micro&gt;[+rSVNVer/+gitsha1].</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#local" class="code">local</a></td>
+    <td><a class="code" href="incremental.Version.html#local" data-type="Method">local</a></td>
     <td><span>Return a PEP440-compatible "local" representation of this <a href="incremental.Version.html"><code>Version</code></a>.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#public" class="code">public</a></td>
+    <td><a class="code" href="incremental.Version.html#public" data-type="Method">public</a></td>
     <td><span>Return a PEP440-compatible "public" representation of this <a href="incremental.Version.html"><code>Version</code></a>.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#base" class="code">base</a></td>
+    <td><a class="code" href="incremental.Version.html#base" data-type="Method">base</a></td>
     <td><span>Like <a href="incremental.Version.html#short"><code>short</code></a>, 
 but without the +rSVNVer or @gitsha1.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#__repr__" class="code">__repr__</a></td>
+    <td><a class="code" href="incremental.Version.html#__repr__" data-type="Method">__repr__</a></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#__str__" class="code">__str__</a></td>
+    <td><a class="code" href="incremental.Version.html#__str__" data-type="Method">__str__</a></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#__cmp__" class="code">__cmp__</a></td>
+    <td><a class="code" href="incremental.Version.html#__cmp__" data-type="Method">__cmp__</a></td>
     <td><span>Compare two versions, considering major versions, minor versions, micro 
-versions, then release candidates.</span></td>
+versions, then release candidates. Package names are case insensitive.</span></td>
   </tr><tr class="method private">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#_parseGitDir" class="code">_parseGitDir</a></td>
+    <td><a class="code" href="incremental.Version.html#_parseGitDir" data-type="Method">_parseGitDir</a></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method private">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#_getGitVersion" class="code">_getGitVersion</a></td>
+    <td><a class="code" href="incremental.Version.html#_getGitVersion" data-type="Method">_getGitVersion</a></td>
     <td><span>Given a package directory, walk up and find the git commit sha.</span></td>
   </tr><tr class="method private">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#_parseSVNEntries_4" class="code">_parseSVNEntries_4</a></td>
+    <td><a class="code" href="incremental.Version.html#_parseSVNEntries_4" data-type="Method">_parseSVNEntries_4</a></td>
     <td><span class="undocumented">No summary</span></td>
   </tr><tr class="method private">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#_parseSVNEntries_8" class="code">_parseSVNEntries_8</a></td>
+    <td><a class="code" href="incremental.Version.html#_parseSVNEntries_8" data-type="Method">_parseSVNEntries_8</a></td>
     <td><span>Given a readable file object which represents a .svn/entries file in 
 format version 8, return the revision as a string.</span></td>
   </tr><tr class="method private">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#_getSVNVersion" class="code">_getSVNVersion</a></td>
+    <td><a class="code" href="incremental.Version.html#_getSVNVersion" data-type="Method">_getSVNVersion</a></td>
     <td><span class="undocumented">No summary</span></td>
   </tr><tr class="method private">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#_formatSVNVersion" class="code">_formatSVNVersion</a></td>
+    <td><a class="code" href="incremental.Version.html#_formatSVNVersion" data-type="Method">_formatSVNVersion</a></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method private">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.Version.html#_formatGitVersion" class="code">_formatGitVersion</a></td>
+    <td><a class="code" href="incremental.Version.html#_formatGitVersion" data-type="Method">_formatGitVersion</a></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr>
 </table>
@@ -351,7 +351,7 @@ but without the +rSVNVer or @gitsha1.</p><table class="fieldTable"></table></div
     
     
     <div><p>Compare two versions, considering major versions, minor versions, micro 
-versions, then release candidates.</p>
+versions, then release candidates. Package names are case insensitive.</p>
 <p>A version with a release candidate is always less than a version without
 a release candidate. If both versions have release candidates, they will be
 included in the comparison.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">other</td><td>Another version. (type: <a href="incremental.Version.html"><code>Version</code></a>)</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2">NotImplemented when the other object is not a Version, or one of -1, 0, or 
@@ -500,12 +500,12 @@ accordingly.</p><table class="fieldTable"><tr class="fieldStart"><td class="fiel
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2016-10-20 04:58:54.
+        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2016-10-20 05:09:18.
       </address>
 
     </div>
 
-    <script type="text/javascript" src="pydoctor.js"></script>
+    <script src="pydoctor.js" type="text/javascript"></script>
 
   </body>
 </html>
