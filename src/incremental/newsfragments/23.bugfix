@@ -1,0 +1,1 @@
+Comparisons of Versions now compare the lowercased forms of both version packages, rather than being case sensitive.
