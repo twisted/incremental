@@ -1,3 +1,13 @@
+Incremental 16.10.1 (2016-10-20)
+================================
+
+Bugfixes
+--------
+
+- Comparisons of Versions now compare the lowercased forms of both
+  version packages, rather than being case sensitive. (#23)
+
+
 Incremental 16.10.0 (2016-10-10)
 ================================
 
