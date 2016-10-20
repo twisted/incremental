@@ -16,3 +16,4 @@ htmlcov/
 *.lock
 apidocs/
 .tox/
+.DS_Store
