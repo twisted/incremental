@@ -85,6 +85,20 @@ class VersionsTests(TestCase):
         self.assertTrue(vb == Version("dummy", 0, 1, 0))
         self.assertTrue(vb == vb)
 
+    def test_versionComparisonCaseInsensitive(self):
+        """
+        Version package names are case insensitive.
+        """
+        va = Version("dummy", 1, 0, 0)
+        vb = Version("DuMmY", 0, 1, 0)
+        self.assertTrue(va > vb)
+        self.assertTrue(vb < va)
+        self.assertTrue(va >= vb)
+        self.assertTrue(vb <= va)
+        self.assertTrue(va != vb)
+        self.assertTrue(vb == Version("dummy", 0, 1, 0))
+        self.assertTrue(vb == vb)
+
     def test_comparingNEXTReleases(self):
         """
         NEXT releases are always larger than numbered releases.
