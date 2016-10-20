@@ -319,7 +319,7 @@ class Version(object):
     def __cmp__(self, other):
         """
         Compare two versions, considering major versions, minor versions, micro
-        versions, then release candidates.
+        versions, then release candidates. Package names are case insensitive.
 
         A version with a release candidate is always less than a version
         without a release candidate. If both versions have release candidates,
@@ -336,7 +336,7 @@ class Version(object):
         """
         if not isinstance(other, self.__class__):
             return NotImplemented
-        if self.package != other.package:
+        if self.package.lower() != other.package.lower():
             raise IncomparableVersions("%r != %r"
                                        % (self.package, other.package))
 
