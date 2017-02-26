@@ -146,6 +146,7 @@ class _inf(object):
             return 0
         return 1
 
+
 _inf = _inf()
 
 
