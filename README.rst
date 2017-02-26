@@ -25,7 +25,7 @@ Add this to your ``setup.py``\ 's ``setup()`` call, removing any other versionin
    }
 
 
-Then run ``python -m incremental.update <projectname> --create``.
+Then run ``python -m incremental.update <projectname> --create`` (you will need ``click`` installed from PyPI).
 It will create a file in your package named ``_version.py`` and look like this:
 
 .. code::
@@ -70,6 +70,7 @@ Updating
 
 Incremental includes a tool to automate updating your Incremental-using project's version called ``incremental.update``.
 It updates the ``_version.py`` file and automatically updates some uses of Incremental versions from an indeterminate version to the current one.
+It requires ``click`` from PyPI.
 
 ``python -m incremental.update <projectname>`` will perform updates on that package.
 The commands that can be given after that will determine what the next version is.
@@ -80,6 +81,21 @@ The commands that can be given after that will determine what the next version i
 - ``--patch``, to increment the patch number of the release. This will also reset the release candidate number, pass ``--rc`` at the same time to increment the patch number and make it a release candidate.
 
 If you give no arguments, it will strip the release candidate number, making it a "full release".
+
+Incremental supports "indeterminate" versions, as a stand-in for the next "full" version. This can be used when the version which will be displayed to the end-user is unknown (for example "introduced in" or "deprecated in"). Incremental supports the following indeterminate versions:
+
+- ``Version("<projectname>", "NEXT", 0, 0)``
+- ``<projectname> NEXT``
+
+When you run ``python -m incremental.update <projectname> --rc``, these will be updated to real versions (assuming the target final version is 17.1.0):
+
+- ``Version("<projectname>", 17, 1, 0, release_candidate=1)``
+- ``<projectname> 17.1.0rc1``
+
+Once the final version is made, it will become:
+
+- ``Version("<projectname>", 17, 1, 0)``
+- ``<projectname> 17.1.0``
 
 
 .. |coverage| image:: https://codecov.io/github/hawkowl/incremental/coverage.svg?branch=master
