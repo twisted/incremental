@@ -4,6 +4,8 @@ include NEWS.rst
 include towncrier.ini
 include tox.ini
 
+recursive-include src/eventually *.3only
+
 prune .travis
 prune tests
 

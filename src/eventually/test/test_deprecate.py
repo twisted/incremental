@@ -25,7 +25,8 @@ from eventually._deprecate import (
     _mutuallyExclusiveArguments,
     deprecatedProperty,
     _DeprecatedAttribute,
-    _passedArgSpec, _passedSignature
+    _passedArgSpec, _passedSignature,
+    _ModuleProxy
 )
 
 from twisted.python.compat import _PY3, execfile
@@ -63,7 +64,7 @@ class _MockDeprecatedAttribute(object):
 
 class ModuleProxyTests(SynchronousTestCase):
     """
-    Tests for L{eventually._ModuleProxy}, which proxies
+    Tests for L{_ModuleProxy}, which proxies
     access to module-level attributes, intercepting access to deprecated
     attributes and passing through access to normal attributes.
     """
@@ -73,17 +74,17 @@ class ModuleProxyTests(SynchronousTestCase):
 
         @param **kw: Attributes to initialise on the temporary module object
 
-        @rtype: L{eventually._ModuleProxy}
+        @rtype: L{_ModuleProxy}
         """
         mod = types.ModuleType('foo')
         for key, value in attrs.items():
             setattr(mod, key, value)
-        return eventually._ModuleProxy(mod)
+        return _ModuleProxy(mod)
 
 
     def test_getattrPassthrough(self):
         """
-        Getting a normal attribute on a L{eventually._ModuleProxy}
+        Getting a normal attribute on a L{_ModuleProxy}
         retrieves the underlying attribute's value, and raises C{AttributeError}
         if a non-existent attribute is accessed.
         """
@@ -95,7 +96,7 @@ class ModuleProxyTests(SynchronousTestCase):
     def test_getattrIntercept(self):
         """
         Getting an attribute marked as being deprecated on
-        L{eventually._ModuleProxy} results in calling the
+        L{_ModuleProxy} results in calling the
         deprecated wrapper's C{get} method.
         """
         proxy = self._makeProxy()
@@ -107,7 +108,7 @@ class ModuleProxyTests(SynchronousTestCase):
 
     def test_privateAttributes(self):
         """
-        Private attributes of L{eventually._ModuleProxy} are
+        Private attributes of L{_ModuleProxy} are
         inaccessible when regular attribute access is used.
         """
         proxy = self._makeProxy()
@@ -118,7 +119,7 @@ class ModuleProxyTests(SynchronousTestCase):
 
     def test_setattr(self):
         """
-        Setting attributes on L{eventually._ModuleProxy} proxies
+        Setting attributes on L{_ModuleProxy} proxies
         them through to the wrapped module.
         """
         proxy = self._makeProxy()
@@ -221,7 +222,7 @@ class DeprecatedAttributeTests(SynchronousTestCase):
         """
         Deprecating an attribute in a module replaces and wraps that module
         instance, in C{sys.modules}, with a
-        L{eventually._ModuleProxy} instance but only if it hasn't
+        L{_ModuleProxy} instance but only if it hasn't
         already been wrapped.
         """
         sys.modules[self._testModuleName] = mod = types.ModuleType('foo')
