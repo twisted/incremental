@@ -11,6 +11,7 @@ class KeywordOnlyTests(SynchronousTestCase):
     """
     Keyword only arguments (PEP 3102).
     """
+
     def checkPassed(self, func, *args, **kw):
         """
         Test an invocation of L{passed} with the given function, arguments, and
@@ -27,7 +28,6 @@ class KeywordOnlyTests(SynchronousTestCase):
         @rtype: L{dict}
         """
         return _passedSignature(inspect.signature(func), args, kw)
-
 
     def test_passedKeywordOnly(self):
         """
@@ -50,7 +50,7 @@ class KeywordOnlyTests(SynchronousTestCase):
         self.assertEqual(self.checkPassed(func1, 1, 2, 3, b=False),
                          dict(a=(1, 2, 3), b=False))
         self.assertEqual(self.checkPassed(func2,
-                         1, 2, b=False, c=1, d=2, e=3),
+                                          1, 2, b=False, c=1, d=2, e=3),
                          dict(a=(1, 2), b=False, c=1, d=2, e=3))
         self.assertRaises(TypeError, self.checkPassed,
                           func2, 1, 2, b=False, c=1, d=2)
