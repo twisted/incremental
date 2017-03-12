@@ -1,0 +1,37 @@
+language: python
+sudo: false
+
+install:
+  - pip install tox codecov
+
+env:
+  global:
+    - secure: "nN8sR4IoZGlYp83bpUnEHqlIPai6QuqkPzXm6vtPBkd0tqoWyCUQcjlbvNrxPKRtKu6nmsa8SXi1h5hF1AuxmwDMTekYBbR/x8dnNvxndaXn9Hk9f7yinU+238zqql4dEs2cLfsi+GwAqdJV5mZudTs4kZ4BXT4POwSmPIDiBpBBcpENmhnbmmY7dnrAMm1HkzKwtK8m2zFvexDK6J2IuLkHsVz5Ah4kJjqoM+1hPfg5LMjQRYkzhdNc1FZ574Qtlm+AIASqEkfg71xHZZ2tnZNlLy6es4oz8GBa6lRA/kKoWNnAsJQkCYMTeB2c3hFwvJi32Xj11S5J62KmEQgRgH/4aW7kHu0ZWojbNxbueRXtp+KcwW3V57xnIFxkimbkFV1YNZ62azSdIC44oWyzYZkVP4R54QOnKLrFnW0EQFH18TiM7B08OMUUvB/ARePSi6QLfALvA4axxldTS43Ufu8yJWb37NilxpkpuDow714HD3kMVhppamVRIE7W0Hvv1ti8ZW31waOuD3dX8I5ngtVTyaXFU12h86wAoMrqOTmSVQMBsd3Til4QjEHdeLgAR/FDRgzuWcrPoXaZzeJ1spJMX3NjW18smjFb9sDzFZEdZEDcNR3ETCF2NyYFJL5PJXU4s6rbUQW712QNL19/xo8QXWL9fK/tOFRyIwPdkmE="
+
+  matrix:
+    - TOX_ENV=py27-flake8
+    - TOX_ENV=py27-tests
+    - TOX_ENV=py33-tests
+    - TOX_ENV=py34-tests
+    - TOX_ENV=apidocs
+    - TOX_ENV=check-manifest
+    - PUSH_DOCS=true
+
+matrix:
+  fast_finish: true
+  include:
+    - python: 3.5
+      env: TOX_ENV=py35-tests
+    - python: 3.5
+      env: TOX_ENV=py35-flake8
+
+script:
+  - if [[ -n "${TOX_ENV}" ]]; then tox -e $TOX_ENV; fi
+  - if [[ "$PUSH_DOCS" == "true" ]]; then ./.travis/build_docs.sh; fi
+
+after_script:
+  - codecov
+
+branches:
+  only:
+    - master
