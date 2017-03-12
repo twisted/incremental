@@ -24,7 +24,9 @@ setup(
     ],
     use_incremental=True,
     setup_requires=['incremental'],
-    install_requires=[],
+    install_requires=[
+        'incremental'
+    ],
     package_dir={"": "src"},
     packages=find_packages('src'),
     license="MIT",

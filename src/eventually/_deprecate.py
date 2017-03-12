@@ -89,7 +89,11 @@ from dis import findlinestarts
 from functools import wraps
 
 from incremental import getVersionString
-from twisted.python.compat import _PY3
+
+if sys.version_info < (3, 0):
+    _PY3 = False
+else:
+    _PY3 = True
 
 DEPRECATION_WARNING_FORMAT = '%(fqpn)s was deprecated in %(version)s'
 
