@@ -69,7 +69,6 @@ def _getReplacementString(replacement):
     return "please use %s instead" % (replacement,)
 
 
-
 def _getDeprecationDocstring(version, replacement=None):
     """
     Generate an addition to a deprecated object's docstring that explains its
@@ -88,7 +87,6 @@ def _getDeprecationDocstring(version, replacement=None):
     if replacement:
         doc = "%s; %s" % (doc, _getReplacementString(replacement))
     return doc + "."
-
 
 
 def _getDeprecationWarningString(fqpn, version, format=None, replacement=None):
@@ -127,7 +125,6 @@ def _getDeprecationWarningString(fqpn, version, format=None, replacement=None):
     return warningString
 
 
-
 def getDeprecationWarningString(callableThing, version, format=None,
                                 replacement=None):
     """
@@ -163,7 +160,6 @@ def getDeprecationWarningString(callableThing, version, format=None,
         _fullyQualifiedName(callableThing), version, format, replacement)
 
 
-
 def _appendToDocstring(thingWithDoc, textToAppend):
     """
     Append the given text to the docstring of C{thingWithDoc}.
@@ -188,7 +184,6 @@ def _appendToDocstring(thingWithDoc, textToAppend):
                                spaces + textToAppend,
                                spaces])
     thingWithDoc.__doc__ = '\n'.join(docstringLines)
-
 
 
 def deprecated(version, replacement=None):
@@ -233,7 +228,6 @@ def deprecated(version, replacement=None):
     return deprecationDecorator
 
 
-
 def deprecatedProperty(version, replacement=None):
     """
     Return a decorator that marks a property as deprecated. To deprecate a
@@ -275,10 +269,8 @@ def deprecatedProperty(version, replacement=None):
                 return function(*args, **kwargs)
             return deprecatedFunction
 
-
         def setter(self, function):
             return property.setter(self, self._deprecatedWrapper(function))
-
 
     def deprecationDecorator(function):
         if _PY3:
@@ -316,13 +308,11 @@ def deprecatedProperty(version, replacement=None):
     return deprecationDecorator
 
 
-
 def getWarningMethod():
     """
     Return the warning method currently used to record deprecation warnings.
     """
     return warn
-
 
 
 def setWarningMethod(newMethod):
@@ -336,7 +326,6 @@ def setWarningMethod(newMethod):
     warn = newMethod
 
 
-
 class _InternalState(object):
     """
     An L{_InternalState} is a helper object for a L{_ModuleProxy}, so that it
@@ -345,19 +334,17 @@ class _InternalState(object):
 
     @ivar proxy: a L{_ModuleProxy}
     """
+
     def __init__(self, proxy):
         object.__setattr__(self, 'proxy', proxy)
-
 
     def __getattribute__(self, name):
         return object.__getattribute__(object.__getattribute__(self, 'proxy'),
                                        name)
 
-
     def __setattr__(self, name, value):
         return object.__setattr__(object.__getattribute__(self, 'proxy'),
                                   name, value)
-
 
 
 class _ModuleProxy(object):
@@ -387,12 +374,12 @@ class _ModuleProxy(object):
         cases.
     @type _lastWasPath: C{bool}
     """
+
     def __init__(self, module):
         state = _InternalState(self)
         state._module = module
         state._deprecatedAttributes = {}
         state._lastWasPath = False
-
 
     def __repr__(self):
         """
@@ -402,7 +389,6 @@ class _ModuleProxy(object):
         state = _InternalState(self)
         return '<%s module=%r>' % (type(self).__name__, state._module)
 
-
     def __setattr__(self, name, value):
         """
         Set an attribute on the wrapped module object.
@@ -410,7 +396,6 @@ class _ModuleProxy(object):
         state = _InternalState(self)
         state._lastWasPath = False
         setattr(state._module, name, value)
-
 
     def __getattribute__(self, name):
         """
@@ -442,7 +427,6 @@ class _ModuleProxy(object):
         return value
 
 
-
 class _DeprecatedAttribute(object):
     """
     Wrapper for deprecated attributes.
@@ -463,6 +447,7 @@ class _DeprecatedAttribute(object):
     @type message: C{str}
     @ivar message: Deprecation message
     """
+
     def __init__(self, module, name, version, message):
         """
         Initialise a deprecated name wrapper.
@@ -473,7 +458,6 @@ class _DeprecatedAttribute(object):
         self.version = version
         self.message = message
 
-
     def get(self):
         """
         Get the underlying attribute value and issue a deprecation warning.
@@ -483,11 +467,11 @@ class _DeprecatedAttribute(object):
         # will come back again when it's not an AttributeError and we can emit
         # the warning then.
         result = getattr(self.module, self.__name__)
-        message = _getDeprecationWarningString(self.fqpn, self.version,
+        message = _getDeprecationWarningString(
+            self.fqpn, self.version,
             DEPRECATION_WARNING_FORMAT + ': ' + self.message)
         warn(message, DeprecationWarning, stacklevel=3)
         return result
-
 
 
 def _deprecateAttribute(proxy, name, version, message):
@@ -513,7 +497,6 @@ def _deprecateAttribute(proxy, name, version, message):
     _deprecatedAttributes = object.__getattribute__(
         proxy, '_deprecatedAttributes')
     _deprecatedAttributes[name] = attr
-
 
 
 def deprecatedModuleAttribute(version, message, moduleName, name):
@@ -577,7 +560,6 @@ def warnAboutFunction(offender, warningString):
     warn_explicit(warningString, **kwargs)
 
 
-
 def _passedArgSpec(argspec, positional, keyword):
     """
     Take an I{inspect.ArgSpec}, a tuple of positional arguments, and a dict of
@@ -618,7 +600,6 @@ def _passedArgSpec(argspec, positional, keyword):
         else:
             raise TypeError("no such param")
     return result
-
 
 
 def _passedSignature(signature, positional, keyword):
@@ -664,7 +645,7 @@ def _passedSignature(signature, positional, keyword):
                     result[name] = param.default
         else:
             raise TypeError("'{}' parameter is invalid kind: {}".format(
-                                 name, param.kind))
+                name, param.kind))
 
     if len(positional) > numPositional:
         raise TypeError("Too many arguments.")
@@ -678,7 +659,6 @@ def _passedSignature(signature, positional, keyword):
         else:
             raise TypeError("no such param")
     return result
-
 
 
 def _mutuallyExclusiveArguments(argumentPairs):
