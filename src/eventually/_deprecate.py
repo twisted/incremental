@@ -1,4 +1,4 @@
-# -*- test-case-name: twisted.python.test.test_deprecate -*-
+# -*- test-case-name: eventually.test.test_deprecate -*-
 # Copyright (c) Twisted Matrix Laboratories.
 # See LICENSE for details.
 
@@ -24,9 +24,7 @@ else:
 
 DEPRECATION_WARNING_FORMAT = '%(fqpn)s was deprecated in %(version)s'
 
-# Notionally, part of twisted.python.reflect, but defining it there causes a
-# cyclic dependency between this module and that module.  Define it here,
-# instead, and let reflect import it to re-expose to the public.
+
 def _fullyQualifiedName(obj):
     """
     Return the fully qualified name of a module, class, method or function.
@@ -54,10 +52,6 @@ def _fullyQualifiedName(obj):
             className = _fullyQualifiedName(cls)
             return "%s.%s" % (className, name)
     return name
-# Try to keep it looking like something in twisted.python.reflect.
-_fullyQualifiedName.__module__ = 'twisted.python.reflect'
-_fullyQualifiedName.__name__ = 'fullyQualifiedName'
-_fullyQualifiedName.__qualname__ = 'fullyQualifiedName'
 
 
 def _getReplacementString(replacement):
@@ -110,7 +104,7 @@ def _getDeprecationWarningString(fqpn, version, format=None, replacement=None):
 
     @param format: A user-provided format to interpolate warning values into, or
         L{DEPRECATION_WARNING_FORMAT
-        <twisted.python.deprecate.DEPRECATION_WARNING_FORMAT>} if L{None} is
+        <eventually.DEPRECATION_WARNING_FORMAT>} if L{None} is
         given.
     @type format: C{str}
 
@@ -149,7 +143,7 @@ def getDeprecationWarningString(callableThing, version, format=None,
     @type format: C{str}
     @param format: A user-provided format to interpolate warning values into,
         or L{DEPRECATION_WARNING_FORMAT
-        <twisted.python.deprecate.DEPRECATION_WARNING_FORMAT>} if L{None} is
+        <eventually.DEPRECATION_WARNING_FORMAT>} if L{None} is
         given
 
     @param callableThing: A callable to be deprecated.
