@@ -100,14 +100,13 @@ def _getDeprecationWarningString(fqpn, version, format=None, replacement=None):
     @param version: Version that C{fqpn} was deprecated in.
     @type version: L{incremental.Version}
 
-    @param format: A user-provided format to interpolate warning values into, or
-        L{DEPRECATION_WARNING_FORMAT
-        <eventually.DEPRECATION_WARNING_FORMAT>} if L{None} is
-        given.
+    @param format: A user-provided format to interpolate warning values into,
+        or L{DEPRECATION_WARNING_FORMAT
+        <eventually.DEPRECATION_WARNING_FORMAT>} if L{None} is given.
     @type format: C{str}
 
-    @param replacement: what should be used in place of C{fqpn}. Either pass in
-        a string, which will be inserted into the warning message, or a
+    @param replacement: what should be used in place of C{fqpn}.  Either pass
+        in a string, which will be inserted into the warning message, or a
         callable, which will be expanded to its full import path.
     @type replacement: C{str} or callable
 
@@ -140,17 +139,16 @@ def getDeprecationWarningString(callableThing, version, format=None,
     @type format: C{str}
     @param format: A user-provided format to interpolate warning values into,
         or L{DEPRECATION_WARNING_FORMAT
-        <eventually.DEPRECATION_WARNING_FORMAT>} if L{None} is
-        given
+        <eventually.DEPRECATION_WARNING_FORMAT>} if L{None} is given
 
     @param callableThing: A callable to be deprecated.
 
-    @param version: The L{incremental.Version} that the callable
-        was deprecated in.
+    @param version: The L{incremental.Version} that the callable was deprecated
+        in.
 
-    @param replacement: what should be used in place of the callable. Either
-        pass in a string, which will be inserted into the warning message,
-        or a callable, which will be expanded to its full import path.
+    @param replacement: what should be used in place of the callable.  Either
+        pass in a string, which will be inserted into the warning message, or a
+        callable, which will be expanded to its full import path.
     @type replacement: C{str} or callable
 
     @return: A string describing the deprecation.
@@ -165,8 +163,8 @@ def _appendToDocstring(thingWithDoc, textToAppend):
     Append the given text to the docstring of C{thingWithDoc}.
 
     If C{thingWithDoc} has no docstring, then the text just replaces the
-    docstring. If it has a single-line docstring then it appends a blank line
-    and the message text. If it has a multi-line docstring, then in appends a
+    docstring.  If it has a single-line docstring then it appends a blank line
+    and the message text.  If it has a multi-line docstring, then in appends a
     blank line a the message text, and also does the indentation correctly.
     """
     if thingWithDoc.__doc__:
@@ -188,21 +186,19 @@ def _appendToDocstring(thingWithDoc, textToAppend):
 
 def deprecated(version, replacement=None):
     """
-    Return a decorator that marks callables as deprecated. To deprecate a
+    Return a decorator that marks callables as deprecated.  To deprecate a
     property, see L{deprecatedProperty}.
 
     @type version: L{incremental.Version}
-    @param version: The version in which the callable will be marked as
-        having been deprecated.  The decorated function will be annotated
-        with this version, having it set as its C{deprecatedVersion}
-        attribute.
-
+    @param version: The version in which the callable will be marked as having
+        been deprecated.  The decorated function will be annotated with this
+        version, having it set as its C{deprecatedVersion} attribute.
     @param version: the version that the callable was deprecated in.
     @type version: L{incremental.Version}
 
-    @param replacement: what should be used in place of the callable. Either
-        pass in a string, which will be inserted into the warning message,
-        or a callable, which will be expanded to its full import path.
+    @param replacement: what should be used in place of the callable.  Either
+        pass in a string, which will be inserted into the warning message, or a
+        callable, which will be expanded to its full import path.
     @type replacement: C{str} or callable
     """
     def deprecationDecorator(function):
@@ -230,22 +226,19 @@ def deprecated(version, replacement=None):
 
 def deprecatedProperty(version, replacement=None):
     """
-    Return a decorator that marks a property as deprecated. To deprecate a
+    Return a decorator that marks a property as deprecated.  To deprecate a
     regular callable or class, see L{deprecated}.
 
     @type version: L{incremental.Version}
-    @param version: The version in which the callable will be marked as
-        having been deprecated.  The decorated function will be annotated
-        with this version, having it set as its C{deprecatedVersion}
-        attribute.
-
+    @param version: The version in which the callable will be marked as having
+        been deprecated.  The decorated function will be annotated with this
+        version, having it set as its C{deprecatedVersion} attribute.
     @param version: the version that the callable was deprecated in.
     @type version: L{incremental.Version}
 
-    @param replacement: what should be used in place of the callable.
-        Either pass in a string, which will be inserted into the warning
-        message, or a callable, which will be expanded to its full import
-        path.
+    @param replacement: what should be used in place of the callable.  Either
+        pass in a string, which will be inserted into the warning message, or a
+        callable, which will be expanded to its full import path.
     @type replacement: C{str} or callable
 
     @return: A new property with deprecated setter and getter.
@@ -403,8 +396,8 @@ class _ModuleProxy(object):
 
         If the specified name has been deprecated, then a warning is issued.
         (Unless certain obscure conditions are met; see
-        L{_ModuleProxy._lastWasPath} for more information about what might quash
-        such a warning.)
+        L{_ModuleProxy._lastWasPath} for more information about what might
+        quash such a warning.)
         """
         state = _InternalState(self)
         if state._lastWasPath:
@@ -431,7 +424,7 @@ class _DeprecatedAttribute(object):
     """
     Wrapper for deprecated attributes.
 
-    This is intended to be used by L{_ModuleProxy}. Calling
+    This is intended to be used by L{_ModuleProxy}.  Calling
     L{_DeprecatedAttribute.get} will issue a warning and retrieve the
     underlying attribute's value.
 
@@ -510,10 +503,9 @@ def deprecatedModuleAttribute(version, message, moduleName, name):
     @param message: Deprecation message
 
     @type moduleName: C{str}
-    @param moduleName: Fully-qualified Python name of the module containing
-        the deprecated attribute; if called from the same module as the
-        attributes are being deprecated in, using the C{__name__} global can
-        be helpful
+    @param moduleName: Fully-qualified Python name of the module containing the
+        deprecated attribute; if called from the same module as the attributes
+        are being deprecated in, using the C{__name__} global can be helpful
 
     @type name: C{str}
     @param name: Attribute name to deprecate
@@ -604,8 +596,8 @@ def _passedArgSpec(argspec, positional, keyword):
 
 def _passedSignature(signature, positional, keyword):
     """
-    Take an L{inspect.Signature}, a tuple of positional arguments, and a dict of
-    keyword arguments, and return a mapping of arguments that were actually
+    Take an L{inspect.Signature}, a tuple of positional arguments, and a dict
+    of keyword arguments, and return a mapping of arguments that were actually
     passed to their passed values.
 
     @param signature: The signature of the function to inspect.

@@ -339,9 +339,9 @@ deprecatedModuleAttribute(
         # in the namespace.
         self.checkOneWarning(mp)
         # The third and fourth times, things things should all be exactly the
-        # same, but this is a sanity check to make sure the implementation isn't
-        # special casing the second time.  Also, putting these cases into a loop
-        # means that the stack will be identical, to make sure that the
+        # same, but this is a sanity check to make sure the implementation
+        # isn't special casing the second time.  Also, putting these cases into
+        # a loop means that the stack will be identical, to make sure that the
         # implementation doesn't rely too much on stack-crawling.
         for x in range(2):
             self.checkOneWarning(mp)
@@ -393,9 +393,9 @@ def callTestFunction():
 
     def test_warning(self):
         """
-        L{eventually.warnAboutFunction} emits a warning the file and line number
-        of which point to the beginning of the implementation of the function
-        passed to it.
+        L{eventually.warnAboutFunction} emits a warning the file and line
+        number of which point to the beginning of the implementation of the
+        function passed to it.
         """
         def aFunc():
             pass
@@ -411,14 +411,16 @@ def callTestFunction():
     def test_warningLineNumber(self):
         """
         L{eventually.warnAboutFunction} emits a C{DeprecationWarning} with the
-        number of a line within the implementation of the function passed to it.
+        number of a line within the implementation of the function passed to
+        it.
         """
         from twisted_private_helper import module
         module.callTestFunction()
         warningsShown = self.flushWarnings()
         self.assertSamePath(
             FilePath(warningsShown[0]["filename"].encode("utf-8")),
-            self.package.sibling(b'twisted_private_helper').child(b'module.py'))
+            self.package.sibling(
+                b'twisted_private_helper').child(b'module.py'))
         # Line number 9 is the last line in the testFunction in the helper
         # module.
         self.assertEqual(warningsShown[0]["lineno"], 9)
@@ -480,8 +482,9 @@ def callTestFunction():
         if L{warnings.filterwarning} is called with the module name of the
         deprecated function.
         """
-        # Clean up anything *else* that might spuriously filter out the warning,
-        # such as the "always" simplefilter set up by unittest._collectWarnings.
+        # Clean up anything *else* that might spuriously filter out the
+        # warning, such as the "always" simplefilter set up by
+        # unittest._collectWarnings.
         # We'll also rely on trial to restore the original filters afterwards.
         del warnings.filters[:]
 
@@ -500,8 +503,9 @@ def callTestFunction():
         once if L{warnings.filterwarning} is called with the module name of the
         deprecated function and an action of once.
         """
-        # Clean up anything *else* that might spuriously filter out the warning,
-        # such as the "always" simplefilter set up by unittest._collectWarnings.
+        # Clean up anything *else* that might spuriously filter out the
+        # warning, such as the "always" simplefilter set up by
+        # unittest._collectWarnings.
         # We'll also rely on trial to restore the original filters afterwards.
         del warnings.filters[:]
 
@@ -641,10 +645,10 @@ class DeprecationWarningsTests(SynchronousTestCase):
 
     def test_getDeprecationWarningStringReplacement(self):
         """
-        L{getDeprecationWarningString} takes an additional replacement parameter
-        that can be used to add information to the deprecation.  If the
-        replacement parameter is a string, it will be interpolated directly into
-        the result.
+        L{getDeprecationWarningString} takes an additional replacement
+        parameter that can be used to add information to the deprecation.  If
+        the replacement parameter is a string, it will be interpolated directly
+        into the result.
         """
         version = Version('Twisted', 8, 0, 0)
         warningString = getDeprecationWarningString(
@@ -658,10 +662,10 @@ class DeprecationWarningsTests(SynchronousTestCase):
 
     def test_getDeprecationWarningStringReplacementWithCallable(self):
         """
-        L{getDeprecationWarningString} takes an additional replacement parameter
-        that can be used to add information to the deprecation. If the
-        replacement parameter is a callable, its fully qualified name will be
-        interpolated into the result.
+        L{getDeprecationWarningString} takes an additional replacement
+        parameter that can be used to add information to the deprecation.  If
+        the replacement parameter is a callable, its fully qualified name will
+        be interpolated into the result.
         """
         version = Version('Twisted', 8, 0, 0)
         warningString = getDeprecationWarningString(
