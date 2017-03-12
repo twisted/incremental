@@ -435,7 +435,7 @@ def callTestFunction():
         @type first: L{FilePath}
         @type second: L{FilePath}
 
-        @raise C{self.failureType}: If the paths are not the same.
+        @raise: C{self.failureType} If the paths are not the same.
         """
         self.assertTrue(
             normcase(first.path) == normcase(second.path),
