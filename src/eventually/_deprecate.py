@@ -73,17 +73,9 @@ See also L{incremental.Version}.
 
 from __future__ import division, absolute_import
 
-__all__ = [
-    'deprecated',
-    'deprecatedProperty',
-    'getDeprecationWarningString',
-    'getWarningMethod',
-    'setWarningMethod',
-    'deprecatedModuleAttribute',
-    ]
+import sys
+import inspect
 
-
-import sys, inspect
 from warnings import warn, warn_explicit
 from dis import findlinestarts
 from functools import wraps

@@ -11,7 +11,7 @@ from ._deprecate import (
     setWarningMethod
 )
 
-all = [
+__all__ = [
     "getDeprecationWarningString",
     "deprecated",
     "deprecatedProperty",
