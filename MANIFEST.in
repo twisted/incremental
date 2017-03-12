@@ -1,0 +1,10 @@
+include .coveragerc
+include LICENSE
+include NEWS.rst
+include towncrier.ini
+include tox.ini
+
+prune .travis
+prune tests
+
+prune src/eventually/newsfragments
