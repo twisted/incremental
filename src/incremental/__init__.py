@@ -9,7 +9,6 @@ See L{Version}.
 
 from __future__ import division, absolute_import
 
-import os
 import sys
 import warnings
 
@@ -21,33 +20,6 @@ if sys.version_info < (3, 0):
     _PY3 = False
 else:
     _PY3 = True
-    unicode = str
-
-
-def _nativeString(s):
-    """
-    Convert C{bytes} or C{unicode} to the native C{str} type, using ASCII
-    encoding if conversion is necessary.
-
-    @raise UnicodeError: The input string is not ASCII encodable/decodable.
-    @raise TypeError: The input is neither C{bytes} nor C{unicode}.
-    """
-    if not isinstance(s, (bytes, unicode)):
-        raise TypeError("%r is neither bytes nor unicode" % s)
-    if _PY3:
-        if isinstance(s, bytes):
-            return s.decode("ascii")
-        else:
-            # Ensure we're limited to ASCII subset:
-            s.encode("ascii")
-    else:
-        if isinstance(s, unicode):
-            return s.encode("ascii")
-        else:
-            # Ensure we're limited to ASCII subset:
-            s.decode("ascii")
-    return s
-
 
 try:
     _cmp = cmp

@@ -7,17 +7,11 @@ Tests for L{incremental}.
 
 from __future__ import division, absolute_import
 
-import sys
 import operator
-
-from tempfile import mkdtemp
-
-from io import BytesIO
 
 from incremental import getVersionString, IncomparableVersions
 from incremental import Version, _inf
 
-from twisted.python.filepath import FilePath
 from twisted.trial.unittest import TestCase
 
 
