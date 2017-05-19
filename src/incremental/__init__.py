@@ -414,6 +414,9 @@ class Version(object):
 
             upOne = os.path.abspath(os.path.join(basepath, '..'))
 
+            if not os.path.isdir(upOne):
+                return
+
             if ".git" in os.listdir(upOne):
                 return self._parseGitDir(os.path.join(upOne, '.git'))
 
@@ -423,6 +426,9 @@ class Version(object):
 
                 if upOneMore == upOne:
                     return None
+
+                if not os.path.isdir(upOneMore):
+                    return
 
                 if ".git" in os.listdir(upOneMore):
                     return self._parseGitDir(os.path.join(upOneMore, '.git'))
