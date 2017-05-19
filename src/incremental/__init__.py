@@ -384,20 +384,25 @@ class Version(object):
         return x
 
     def _parseGitDir(self, directory):
+        try:
+            headFile = os.path.abspath(os.path.join(directory, 'HEAD'))
 
-        headFile = os.path.abspath(os.path.join(directory, 'HEAD'))
+            with open(headFile, "r") as f:
+                headContent = f.read().strip()
 
-        with open(headFile, "r") as f:
-            headContent = f.read().strip()
+            if headContent.startswith("ref: "):
+                with open(os.path.abspath(
+                        os.path.join(directory,
+                                     headContent.split(" ")[1]))) as f:
+                    commit = f.read()
+                    return commit.strip()
 
-        if headContent.startswith("ref: "):
-            with open(os.path.abspath(
-                    os.path.join(directory,
-                                 headContent.split(" ")[1]))) as f:
-                commit = f.read()
-                return commit.strip()
+            return headContent
 
-        return headContent
+        except:
+            # It failed :(
+            # Who cares?
+            pass
 
     def _getGitVersion(self):
         """

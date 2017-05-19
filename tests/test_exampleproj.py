@@ -17,7 +17,3 @@ class ExampleProjTests(TestCase):
         """
         import exampleproj
         self.assertEqual(exampleproj.__version__.base(), "1.2.3")
-
-        # We're in a git repo, so we should get a git-esque thing
-        self.assertEqual(len(exampleproj.__version__.short()), 46,
-                         repr(exampleproj.__version__.short()))

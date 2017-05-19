@@ -509,6 +509,21 @@ class VersionsTests(TestCase):
         self.assertEqual(version._parseGitDir(gitDir.path),
                          "a96d61d94949c0dc097d6e1c3515792e99a724d5")
 
+    def test_git_without_refs(self):
+        """
+        Incremental, if refs/heads doesn't exist, shouldn't look for it.
+        """
+        gitDir = FilePath(self.mktemp())
+        gitDir.makedirs()
+        gitDir.child("HEAD").setContent(b"ref: refs/heads/master\n")
+
+        heads = gitDir.child("refs").child("heads")
+        heads.makedirs()
+
+        version = Version("foo", 1, 0, 0)
+        self.assertEqual(version._parseGitDir(gitDir.path),
+                         None)
+
 
 class FormatDiscoveryTests(TestCase):
     """
