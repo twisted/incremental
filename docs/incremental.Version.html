@@ -6,15 +6,15 @@
     <title>incremental.Version : API documentation</title>
 
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link href="bootstrap.min.css" type="text/css" rel="stylesheet" />
-    <link href="apidocs.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
   </head>
   <body>
 
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <a href="index.html" class="navbar-brand">
+          <a class="navbar-brand" href="index.html">
             incremental API Documentation
           </a>
         </div>
@@ -22,7 +22,7 @@
     </nav>
 
     <div id="showPrivate">
-      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+      <button onclick="togglePrivate()" class="btn btn-link">Toggle Private API</button>
     </div>
 
     <div class="container">
@@ -45,8 +45,7 @@
         <div><p>An encapsulation of a version for a project, with support for outputting
 PEP-440 compatible version strings.</p>
 <p>This class supports the standard major.minor.micro[rcN] scheme of 
-versioning, with support for "local versions" which may include a
-SVN revision or Git SHA1 hash.</p><table class="fieldTable"></table></div>
+versioning.</p><table class="fieldTable"></table></div>
       </div>
 
       <div id="splitTables">
@@ -65,25 +64,8 @@ SVN revision or Git SHA1 hash.</p><table class="fieldTable"></table></div>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a href="incremental.Version.html#short" data-type="Method" class="code">short</a></td>
-    <td><span>Return a string in canonical short version format, 
-&lt;major&gt;.&lt;minor&gt;.&lt;micro&gt;[+rSVNVer/+gitsha1].</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><a href="incremental.Version.html#local" data-type="Method" class="code">local</a></td>
-    <td><span>Return a PEP440-compatible "local" representation of this <a href="incremental.Version.html"><code>Version</code></a>.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
     <td><a href="incremental.Version.html#public" data-type="Method" class="code">public</a></td>
     <td><span>Return a PEP440-compatible "public" representation of this <a href="incremental.Version.html"><code>Version</code></a>.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><a href="incremental.Version.html#base" data-type="Method" class="code">base</a></td>
-    <td><span>Like <a href="incremental.Version.html#short"><code>short</code></a>, 
-but without the +rSVNVer or @gitsha1.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
@@ -100,42 +82,6 @@ but without the +rSVNVer or @gitsha1.</span></td>
     <td><a href="incremental.Version.html#__cmp__" data-type="Method" class="code">__cmp__</a></td>
     <td><span>Compare two versions, considering major versions, minor versions, micro 
 versions, then release candidates. Package names are case insensitive.</span></td>
-  </tr><tr class="method private">
-    
-    <td>Method</td>
-    <td><a href="incremental.Version.html#_parseGitDir" data-type="Method" class="code">_parseGitDir</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="method private">
-    
-    <td>Method</td>
-    <td><a href="incremental.Version.html#_getGitVersion" data-type="Method" class="code">_getGitVersion</a></td>
-    <td><span>Given a package directory, walk up and find the git commit sha.</span></td>
-  </tr><tr class="method private">
-    
-    <td>Method</td>
-    <td><a href="incremental.Version.html#_parseSVNEntries_4" data-type="Method" class="code">_parseSVNEntries_4</a></td>
-    <td><span class="undocumented">No summary</span></td>
-  </tr><tr class="method private">
-    
-    <td>Method</td>
-    <td><a href="incremental.Version.html#_parseSVNEntries_8" data-type="Method" class="code">_parseSVNEntries_8</a></td>
-    <td><span>Given a readable file object which represents a .svn/entries file in 
-format version 8, return the revision as a string.</span></td>
-  </tr><tr class="method private">
-    
-    <td>Method</td>
-    <td><a href="incremental.Version.html#_getSVNVersion" data-type="Method" class="code">_getSVNVersion</a></td>
-    <td><span class="undocumented">No summary</span></td>
-  </tr><tr class="method private">
-    
-    <td>Method</td>
-    <td><a href="incremental.Version.html#_formatSVNVersion" data-type="Method" class="code">_formatSVNVersion</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="method private">
-    
-    <td>Method</td>
-    <td><a href="incremental.Version.html#_formatGitVersion" data-type="Method" class="code">_formatGitVersion</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
   </tr>
 </table>
         
@@ -185,64 +131,6 @@ format version 8, return the revision as a string.</span></td>
   </div>
 </div><div class="basemethod">
   
-  <a name="incremental.Version.short">
-    
-  </a>
-  <a name="short">
-    
-  </a>
-  <div class="functionHeader">
-    
-    def
-    short(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Return a string in canonical short version format, 
-&lt;major&gt;.&lt;minor&gt;.&lt;micro&gt;[+rSVNVer/+gitsha1].</p><table class="fieldTable"></table></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.Version.local">
-    
-  </a>
-  <a name="local">
-    
-  </a>
-  <div class="functionHeader">
-    
-    def
-    local(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Return a PEP440-compatible "local" representation of this <a href="incremental.Version.html"><code>Version</code></a>.</p>
-<p>This includes a SVN revision or Git commit SHA1 hash, if available.</p>
-<p>Examples:</p>
-<ul>
-  <li>
-    14.4.0+r1223
-  </li>
-  <li>
-    1.2.3rc1+rb2e812003b5d5fcf08efd1dffed6afa98d44ac8c
-  </li>
-  <li>
-    12.10.1
-  </li>
-  <li>
-    3.4.8rc2
-  </li>
-  <li>
-    11.93.0rc1dev3
-  </li>
-</ul><table class="fieldTable"></table></div>
-  </div>
-</div><div class="basemethod">
-  
   <a name="incremental.Version.public">
     
   </a>
@@ -274,26 +162,6 @@ format version 8, return the revision as a string.</span></td>
     16.04.0dev0
   </li>
 </ul><table class="fieldTable"></table></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.Version.base">
-    
-  </a>
-  <a name="base">
-    
-  </a>
-  <div class="functionHeader">
-    
-    def
-    base(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Like <a href="incremental.Version.html#short"><code>short</code></a>, 
-but without the +rSVNVer or @gitsha1.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -357,150 +225,11 @@ a release candidate. If both versions have release candidates, they will be
 included in the comparison.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">other</td><td>Another version. (type: <a href="incremental.Version.html"><code>Version</code></a>)</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2">NotImplemented when the other object is not a Version, or one of -1, 0, or 
 1.</td></tr><tr class="fieldStart"><td class="fieldName">Raises</td><td class="fieldArg">IncomparableVersions</td><td>when the package names of the versions differ.</td></tr></table></div>
   </div>
-</div><div class="basemethod private">
-  
-  <a name="incremental.Version._parseGitDir">
-    
-  </a>
-  <a name="_parseGitDir">
-    
-  </a>
-  <div class="functionHeader">
-    
-    def
-    _parseGitDir(self, directory):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div class="undocumented">Undocumented</div>
-  </div>
-</div><div class="basemethod private">
-  
-  <a name="incremental.Version._getGitVersion">
-    
-  </a>
-  <a name="_getGitVersion">
-    
-  </a>
-  <div class="functionHeader">
-    
-    def
-    _getGitVersion(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Given a package directory, walk up and find the git commit sha.</p><table class="fieldTable"></table></div>
-  </div>
-</div><div class="basemethod private">
-  
-  <a name="incremental.Version._parseSVNEntries_4">
-    
-  </a>
-  <a name="_parseSVNEntries_4">
-    
-  </a>
-  <div class="functionHeader">
-    
-    def
-    _parseSVNEntries_4(self, entriesFile):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Given a readable file object which represents a .svn/entries file in 
-format version 4, return the revision as a string.  We do this by reading 
-first XML element in the document that has a 'revision' attribute.</p><table class="fieldTable"></table></div>
-  </div>
-</div><div class="basemethod private">
-  
-  <a name="incremental.Version._parseSVNEntries_8">
-    
-  </a>
-  <a name="_parseSVNEntries_8">
-    
-  </a>
-  <div class="functionHeader">
-    
-    def
-    _parseSVNEntries_8(self, entriesFile):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Given a readable file object which represents a .svn/entries file in 
-format version 8, return the revision as a string.</p><table class="fieldTable"></table></div>
-  </div>
-</div><div class="basemethod private">
-  
-  <a name="incremental.Version._getSVNVersion">
-    
-  </a>
-  <a name="_getSVNVersion">
-    
-  </a>
-  <div class="functionHeader">
-    
-    def
-    _getSVNVersion(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Figure out the SVN revision number based on the existence of 
-&lt;package&gt;/.svn/entries, and its contents. This requires discovering 
-the format version from the 'format' file and parsing the entries file 
-accordingly.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2">None or string containing SVN Revision number.</td></tr></table></div>
-  </div>
-</div><div class="basemethod private">
-  
-  <a name="incremental.Version._formatSVNVersion">
-    
-  </a>
-  <a name="_formatSVNVersion">
-    
-  </a>
-  <div class="functionHeader">
-    
-    def
-    _formatSVNVersion(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div class="undocumented">Undocumented</div>
-  </div>
-</div><div class="basemethod private">
-  
-  <a name="incremental.Version._formatGitVersion">
-    
-  </a>
-  <a name="_formatGitVersion">
-    
-  </a>
-  <div class="functionHeader">
-    
-    def
-    _formatGitVersion(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div class="undocumented">Undocumented</div>
-  </div>
 </div>
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2017-02-26 05:51:28.
+        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2017-05-20 17:49:47.
       </address>
 
     </div>
