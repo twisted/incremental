@@ -1,0 +1,1 @@
+Incremental will no longer attempt to read git or svn repositories to see if the project is running from a checkout.
