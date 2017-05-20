@@ -19,7 +19,7 @@ setup(
     version=incremental.__version__.base(),
     maintainer='Amber Brown',
     maintainer_email='hawkowl@twistedmatrix.com',
-    url="https://github.com/hawkowl/incremental",
+    url="https://github.com/twisted/incremental",
     classifiers = [
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
