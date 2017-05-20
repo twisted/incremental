@@ -1,3 +1,13 @@
+Incremental 17.5.0 (2017-05-20)
+===============================
+
+Deprecations and Removals
+-------------------------
+
+- Incremental will no longer attempt to read git or svn repositories to see if
+  the project is running from a checkout. (#30, #31, #32)
+
+
 Incremental 16.10.1 (2016-10-20)
 ================================
 
