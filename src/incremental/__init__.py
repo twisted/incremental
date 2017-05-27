@@ -86,8 +86,13 @@ can be used as the C{moduleName} parameter.  See also L{incremental.Version}.
 
 from __future__ import division, absolute_import
 
-from ._version import __version__ # noqa
-from ._versioning import Version, getVersionString
+from ._versioning import (
+    Version,
+    getVersionString,
+    IncomparableVersions,
+    _inf,
+    _get_version,
+)
 from ._deprecate import (
     getDeprecationWarningString,
     deprecated,
@@ -98,11 +103,13 @@ from ._deprecate import (
     getWarningMethod,
     setWarningMethod
 )
+from ._version import __version__ # noqa
 
 
 __all__ = [
     "Version",
     "getVersionString",
+    "IncomparableVersions",
     "getDeprecationWarningString",
     "deprecated",
     "deprecatedProperty",

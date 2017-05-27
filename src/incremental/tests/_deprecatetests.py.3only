@@ -3,7 +3,7 @@
 
 import inspect
 
-from eventually._deprecate import _passedSignature
+from incremental._deprecate import _passedSignature
 from twisted.trial.unittest import SynchronousTestCase
 
 

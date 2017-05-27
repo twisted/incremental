@@ -41,6 +41,7 @@ setup(
     },
     license="MIT",
     zip_safe=False,
+    include_package_data=True,
     long_description=open('README.rst').read(),
     entry_points="""
     [distutils.setup_keywords]

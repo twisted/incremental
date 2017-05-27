@@ -2,7 +2,7 @@
 # See LICENSE for details.
 
 """
-Tests for Twisted's deprecation framework, L{eventually}.
+Tests for Twisted's deprecation framework., L{incremental}.
 """
 
 from __future__ import division, absolute_import
@@ -18,10 +18,10 @@ try:
 except ImportError:
     invalidate_caches = None
 
-import eventually
-from eventually import DEPRECATION_WARNING_FORMAT
-from eventually._deprecate import _getDeprecationWarningString
-from eventually._deprecate import (
+import incremental
+from incremental import DEPRECATION_WARNING_FORMAT
+from incremental._deprecate import _getDeprecationWarningString
+from incremental._deprecate import (
     getDeprecationWarningString,
     deprecated, _appendToDocstring, _getDeprecationDocstring,
     _fullyQualifiedName as fullyQualifiedName,
@@ -49,7 +49,7 @@ from twisted.trial.unittest import SynchronousTestCase
 
 class _MockDeprecatedAttribute(object):
     """
-    Mock of L{eventually._DeprecatedAttribute}.
+    Mock of L{incremental._DeprecatedAttribute}.
 
     @ivar value: The value of the attribute.
     """
@@ -128,7 +128,7 @@ class ModuleProxyTests(SynchronousTestCase):
 
     def test_repr(self):
         """
-        L{eventuallyd._ModuleProxy.__repr__} produces a string
+        L{incrementald._ModuleProxy.__repr__} produces a string
         containing the proxy type and a representation of the wrapped module
         object.
         """
@@ -140,8 +140,8 @@ class ModuleProxyTests(SynchronousTestCase):
 
 class DeprecatedAttributeTests(SynchronousTestCase):
     """
-    Tests for L{eventually._DeprecatedAttribute} and
-    L{eventually.deprecatedModuleAttribute}, which issue
+    Tests for L{incremental._DeprecatedAttribute} and
+    L{incremental.deprecatedModuleAttribute}, which issue
     warnings for deprecated module-level attributes.
     """
 
@@ -161,7 +161,7 @@ class DeprecatedAttributeTests(SynchronousTestCase):
 
     def test_deprecatedAttributeHelper(self):
         """
-        L{eventually._DeprecatedAttribute} correctly sets its
+        L{incremental._DeprecatedAttribute} correctly sets its
         __name__ to match that of the deprecated attribute and emits a warning
         when the original attribute value is accessed.
         """
@@ -189,7 +189,7 @@ class DeprecatedAttributeTests(SynchronousTestCase):
 
     def test_deprecatedAttribute(self):
         """
-        L{eventually.deprecatedModuleAttribute} wraps a
+        L{incremental.deprecatedModuleAttribute} wraps a
         module-level attribute in an object that emits a deprecation warning
         when it is accessed the first time only, while leaving other unrelated
         attributes alone.
@@ -225,7 +225,7 @@ class DeprecatedAttributeTests(SynchronousTestCase):
         setattr(mod, 'first', 1)
         setattr(mod, 'second', 2)
 
-        eventually.deprecatedModuleAttribute(
+        incremental.deprecatedModuleAttribute(
             Version('Twisted', 8, 0, 0),
             'message',
             self._testModuleName,
@@ -234,7 +234,7 @@ class DeprecatedAttributeTests(SynchronousTestCase):
         proxy = sys.modules[self._testModuleName]
         self.assertNotEqual(proxy, mod)
 
-        eventually.deprecatedModuleAttribute(
+        incremental.deprecatedModuleAttribute(
             Version('Twisted', 8, 0, 0),
             'message',
             self._testModuleName,
@@ -250,7 +250,7 @@ class ImportedModuleAttributeTests(TwistedModulesMixin, SynchronousTestCase):
     """
 
     _packageInit = """\
-from eventually import deprecatedModuleAttribute
+from incremental import deprecatedModuleAttribute
 from incremental import Version
 
 deprecatedModuleAttribute(
@@ -349,7 +349,7 @@ deprecatedModuleAttribute(
 
 class WarnAboutFunctionTests(SynchronousTestCase):
     """
-    Tests for L{eventually.warnAboutFunction} which allows the
+    Tests for L{incremental.warnAboutFunction} which allows the
     callers of a function to issue a C{DeprecationWarning} about that function.
     """
 
@@ -364,7 +364,7 @@ class WarnAboutFunctionTests(SynchronousTestCase):
         self.package.child(b'module.py').setContent(b'''
 "A module string"
 
-import eventually
+import incremental
 
 def testFunction():
     "A doc string"
@@ -374,7 +374,7 @@ def testFunction():
 def callTestFunction():
     b = testFunction()
     if b == 3:
-        eventually.warnAboutFunction(testFunction, "A Warning String")
+        incremental.warnAboutFunction(testFunction, "A Warning String")
 ''')
         # Python 3 doesn't accept bytes in sys.path:
         packagePath = self.package.parent().path.decode("utf-8")
@@ -393,13 +393,13 @@ def callTestFunction():
 
     def test_warning(self):
         """
-        L{eventually.warnAboutFunction} emits a warning the file and line
+        L{incremental.warnAboutFunction} emits a warning the file and line
         number of which point to the beginning of the implementation of the
         function passed to it.
         """
         def aFunc():
             pass
-        eventually.warnAboutFunction(aFunc, 'A Warning Message')
+        incremental.warnAboutFunction(aFunc, 'A Warning Message')
         warningsShown = self.flushWarnings()
         filename = __file__
         if filename.lower().endswith('.pyc'):
@@ -410,7 +410,7 @@ def callTestFunction():
 
     def test_warningLineNumber(self):
         """
-        L{eventually.warnAboutFunction} emits a C{DeprecationWarning} with the
+        L{incremental.warnAboutFunction} emits a C{DeprecationWarning} with the
         number of a line within the implementation of the function passed to
         it.
         """
@@ -445,7 +445,7 @@ def callTestFunction():
         """
         Even if the implementation of a deprecated function is moved around on
         the filesystem, the line number in the warning emitted by
-        L{eventually.warnAboutFunction} points to a line in the implementation
+        L{incremental.warnAboutFunction} points to a line in the implementation
         of the deprecated function.
         """
         from twisted_private_helper import module
@@ -478,7 +478,7 @@ def callTestFunction():
 
     def test_filteredWarning(self):
         """
-        L{eventually.warnAboutFunction} emits a warning that will be filtered
+        L{incremental.warnAboutFunction} emits a warning that will be filtered
         if L{warnings.filterwarning} is called with the module name of the
         deprecated function.
         """
@@ -499,7 +499,7 @@ def callTestFunction():
 
     def test_filteredOnceWarning(self):
         """
-        L{eventually.warnAboutFunction} emits a warning that will be filtered
+        L{incremental.warnAboutFunction} emits a warning that will be filtered
         once if L{warnings.filterwarning} is called with the module name of the
         deprecated function and an action of once.
         """
@@ -754,7 +754,7 @@ class DeprecatedDecoratorTests(SynchronousTestCase):
             'Twisted', 1, 2, 3)
 
         message = (
-            'eventually.test.test_deprecate.ClassWithDeprecatedProperty.'
+            'incremental.tests.test_deprecate.ClassWithDeprecatedProperty.'
             'someProperty was deprecated in Twisted 1.2.3'
         )
         warnings = self.flushWarnings([self.test_propertyGetter])
@@ -774,7 +774,7 @@ class DeprecatedDecoratorTests(SynchronousTestCase):
 
         self.assertIs(newValue, obj._someProtectedValue)
         message = (
-            'eventually.test.test_deprecate.ClassWithDeprecatedProperty.'
+            'incremental.tests.test_deprecate.ClassWithDeprecatedProperty.'
             'someProperty was deprecated in Twisted 1.2.3'
         )
         warnings = self.flushWarnings([self.test_propertySetter])
@@ -800,7 +800,7 @@ class DeprecatedDecoratorTests(SynchronousTestCase):
         DeprecatedClass.deprecatedVersion = Version('Twisted', 1, 2, 3)
 
         message = (
-            'eventually.test.test_deprecate.DeprecatedClass '
+            'incremental.tests.test_deprecate.DeprecatedClass '
             'was deprecated in Twisted 1.2.3'
         )
         warnings = self.flushWarnings([self.test_class])

@@ -4,6 +4,7 @@ include NEWS.rst
 include towncrier.ini
 include tox.ini
 
+recursive-include src/incremental *.3only
 recursive-include src/incremental *.py
 
 prune .travis

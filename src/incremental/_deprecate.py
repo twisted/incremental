@@ -1,4 +1,4 @@
-# -*- test-case-name: eventually.test.test_deprecate -*-
+# -*- test-case-name: incremental.tests.test_deprecate -*-
 # Copyright (c) Twisted Matrix Laboratories.
 # See LICENSE for details.
 
@@ -16,11 +16,7 @@ from dis import findlinestarts
 from functools import wraps
 
 from incremental import getVersionString
-
-if sys.version_info < (3, 0):
-    _PY3 = False
-else:
-    _PY3 = True
+from incremental._compat import _PY3
 
 DEPRECATION_WARNING_FORMAT = '%(fqpn)s was deprecated in %(version)s'
 
