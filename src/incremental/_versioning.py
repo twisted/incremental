@@ -9,10 +9,9 @@ See L{Version}.
 
 from __future__ import division, absolute_import
 
-import sys
 import warnings
 
-from incremental._compat import _cmp, _PY3, _comparable
+from incremental._compat import _cmp, _comparable
 
 
 @_comparable

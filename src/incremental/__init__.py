@@ -105,6 +105,10 @@ from ._deprecate import (
 )
 from ._version import __version__ # noqa
 
+# Private API that is used externally
+__version__
+_inf
+_get_version
 
 __all__ = [
     "Version",
