@@ -866,7 +866,7 @@ class AppendToDocstringTests(SynchronousTestCase):
 
         _appendToDocstring(noDocstring, "Appended text.")
         self.assertEqual("Appended text.", noDocstring.__doc__)
-        noDocstring() # To make coverage happy :(
+        noDocstring()  # To make coverage happy :(
 
     def test_appendToSingleLineDocstring(self):
         """
