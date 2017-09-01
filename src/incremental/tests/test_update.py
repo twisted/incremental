@@ -50,8 +50,8 @@ next_released_version = "inctestpkg NEXT"
 
         out = []
         _run('inctestpkg', path=None, newversion=None, patch=False, rc=False,
-             dev=False, create=True, _date=self.date, _getcwd=self.getcwd,
-             _print=out.append)
+             post=False, dev=False, create=True, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
@@ -108,7 +108,7 @@ __all__ = ["__version__"]
         out = []
         with self.assertRaises(ValueError):
             _run(u'inctestpkg', path=None, newversion=None,
-                 patch=False, rc=False, dev=True, create=False,
+                 patch=False, rc=False, post=False, dev=True, create=False,
                  _date=self.date, _getcwd=self.getcwd, _print=out.append)
 
 
@@ -150,8 +150,8 @@ __all__ = ["__version__"]
         """
         out = []
         _run(u'inctestpkg', path=None, newversion=None,
-             patch=False, rc=False, dev=True, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+             patch=False, rc=False, post=False, dev=True, create=False,
+             _date=self.date, _getcwd=self.getcwd, _print=out.append)
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
@@ -169,8 +169,8 @@ __all__ = ["__version__"]
 ''')
 
         _run(u'inctestpkg', path=None, newversion=None,
-             patch=False, rc=False, dev=True, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+             patch=False, rc=False, post=False, dev=True, create=False,
+             _date=self.date, _getcwd=self.getcwd, _print=out.append)
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
@@ -226,8 +226,8 @@ __all__ = ["__version__"]
         """
         out = []
         _run(u'inctestpkg', path=self.packagedir.path, newversion=None,
-             patch=False, rc=False, dev=True, create=False, _date=self.date,
-             _print=out.append)
+             patch=False, rc=False, post=False, dev=True, create=False,
+             _date=self.date, _print=out.append)
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
@@ -250,8 +250,8 @@ __all__ = ["__version__"]
         """
         out = []
         _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=False,
-             dev=True, create=False, _date=self.date, _getcwd=self.getcwd,
-             _print=out.append)
+             post=False, dev=True, create=False, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
@@ -274,8 +274,8 @@ __all__ = ["__version__"]
         """
         out = []
         _run(u'inctestpkg', path=None, newversion=None, patch=True, rc=False,
-             dev=False, create=False, _date=self.date, _getcwd=self.getcwd,
-             _print=out.append)
+             post=False, dev=False, create=False, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
                          b'''"""
@@ -310,8 +310,8 @@ __all__ = ["__version__"]
 
         out = []
         _run(u'inctestpkg', path=None, newversion=None, patch=True, rc=False,
-             dev=False, create=False, _date=self.date, _getcwd=self.getcwd,
-             _print=out.append)
+             post=False, dev=False, create=False, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
                          b'''"""
@@ -334,8 +334,8 @@ __all__ = ["__version__"]
         """
         out = []
         _run(u'inctestpkg', path=None, newversion=None, patch=True, rc=True,
-             dev=False, create=False, _date=self.date, _getcwd=self.getcwd,
-             _print=out.append)
+             post=False, dev=False, create=False, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
                          b'''"""
@@ -370,8 +370,8 @@ __all__ = ["__version__"]
 
         out = []
         _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=True,
-             dev=False, create=False, _date=self.date, _getcwd=self.getcwd,
-             _print=out.append)
+             post=False, dev=False, create=False, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
                          b'''"""
@@ -407,8 +407,8 @@ __all__ = ["__version__"]
 
         out = []
         _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=True,
-             dev=False, create=False, _date=self.date, _getcwd=self.getcwd,
-             _print=out.append)
+             post=False, dev=False, create=False, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
                          b'''"""
@@ -437,8 +437,8 @@ next_released_version = "inctestpkg 16.8.0rc1"
         """
         out = []
         _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=True,
-             dev=False, create=False, _date=self.date, _getcwd=self.getcwd,
-             _print=out.append)
+             post=False, dev=False, create=False, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
                          b'''"""
@@ -461,8 +461,8 @@ next_released_version = "inctestpkg 16.8.0rc1"
 """)
 
         _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=False,
-             dev=False, create=False, _date=self.date, _getcwd=self.getcwd,
-             _print=out.append)
+             post=False, dev=False, create=False, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
                          b'''"""
@@ -492,91 +492,51 @@ next_released_version = "inctestpkg 16.8.0"
         out = []
         with self.assertRaises(ValueError) as e:
             _run(u'inctestpkg', path=None, newversion=None, patch=False,
-                 rc=False, dev=False, create=False, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
+                 rc=False, post=False, dev=False, create=False,
+                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(
             e.exception.args[0],
             "You need to issue a rc before updating the major/minor")
 
-    def test_no_mix_newversion(self):
+    def test_post(self):
         """
-        The `--newversion` flag can't be mixed with --patch, --rc, or --dev.
-        """
-        out = []
-        with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion="1", patch=True,
-                 rc=False, dev=False, create=False, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
-        self.assertEqual(e.exception.args[0], "Only give --newversion")
-
-        with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion="1", patch=False,
-                 rc=True, dev=False, create=False, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
-        self.assertEqual(e.exception.args[0], "Only give --newversion")
-
-        with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion="1", patch=False,
-                 rc=False, dev=True, create=False, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
-        self.assertEqual(e.exception.args[0], "Only give --newversion")
-
-    def test_no_mix_dev(self):
-        """
-        The `--dev` flag can't be mixed with --patch, or --rc.
+        `incremental.update package --post` increments the post version.
         """
         out = []
-        with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=True,
-                 rc=False, dev=True, create=False, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
-        self.assertEqual(e.exception.args[0], "Only give --dev")
+        _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=False,
+             post=True, dev=False, create=False, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
 
-        with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=False,
-                 rc=True, dev=True, create=False, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
-        self.assertEqual(e.exception.args[0], "Only give --dev")
+        self.assertTrue(self.packagedir.child("_version.py").exists())
+        self.assertEqual(self.packagedir.child("_version.py").getContent(),
+                         b'''"""
+Provides inctestpkg version information.
+"""
 
-    def test_no_mix_create(self):
+# This file is auto-generated! Do not edit!
+# Use `python -m incremental.update inctestpkg` to change this file.
+
+from incremental import Version
+
+__version__ = Version('inctestpkg', 1, 2, 3, post=0)
+__all__ = ["__version__"]
+''')
+
+    def test_post_with_prerelease_and_dev(self):
         """
-        The `--create` flag can't be mixed with --patch, --rc, --dev, or
-        --newversion.
+        `incremental.update package --post` increments the post version, and
+        disregards any old prerelease/dev versions.
         """
+        self.packagedir.child('_version.py').setContent(b"""
+from incremental import Version
+__version__ = Version('inctestpkg', 1, 2, 3, release_candidate=1, dev=2)
+__all__ = ["__version__"]
+""")
+
         out = []
-        with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=True,
-                 rc=False, dev=False, create=True, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
-        self.assertEqual(e.exception.args[0], "Only give --create")
-
-        with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion="1", patch=False,
-                 rc=False, dev=False, create=True, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
-        self.assertEqual(e.exception.args[0], "Only give --create")
-
-        with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=False,
-                 rc=True, dev=False, create=True, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
-        self.assertEqual(e.exception.args[0], "Only give --create")
-
-        with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=False,
-                 rc=False, dev=True, create=True, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
-        self.assertEqual(e.exception.args[0], "Only give --create")
-
-    def test_newversion(self):
-        """
-        `incremental.update package --newversion=1.2.3rc1dev3`, will set that
-        version in the package.
-        """
-        out = []
-        _run(u'inctestpkg', path=None, newversion="1.2.3rc1dev3", patch=False,
-             rc=False, dev=False, create=False, _date=self.date,
+        _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=False,
+             post=True, dev=False, create=False, _date=self.date,
              _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
@@ -589,15 +549,165 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, release_candidate=1, dev=3)
+__version__ = Version('inctestpkg', 1, 2, 3, post=0)
+__all__ = ["__version__"]
+''')
+
+    def test_post_with_existing_post(self):
+        """
+        `incremental.update package --post` increments the post version if the
+        existing version is an postrelease, and discards any dev version.
+        """
+        self.packagedir.child('_version.py').setContent(b"""
+from incremental import Version
+__version__ = Version('inctestpkg', 1, 2, 3, post=1, dev=2)
+__all__ = ["__version__"]
+""")
+
+        out = []
+        _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=False,
+             post=True, dev=False, create=False, _date=self.date,
+             _getcwd=self.getcwd, _print=out.append)
+
+        self.assertEqual(self.packagedir.child("_version.py").getContent(),
+                         b'''"""
+Provides inctestpkg version information.
+"""
+
+# This file is auto-generated! Do not edit!
+# Use `python -m incremental.update inctestpkg` to change this file.
+
+from incremental import Version
+
+__version__ = Version('inctestpkg', 1, 2, 3, post=2)
+__all__ = ["__version__"]
+''')
+        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
+                         b"""
+from incremental import Version
+introduced_in = Version('inctestpkg', 1, 2, 3, post=2).short()
+next_released_version = "inctestpkg 1.2.3post2"
+""")
+
+    def test_no_mix_newversion(self):
+        """
+        The `--newversion` flag can't be mixed with --patch, --rc, --post,
+        or --dev.
+        """
+        out = []
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion="1", patch=True,
+                 rc=False, post=False, dev=False, create=False,
+                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --newversion")
+
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion="1", patch=False,
+                 rc=True, post=False, dev=False, create=False,
+                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --newversion")
+
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion="1", patch=False,
+                 rc=False, post=True, dev=False, create=False,
+                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --newversion")
+
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion="1", patch=False,
+                 rc=False, post=False, dev=True, create=False,
+                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --newversion")
+
+    def test_no_mix_dev(self):
+        """
+        The `--dev` flag can't be mixed with --patch, --rc, or --post.
+        """
+        out = []
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion=None, patch=True,
+                 rc=False, post=False, dev=True, create=False, _date=self.date,
+                 _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --dev")
+
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion=None, patch=False,
+                 rc=True, post=False, dev=True, create=False, _date=self.date,
+                 _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --dev")
+
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion=None, patch=False,
+                 rc=False, post=True, dev=True, create=False, _date=self.date,
+                 _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --dev")
+
+    def test_no_mix_create(self):
+        """
+        The `--create` flag can't be mixed with --patch, --rc, --post,
+        --dev, or --newversion.
+        """
+        out = []
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion=None, patch=True,
+                 rc=False, post=False, dev=False, create=True, _date=self.date,
+                 _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --create")
+
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion="1", patch=False,
+                 rc=False, post=False, dev=False, create=True, _date=self.date,
+                 _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --create")
+
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion=None, patch=False,
+                 rc=True, post=False, dev=False, create=True, _date=self.date,
+                 _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --create")
+
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion=None, patch=False,
+                 rc=False, post=True, dev=False, create=True, _date=self.date,
+                 _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --create")
+
+        with self.assertRaises(ValueError) as e:
+            _run(u'inctestpkg', path=None, newversion=None, patch=False,
+                 rc=False, post=False, dev=True, create=True, _date=self.date,
+                 _getcwd=self.getcwd, _print=out.append)
+        self.assertEqual(e.exception.args[0], "Only give --create")
+
+    def test_newversion(self):
+        """
+        `incremental.update package --newversion=1.2.3rc1post2dev3`, will
+        set that version in the package.
+        """
+        out = []
+        _run(u'inctestpkg', path=None, newversion="1.2.3rc1post2dev3",
+             patch=False, rc=False, post=False, dev=False, create=False,
+             _date=self.date, _getcwd=self.getcwd, _print=out.append)
+
+        self.assertEqual(self.packagedir.child("_version.py").getContent(),
+                         b'''"""
+Provides inctestpkg version information.
+"""
+
+# This file is auto-generated! Do not edit!
+# Use `python -m incremental.update inctestpkg` to change this file.
+
+from incremental import Version
+
+__version__ = Version('inctestpkg', 1, 2, 3, '''
+                       b'''release_candidate=1, post=2, dev=3)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          (b"""
 from incremental import Version
 introduced_in = Version('inctestpkg', 1, 2, 3, """
-                         b"""release_candidate=1, dev=3).short()
-next_released_version = "inctestpkg 1.2.3rc1dev3"
+                         b"""release_candidate=1, post=2, dev=3).short()
+next_released_version = "inctestpkg 1.2.3rc1post2dev3"
 """))
 
     def test_newversion_bare(self):
@@ -607,7 +717,7 @@ next_released_version = "inctestpkg 1.2.3rc1dev3"
         """
         out = []
         _run(u'inctestpkg', path=None, newversion="1", patch=False,
-             rc=False, dev=False, create=False, _date=self.date,
+             rc=False, post=False, dev=False, create=False, _date=self.date,
              _getcwd=self.getcwd, _print=out.append)
 
         self.assertEqual(self.packagedir.child("_version.py").getContent(),
