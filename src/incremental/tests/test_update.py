@@ -699,7 +699,7 @@ Provides inctestpkg version information.
 from incremental import Version
 
 __version__ = Version('inctestpkg', 1, 2, 3, '''
-                       b'''release_candidate=1, post=2, dev=3)
+                         b'''release_candidate=1, post=2, dev=3)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
