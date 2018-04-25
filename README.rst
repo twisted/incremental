@@ -98,11 +98,11 @@ Once the final version is made, it will become:
 - ``<projectname> 17.1.0``
 
 
-.. |coverage| image:: https://codecov.io/github/hawkowl/incremental/coverage.svg?branch=master
-.. _coverage: https://codecov.io/github/hawkowl/incremental
+.. |coverage| image:: https://codecov.io/github/twisted/incremental/coverage.svg?branch=master
+.. _coverage: https://codecov.io/github/twisted/incremental
 
-.. |travis| image:: https://travis-ci.org/hawkowl/incremental.svg?branch=master
-.. _travis: http://travis-ci.org/hawkowl/incremental
+.. |travis| image:: https://travis-ci.org/twisted/incremental.svg?branch=master
+.. _travis: https://travis-ci.org/twisted/incremental
 
 .. |pypi| image:: http://img.shields.io/pypi/v/incremental.svg
 .. _pypi: https://pypi.python.org/pypi/incremental
