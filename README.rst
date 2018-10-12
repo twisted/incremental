@@ -57,10 +57,7 @@ It is made up of the following elements (which are given during instantiation):
 - ``release_candidate`` (optional), set to 0 or higher to mark this ``Version`` being of a release candidate (also sometimes called a "prerelease").
 - ``dev`` (optional), set to 0 or higher to mark this ``Version`` as a development release.
 
-You can extract a PEP-440 compatible version string by using the following methods:
-
-- ``.local()``, which returns a ``str`` containing the full version plus any Git or SVN information, if available. An example output would be ``"17.1.1rc1+r123"`` or ``"3.7.0+rb2e812003b5d5fcf08efd1dffed6afa98d44ac8c"``.
-- ``.public()``, which returns a ``str`` containing the full version, without any Git or SVN information. This is the version you should provide to users, or publicly use. An example output would be ``"13.2.0"``, ``"17.1.2dev1"``, or ``"18.8.0rc2"``.
+You can extract a PEP-440 compatible version string by using the ``.public()`` method, which returns a ``str`` containing the full version. This is the version you should provide to users, or publicly use. An example output would be ``"13.2.0"``, ``"17.1.2dev1"``, or ``"18.8.0rc2"``.
 
 Calling ``repr()`` with a ``Version`` will give a Python-source-code representation of it, and calling ``str()`` with a ``Version`` will provide a string similar to ``'[Incremental, version 16.10.1]'``.
 
