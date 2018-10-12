@@ -25,7 +25,8 @@ Add this to your ``setup.py``\ 's ``setup()`` call, removing any other versionin
    }
 
 
-Then run ``python -m incremental.update <projectname> --create`` (you will need ``click`` installed from PyPI).
+Install Incremental to your local environment with ``pip install incremental[scripts]``.
+Then run ``python -m incremental.update <projectname> --create``.
 It will create a file in your package named ``_version.py`` and look like this:
 
 .. code::
