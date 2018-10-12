@@ -7,7 +7,7 @@ Incremental
 
 Incremental is a small library that versions your Python projects.
 
-API documentation can be found `here <https://hawkowl.github.io/incremental/docs/>`_.
+API documentation can be found `here <https://twisted.github.io/incremental/docs/>`_.
 
 
 Quick Start
