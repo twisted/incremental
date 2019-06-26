@@ -8,22 +8,21 @@ env:
   global:
     - secure: LecqzHkkjNJ0GbLgvr/5YFy2U90JB1GAThqwr6WAab0c30z5w2EVJOubkASzREfMj6LKzUIdublskQC0x5kge46RVhsqVGZFIywR/7fUmqpaeaV3VvHBLk5vVLvFFYfbnRZQ9AtBEg6M7YAZwgAKRjE0mtJxKDP1Ksn5aV4wox4WZfeYKwPnjkHZQb/GrSdS93Uzi4Xe3TrtQ2m5lSMAaoeUFeKJbUEX6avqlfrsU1RZqvFTmDWhLiHSIvCVtG6DtrA2kGovC7qP6xVcjPcpx8D4aVpHzr7LqcCGaRQwLmO0aMe1YdegFQQeU7L7/c6m+UbVsobhxdjR8SWchdzAkmoE2QTdNTRTVbouvQL+uF8LvVKZoNBjUYxoeng0MqJLFfJUks8SnhN/wFujZmmlYv6Nm559GiR63i7hqCjbn2XFyE1mrvBPEpIMxpBc6kxN3GhCAyfHHRniyNbdD0e1eQ7JxQfzqqkQVMkdh2HRvpINIMZNM7247gsXEaGiJV/5ntGl138vuEXWjj8o0wdp0wBcqrHbEcPnjWBZIqexdevjiSpIJyMP0q4F2kv7eIfZLViLVfygRPQBpPcmETiNJtPJkXsxGFmTEtt/gdjT8dU/FvROTJRo3Iiz3rxHNsXJG8TGsZduLbBuzvGVadywLqD+Mb74CsizvdK0tdsP5Tg=
 
-  matrix:
-    - TOX_ENV=py27-flake8
-    - TOX_ENV=py27-tests
-    - TOX_ENV=py34-tests
-    - TOX_ENV=check-manifest
-    - PUSH_DOCS=true
-
 matrix:
   fast_finish: true
   include:
+    - python: 3.4
+      env: TOX_ENV=py34-tests
     - python: 3.5
       env: TOX_ENV=py35-tests
     - python: 3.5
       env: TOX_ENV=py35-flake8
     - python: 2.7
+      env: TOX_ENV=py27-flake8
+    - python: 2.7
       env: TOX_ENV=apidocs
+    - env: PUSH_DOCS=true
+    - env: TOX_ENV=check-manifest
 
 script:
   - if [[ -n "${TOX_ENV}" ]]; then tox -e $TOX_ENV; fi
