@@ -9,6 +9,7 @@ from __future__ import division, absolute_import
 
 from twisted.trial.unittest import TestCase
 
+
 class ExampleProjTests(TestCase):
 
     def test_version(self):
