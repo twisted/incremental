@@ -10,7 +10,7 @@ if [[ ${TRAVIS_PULL_REQUEST} == "false" ]] && [[ ${TRAVIS_BRANCH} == "master" ]]
     tox -e apidocs
 
     # Make the directory
-    git clone --branch gh-pages https://github.com/hawkowl/incremental.git /tmp/tmp-docs
+    git clone --branch gh-pages https://github.com/twisted/incremental.git /tmp/tmp-docs
 
     # Copy the docs
     rsync -rt --del --exclude=".git" apidocs/* /tmp/tmp-docs/docs/
@@ -31,8 +31,11 @@ if [[ ${TRAVIS_PULL_REQUEST} == "false" ]] && [[ ${TRAVIS_BRANCH} == "master" ]]
 
     git commit -m "Built from ${REV}";
 
-    # Push it up
-    git push -q "https://${GH_TOKEN}@github.com/hawkowl/incremental.git" gh-pages
+    if [[ ${TRAVIS_REPO_SLUG} == "twisted/incremental" ]];
+    then
+      # Push it up
+      git push -q "https://${GH_TOKEN}@github.com/twisted/incremental.git" gh-pages
+    fi
 else
     echo "skipping docs upload"
 fi;
