@@ -53,7 +53,7 @@ def _existing_version(path):
     return version_info["__version__"]
 
 
-def _run(package, path, newversion, patch, rc, dev, create,
+def _run(package, path, newversion, patch, rc, post, dev, create,
          _date=None, _getcwd=None, _print=print):
 
     if not _getcwd:
@@ -70,14 +70,15 @@ def _run(package, path, newversion, patch, rc, dev, create,
     else:
         path = FilePath(path)
 
-    if newversion and patch or newversion and dev or newversion and rc:
+    if newversion and patch or newversion and dev or newversion and rc or \
+       newversion and post:
         raise ValueError("Only give --newversion")
 
-    if dev and patch or dev and rc:
+    if dev and patch or dev and rc or dev and post:
         raise ValueError("Only give --dev")
 
     if create and dev or create and patch or create and rc or \
-       create and newversion:
+       create and post or create and newversion:
         raise ValueError("Only give --create")
 
     if newversion:
@@ -95,6 +96,7 @@ def _run(package, path, newversion, patch, rc, dev, create,
         v = Version(
             package, *release,
             release_candidate=st_version.pre[1] if st_version.pre else None,
+            post=st_version.post[1] if st_version.post else None,
             dev=st_version.dev[1] if st_version.dev else None)
 
     elif create:
@@ -119,6 +121,17 @@ def _run(package, path, newversion, patch, rc, dev, create,
         existing = _existing_version(path)
         v = Version(package, existing.major, existing.minor,
                     existing.micro + 1, rc)
+
+    elif post:
+        existing = _existing_version(path)
+
+        if existing.post is None:
+            _post = 0
+        else:
+            _post = existing.post + 1
+
+        v = Version(package, existing.major, existing.minor,
+                    existing.micro, post=_post)
 
     elif dev:
         existing = _existing_version(path)
@@ -199,6 +212,7 @@ def _run(package, path, newversion, patch, rc, dev, create,
 @click.option('--newversion', default=None)
 @click.option('--patch', is_flag=True)
 @click.option('--rc', is_flag=True)
+@click.option('--post', is_flag=True)
 @click.option('--dev', is_flag=True)
 @click.option('--create', is_flag=True)
 def run(*args, **kwargs):
