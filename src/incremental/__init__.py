@@ -138,7 +138,7 @@ class Version(object):
     versioning.
     """
     def __init__(self, package, major, minor, micro, release_candidate=None,
-                 prerelease=None, dev=None):
+                 prerelease=None, post=None, dev=None):
         """
         @param package: Name of the package that this is a version of.
         @type package: C{str}
@@ -152,6 +152,8 @@ class Version(object):
         @type release_candidate: C{int}
         @param prerelease: The prerelease number. (Deprecated)
         @type prerelease: C{int}
+        @param post: The postrelease number.
+        @type post: C{int}
         @param dev: The development release number.
         @type dev: C{int}
         """
@@ -165,7 +167,7 @@ class Version(object):
                           DeprecationWarning, stacklevel=2)
 
         if major == "NEXT":
-            if minor or micro or release_candidate or dev:
+            if minor or micro or release_candidate or post or dev:
                 raise ValueError(("When using NEXT, all other values except "
                                   "Package must be 0."))
 
@@ -174,6 +176,7 @@ class Version(object):
         self.minor = minor
         self.micro = micro
         self.release_candidate = release_candidate
+        self.post = post
         self.dev = dev
 
     @property
@@ -203,15 +206,20 @@ class Version(object):
         else:
             rc = "rc%s" % (self.release_candidate,)
 
+        if self.post is None:
+            post = ""
+        else:
+            post = "post%s" % (self.post,)
+
         if self.dev is None:
             dev = ""
         else:
             dev = "dev%s" % (self.dev,)
 
-        return '%r.%d.%d%s%s' % (self.major,
-                                 self.minor,
-                                 self.micro,
-                                 rc, dev)
+        return '%r.%d.%d%s%s%s' % (self.major,
+                                   self.minor,
+                                   self.micro,
+                                   rc, post, dev)
 
     base = public
     short = public
@@ -225,18 +233,24 @@ class Version(object):
             release_candidate = ", release_candidate=%r" % (
                 self.release_candidate,)
 
+        if self.post is None:
+            post = ""
+        else:
+            post = ", post=%r" % (self.post,)
+
         if self.dev is None:
             dev = ""
         else:
             dev = ", dev=%r" % (self.dev,)
 
-        return '%s(%r, %r, %d, %d%s%s)' % (
+        return '%s(%r, %r, %d, %d%s%s%s)' % (
             self.__class__.__name__,
             self.package,
             self.major,
             self.minor,
             self.micro,
             release_candidate,
+            post,
             dev)
 
     def __str__(self):
@@ -247,11 +261,16 @@ class Version(object):
     def __cmp__(self, other):
         """
         Compare two versions, considering major versions, minor versions, micro
-        versions, then release candidates. Package names are case insensitive.
+        versions, then release candidates, then postreleases, then dev
+        releases. Package names are case insensitive.
 
         A version with a release candidate is always less than a version
         without a release candidate. If both versions have release candidates,
         they will be included in the comparison.
+
+        Likewise, a version with a dev release is always less than a version
+        without a dev release. If both versions have dev releases, they will
+        be included in the comparison.
 
         @param other: Another version.
         @type other: L{Version}
@@ -278,6 +297,11 @@ class Version(object):
         else:
             release_candidate = self.release_candidate
 
+        if self.post is None:
+            post = -1
+        else:
+            post = self.post
+
         if self.dev is None:
             dev = _inf
         else:
@@ -293,6 +317,11 @@ class Version(object):
         else:
             otherrc = other.release_candidate
 
+        if other.post is None:
+            otherpost = -1
+        else:
+            otherpost = other.post
+
         if other.dev is None:
             otherdev = _inf
         else:
@@ -302,11 +331,13 @@ class Version(object):
                   self.minor,
                   self.micro,
                   release_candidate,
+                  post,
                   dev),
                  (othermajor,
                   other.minor,
                   other.micro,
                   otherrc,
+                  otherpost,
                   otherdev))
         return x
 

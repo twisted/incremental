@@ -56,6 +56,7 @@ It is made up of the following elements (which are given during instantiation):
 - ``package`` (required), the name of the package this ``Version`` represents.
 - ``major``, ``minor``, ``micro`` (all required), the X.Y.Z of your project's ``Version``.
 - ``release_candidate`` (optional), set to 0 or higher to mark this ``Version`` being of a release candidate (also sometimes called a "prerelease").
+- ``post`` (optional), set to 0 or higher to mark this ``Version`` as a postrelease.
 - ``dev`` (optional), set to 0 or higher to mark this ``Version`` as a development release.
 
 You can extract a PEP-440 compatible version string by using the ``.public()`` method, which returns a ``str`` containing the full version. This is the version you should provide to users, or publicly use. An example output would be ``"13.2.0"``, ``"17.1.2dev1"``, or ``"18.8.0rc2"``.
@@ -77,6 +78,7 @@ The commands that can be given after that will determine what the next version i
 - ``--rc``, to set the project version to ``<year-2000>.<month>.0rc1`` if the current version is not a release candidate, or bump the release candidate number by 1 if it is.
 - ``--dev``, to set the project development release number to 0 if it is not a development release, or bump the development release number by 1 if it is.
 - ``--patch``, to increment the patch number of the release. This will also reset the release candidate number, pass ``--rc`` at the same time to increment the patch number and make it a release candidate.
+- ``--post``, to set the project postrelease number to 0 if it is not a postrelease, or bump the postrelease number by 1 if it is. This will also reset the release candidate and development release numbers.
 
 If you give no arguments, it will strip the release candidate number, making it a "full release".
 
