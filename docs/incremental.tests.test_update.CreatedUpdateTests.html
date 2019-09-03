@@ -5,9 +5,9 @@
   <head>
     <title>incremental.tests.test_update.CreatedUpdateTests : API documentation</title>
 
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link type="text/css" href="bootstrap.min.css" rel="stylesheet" />
-    <link type="text/css" href="apidocs.css" rel="stylesheet" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="apidocs.css" type="text/css" />
   </head>
   <body>
 
@@ -22,7 +22,7 @@
     </nav>
 
     <div id="showPrivate">
-      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+      <button onclick="togglePrivate()" class="btn btn-link">Toggle Private API</button>
     </div>
 
     <div class="container">
@@ -109,25 +109,43 @@ candidate, will raise an error.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_update.CreatedUpdateTests.html#test_post" data-type="Method">test_post</a></td>
+    <td><span>`incremental.update package --post` increments the post version.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_update.CreatedUpdateTests.html#test_post_with_prerelease_and_dev" data-type="Method">test_post_with_prerelease_and_dev</a></td>
+    <td><span>`incremental.update package --post` increments the post version, and 
+disregards any old prerelease/dev versions.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_update.CreatedUpdateTests.html#test_post_with_existing_post" data-type="Method">test_post_with_existing_post</a></td>
+    <td><span>`incremental.update package --post` increments the post version if the 
+existing version is an postrelease, and discards any dev version.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
     <td><a class="code" href="incremental.tests.test_update.CreatedUpdateTests.html#test_no_mix_newversion" data-type="Method">test_no_mix_newversion</a></td>
-    <td><span>The `--newversion` flag can't be mixed with --patch, --rc, or --dev.</span></td>
+    <td><span>The `--newversion` flag can't be mixed with --patch, --rc, --post, or 
+--dev.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
     <td><a class="code" href="incremental.tests.test_update.CreatedUpdateTests.html#test_no_mix_dev" data-type="Method">test_no_mix_dev</a></td>
-    <td><span>The `--dev` flag can't be mixed with --patch, or --rc.</span></td>
+    <td><span>The `--dev` flag can't be mixed with --patch, --rc, or --post.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
     <td><a class="code" href="incremental.tests.test_update.CreatedUpdateTests.html#test_no_mix_create" data-type="Method">test_no_mix_create</a></td>
-    <td><span>The `--create` flag can't be mixed with --patch, --rc, --dev, or 
+    <td><span>The `--create` flag can't be mixed with --patch, --rc, --post, --dev, or
 --newversion.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
     <td><a class="code" href="incremental.tests.test_update.CreatedUpdateTests.html#test_newversion" data-type="Method">test_newversion</a></td>
-    <td><span>`incremental.update package --newversion=1.2.3rc1dev3`, will set that 
-version in the package.</span></td>
+    <td><span>`incremental.update package --newversion=1.2.3rc1post2dev3`, will set 
+that version in the package.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
@@ -343,6 +361,65 @@ candidate, will raise an error.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
   
+  <a name="incremental.tests.test_update.CreatedUpdateTests.test_post">
+    
+  </a>
+  <a name="test_post">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_post(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>`incremental.update package --post` increments the post version.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.tests.test_update.CreatedUpdateTests.test_post_with_prerelease_and_dev">
+    
+  </a>
+  <a name="test_post_with_prerelease_and_dev">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_post_with_prerelease_and_dev(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>`incremental.update package --post` increments the post version, and 
+disregards any old prerelease/dev versions.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.tests.test_update.CreatedUpdateTests.test_post_with_existing_post">
+    
+  </a>
+  <a name="test_post_with_existing_post">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_post_with_existing_post(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>`incremental.update package --post` increments the post version if the 
+existing version is an postrelease, and discards any dev version.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
   <a name="incremental.tests.test_update.CreatedUpdateTests.test_no_mix_newversion">
     
   </a>
@@ -358,7 +435,8 @@ candidate, will raise an error.</p><table class="fieldTable"></table></div>
   <div class="docstring functionBody">
     
     
-    <div><p>The `--newversion` flag can't be mixed with --patch, --rc, or --dev.</p><table class="fieldTable"></table></div>
+    <div><p>The `--newversion` flag can't be mixed with --patch, --rc, --post, or 
+--dev.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -377,7 +455,7 @@ candidate, will raise an error.</p><table class="fieldTable"></table></div>
   <div class="docstring functionBody">
     
     
-    <div><p>The `--dev` flag can't be mixed with --patch, or --rc.</p><table class="fieldTable"></table></div>
+    <div><p>The `--dev` flag can't be mixed with --patch, --rc, or --post.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -396,7 +474,7 @@ candidate, will raise an error.</p><table class="fieldTable"></table></div>
   <div class="docstring functionBody">
     
     
-    <div><p>The `--create` flag can't be mixed with --patch, --rc, --dev, or 
+    <div><p>The `--create` flag can't be mixed with --patch, --rc, --post, --dev, or
 --newversion.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
@@ -416,8 +494,8 @@ candidate, will raise an error.</p><table class="fieldTable"></table></div>
   <div class="docstring functionBody">
     
     
-    <div><p>`incremental.update package --newversion=1.2.3rc1dev3`, will set that 
-version in the package.</p><table class="fieldTable"></table></div>
+    <div><p>`incremental.update package --newversion=1.2.3rc1post2dev3`, will set 
+that version in the package.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -443,7 +521,7 @@ the package.</p><table class="fieldTable"></table></div>
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2019-08-28 00:39:00.
+        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2019-09-03 05:01:48.
       </address>
 
     </div>

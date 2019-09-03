@@ -5,9 +5,9 @@
   <head>
     <title>incremental.tests.test_version.VersionsTests : API documentation</title>
 
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link type="text/css" href="bootstrap.min.css" rel="stylesheet" />
-    <link type="text/css" href="apidocs.css" rel="stylesheet" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="apidocs.css" type="text/css" />
   </head>
   <body>
 
@@ -22,7 +22,7 @@
     </nav>
 
     <div id="showPrivate">
-      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+      <button onclick="togglePrivate()" class="btn btn-link">Toggle Private API</button>
     </div>
 
     <div class="container">
@@ -102,6 +102,18 @@ candidates.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_comparingPostReleasesWithReleases" data-type="Method">test_comparingPostReleasesWithReleases</a></td>
+    <td><span>Post releases are always greater than versions without post 
+releases.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_comparingDevReleasesWithPreviousPostReleases" data-type="Method">test_comparingDevReleasesWithPreviousPostReleases</a></td>
+    <td><span>Dev releases are always greater than postreleases based on previous 
+releases.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
     <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_comparingDevReleasesWithReleases" data-type="Method">test_comparingDevReleasesWithReleases</a></td>
     <td><span>Dev releases are always less than versions without dev releases.</span></td>
   </tr><tr class="method">
@@ -119,6 +131,12 @@ candidates.</span></td>
     <td>Method</td>
     <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_comparingReleaseCandidates" data-type="Method">test_comparingReleaseCandidates</a></td>
     <td><span>The value specified as the release candidate is used in version 
+comparisons.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_comparingPost" data-type="Method">test_comparingPost</a></td>
+    <td><span>The value specified as the postrelease is used in version 
 comparisons.</span></td>
   </tr><tr class="method">
     
@@ -176,7 +194,14 @@ a human-readable string representation of the version including the rc.</span></
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_devWithReleaseCandidate" data-type="Method">test_devWithReleaseCandidate</a></td>
+    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_reprWithPost" data-type="Method">test_reprWithPost</a></td>
+    <td><span>Calling <code>repr</code> on a version with a postrelease returns a 
+human-readable string representation of the version including the 
+postrelease.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_reprWithDev" data-type="Method">test_reprWithDev</a></td>
     <td><span>Calling <code>repr</code> on a version with a dev release returns a 
 human-readable string representation of the version including the dev 
 release.</span></td>
@@ -201,6 +226,12 @@ the release candidate.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_strWithPost" data-type="Method">test_strWithPost</a></td>
+    <td><span>Calling <code>str</code> on a version with a postrelease includes the 
+postrelease.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
     <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_strWithDevAndReleaseCandidate" data-type="Method">test_strWithDevAndReleaseCandidate</a></td>
     <td><span>Calling <code>str</code> on a version with a release candidate and dev 
 release includes the release candidate and the dev release.</span></td>
@@ -210,6 +241,12 @@ release includes the release candidate and the dev release.</span></td>
     <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_strWithDev" data-type="Method">test_strWithDev</a></td>
     <td><span>Calling <code>str</code> on a version with a dev release includes the 
 dev release.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_strWithDevAndPost" data-type="Method">test_strWithDevAndPost</a></td>
+    <td><span>Calling <code>str</code> on a version with a postrelease and dev release
+includes the postrelease and the dev release.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
@@ -236,6 +273,12 @@ includes the release candidate, if any.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_getVersionStringWithPost" data-type="Method">test_getVersionStringWithPost</a></td>
+    <td><span><a href="incremental.html#getVersionString"><code>getVersionString</code></a> 
+includes the postrelease, if any.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
     <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_getVersionStringWithDev" data-type="Method">test_getVersionStringWithDev</a></td>
     <td><span><a href="incremental.html#getVersionString"><code>getVersionString</code></a> 
 includes the dev release, if any.</span></td>
@@ -245,6 +288,12 @@ includes the dev release, if any.</span></td>
     <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_getVersionStringWithDevAndRC" data-type="Method">test_getVersionStringWithDevAndRC</a></td>
     <td><span><a href="incremental.html#getVersionString"><code>getVersionString</code></a> 
 includes the dev release and release candidate, if any.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_getVersionStringWithDevAndPost" data-type="Method">test_getVersionStringWithDevAndPost</a></td>
+    <td><span><a href="incremental.html#getVersionString"><code>getVersionString</code></a> 
+includes the dev release and postrelease, if any.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
@@ -265,6 +314,11 @@ version.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_baseWithPost" data-type="Method">test_baseWithPost</a></td>
+    <td><span>The base version includes 'postX' for versions with postreleases.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
     <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_baseWithDev" data-type="Method">test_baseWithDev</a></td>
     <td><span>The base version includes 'devX' for versions with dev releases.</span></td>
   </tr><tr class="method">
@@ -278,6 +332,12 @@ version.</span></td>
     <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_baseWithDevAndRC" data-type="Method">test_baseWithDevAndRC</a></td>
     <td><span>The base version includes 'rcXdevX' for versions with dev releases and a
 release candidate.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a class="code" href="incremental.tests.test_version.VersionsTests.html#test_baseWithDevAndPost" data-type="Method">test_baseWithDevAndPost</a></td>
+    <td><span>The base version includes 'postXdevX' for versions with dev releases and
+a postrelease.</span></td>
   </tr>
 </table>
         
@@ -480,6 +540,46 @@ candidates.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
   
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingPostReleasesWithReleases">
+    
+  </a>
+  <a name="test_comparingPostReleasesWithReleases">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_comparingPostReleasesWithReleases(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Post releases are always greater than versions without post 
+releases.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithPreviousPostReleases">
+    
+  </a>
+  <a name="test_comparingDevReleasesWithPreviousPostReleases">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_comparingDevReleasesWithPreviousPostReleases(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Dev releases are always greater than postreleases based on previous 
+releases.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
   <a name="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithReleases">
     
   </a>
@@ -553,6 +653,26 @@ candidates.</p><table class="fieldTable"></table></div>
     
     
     <div><p>The value specified as the release candidate is used in version 
+comparisons.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingPost">
+    
+  </a>
+  <a name="test_comparingPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_comparingPost(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>The value specified as the postrelease is used in version 
 comparisons.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
@@ -737,16 +857,37 @@ a human-readable string representation of the version including the rc.</p><tabl
   </div>
 </div><div class="basemethod">
   
-  <a name="incremental.tests.test_version.VersionsTests.test_devWithReleaseCandidate">
+  <a name="incremental.tests.test_version.VersionsTests.test_reprWithPost">
     
   </a>
-  <a name="test_devWithReleaseCandidate">
+  <a name="test_reprWithPost">
     
   </a>
   <div class="functionHeader">
     
     def
-    test_devWithReleaseCandidate(self):
+    test_reprWithPost(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Calling <code>repr</code> on a version with a postrelease returns a 
+human-readable string representation of the version including the 
+postrelease.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_reprWithDev">
+    
+  </a>
+  <a name="test_reprWithDev">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_reprWithDev(self):
     
   </div>
   <div class="docstring functionBody">
@@ -818,6 +959,26 @@ the release candidate.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
   
+  <a name="incremental.tests.test_version.VersionsTests.test_strWithPost">
+    
+  </a>
+  <a name="test_strWithPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_strWithPost(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Calling <code>str</code> on a version with a postrelease includes the 
+postrelease.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
   <a name="incremental.tests.test_version.VersionsTests.test_strWithDevAndReleaseCandidate">
     
   </a>
@@ -855,6 +1016,26 @@ release includes the release candidate and the dev release.</p><table class="fie
     
     <div><p>Calling <code>str</code> on a version with a dev release includes the 
 dev release.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_strWithDevAndPost">
+    
+  </a>
+  <a name="test_strWithDevAndPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_strWithDevAndPost(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Calling <code>str</code> on a version with a postrelease and dev release
+includes the postrelease and the dev release.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -937,6 +1118,26 @@ includes the release candidate, if any.</p><table class="fieldTable"></table></d
   </div>
 </div><div class="basemethod">
   
+  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithPost">
+    
+  </a>
+  <a name="test_getVersionStringWithPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_getVersionStringWithPost(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p><a href="incremental.html#getVersionString"><code>getVersionString</code></a> 
+includes the postrelease, if any.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
   <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDev">
     
   </a>
@@ -974,6 +1175,26 @@ includes the dev release, if any.</p><table class="fieldTable"></table></div>
     
     <div><p><a href="incremental.html#getVersionString"><code>getVersionString</code></a> 
 includes the dev release and release candidate, if any.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDevAndPost">
+    
+  </a>
+  <a name="test_getVersionStringWithDevAndPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_getVersionStringWithDevAndPost(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p><a href="incremental.html#getVersionString"><code>getVersionString</code></a> 
+includes the dev release and postrelease, if any.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -1036,6 +1257,25 @@ version.</p><table class="fieldTable"></table></div>
   </div>
 </div><div class="basemethod">
   
+  <a name="incremental.tests.test_version.VersionsTests.test_baseWithPost">
+    
+  </a>
+  <a name="test_baseWithPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_baseWithPost(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>The base version includes 'postX' for versions with postreleases.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
   <a name="incremental.tests.test_version.VersionsTests.test_baseWithDev">
     
   </a>
@@ -1092,11 +1332,31 @@ version.</p><table class="fieldTable"></table></div>
     <div><p>The base version includes 'rcXdevX' for versions with dev releases and a
 release candidate.</p><table class="fieldTable"></table></div>
   </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_baseWithDevAndPost">
+    
+  </a>
+  <a name="test_baseWithDevAndPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    test_baseWithDevAndPost(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>The base version includes 'postXdevX' for versions with dev releases and
+a postrelease.</p><table class="fieldTable"></table></div>
+  </div>
 </div>
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2019-08-28 00:39:00.
+        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2019-09-03 05:01:48.
       </address>
 
     </div>

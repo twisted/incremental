@@ -5,9 +5,9 @@
   <head>
     <title>incremental.Version : API documentation</title>
 
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link type="text/css" href="bootstrap.min.css" rel="stylesheet" />
-    <link type="text/css" href="apidocs.css" rel="stylesheet" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="apidocs.css" type="text/css" />
   </head>
   <body>
 
@@ -22,7 +22,7 @@
     </nav>
 
     <div id="showPrivate">
-      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+      <button onclick="togglePrivate()" class="btn btn-link">Toggle Private API</button>
     </div>
 
     <div class="container">
@@ -81,7 +81,8 @@ versioning.</p><table class="fieldTable"></table></div>
     <td>Method</td>
     <td><a class="code" href="incremental.Version.html#__cmp__" data-type="Method">__cmp__</a></td>
     <td><span>Compare two versions, considering major versions, minor versions, micro 
-versions, then release candidates. Package names are case insensitive.</span></td>
+versions, then release candidates, then postreleases, then dev releases. 
+Package names are case insensitive.</span></td>
   </tr>
 </table>
         
@@ -102,13 +103,13 @@ versions, then release candidates. Package names are case insensitive.</span></t
   <div class="functionHeader">
     
     def
-    __init__(self, package, major, minor, micro, release_candidate=None, prerelease=None, dev=None):
+    __init__(self, package, major, minor, micro, release_candidate=None, prerelease=None, post=None, dev=None):
     
   </div>
   <div class="docstring functionBody">
     
     
-    <div><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">package</td><td>Name of the package that this is a version of. (type: <code>str</code>)</td></tr><tr><td></td><td class="fieldArg">major</td><td>The major version number. (type: <code>int</code> or <code>str</code> (for the "NEXT" symbol))</td></tr><tr><td></td><td class="fieldArg">minor</td><td>The minor version number. (type: <code>int</code>)</td></tr><tr><td></td><td class="fieldArg">micro</td><td>The micro version number. (type: <code>int</code>)</td></tr><tr><td></td><td class="fieldArg">release_candidate</td><td>The release candidate number. (type: <code>int</code>)</td></tr><tr><td></td><td class="fieldArg">prerelease</td><td>The prerelease number. (Deprecated) (type: <code>int</code>)</td></tr><tr><td></td><td class="fieldArg">dev</td><td>The development release number. (type: <code>int</code>)</td></tr></table></div>
+    <div><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">package</td><td>Name of the package that this is a version of. (type: <code>str</code>)</td></tr><tr><td></td><td class="fieldArg">major</td><td>The major version number. (type: <code>int</code> or <code>str</code> (for the "NEXT" symbol))</td></tr><tr><td></td><td class="fieldArg">minor</td><td>The minor version number. (type: <code>int</code>)</td></tr><tr><td></td><td class="fieldArg">micro</td><td>The micro version number. (type: <code>int</code>)</td></tr><tr><td></td><td class="fieldArg">release_candidate</td><td>The release candidate number. (type: <code>int</code>)</td></tr><tr><td></td><td class="fieldArg">prerelease</td><td>The prerelease number. (Deprecated) (type: <code>int</code>)</td></tr><tr><td></td><td class="fieldArg">post</td><td>The postrelease number. (type: <code>int</code>)</td></tr><tr><td></td><td class="fieldArg">dev</td><td>The development release number. (type: <code>int</code>)</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -219,9 +220,13 @@ versions, then release candidates. Package names are case insensitive.</span></t
     
     
     <div><p>Compare two versions, considering major versions, minor versions, micro 
-versions, then release candidates. Package names are case insensitive.</p>
+versions, then release candidates, then postreleases, then dev releases. 
+Package names are case insensitive.</p>
 <p>A version with a release candidate is always less than a version without
 a release candidate. If both versions have release candidates, they will be
+included in the comparison.</p>
+<p>Likewise, a version with a dev release is always less than a version 
+without a dev release. If both versions have dev releases, they will be 
 included in the comparison.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">other</td><td>Another version. (type: <a href="incremental.Version.html"><code>Version</code></a>)</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2">NotImplemented when the other object is not a Version, or one of -1, 0, or 
 1.</td></tr><tr class="fieldStart"><td class="fieldName">Raises</td><td class="fieldArg">IncomparableVersions</td><td>when the package names of the versions differ.</td></tr></table></div>
   </div>
@@ -229,7 +234,7 @@ included in the comparison.</p><table class="fieldTable"><tr class="fieldStart">
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2019-08-28 00:39:00.
+        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2019-09-03 05:01:48.
       </address>
 
     </div>
