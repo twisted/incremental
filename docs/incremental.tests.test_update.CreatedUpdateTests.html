@@ -5,9 +5,9 @@
   <head>
     <title>incremental.tests.test_update.CreatedUpdateTests : API documentation</title>
 
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link type="text/css" href="bootstrap.min.css" rel="stylesheet" />
-    <link type="text/css" href="apidocs.css" rel="stylesheet" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="apidocs.css" />
   </head>
   <body>
 
@@ -31,7 +31,7 @@
         <h1 class="class"><code>incremental.tests.test_update.CreatedUpdateTests(<span title="twisted.trial.unittest.TestCase">TestCase</span>)</code> <small>class documentation</small></h1>
 
         <span id="partOf">
-          Part of <code><a data-type="Package" href="incremental.html" class="code">incremental</a>.<a data-type="Package" href="incremental.tests.html" class="code">tests</a>.<a data-type="Module" href="incremental.tests.test_update.html" class="code">test_update</a></code>
+          Part of <code><a href="incremental.html" data-type="Package" class="code">incremental</a>.<a href="incremental.tests.html" data-type="Package" class="code">tests</a>.<a href="incremental.tests.test_update.html" data-type="Module" class="code">test_update</a></code>
           
           <a href="classIndex.html#incremental.tests.test_update.CreatedUpdateTests">(View In Hierarchy)</a>
         </span>
@@ -51,105 +51,105 @@
   <tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#setUp" class="code">setUp</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#setUp" data-type="Method" class="code">setUp</a></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_path" class="code">test_path</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_path" data-type="Method" class="code">test_path</a></td>
     <td><span>`incremental.update package --path=&lt;path&gt; --dev` increments the 
 dev version of the package on the given path</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_dev" class="code">test_dev</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_dev" data-type="Method" class="code">test_dev</a></td>
     <td><span>`incremental.update package --dev` increments the dev version.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_patch" class="code">test_patch</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_patch" data-type="Method" class="code">test_patch</a></td>
     <td><span>`incremental.update package --patch` increments the patch version.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_patch_with_prerelease_and_dev" class="code">test_patch_with_prerelease_and_dev</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_patch_with_prerelease_and_dev" data-type="Method" class="code">test_patch_with_prerelease_and_dev</a></td>
     <td><span>`incremental.update package --patch` increments the patch version, and 
 disregards any old prerelease/dev versions.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_rc_patch" class="code">test_rc_patch</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_rc_patch" data-type="Method" class="code">test_rc_patch</a></td>
     <td><span>`incremental.update package --patch --rc` increments the patch version 
 and makes it a release candidate.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_rc_with_existing_rc" class="code">test_rc_with_existing_rc</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_rc_with_existing_rc" data-type="Method" class="code">test_rc_with_existing_rc</a></td>
     <td><span>`incremental.update package --rc` increments the rc version if the 
 existing version is an rc, and discards any dev version.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_rc_with_no_rc" class="code">test_rc_with_no_rc</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_rc_with_no_rc" data-type="Method" class="code">test_rc_with_no_rc</a></td>
     <td><span>`incremental.update package --rc`, when the package is not a release 
 candidate, will issue a new major/minor rc, and disregards the micro and 
 dev.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_full_with_rc" class="code">test_full_with_rc</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_full_with_rc" data-type="Method" class="code">test_full_with_rc</a></td>
     <td><span>`incremental.update package`, when the package is a release candidate, 
 will issue the major/minor, sans release candidate or dev.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_full_without_rc" class="code">test_full_without_rc</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_full_without_rc" data-type="Method" class="code">test_full_without_rc</a></td>
     <td><span>`incremental.update package`, when the package is NOT a release 
 candidate, will raise an error.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_post" class="code">test_post</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_post" data-type="Method" class="code">test_post</a></td>
     <td><span>`incremental.update package --post` increments the post version.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_post_with_prerelease_and_dev" class="code">test_post_with_prerelease_and_dev</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_post_with_prerelease_and_dev" data-type="Method" class="code">test_post_with_prerelease_and_dev</a></td>
     <td><span>`incremental.update package --post` increments the post version, and 
 disregards any old prerelease/dev versions.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_post_with_existing_post" class="code">test_post_with_existing_post</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_post_with_existing_post" data-type="Method" class="code">test_post_with_existing_post</a></td>
     <td><span>`incremental.update package --post` increments the post version if the 
 existing version is an postrelease, and discards any dev version.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_no_mix_newversion" class="code">test_no_mix_newversion</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_no_mix_newversion" data-type="Method" class="code">test_no_mix_newversion</a></td>
     <td><span>The `--newversion` flag can't be mixed with --patch, --rc, --post, or 
 --dev.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_no_mix_dev" class="code">test_no_mix_dev</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_no_mix_dev" data-type="Method" class="code">test_no_mix_dev</a></td>
     <td><span>The `--dev` flag can't be mixed with --patch, --rc, or --post.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_no_mix_create" class="code">test_no_mix_create</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_no_mix_create" data-type="Method" class="code">test_no_mix_create</a></td>
     <td><span>The `--create` flag can't be mixed with --patch, --rc, --post, --dev, or
 --newversion.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_newversion" class="code">test_newversion</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_newversion" data-type="Method" class="code">test_newversion</a></td>
     <td><span>`incremental.update package --newversion=1.2.3rc1post2dev3`, will set 
 that version in the package.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a data-type="Method" href="incremental.tests.test_update.CreatedUpdateTests.html#test_newversion_bare" class="code">test_newversion_bare</a></td>
+    <td><a href="incremental.tests.test_update.CreatedUpdateTests.html#test_newversion_bare" data-type="Method" class="code">test_newversion_bare</a></td>
     <td><span>`incremental.update package --newversion=1`, will set that version in 
 the package.</span></td>
   </tr>
@@ -521,12 +521,12 @@ the package.</p><table class="fieldTable"></table></div>
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2020-03-03 21:36:44.
+        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2020-03-10 21:32:06.
       </address>
 
     </div>
 
-    <script src="pydoctor.js" type="text/javascript"></script>
+    <script type="text/javascript" src="pydoctor.js"></script>
 
   </body>
 </html>
