@@ -54,7 +54,7 @@ Incremental Versions
 It is made up of the following elements (which are given during instantiation):
 
 - ``package`` (required), the name of the package this ``Version`` represents.
-- ``major``, ``minor``, ``micro`` (all required), the X.Y.Z of your project's ``Version``.
+- ``major``, ``minor``, ``patch`` (all required), the X.Y.Z of your project's ``Version``.
 - ``release_candidate`` (optional), set to 0 or higher to mark this ``Version`` being of a release candidate (also sometimes called a "prerelease").
 - ``post`` (optional), set to 0 or higher to mark this ``Version`` as a postrelease.
 - ``dev`` (optional), set to 0 or higher to mark this ``Version`` as a development release.
