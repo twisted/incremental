@@ -40,6 +40,7 @@ setup(
     },
     license="MIT",
     zip_safe=False,
+    description="A small library that versions your Python projects.",
     long_description=open('README.rst').read(),
     entry_points="""
     [distutils.setup_keywords]
