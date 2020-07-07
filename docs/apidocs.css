@@ -10,7 +10,6 @@
 ul {
     margin-top: 10px;
     padding-left: 10px;
-    list-style-type: none;
 }
 
 li {
@@ -54,6 +53,11 @@ ul ul ul ul ul ul ul {
 
 ul ul ul ul ul ul ul {
     border-left-color: #039be5;
+}
+
+.pre {
+    white-space: pre;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
 }
 
 .undocumented {
@@ -114,11 +118,11 @@ tr.module {
     background-color: #fff8e1;
 }
 
-tr.class {
+tr.class, tr.classvariable, tr.baseclassvariable {
     background-color: #fffde7;
 }
 
-tr.instancevariable, tr.variable, tr.baseclassvariable, tr.attribute {
+tr.instancevariable, tr.baseinstancevariable, tr.variable, tr.attribute {
     background-color: #f3e5f5;
 }
 
