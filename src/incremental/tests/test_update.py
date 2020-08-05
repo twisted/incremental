@@ -477,8 +477,8 @@ from incremental import Version
 __version__ = Version("inctestpkg", 16, 8, 0)
 __all__ = ["__version__"]
 ''')
-        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
-                         b"""
+        self.assertEqual(self.packagedir.child("__init__.py").getContent().decode("ascii"),
+                         """
 from incremental import Version
 introduced_in = Version("inctestpkg", 16, 8, 0).short()
 next_released_version = "inctestpkg 16.8.0"
