@@ -474,7 +474,7 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 16, 8, 0)
+__version__ = Version("inctestpkg", 16, 8, 0)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
@@ -698,14 +698,14 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, '''
+__version__ = Version("inctestpkg", 1, 2, 3, '''
                          b'''release_candidate=1, post=2, dev=3)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          (b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 1, 2, 3, """
+introduced_in = Version("inctestpkg", 1, 2, 3, """
                          b"""release_candidate=1, post=2, dev=3).short()
 next_released_version = "inctestpkg 1.2.3rc1post2dev3"
 """))
@@ -730,13 +730,13 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 0, 0)
+__version__ = Version("inctestpkg", 1, 0, 0)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 1, 0, 0).short()
+introduced_in = Version("inctestpkg", 1, 0, 0).short()
 next_released_version = "inctestpkg 1.0.0"
 """)
 
