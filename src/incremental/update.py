@@ -11,15 +11,15 @@ from incremental import Version
 from twisted.python.filepath import FilePath
 
 _VERSIONPY_TEMPLATE = '''"""
-Provides %s version information.
+Provides {package} version information.
 """
 
 # This file is auto-generated! Do not edit!
-# Use `python -m incremental.update %s` to change this file.
+# Use `python -m incremental.update {package}` to change this file.
 
 from incremental import Version
 
-__version__ = %s
+__version__ = {version_repr}
 __all__ = ["__version__"]
 '''
 
@@ -202,10 +202,13 @@ def _run(package, path, newversion, patch, rc, post, dev, create,
                 f.write(content)
 
     _print("Updating %s/_version.py" % (path.path))
-    with path.child("_version.py").open('w') as f:
+    with path.child("_version.py").open("w") as f:
         f.write(
-            (_VERSIONPY_TEMPLATE % (
-                package, package, version_repr)).encode('utf8'))
+            (
+                _VERSIONPY_TEMPLATE.format(package=package,
+                                           version_repr=version_repr)
+            ).encode("utf8")
+        )
 
 
 @click.command()
