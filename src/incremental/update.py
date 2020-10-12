@@ -154,13 +154,15 @@ def _run(package, path, newversion, patch, rc, post, dev, create,
             raise ValueError(
                 "You need to issue a rc before updating the major/minor")
 
-    NEXT_repr = repr(Version(package, "NEXT", 0, 0)).split("#")[0]
+    NEXT_repr = repr(Version(package, "NEXT", 0, 0)).split("#")[0].replace(
+        "'", '"')
     NEXT_repr_bytes = NEXT_repr.encode('utf8')
 
-    version_repr = repr(v).split("#")[0]
+    version_repr = repr(v).split("#")[0].replace("'", '"')
     version_repr_bytes = version_repr.encode('utf8')
 
-    existing_version_repr = repr(existing).split("#")[0]
+    existing_version_repr = repr(existing).split("#")[0].replace(
+        "'", '"')
     existing_version_repr_bytes = existing_version_repr.encode('utf8')
 
     _print("Updating codebase to %s" % (v.public()))
