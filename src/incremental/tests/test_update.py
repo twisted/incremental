@@ -30,7 +30,7 @@ class NonCreatedUpdateTests(TestCase):
 
         packagedir.child('__init__.py').setContent(b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 'NEXT', 0, 0).short()
+introduced_in = Version("inctestpkg", "NEXT", 0, 0).short()
 next_released_version = "inctestpkg NEXT"
 """)
         self.getcwd = lambda: self.srcdir.path
@@ -64,7 +64,7 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 16, 8, 0)
+__version__ = Version("inctestpkg", 16, 8, 0)
 __all__ = ["__version__"]
 ''')
 
@@ -83,12 +83,12 @@ class MissingTests(TestCase):
 
         packagedir.child('__init__.py').setContent(b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 'NEXT', 0, 0).short()
+introduced_in = Version("inctestpkg", "NEXT", 0, 0).short()
 next_released_version = "inctestpkg NEXT"
 """)
         packagedir.child('_version.py').setContent(b"""
 from incremental import Version
-__version__ = Version('inctestpkg', 1, 2, 3)
+__version__ = Version("inctestpkg", 1, 2, 3)
 __all__ = ["__version__"]
 """)
         self.getcwd = lambda: self.srcdir.path
@@ -126,12 +126,12 @@ class CreatedUpdateInSrcTests(TestCase):
 
         packagedir.child('__init__.py').setContent(b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 'NEXT', 0, 0).short()
+introduced_in = Version("inctestpkg", "NEXT", 0, 0).short()
 next_released_version = "inctestpkg NEXT"
 """)
         packagedir.child('_version.py').setContent(b"""
 from incremental import Version
-__version__ = Version('inctestpkg', 1, 2, 3)
+__version__ = Version("inctestpkg", 1, 2, 3)
 __all__ = ["__version__"]
 """)
         self.getcwd = lambda: self.srcdir.path
@@ -164,7 +164,7 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, dev=0)
+__version__ = Version("inctestpkg", 1, 2, 3, dev=0)
 __all__ = ["__version__"]
 ''')
 
@@ -183,7 +183,7 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, dev=1)
+__version__ = Version("inctestpkg", 1, 2, 3, dev=1)
 __all__ = ["__version__"]
 ''')
 
@@ -202,12 +202,12 @@ class CreatedUpdateTests(TestCase):
 
         packagedir.child('__init__.py').setContent(b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 'NEXT', 0, 0).short()
+introduced_in = Version("inctestpkg", "NEXT", 0, 0).short()
 next_released_version = "inctestpkg NEXT"
 """)
         packagedir.child('_version.py').setContent(b"""
 from incremental import Version
-__version__ = Version('inctestpkg', 1, 2, 3)
+__version__ = Version("inctestpkg", 1, 2, 3)
 __all__ = ["__version__"]
 """)
         self.getcwd = lambda: self.srcdir.path
@@ -240,7 +240,7 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, dev=0)
+__version__ = Version("inctestpkg", 1, 2, 3, dev=0)
 __all__ = ["__version__"]
 ''')
 
@@ -264,7 +264,7 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, dev=0)
+__version__ = Version("inctestpkg", 1, 2, 3, dev=0)
 __all__ = ["__version__"]
 ''')
 
@@ -287,13 +287,13 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 4)
+__version__ = Version("inctestpkg", 1, 2, 4)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 1, 2, 4).short()
+introduced_in = Version("inctestpkg", 1, 2, 4).short()
 next_released_version = "inctestpkg 1.2.4"
 """)
 
@@ -304,7 +304,7 @@ next_released_version = "inctestpkg 1.2.4"
         """
         self.packagedir.child('_version.py').setContent(b"""
 from incremental import Version
-__version__ = Version('inctestpkg', 1, 2, 3, release_candidate=1, dev=2)
+__version__ = Version("inctestpkg", 1, 2, 3, release_candidate=1, dev=2)
 __all__ = ["__version__"]
 """)
 
@@ -323,7 +323,7 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 4)
+__version__ = Version("inctestpkg", 1, 2, 4)
 __all__ = ["__version__"]
 ''')
 
@@ -347,13 +347,13 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 4, release_candidate=1)
+__version__ = Version("inctestpkg", 1, 2, 4, release_candidate=1)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 1, 2, 4, release_candidate=1).short()
+introduced_in = Version("inctestpkg", 1, 2, 4, release_candidate=1).short()
 next_released_version = "inctestpkg 1.2.4.rc1"
 """)
 
@@ -364,7 +364,7 @@ next_released_version = "inctestpkg 1.2.4.rc1"
         """
         self.packagedir.child('_version.py').setContent(b"""
 from incremental import Version
-__version__ = Version('inctestpkg', 1, 2, 3, release_candidate=1, dev=2)
+__version__ = Version("inctestpkg", 1, 2, 3, release_candidate=1, dev=2)
 __all__ = ["__version__"]
 """)
 
@@ -383,13 +383,13 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, release_candidate=2)
+__version__ = Version("inctestpkg", 1, 2, 3, release_candidate=2)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 1, 2, 3, release_candidate=2).short()
+introduced_in = Version("inctestpkg", 1, 2, 3, release_candidate=2).short()
 next_released_version = "inctestpkg 1.2.3.rc2"
 """)
 
@@ -401,7 +401,7 @@ next_released_version = "inctestpkg 1.2.3.rc2"
         """
         self.packagedir.child('_version.py').setContent(b"""
 from incremental import Version
-__version__ = Version('inctestpkg', 1, 2, 3, dev=2)
+__version__ = Version("inctestpkg", 1, 2, 3, dev=2)
 __all__ = ["__version__"]
 """)
 
@@ -420,13 +420,13 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 16, 8, 0, release_candidate=1)
+__version__ = Version("inctestpkg", 16, 8, 0, release_candidate=1)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 16, 8, 0, release_candidate=1).short()
+introduced_in = Version("inctestpkg", 16, 8, 0, release_candidate=1).short()
 next_released_version = "inctestpkg 16.8.0.rc1"
 """)
 
@@ -450,13 +450,13 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 16, 8, 0, release_candidate=1)
+__version__ = Version("inctestpkg", 16, 8, 0, release_candidate=1)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 16, 8, 0, release_candidate=1).short()
+introduced_in = Version("inctestpkg", 16, 8, 0, release_candidate=1).short()
 next_released_version = "inctestpkg 16.8.0.rc1"
 """)
 
@@ -474,13 +474,13 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 16, 8, 0)
+__version__ = Version("inctestpkg", 16, 8, 0)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 16, 8, 0).short()
+introduced_in = Version("inctestpkg", 16, 8, 0).short()
 next_released_version = "inctestpkg 16.8.0"
 """)
 
@@ -519,7 +519,7 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, post=0)
+__version__ = Version("inctestpkg", 1, 2, 3, post=0)
 __all__ = ["__version__"]
 ''')
 
@@ -530,7 +530,7 @@ __all__ = ["__version__"]
         """
         self.packagedir.child('_version.py').setContent(b"""
 from incremental import Version
-__version__ = Version('inctestpkg', 1, 2, 3, release_candidate=1, dev=2)
+__version__ = Version("inctestpkg", 1, 2, 3, release_candidate=1, dev=2)
 __all__ = ["__version__"]
 """)
 
@@ -549,7 +549,7 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, post=0)
+__version__ = Version("inctestpkg", 1, 2, 3, post=0)
 __all__ = ["__version__"]
 ''')
 
@@ -560,7 +560,7 @@ __all__ = ["__version__"]
         """
         self.packagedir.child('_version.py').setContent(b"""
 from incremental import Version
-__version__ = Version('inctestpkg', 1, 2, 3, post=1, dev=2)
+__version__ = Version("inctestpkg", 1, 2, 3, post=1, dev=2)
 __all__ = ["__version__"]
 """)
 
@@ -579,13 +579,13 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, post=2)
+__version__ = Version("inctestpkg", 1, 2, 3, post=2)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 1, 2, 3, post=2).short()
+introduced_in = Version("inctestpkg", 1, 2, 3, post=2).short()
 next_released_version = "inctestpkg 1.2.3.post2"
 """)
 
@@ -698,14 +698,14 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 2, 3, '''
+__version__ = Version("inctestpkg", 1, 2, 3, '''
                          b'''release_candidate=1, post=2, dev=3)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          (b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 1, 2, 3, """
+introduced_in = Version("inctestpkg", 1, 2, 3, """
                          b"""release_candidate=1, post=2, dev=3).short()
 next_released_version = "inctestpkg 1.2.3.rc1.post2.dev3"
 """))
@@ -730,13 +730,13 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 1, 0, 0)
+__version__ = Version("inctestpkg", 1, 0, 0)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 1, 0, 0).short()
+introduced_in = Version("inctestpkg", 1, 0, 0).short()
 next_released_version = "inctestpkg 1.0.0"
 """)
 
@@ -755,12 +755,12 @@ class ScriptTests(TestCase):
 
         packagedir.child('__init__.py').setContent(b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 'NEXT', 0, 0).short()
+introduced_in = Version("inctestpkg", "NEXT", 0, 0).short()
 next_released_version = "inctestpkg NEXT"
 """)
         packagedir.child('_version.py').setContent(b"""
 from incremental import Version
-__version__ = Version('inctestpkg', 1, 2, 3)
+__version__ = Version("inctestpkg", 1, 2, 3)
 __all__ = ["__version__"]
 """)
         self.getcwd = lambda: self.srcdir.path
@@ -814,12 +814,12 @@ Provides inctestpkg version information.
 
 from incremental import Version
 
-__version__ = Version('inctestpkg', 16, 8, 0, release_candidate=1)
+__version__ = Version("inctestpkg", 16, 8, 0, release_candidate=1)
 __all__ = ["__version__"]
 ''')
         self.assertEqual(self.packagedir.child("__init__.py").getContent(),
                          b"""
 from incremental import Version
-introduced_in = Version('inctestpkg', 16, 8, 0, release_candidate=1).short()
+introduced_in = Version("inctestpkg", 16, 8, 0, release_candidate=1).short()
 next_released_version = "inctestpkg 16.8.0.rc1"
 """)
