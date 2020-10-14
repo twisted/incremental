@@ -351,7 +351,7 @@ class VersionsTests(TestCase):
         as a release candidate.
         """
         self.assertEqual(str(Version("dummy", 1, 0, 0, prerelease=1)),
-                         "[dummy, version 1.0.0rc1]")
+                         "[dummy, version 1.0.0.rc1]")
 
     def test_strWithReleaseCandidate(self):
         """
@@ -359,7 +359,7 @@ class VersionsTests(TestCase):
         release candidate.
         """
         self.assertEqual(str(Version("dummy", 1, 0, 0, release_candidate=1)),
-                         "[dummy, version 1.0.0rc1]")
+                         "[dummy, version 1.0.0.rc1]")
 
     def test_strWithPost(self):
         """
@@ -367,7 +367,7 @@ class VersionsTests(TestCase):
         postrelease.
         """
         self.assertEqual(str(Version("dummy", 1, 0, 0, post=1)),
-                         "[dummy, version 1.0.0post1]")
+                         "[dummy, version 1.0.0.post1]")
 
     def test_strWithDevAndReleaseCandidate(self):
         """
@@ -376,7 +376,7 @@ class VersionsTests(TestCase):
         """
         self.assertEqual(str(Version("dummy", 1, 0, 0,
                                      release_candidate=1, dev=2)),
-                         "[dummy, version 1.0.0rc1dev2]")
+                         "[dummy, version 1.0.0.rc1.dev2]")
 
     def test_strWithDev(self):
         """
@@ -384,7 +384,7 @@ class VersionsTests(TestCase):
         release.
         """
         self.assertEqual(str(Version("dummy", 1, 0, 0, dev=1)),
-                         "[dummy, version 1.0.0dev1]")
+                         "[dummy, version 1.0.0.dev1]")
 
     def test_strWithDevAndPost(self):
         """
@@ -392,7 +392,7 @@ class VersionsTests(TestCase):
         includes the postrelease and the dev release.
         """
         self.assertEqual(str(Version("dummy", 1, 0, 0, post=1, dev=2)),
-                         "[dummy, version 1.0.0post1dev2]")
+                         "[dummy, version 1.0.0.post1.dev2]")
 
     def testShort(self):
         self.assertEqual(Version('dummy', 1, 2, 3).short(), '1.2.3')
@@ -412,7 +412,7 @@ class VersionsTests(TestCase):
         """
         self.assertEqual(
             getVersionString(Version("whatever", 8, 0, 0, prerelease=1)),
-            "whatever 8.0.0rc1")
+            "whatever 8.0.0.rc1")
 
     def test_getVersionStringWithReleaseCandidate(self):
         """
@@ -421,7 +421,7 @@ class VersionsTests(TestCase):
         self.assertEqual(
             getVersionString(Version("whatever", 8, 0, 0,
                                      release_candidate=1)),
-            "whatever 8.0.0rc1")
+            "whatever 8.0.0.rc1")
 
     def test_getVersionStringWithPost(self):
         """
@@ -430,7 +430,7 @@ class VersionsTests(TestCase):
         self.assertEqual(
             getVersionString(Version("whatever", 8, 0, 0,
                                      post=1)),
-            "whatever 8.0.0post1")
+            "whatever 8.0.0.post1")
 
     def test_getVersionStringWithDev(self):
         """
@@ -439,7 +439,7 @@ class VersionsTests(TestCase):
         self.assertEqual(
             getVersionString(Version("whatever", 8, 0, 0,
                                      dev=1)),
-            "whatever 8.0.0dev1")
+            "whatever 8.0.0.dev1")
 
     def test_getVersionStringWithDevAndRC(self):
         """
@@ -449,7 +449,7 @@ class VersionsTests(TestCase):
         self.assertEqual(
             getVersionString(Version("whatever", 8, 0, 0,
                                      release_candidate=2, dev=1)),
-            "whatever 8.0.0rc2dev1")
+            "whatever 8.0.0.rc2.dev1")
 
     def test_getVersionStringWithDevAndPost(self):
         """
@@ -459,7 +459,7 @@ class VersionsTests(TestCase):
         self.assertEqual(
             getVersionString(Version("whatever", 8, 0, 0,
                                      post=2, dev=1)),
-            "whatever 8.0.0post2dev1")
+            "whatever 8.0.0.post2.dev1")
 
     def test_baseWithNEXT(self):
         """
@@ -478,28 +478,28 @@ class VersionsTests(TestCase):
         The base version includes 'rcX' for versions with prereleases.
         """
         self.assertEqual(Version("foo", 1, 0, 0, prerelease=8).base(),
-                         "1.0.0rc8")
+                         "1.0.0.rc8")
 
     def test_baseWithPost(self):
         """
         The base version includes 'postX' for versions with postreleases.
         """
         self.assertEqual(Version("foo", 1, 0, 0, post=8).base(),
-                         "1.0.0post8")
+                         "1.0.0.post8")
 
     def test_baseWithDev(self):
         """
         The base version includes 'devX' for versions with dev releases.
         """
         self.assertEqual(Version("foo", 1, 0, 0, dev=8).base(),
-                         "1.0.0dev8")
+                         "1.0.0.dev8")
 
     def test_baseWithReleaseCandidate(self):
         """
         The base version includes 'rcX' for versions with prereleases.
         """
         self.assertEqual(Version("foo", 1, 0, 0, release_candidate=8).base(),
-                         "1.0.0rc8")
+                         "1.0.0.rc8")
 
     def test_baseWithDevAndRC(self):
         """
@@ -508,7 +508,7 @@ class VersionsTests(TestCase):
         """
         self.assertEqual(Version("foo", 1, 0, 0,
                                  release_candidate=2, dev=8).base(),
-                         "1.0.0rc2dev8")
+                         "1.0.0.rc2.dev8")
 
     def test_baseWithDevAndPost(self):
         """
@@ -517,4 +517,4 @@ class VersionsTests(TestCase):
         """
         self.assertEqual(Version("foo", 1, 0, 0,
                                  post=2, dev=8).base(),
-                         "1.0.0post2dev8")
+                         "1.0.0.post2.dev8")

@@ -354,7 +354,7 @@ __all__ = ["__version__"]
                          b"""
 from incremental import Version
 introduced_in = Version('inctestpkg', 1, 2, 4, release_candidate=1).short()
-next_released_version = "inctestpkg 1.2.4rc1"
+next_released_version = "inctestpkg 1.2.4.rc1"
 """)
 
     def test_rc_with_existing_rc(self):
@@ -390,7 +390,7 @@ __all__ = ["__version__"]
                          b"""
 from incremental import Version
 introduced_in = Version('inctestpkg', 1, 2, 3, release_candidate=2).short()
-next_released_version = "inctestpkg 1.2.3rc2"
+next_released_version = "inctestpkg 1.2.3.rc2"
 """)
 
     def test_rc_with_no_rc(self):
@@ -427,7 +427,7 @@ __all__ = ["__version__"]
                          b"""
 from incremental import Version
 introduced_in = Version('inctestpkg', 16, 8, 0, release_candidate=1).short()
-next_released_version = "inctestpkg 16.8.0rc1"
+next_released_version = "inctestpkg 16.8.0.rc1"
 """)
 
     def test_full_with_rc(self):
@@ -457,7 +457,7 @@ __all__ = ["__version__"]
                          b"""
 from incremental import Version
 introduced_in = Version('inctestpkg', 16, 8, 0, release_candidate=1).short()
-next_released_version = "inctestpkg 16.8.0rc1"
+next_released_version = "inctestpkg 16.8.0.rc1"
 """)
 
         _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=False,
@@ -586,7 +586,7 @@ __all__ = ["__version__"]
                          b"""
 from incremental import Version
 introduced_in = Version('inctestpkg', 1, 2, 3, post=2).short()
-next_released_version = "inctestpkg 1.2.3post2"
+next_released_version = "inctestpkg 1.2.3.post2"
 """)
 
     def test_no_mix_newversion(self):
@@ -680,11 +680,11 @@ next_released_version = "inctestpkg 1.2.3post2"
 
     def test_newversion(self):
         """
-        `incremental.update package --newversion=1.2.3rc1post2dev3`, will
+        `incremental.update package --newversion=1.2.3.rc1.post2.dev3`, will
         set that version in the package.
         """
         out = []
-        _run(u'inctestpkg', path=None, newversion="1.2.3rc1post2dev3",
+        _run(u'inctestpkg', path=None, newversion="1.2.3.rc1.post2.dev3",
              patch=False, rc=False, post=False, dev=False, create=False,
              _date=self.date, _getcwd=self.getcwd, _print=out.append)
 
@@ -707,7 +707,7 @@ __all__ = ["__version__"]
 from incremental import Version
 introduced_in = Version('inctestpkg', 1, 2, 3, """
                          b"""release_candidate=1, post=2, dev=3).short()
-next_released_version = "inctestpkg 1.2.3rc1post2dev3"
+next_released_version = "inctestpkg 1.2.3.rc1.post2.dev3"
 """))
 
     def test_newversion_bare(self):
@@ -821,5 +821,5 @@ __all__ = ["__version__"]
                          b"""
 from incremental import Version
 introduced_in = Version('inctestpkg', 16, 8, 0, release_candidate=1).short()
-next_released_version = "inctestpkg 16.8.0rc1"
+next_released_version = "inctestpkg 16.8.0.rc1"
 """)

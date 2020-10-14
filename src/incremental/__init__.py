@@ -204,17 +204,17 @@ class Version(object):
         if self.release_candidate is None:
             rc = ""
         else:
-            rc = "rc%s" % (self.release_candidate,)
+            rc = ".rc%s" % (self.release_candidate,)
 
         if self.post is None:
             post = ""
         else:
-            post = "post%s" % (self.post,)
+            post = ".post%s" % (self.post,)
 
         if self.dev is None:
             dev = ""
         else:
-            dev = "dev%s" % (self.dev,)
+            dev = ".dev%s" % (self.dev,)
 
         return '%r.%d.%d%s%s%s' % (self.major,
                                    self.minor,
