@@ -16,10 +16,10 @@ sys.path.insert(0, src_dir)
 import incremental
 
 setup(
-    name='incremental',
+    name="incremental",
     version=incremental.__version__.base(),
-    maintainer='Amber Brown',
-    maintainer_email='hawkowl@twistedmatrix.com',
+    maintainer="Amber Brown",
+    maintainer_email="hawkowl@twistedmatrix.com",
     url="https://github.com/twisted/incremental",
     classifiers=[
         "Intended Audience :: Developers",
@@ -33,14 +33,10 @@ setup(
     ],
     packages=find_packages("src", exclude=("exampleproj",)),
     package_dir={"": "src"},
-    extras_require={
-        "scripts": [
-            "click>=6.0", "twisted>=16.4.0"
-        ]
-    },
+    extras_require={"scripts": ["click>=6.0", "twisted>=16.4.0"]},
     license="MIT",
     zip_safe=False,
-    long_description=open('README.rst').read(),
+    long_description=open("README.rst").read(),
     entry_points="""
     [distutils.setup_keywords]
     use_incremental = incremental:_get_version
