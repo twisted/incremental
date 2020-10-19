@@ -11,15 +11,15 @@ from incremental import Version
 from twisted.python.filepath import FilePath
 
 _VERSIONPY_TEMPLATE = '''"""
-Provides %s version information.
+Provides {package} version information.
 """
 
 # This file is auto-generated! Do not edit!
-# Use `python -m incremental.update %s` to change this file.
+# Use `python -m incremental.update {package}` to change this file.
 
 from incremental import Version
 
-__version__ = %s
+__version__ = {version_repr}
 __all__ = ["__version__"]
 '''
 
@@ -154,13 +154,15 @@ def _run(package, path, newversion, patch, rc, post, dev, create,
             raise ValueError(
                 "You need to issue a rc before updating the major/minor")
 
-    NEXT_repr = repr(Version(package, "NEXT", 0, 0)).split("#")[0]
+    NEXT_repr = repr(Version(package, "NEXT", 0, 0)).split("#")[0].replace(
+        "'", '"')
     NEXT_repr_bytes = NEXT_repr.encode('utf8')
 
-    version_repr = repr(v).split("#")[0]
+    version_repr = repr(v).split("#")[0].replace("'", '"')
     version_repr_bytes = version_repr.encode('utf8')
 
-    existing_version_repr = repr(existing).split("#")[0]
+    existing_version_repr = repr(existing).split("#")[0].replace(
+        "'", '"')
     existing_version_repr_bytes = existing_version_repr.encode('utf8')
 
     _print("Updating codebase to %s" % (v.public()))
@@ -200,10 +202,13 @@ def _run(package, path, newversion, patch, rc, post, dev, create,
                 f.write(content)
 
     _print("Updating %s/_version.py" % (path.path))
-    with path.child("_version.py").open('w') as f:
+    with path.child("_version.py").open("w") as f:
         f.write(
-            (_VERSIONPY_TEMPLATE % (
-                package, package, version_repr)).encode('utf8'))
+            (
+                _VERSIONPY_TEMPLATE.format(package=package,
+                                           version_repr=version_repr)
+            ).encode("utf8")
+        )
 
 
 @click.command()
