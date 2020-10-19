@@ -16,7 +16,6 @@ from twisted.trial.unittest import TestCase
 
 
 class VersionsTests(TestCase):
-
     def test_localIsShort(self):
         """
         The local version is the same as the short version.
@@ -67,24 +66,19 @@ class VersionsTests(TestCase):
         NEXT releases must always have the rest of the numbers set to 0.
         """
         with self.assertRaises(ValueError):
-            Version(
-                "whatever", "NEXT", 1, 0, release_candidate=0, post=0, dev=0)
+            Version("whatever", "NEXT", 1, 0, release_candidate=0, post=0, dev=0)
 
         with self.assertRaises(ValueError):
-            Version(
-                "whatever", "NEXT", 0, 1, release_candidate=0, post=0, dev=0)
+            Version("whatever", "NEXT", 0, 1, release_candidate=0, post=0, dev=0)
 
         with self.assertRaises(ValueError):
-            Version(
-                "whatever", "NEXT", 0, 0, release_candidate=1, post=0, dev=0)
+            Version("whatever", "NEXT", 0, 0, release_candidate=1, post=0, dev=0)
 
         with self.assertRaises(ValueError):
-            Version(
-                "whatever", "NEXT", 0, 0, release_candidate=0, post=1, dev=0)
+            Version("whatever", "NEXT", 0, 0, release_candidate=0, post=1, dev=0)
 
         with self.assertRaises(ValueError):
-            Version(
-                "whatever", "NEXT", 0, 0, release_candidate=0, post=0, dev=1)
+            Version("whatever", "NEXT", 0, 0, release_candidate=0, post=0, dev=1)
 
     def test_comparingNEXTReleasesEqual(self):
         """
@@ -112,9 +106,12 @@ class VersionsTests(TestCase):
         warnings = self.flushWarnings([self.test_prereleaseDeprecated])
         self.assertEqual(len(warnings), 1)
         self.assertEqual(
-            warnings[0]['message'],
-            ("Passing prerelease to incremental.Version was deprecated in "
-             "Incremental 16.9.0. Please pass release_candidate instead."))
+            warnings[0]["message"],
+            (
+                "Passing prerelease to incremental.Version was deprecated in "
+                "Incremental 16.9.0. Please pass release_candidate instead."
+            ),
+        )
 
     def test_prereleaseAttributeDeprecated(self):
         """
@@ -122,13 +119,15 @@ class VersionsTests(TestCase):
         """
         va = Version("whatever", 1, 0, 0, release_candidate=1)
         va.prerelease
-        warnings = self.flushWarnings(
-            [self.test_prereleaseAttributeDeprecated])
+        warnings = self.flushWarnings([self.test_prereleaseAttributeDeprecated])
         self.assertEqual(len(warnings), 1)
         self.assertEqual(
-            warnings[0]['message'],
-            ("Accessing incremental.Version.prerelease was deprecated in "
-             "Incremental 16.9.0. Use Version.release_candidate instead."))
+            warnings[0]["message"],
+            (
+                "Accessing incremental.Version.prerelease was deprecated in "
+                "Incremental 16.9.0. Use Version.release_candidate instead."
+            ),
+        )
 
     def test_comparingReleaseCandidatesWithReleases(self):
         """
@@ -187,8 +186,7 @@ class VersionsTests(TestCase):
         Release Candidate and prerelease can't both be given.
         """
         with self.assertRaises(ValueError):
-            Version("whatever", 1, 0, 0,
-                    prerelease=1, release_candidate=1)
+            Version("whatever", 1, 0, 0, prerelease=1, release_candidate=1)
 
     def test_comparingReleaseCandidates(self):
         """
@@ -202,8 +200,7 @@ class VersionsTests(TestCase):
         self.assertTrue(va <= vb)
         self.assertTrue(vb >= va)
         self.assertTrue(va != vb)
-        self.assertTrue(vb == Version("whatever", 1, 0, 0,
-                                      release_candidate=2))
+        self.assertTrue(vb == Version("whatever", 1, 0, 0, release_candidate=2))
         self.assertTrue(va == va)
 
     def test_comparingPost(self):
@@ -217,8 +214,7 @@ class VersionsTests(TestCase):
         self.assertTrue(va <= vb)
         self.assertTrue(vb >= va)
         self.assertTrue(va != vb)
-        self.assertTrue(vb == Version("whatever", 1, 0, 0,
-                                      post=2))
+        self.assertTrue(vb == Version("whatever", 1, 0, 0, post=2))
         self.assertTrue(va == va)
 
     def test_comparingDev(self):
@@ -232,8 +228,7 @@ class VersionsTests(TestCase):
         self.assertTrue(va <= vb)
         self.assertTrue(vb >= va)
         self.assertTrue(va != vb)
-        self.assertTrue(vb == Version("whatever", 1, 0, 0,
-                                      dev=2))
+        self.assertTrue(vb == Version("whatever", 1, 0, 0, dev=2))
         self.assertTrue(va == va)
 
     def test_comparingDevAndRC(self):
@@ -248,8 +243,7 @@ class VersionsTests(TestCase):
         self.assertTrue(va <= vb)
         self.assertTrue(vb >= va)
         self.assertTrue(va != vb)
-        self.assertTrue(vb == Version("whatever", 1, 0, 0,
-                                      release_candidate=1, dev=2))
+        self.assertTrue(vb == Version("whatever", 1, 0, 0, release_candidate=1, dev=2))
         self.assertTrue(va == va)
 
     def test_comparingDevAndRCDifferent(self):
@@ -264,8 +258,7 @@ class VersionsTests(TestCase):
         self.assertTrue(va <= vb)
         self.assertTrue(vb >= va)
         self.assertTrue(va != vb)
-        self.assertTrue(vb == Version("whatever", 1, 0, 0,
-                                      release_candidate=2, dev=1))
+        self.assertTrue(vb == Version("whatever", 1, 0, 0, release_candidate=2, dev=1))
         self.assertTrue(va == va)
 
     def test_infComparison(self):
@@ -280,10 +273,12 @@ class VersionsTests(TestCase):
         """
         The package names of the Version objects need to be the same.
         """
-        self.assertRaises(IncomparableVersions,
-                          operator.eq,
-                          Version("dummy", 1, 0, 0),
-                          Version("dumym", 1, 0, 0))
+        self.assertRaises(
+            IncomparableVersions,
+            operator.eq,
+            Version("dummy", 1, 0, 0),
+            Version("dumym", 1, 0, 0),
+        )
 
     def test_notImplementedComparisons(self):
         """
@@ -299,8 +294,7 @@ class VersionsTests(TestCase):
         Calling C{repr} on a version returns a human-readable string
         representation of the version.
         """
-        self.assertEqual(repr(Version("dummy", 1, 2, 3)),
-                         "Version('dummy', 1, 2, 3)")
+        self.assertEqual(repr(Version("dummy", 1, 2, 3)), "Version('dummy', 1, 2, 3)")
 
     def test_reprWithPrerelease(self):
         """
@@ -308,16 +302,20 @@ class VersionsTests(TestCase):
         string representation of the version including the prerelease as a
         release candidate..
         """
-        self.assertEqual(repr(Version("dummy", 1, 2, 3, prerelease=4)),
-                         "Version('dummy', 1, 2, 3, release_candidate=4)")
+        self.assertEqual(
+            repr(Version("dummy", 1, 2, 3, prerelease=4)),
+            "Version('dummy', 1, 2, 3, release_candidate=4)",
+        )
 
     def test_reprWithReleaseCandidate(self):
         """
         Calling C{repr} on a version with a release candidate returns a
         human-readable string representation of the version including the rc.
         """
-        self.assertEqual(repr(Version("dummy", 1, 2, 3, release_candidate=4)),
-                         "Version('dummy', 1, 2, 3, release_candidate=4)")
+        self.assertEqual(
+            repr(Version("dummy", 1, 2, 3, release_candidate=4)),
+            "Version('dummy', 1, 2, 3, release_candidate=4)",
+        )
 
     def test_reprWithPost(self):
         """
@@ -325,8 +323,9 @@ class VersionsTests(TestCase):
         human-readable string representation of the version including the
         postrelease.
         """
-        self.assertEqual(repr(Version("dummy", 1, 2, 3, post=4)),
-                         "Version('dummy', 1, 2, 3, post=4)")
+        self.assertEqual(
+            repr(Version("dummy", 1, 2, 3, post=4)), "Version('dummy', 1, 2, 3, post=4)"
+        )
 
     def test_reprWithDev(self):
         """
@@ -334,76 +333,83 @@ class VersionsTests(TestCase):
         human-readable string representation of the version including the dev
         release.
         """
-        self.assertEqual(repr(Version("dummy", 1, 2, 3, dev=4)),
-                         "Version('dummy', 1, 2, 3, dev=4)")
+        self.assertEqual(
+            repr(Version("dummy", 1, 2, 3, dev=4)), "Version('dummy', 1, 2, 3, dev=4)"
+        )
 
     def test_str(self):
         """
         Calling C{str} on a version returns a human-readable string
         representation of the version.
         """
-        self.assertEqual(str(Version("dummy", 1, 2, 3)),
-                         "[dummy, version 1.2.3]")
+        self.assertEqual(str(Version("dummy", 1, 2, 3)), "[dummy, version 1.2.3]")
 
     def test_strWithPrerelease(self):
         """
         Calling C{str} on a version with a prerelease includes the prerelease
         as a release candidate.
         """
-        self.assertEqual(str(Version("dummy", 1, 0, 0, prerelease=1)),
-                         "[dummy, version 1.0.0.rc1]")
+        self.assertEqual(
+            str(Version("dummy", 1, 0, 0, prerelease=1)), "[dummy, version 1.0.0.rc1]"
+        )
 
     def test_strWithReleaseCandidate(self):
         """
         Calling C{str} on a version with a release candidate includes the
         release candidate.
         """
-        self.assertEqual(str(Version("dummy", 1, 0, 0, release_candidate=1)),
-                         "[dummy, version 1.0.0.rc1]")
+        self.assertEqual(
+            str(Version("dummy", 1, 0, 0, release_candidate=1)),
+            "[dummy, version 1.0.0.rc1]",
+        )
 
     def test_strWithPost(self):
         """
         Calling C{str} on a version with a postrelease includes the
         postrelease.
         """
-        self.assertEqual(str(Version("dummy", 1, 0, 0, post=1)),
-                         "[dummy, version 1.0.0.post1]")
+        self.assertEqual(
+            str(Version("dummy", 1, 0, 0, post=1)), "[dummy, version 1.0.0.post1]"
+        )
 
     def test_strWithDevAndReleaseCandidate(self):
         """
         Calling C{str} on a version with a release candidate and dev release
         includes the release candidate and the dev release.
         """
-        self.assertEqual(str(Version("dummy", 1, 0, 0,
-                                     release_candidate=1, dev=2)),
-                         "[dummy, version 1.0.0.rc1.dev2]")
+        self.assertEqual(
+            str(Version("dummy", 1, 0, 0, release_candidate=1, dev=2)),
+            "[dummy, version 1.0.0.rc1.dev2]",
+        )
 
     def test_strWithDev(self):
         """
         Calling C{str} on a version with a dev release includes the dev
         release.
         """
-        self.assertEqual(str(Version("dummy", 1, 0, 0, dev=1)),
-                         "[dummy, version 1.0.0.dev1]")
+        self.assertEqual(
+            str(Version("dummy", 1, 0, 0, dev=1)), "[dummy, version 1.0.0.dev1]"
+        )
 
     def test_strWithDevAndPost(self):
         """
         Calling C{str} on a version with a postrelease and dev release
         includes the postrelease and the dev release.
         """
-        self.assertEqual(str(Version("dummy", 1, 0, 0, post=1, dev=2)),
-                         "[dummy, version 1.0.0.post1.dev2]")
+        self.assertEqual(
+            str(Version("dummy", 1, 0, 0, post=1, dev=2)),
+            "[dummy, version 1.0.0.post1.dev2]",
+        )
 
     def testShort(self):
-        self.assertEqual(Version('dummy', 1, 2, 3).short(), '1.2.3')
+        self.assertEqual(Version("dummy", 1, 2, 3).short(), "1.2.3")
 
     def test_getVersionString(self):
         """
         L{getVersionString} returns a string with the package name and the
         short version number.
         """
-        self.assertEqual(
-            'Twisted 8.0.0', getVersionString(Version('Twisted', 8, 0, 0)))
+        self.assertEqual("Twisted 8.0.0", getVersionString(Version("Twisted", 8, 0, 0)))
 
     def test_getVersionStringWithPrerelease(self):
         """
@@ -412,34 +418,34 @@ class VersionsTests(TestCase):
         """
         self.assertEqual(
             getVersionString(Version("whatever", 8, 0, 0, prerelease=1)),
-            "whatever 8.0.0.rc1")
+            "whatever 8.0.0.rc1",
+        )
 
     def test_getVersionStringWithReleaseCandidate(self):
         """
         L{getVersionString} includes the release candidate, if any.
         """
         self.assertEqual(
-            getVersionString(Version("whatever", 8, 0, 0,
-                                     release_candidate=1)),
-            "whatever 8.0.0.rc1")
+            getVersionString(Version("whatever", 8, 0, 0, release_candidate=1)),
+            "whatever 8.0.0.rc1",
+        )
 
     def test_getVersionStringWithPost(self):
         """
         L{getVersionString} includes the postrelease, if any.
         """
         self.assertEqual(
-            getVersionString(Version("whatever", 8, 0, 0,
-                                     post=1)),
-            "whatever 8.0.0.post1")
+            getVersionString(Version("whatever", 8, 0, 0, post=1)),
+            "whatever 8.0.0.post1",
+        )
 
     def test_getVersionStringWithDev(self):
         """
         L{getVersionString} includes the dev release, if any.
         """
         self.assertEqual(
-            getVersionString(Version("whatever", 8, 0, 0,
-                                     dev=1)),
-            "whatever 8.0.0.dev1")
+            getVersionString(Version("whatever", 8, 0, 0, dev=1)), "whatever 8.0.0.dev1"
+        )
 
     def test_getVersionStringWithDevAndRC(self):
         """
@@ -447,9 +453,9 @@ class VersionsTests(TestCase):
         any.
         """
         self.assertEqual(
-            getVersionString(Version("whatever", 8, 0, 0,
-                                     release_candidate=2, dev=1)),
-            "whatever 8.0.0.rc2.dev1")
+            getVersionString(Version("whatever", 8, 0, 0, release_candidate=2, dev=1)),
+            "whatever 8.0.0.rc2.dev1",
+        )
 
     def test_getVersionStringWithDevAndPost(self):
         """
@@ -457,9 +463,9 @@ class VersionsTests(TestCase):
         any.
         """
         self.assertEqual(
-            getVersionString(Version("whatever", 8, 0, 0,
-                                     post=2, dev=1)),
-            "whatever 8.0.0.post2.dev1")
+            getVersionString(Version("whatever", 8, 0, 0, post=2, dev=1)),
+            "whatever 8.0.0.post2.dev1",
+        )
 
     def test_baseWithNEXT(self):
         """
@@ -477,44 +483,42 @@ class VersionsTests(TestCase):
         """
         The base version includes 'rcX' for versions with prereleases.
         """
-        self.assertEqual(Version("foo", 1, 0, 0, prerelease=8).base(),
-                         "1.0.0.rc8")
+        self.assertEqual(Version("foo", 1, 0, 0, prerelease=8).base(), "1.0.0.rc8")
 
     def test_baseWithPost(self):
         """
         The base version includes 'postX' for versions with postreleases.
         """
-        self.assertEqual(Version("foo", 1, 0, 0, post=8).base(),
-                         "1.0.0.post8")
+        self.assertEqual(Version("foo", 1, 0, 0, post=8).base(), "1.0.0.post8")
 
     def test_baseWithDev(self):
         """
         The base version includes 'devX' for versions with dev releases.
         """
-        self.assertEqual(Version("foo", 1, 0, 0, dev=8).base(),
-                         "1.0.0.dev8")
+        self.assertEqual(Version("foo", 1, 0, 0, dev=8).base(), "1.0.0.dev8")
 
     def test_baseWithReleaseCandidate(self):
         """
         The base version includes 'rcX' for versions with prereleases.
         """
-        self.assertEqual(Version("foo", 1, 0, 0, release_candidate=8).base(),
-                         "1.0.0.rc8")
+        self.assertEqual(
+            Version("foo", 1, 0, 0, release_candidate=8).base(), "1.0.0.rc8"
+        )
 
     def test_baseWithDevAndRC(self):
         """
         The base version includes 'rcXdevX' for versions with dev releases and
         a release candidate.
         """
-        self.assertEqual(Version("foo", 1, 0, 0,
-                                 release_candidate=2, dev=8).base(),
-                         "1.0.0.rc2.dev8")
+        self.assertEqual(
+            Version("foo", 1, 0, 0, release_candidate=2, dev=8).base(), "1.0.0.rc2.dev8"
+        )
 
     def test_baseWithDevAndPost(self):
         """
         The base version includes 'postXdevX' for versions with dev releases
         and a postrelease.
         """
-        self.assertEqual(Version("foo", 1, 0, 0,
-                                 post=2, dev=8).base(),
-                         "1.0.0.post2.dev8")
+        self.assertEqual(
+            Version("foo", 1, 0, 0, post=2, dev=8).base(), "1.0.0.post2.dev8"
+        )

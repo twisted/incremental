@@ -19,20 +19,21 @@ from incremental.update import _run, run
 
 
 class NonCreatedUpdateTests(TestCase):
-
     def setUp(self):
 
         self.srcdir = FilePath(self.mktemp())
         self.srcdir.makedirs()
 
-        packagedir = self.srcdir.child('inctestpkg')
+        packagedir = self.srcdir.child("inctestpkg")
         packagedir.makedirs()
 
-        packagedir.child('__init__.py').setContent(b"""
+        packagedir.child("__init__.py").setContent(
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", "NEXT", 0, 0).short()
 next_released_version = "inctestpkg NEXT"
-""")
+"""
+        )
         self.getcwd = lambda: self.srcdir.path
         self.packagedir = packagedir
 
@@ -49,13 +50,24 @@ next_released_version = "inctestpkg NEXT"
         self.assertFalse(self.packagedir.child("_version.py").exists())
 
         out = []
-        _run('inctestpkg', path=None, newversion=None, patch=False, rc=False,
-             post=False, dev=False, create=True, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            "inctestpkg",
+            path=None,
+            newversion=None,
+            patch=False,
+            rc=False,
+            post=False,
+            dev=False,
+            create=True,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -66,31 +78,35 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 16, 8, 0)
 __all__ = ["__version__"]
-''')
+''',
+        )
 
 
 class MissingTests(TestCase):
-
     def setUp(self):
 
         self.srcdir = FilePath(self.mktemp())
         self.srcdir.makedirs()
 
-        self.srcdir.child('srca').makedirs()
+        self.srcdir.child("srca").makedirs()
 
-        packagedir = self.srcdir.child('srca').child('inctestpkg')
+        packagedir = self.srcdir.child("srca").child("inctestpkg")
         packagedir.makedirs()
 
-        packagedir.child('__init__.py').setContent(b"""
+        packagedir.child("__init__.py").setContent(
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", "NEXT", 0, 0).short()
 next_released_version = "inctestpkg NEXT"
-""")
-        packagedir.child('_version.py').setContent(b"""
+"""
+        )
+        packagedir.child("_version.py").setContent(
+            b"""
 from incremental import Version
 __version__ = Version("inctestpkg", 1, 2, 3)
 __all__ = ["__version__"]
-""")
+"""
+        )
         self.getcwd = lambda: self.srcdir.path
         self.packagedir = packagedir
 
@@ -107,33 +123,46 @@ __all__ = ["__version__"]
         """
         out = []
         with self.assertRaises(ValueError):
-            _run(u'inctestpkg', path=None, newversion=None,
-                 patch=False, rc=False, post=False, dev=True, create=False,
-                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion=None,
+                patch=False,
+                rc=False,
+                post=False,
+                dev=True,
+                create=False,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
 
 
 class CreatedUpdateInSrcTests(TestCase):
-
     def setUp(self):
 
         self.srcdir = FilePath(self.mktemp())
         self.srcdir.makedirs()
 
-        self.srcdir.child('src').makedirs()
+        self.srcdir.child("src").makedirs()
 
-        packagedir = self.srcdir.child('src').child('inctestpkg')
+        packagedir = self.srcdir.child("src").child("inctestpkg")
         packagedir.makedirs()
 
-        packagedir.child('__init__.py').setContent(b"""
+        packagedir.child("__init__.py").setContent(
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", "NEXT", 0, 0).short()
 next_released_version = "inctestpkg NEXT"
-""")
-        packagedir.child('_version.py').setContent(b"""
+"""
+        )
+        packagedir.child("_version.py").setContent(
+            b"""
 from incremental import Version
 __version__ = Version("inctestpkg", 1, 2, 3)
 __all__ = ["__version__"]
-""")
+"""
+        )
         self.getcwd = lambda: self.srcdir.path
         self.packagedir = packagedir
 
@@ -149,13 +178,24 @@ __all__ = ["__version__"]
         version of the package on the given path
         """
         out = []
-        _run(u'inctestpkg', path=None, newversion=None,
-             patch=False, rc=False, post=False, dev=True, create=False,
-             _date=self.date, _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=False,
+            rc=False,
+            post=False,
+            dev=True,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -166,15 +206,27 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 3, dev=0)
 __all__ = ["__version__"]
-''')
+''',
+        )
 
-        _run(u'inctestpkg', path=None, newversion=None,
-             patch=False, rc=False, post=False, dev=True, create=False,
-             _date=self.date, _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=False,
+            rc=False,
+            post=False,
+            dev=True,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -185,7 +237,8 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 3, dev=1)
 __all__ = ["__version__"]
-''')
+''',
+        )
 
 
 class CreatedUpdateTests(TestCase):
@@ -197,19 +250,23 @@ class CreatedUpdateTests(TestCase):
         self.srcdir = FilePath(self.mktemp())
         self.srcdir.makedirs()
 
-        packagedir = self.srcdir.child('inctestpkg')
+        packagedir = self.srcdir.child("inctestpkg")
         packagedir.makedirs()
 
-        packagedir.child('__init__.py').setContent(b"""
+        packagedir.child("__init__.py").setContent(
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", "NEXT", 0, 0).short()
 next_released_version = "inctestpkg NEXT"
-""")
-        packagedir.child('_version.py').setContent(b"""
+"""
+        )
+        packagedir.child("_version.py").setContent(
+            b"""
 from incremental import Version
 __version__ = Version("inctestpkg", 1, 2, 3)
 __all__ = ["__version__"]
-""")
+"""
+        )
         self.getcwd = lambda: self.srcdir.path
         self.packagedir = packagedir
 
@@ -225,13 +282,23 @@ __all__ = ["__version__"]
         version of the package on the given path
         """
         out = []
-        _run(u'inctestpkg', path=self.packagedir.path, newversion=None,
-             patch=False, rc=False, post=False, dev=True, create=False,
-             _date=self.date, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=self.packagedir.path,
+            newversion=None,
+            patch=False,
+            rc=False,
+            post=False,
+            dev=True,
+            create=False,
+            _date=self.date,
+            _print=out.append,
+        )
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -242,20 +309,32 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 3, dev=0)
 __all__ = ["__version__"]
-''')
+''',
+        )
 
     def test_dev(self):
         """
         `incremental.update package --dev` increments the dev version.
         """
         out = []
-        _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=False,
-             post=False, dev=True, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=False,
+            rc=False,
+            post=False,
+            dev=True,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -266,19 +345,31 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 3, dev=0)
 __all__ = ["__version__"]
-''')
+''',
+        )
 
     def test_patch(self):
         """
         `incremental.update package --patch` increments the patch version.
         """
         out = []
-        _run(u'inctestpkg', path=None, newversion=None, patch=True, rc=False,
-             post=False, dev=False, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=True,
+            rc=False,
+            post=False,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -289,32 +380,48 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 4)
 __all__ = ["__version__"]
-''')
-        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
-                         b"""
+''',
+        )
+        self.assertEqual(
+            self.packagedir.child("__init__.py").getContent(),
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", 1, 2, 4).short()
 next_released_version = "inctestpkg 1.2.4"
-""")
+""",
+        )
 
     def test_patch_with_prerelease_and_dev(self):
         """
         `incremental.update package --patch` increments the patch version, and
         disregards any old prerelease/dev versions.
         """
-        self.packagedir.child('_version.py').setContent(b"""
+        self.packagedir.child("_version.py").setContent(
+            b"""
 from incremental import Version
 __version__ = Version("inctestpkg", 1, 2, 3, release_candidate=1, dev=2)
 __all__ = ["__version__"]
-""")
+"""
+        )
 
         out = []
-        _run(u'inctestpkg', path=None, newversion=None, patch=True, rc=False,
-             post=False, dev=False, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=True,
+            rc=False,
+            post=False,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -325,7 +432,8 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 4)
 __all__ = ["__version__"]
-''')
+''',
+        )
 
     def test_rc_patch(self):
         """
@@ -333,12 +441,23 @@ __all__ = ["__version__"]
         version and makes it a release candidate.
         """
         out = []
-        _run(u'inctestpkg', path=None, newversion=None, patch=True, rc=True,
-             post=False, dev=False, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=True,
+            rc=True,
+            post=False,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -349,32 +468,48 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 4, release_candidate=1)
 __all__ = ["__version__"]
-''')
-        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
-                         b"""
+''',
+        )
+        self.assertEqual(
+            self.packagedir.child("__init__.py").getContent(),
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", 1, 2, 4, release_candidate=1).short()
 next_released_version = "inctestpkg 1.2.4.rc1"
-""")
+""",
+        )
 
     def test_rc_with_existing_rc(self):
         """
         `incremental.update package --rc` increments the rc version if the
         existing version is an rc, and discards any dev version.
         """
-        self.packagedir.child('_version.py').setContent(b"""
+        self.packagedir.child("_version.py").setContent(
+            b"""
 from incremental import Version
 __version__ = Version("inctestpkg", 1, 2, 3, release_candidate=1, dev=2)
 __all__ = ["__version__"]
-""")
+"""
+        )
 
         out = []
-        _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=True,
-             post=False, dev=False, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=False,
+            rc=True,
+            post=False,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -385,13 +520,16 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 3, release_candidate=2)
 __all__ = ["__version__"]
-''')
-        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
-                         b"""
+''',
+        )
+        self.assertEqual(
+            self.packagedir.child("__init__.py").getContent(),
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", 1, 2, 3, release_candidate=2).short()
 next_released_version = "inctestpkg 1.2.3.rc2"
-""")
+""",
+        )
 
     def test_rc_with_no_rc(self):
         """
@@ -399,19 +537,32 @@ next_released_version = "inctestpkg 1.2.3.rc2"
         candidate, will issue a new major/minor rc, and disregards the micro
         and dev.
         """
-        self.packagedir.child('_version.py').setContent(b"""
+        self.packagedir.child("_version.py").setContent(
+            b"""
 from incremental import Version
 __version__ = Version("inctestpkg", 1, 2, 3, dev=2)
 __all__ = ["__version__"]
-""")
+"""
+        )
 
         out = []
-        _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=True,
-             post=False, dev=False, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=False,
+            rc=True,
+            post=False,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -422,13 +573,16 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 16, 8, 0, release_candidate=1)
 __all__ = ["__version__"]
-''')
-        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
-                         b"""
+''',
+        )
+        self.assertEqual(
+            self.packagedir.child("__init__.py").getContent(),
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", 16, 8, 0, release_candidate=1).short()
 next_released_version = "inctestpkg 16.8.0.rc1"
-""")
+""",
+        )
 
     def test_full_with_rc(self):
         """
@@ -436,12 +590,23 @@ next_released_version = "inctestpkg 16.8.0.rc1"
         candidate, will issue the major/minor, sans release candidate or dev.
         """
         out = []
-        _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=True,
-             post=False, dev=False, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=False,
+            rc=True,
+            post=False,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -452,20 +617,34 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 16, 8, 0, release_candidate=1)
 __all__ = ["__version__"]
-''')
-        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
-                         b"""
+''',
+        )
+        self.assertEqual(
+            self.packagedir.child("__init__.py").getContent(),
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", 16, 8, 0, release_candidate=1).short()
 next_released_version = "inctestpkg 16.8.0.rc1"
-""")
+""",
+        )
 
-        _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=False,
-             post=False, dev=False, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=False,
+            rc=False,
+            post=False,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -476,13 +655,16 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 16, 8, 0)
 __all__ = ["__version__"]
-''')
-        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
-                         b"""
+''',
+        )
+        self.assertEqual(
+            self.packagedir.child("__init__.py").getContent(),
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", 16, 8, 0).short()
 next_released_version = "inctestpkg 16.8.0"
-""")
+""",
+        )
 
     def test_full_without_rc(self):
         """
@@ -491,26 +673,48 @@ next_released_version = "inctestpkg 16.8.0"
         """
         out = []
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=False,
-                 rc=False, post=False, dev=False, create=False,
-                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion=None,
+                patch=False,
+                rc=False,
+                post=False,
+                dev=False,
+                create=False,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
 
         self.assertEqual(
             e.exception.args[0],
-            "You need to issue a rc before updating the major/minor")
+            "You need to issue a rc before updating the major/minor",
+        )
 
     def test_post(self):
         """
         `incremental.update package --post` increments the post version.
         """
         out = []
-        _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=False,
-             post=True, dev=False, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=False,
+            rc=False,
+            post=True,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
         self.assertTrue(self.packagedir.child("_version.py").exists())
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -521,26 +725,40 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 3, post=0)
 __all__ = ["__version__"]
-''')
+''',
+        )
 
     def test_post_with_prerelease_and_dev(self):
         """
         `incremental.update package --post` increments the post version, and
         disregards any old prerelease/dev versions.
         """
-        self.packagedir.child('_version.py').setContent(b"""
+        self.packagedir.child("_version.py").setContent(
+            b"""
 from incremental import Version
 __version__ = Version("inctestpkg", 1, 2, 3, release_candidate=1, dev=2)
 __all__ = ["__version__"]
-""")
+"""
+        )
 
         out = []
-        _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=False,
-             post=True, dev=False, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=False,
+            rc=False,
+            post=True,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -551,26 +769,40 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 3, post=0)
 __all__ = ["__version__"]
-''')
+''',
+        )
 
     def test_post_with_existing_post(self):
         """
         `incremental.update package --post` increments the post version if the
         existing version is an postrelease, and discards any dev version.
         """
-        self.packagedir.child('_version.py').setContent(b"""
+        self.packagedir.child("_version.py").setContent(
+            b"""
 from incremental import Version
 __version__ = Version("inctestpkg", 1, 2, 3, post=1, dev=2)
 __all__ = ["__version__"]
-""")
+"""
+        )
 
         out = []
-        _run(u'inctestpkg', path=None, newversion=None, patch=False, rc=False,
-             post=True, dev=False, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion=None,
+            patch=False,
+            rc=False,
+            post=True,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -581,13 +813,16 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 3, post=2)
 __all__ = ["__version__"]
-''')
-        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
-                         b"""
+''',
+        )
+        self.assertEqual(
+            self.packagedir.child("__init__.py").getContent(),
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", 1, 2, 3, post=2).short()
 next_released_version = "inctestpkg 1.2.3.post2"
-""")
+""",
+        )
 
     def test_no_mix_newversion(self):
         """
@@ -596,27 +831,67 @@ next_released_version = "inctestpkg 1.2.3.post2"
         """
         out = []
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion="1", patch=True,
-                 rc=False, post=False, dev=False, create=False,
-                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion="1",
+                patch=True,
+                rc=False,
+                post=False,
+                dev=False,
+                create=False,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --newversion")
 
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion="1", patch=False,
-                 rc=True, post=False, dev=False, create=False,
-                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion="1",
+                patch=False,
+                rc=True,
+                post=False,
+                dev=False,
+                create=False,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --newversion")
 
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion="1", patch=False,
-                 rc=False, post=True, dev=False, create=False,
-                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion="1",
+                patch=False,
+                rc=False,
+                post=True,
+                dev=False,
+                create=False,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --newversion")
 
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion="1", patch=False,
-                 rc=False, post=False, dev=True, create=False,
-                 _date=self.date, _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion="1",
+                patch=False,
+                rc=False,
+                post=False,
+                dev=True,
+                create=False,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --newversion")
 
     def test_no_mix_dev(self):
@@ -625,21 +900,51 @@ next_released_version = "inctestpkg 1.2.3.post2"
         """
         out = []
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=True,
-                 rc=False, post=False, dev=True, create=False, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion=None,
+                patch=True,
+                rc=False,
+                post=False,
+                dev=True,
+                create=False,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --dev")
 
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=False,
-                 rc=True, post=False, dev=True, create=False, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion=None,
+                patch=False,
+                rc=True,
+                post=False,
+                dev=True,
+                create=False,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --dev")
 
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=False,
-                 rc=False, post=True, dev=True, create=False, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion=None,
+                patch=False,
+                rc=False,
+                post=True,
+                dev=True,
+                create=False,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --dev")
 
     def test_no_mix_create(self):
@@ -649,33 +954,83 @@ next_released_version = "inctestpkg 1.2.3.post2"
         """
         out = []
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=True,
-                 rc=False, post=False, dev=False, create=True, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion=None,
+                patch=True,
+                rc=False,
+                post=False,
+                dev=False,
+                create=True,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --create")
 
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion="1", patch=False,
-                 rc=False, post=False, dev=False, create=True, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion="1",
+                patch=False,
+                rc=False,
+                post=False,
+                dev=False,
+                create=True,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --create")
 
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=False,
-                 rc=True, post=False, dev=False, create=True, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion=None,
+                patch=False,
+                rc=True,
+                post=False,
+                dev=False,
+                create=True,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --create")
 
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=False,
-                 rc=False, post=True, dev=False, create=True, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion=None,
+                patch=False,
+                rc=False,
+                post=True,
+                dev=False,
+                create=True,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --create")
 
         with self.assertRaises(ValueError) as e:
-            _run(u'inctestpkg', path=None, newversion=None, patch=False,
-                 rc=False, post=False, dev=True, create=True, _date=self.date,
-                 _getcwd=self.getcwd, _print=out.append)
+            _run(
+                u"inctestpkg",
+                path=None,
+                newversion=None,
+                patch=False,
+                rc=False,
+                post=False,
+                dev=True,
+                create=True,
+                _date=self.date,
+                _getcwd=self.getcwd,
+                _print=out.append,
+            )
         self.assertEqual(e.exception.args[0], "Only give --create")
 
     def test_newversion(self):
@@ -684,12 +1039,23 @@ next_released_version = "inctestpkg 1.2.3.post2"
         set that version in the package.
         """
         out = []
-        _run(u'inctestpkg', path=None, newversion="1.2.3.rc1.post2.dev3",
-             patch=False, rc=False, post=False, dev=False, create=False,
-             _date=self.date, _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion="1.2.3.rc1.post2.dev3",
+            patch=False,
+            rc=False,
+            post=False,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -699,16 +1065,21 @@ Provides inctestpkg version information.
 from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 2, 3, '''
-                         b'''release_candidate=1, post=2, dev=3)
+            b"""release_candidate=1, post=2, dev=3)
 __all__ = ["__version__"]
-''')
-        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
-                         (b"""
+""",
+        )
+        self.assertEqual(
+            self.packagedir.child("__init__.py").getContent(),
+            (
+                b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", 1, 2, 3, """
-                         b"""release_candidate=1, post=2, dev=3).short()
+                b"""release_candidate=1, post=2, dev=3).short()
 next_released_version = "inctestpkg 1.2.3.rc1.post2.dev3"
-"""))
+"""
+            ),
+        )
 
     def test_newversion_bare(self):
         """
@@ -716,12 +1087,23 @@ next_released_version = "inctestpkg 1.2.3.rc1.post2.dev3"
         version in the package.
         """
         out = []
-        _run(u'inctestpkg', path=None, newversion="1", patch=False,
-             rc=False, post=False, dev=False, create=False, _date=self.date,
-             _getcwd=self.getcwd, _print=out.append)
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion="1",
+            patch=False,
+            rc=False,
+            post=False,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -732,37 +1114,43 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 1, 0, 0)
 __all__ = ["__version__"]
-''')
-        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
-                         b"""
+''',
+        )
+        self.assertEqual(
+            self.packagedir.child("__init__.py").getContent(),
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", 1, 0, 0).short()
 next_released_version = "inctestpkg 1.0.0"
-""")
+""",
+        )
 
 
 class ScriptTests(TestCase):
-
     def setUp(self):
 
         self.srcdir = FilePath(self.mktemp())
         self.srcdir.makedirs()
 
-        self.srcdir.child('src').makedirs()
+        self.srcdir.child("src").makedirs()
 
-        packagedir = self.srcdir.child('src').child('inctestpkg')
+        packagedir = self.srcdir.child("src").child("inctestpkg")
         packagedir.makedirs()
 
-        packagedir.child('__init__.py').setContent(b"""
+        packagedir.child("__init__.py").setContent(
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", "NEXT", 0, 0).short()
 next_released_version = "inctestpkg NEXT"
-""")
-        packagedir.child('_version.py').setContent(b"""
+"""
+        )
+        packagedir.child("_version.py").setContent(
+            b"""
 from incremental import Version
 __version__ = Version("inctestpkg", 1, 2, 3)
 __all__ = ["__version__"]
-""")
+"""
+        )
         self.getcwd = lambda: self.srcdir.path
         self.packagedir = packagedir
 
@@ -781,7 +1169,7 @@ __all__ = ["__version__"]
         Calling run() with no args will cause it to print help.
         """
         stringio = NativeStringIO()
-        self.patch(sys, 'stdout', stringio)
+        self.patch(sys, "stdout", stringio)
 
         with self.assertRaises(SystemExit) as e:
             run(["--help"])
@@ -794,9 +1182,9 @@ __all__ = ["__version__"]
         Calling run() with no args will cause it to print help.
         """
         stringio = NativeStringIO()
-        self.patch(sys, 'stdout', stringio)
-        self.patch(os, 'getcwd', self.getcwd)
-        self.patch(datetime, 'date', self.date)
+        self.patch(sys, "stdout", stringio)
+        self.patch(os, "getcwd", self.getcwd)
+        self.patch(datetime, "date", self.date)
 
         with self.assertRaises(SystemExit) as e:
             run(["inctestpkg", "--rc"])
@@ -804,8 +1192,9 @@ __all__ = ["__version__"]
         self.assertEqual(e.exception.args[0], 0)
         self.assertIn("Updating codebase", stringio.getvalue())
 
-        self.assertEqual(self.packagedir.child("_version.py").getContent(),
-                         b'''"""
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
 Provides inctestpkg version information.
 """
 
@@ -816,10 +1205,13 @@ from incremental import Version
 
 __version__ = Version("inctestpkg", 16, 8, 0, release_candidate=1)
 __all__ = ["__version__"]
-''')
-        self.assertEqual(self.packagedir.child("__init__.py").getContent(),
-                         b"""
+''',
+        )
+        self.assertEqual(
+            self.packagedir.child("__init__.py").getContent(),
+            b"""
 from incremental import Version
 introduced_in = Version("inctestpkg", 16, 8, 0, release_candidate=1).short()
 next_released_version = "inctestpkg 16.8.0.rc1"
-""")
+""",
+        )
