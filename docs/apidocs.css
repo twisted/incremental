@@ -4,8 +4,27 @@
 
 .page-header {
     margin-top: 22px;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    margin-bottom: 3px;
+    border-bottom: 0;
+    box-shadow: 0px 0px 8px 8px #fff;
+}
+.page-header h1 {
+    margin-bottom: 0;
 }
 
+.categoryHeader {
+    font-size: 24px;
+    color: #777;
+    margin-bottom: 1.8em;
+}
+
+a[name] {
+    position: relative;
+    bottom: 62px;
+}
 
 ul {
     margin-top: 10px;
@@ -122,7 +141,7 @@ tr.class, tr.classvariable, tr.baseclassvariable {
     background-color: #fffde7;
 }
 
-tr.instancevariable, tr.baseinstancevariable, tr.variable, tr.attribute {
+tr.instancevariable, tr.baseinstancevariable, tr.variable, tr.attribute, tr.property {
     background-color: #f3e5f5;
 }
 
@@ -142,10 +161,14 @@ tr.private {
     margin-top: 10px;
 }
 
+.fieldName {
+    font-weight: bold;
+}
+
 
 #childList > div {
-    margin: 20px;
-    padding: 15px;
+    margin: 10px;
+    padding: 10px;
     padding-bottom: 5px;
 }
 
@@ -172,12 +195,34 @@ tr.private {
     margin-bottom: 6px;
 }
 
-.code {
+/*
+- <h1><code></code></h1> : This is for the main top navagation bar
+
+- <a><code></code><a> for links in docstrings texts
+This is inline docstring content marked up as code, for example L{foo} in epytext
+or `bar` in restructuredtext
+
+- <a class="code"> links that are present in summary tables
+*/
+a > code, a.code {
+    color:#c7254e;
+    background-color:#f9f2f4;
+}
+.page-header > h1 > code {
+    color: #971c3a;
+}
+
+/*
+This defines  the "code" class, it's black on light gray,
+
+It also overwrite the default values inherited from bootstrap min
+*/
+code, .code {
     font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
     padding:2px 4px;
     font-size:90%;
-    color:#c7254e;
-    background-color:#f9f2f4;
+    color: #222222;
+    background-color: #f4f4f4;
     border-radius:4px
 }
 
@@ -186,14 +231,26 @@ code > .code {
 }
 
 
+
+a.functionSourceLink {
+    font-weight: normal;
+}
+
+
 #childList > div {
     border-left-color: #03a9f4;
     border-left-width: 1px;
     border-left-style: solid;
+    background: #fafafa;
 }
+
+/* Function definitions `def func():` and `var =` */
 
 #childList > div .functionHeader {
     font-family: monospace;
+    font-weight: bold;
+    color: #222222;
+
 }
 
 .moduleDocstring {
@@ -215,7 +272,9 @@ pre {
 
 /* Private stuff */
 
-body.private-hidden #splitTables .private, body.private-hidden #childList .private {
+body.private-hidden #splitTables .private,
+body.private-hidden #childList .private,
+body.private-hidden #summaryTree .private {
     display: none;
 }
 

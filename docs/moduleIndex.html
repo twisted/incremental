@@ -20,14 +20,21 @@
       </div>
     </nav>
 
+    <div id="showPrivate">
+      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+    </div>
+
     <div class="container">
 
       <div class="page-header">
         <h1>Module Index</h1>
       </div>
 
-      <ul><li><a href="incremental.html" class="code" data-type="Package">incremental</a> - <span>Versions for Python packages.</span><ul><li><a href="incremental._version.html" class="code" data-type="Module">incremental._version</a> - <span>Provides Incremental version information.</span></li><li><a href="incremental.tests.html" class="code" data-type="Package">incremental.tests</a> - <span class="undocumented">No package docstring; 2/2 modules documented</span><ul><li><a href="incremental.tests.test_update.html" class="code" data-type="Module">incremental.tests.test_update</a> - <span>Tests for <a href="incremental.update.html"><code>incremental.update</code></a>.</span></li><li><a href="incremental.tests.test_version.html" class="code" data-type="Module">incremental.tests.test_version</a> - <span>Tests for <a href="incremental.html"><code>incremental</code></a>.</span></li></ul></li><li><a href="incremental.update.html" class="code" data-type="Module">incremental.update</a> - <span class="undocumented">Undocumented</span></li></ul></li></ul>
+      <ul id="summaryTree"><li><a href="incremental.html" class="code" data-type="Package">incremental</a> - <span>Versions for Python packages.</span><ul><li class="private"><a href="incremental._version.html" class="code" data-type="Module">incremental._version</a> - <span>Provides Incremental version information.</span></li><li><a href="incremental.tests.html" class="code" data-type="Package">incremental.tests</a> - <span class="undocumented">No package docstring; 2/2 modules documented</span><ul><li><a href="incremental.tests.test_update.html" class="code" data-type="Module">incremental.tests.test_update</a> - <span>Tests for <a href="incremental.update.html"><code>incremental.update</code></a>.</span></li><li><a href="incremental.tests.test_version.html" class="code" data-type="Module">incremental.tests.test_version</a> - <span>Tests for <a href="incremental.html"><code>incremental</code></a>.</span></li></ul></li><li><a href="incremental.update.html" class="code" data-type="Module">incremental.update</a> - <span class="undocumented">Undocumented</span></li></ul></li></ul>
 
     </div>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
   </body>
 </html>
