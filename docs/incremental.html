@@ -21,14 +21,13 @@
       </div>
     </nav>
 
-    <div id="showPrivate">
-      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
-    </div>
-
     <div class="container">
 
       <div class="page-header">
-        <h1 class="package"><code><a href="incremental.html" class="code" data-type="Package">incremental</a></code></h1>
+        <h1 class="package"><code><code><a href="incremental.html">incremental</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
       </div>
 
       <div class="categoryHeader">
@@ -41,7 +40,7 @@
       </div>
 
       <div class="moduleDocstring">
-        <div><p>Versions for Python packages.</p><p>See <a href="incremental.Version.html"><code>Version</code></a>.</p></div>
+        <div><p>Versions for Python packages.</p><p>See <code><a href="incremental.Version.html">Version</a></code>.</p></div>
       </div>
 
       <div id="splitTables">
@@ -50,17 +49,17 @@
   <tr class="package">
     
     <td>Package</td>
-    <td><a href="incremental.tests.html" class="code" data-type="Package">tests</a></td>
+    <td><code><a href="incremental.tests.html">tests</a></code></td>
     <td><span class="undocumented">No package docstring; 2/2 modules documented</span></td>
   </tr><tr class="module">
     
     <td>Module</td>
-    <td><a href="incremental.update.html" class="code" data-type="Module">update</a></td>
+    <td><code><a href="incremental.update.html">update</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="module private">
     
     <td>Module</td>
-    <td><a href="incremental._version.html" class="code" data-type="Module">_version</a></td>
+    <td><code><a href="incremental._version.html">_version</a></code></td>
     <td><span>Provides Incremental version information.</span></td>
   </tr>
 </table>
@@ -71,42 +70,42 @@
   <tr class="class">
     
     <td>Class</td>
-    <td><a href="incremental.IncomparableVersions.html" class="code" data-type="Class">IncomparableVersions</a></td>
+    <td><code><a href="incremental.IncomparableVersions.html">IncomparableVersions</a></code></td>
     <td><span>Two versions could not be compared.</span></td>
   </tr><tr class="class">
     
     <td>Class</td>
-    <td><a href="incremental.Version.html" class="code" data-type="Class">Version</a></td>
+    <td><code><a href="incremental.Version.html">Version</a></code></td>
     <td><span>An encapsulation of a version for a project, with support for outputting PEP-440 compatible version strings.</span></td>
   </tr><tr class="function">
     
     <td>Function</td>
-    <td><a href="incremental.html#getVersionString" class="code" data-type="Function">getVersionString</a></td>
+    <td><code><a href="incremental.html#getVersionString">getVersionString</a></code></td>
     <td><span>Get a friendly string for the given version object.</span></td>
   </tr><tr class="variable private">
     
     <td>Variable</td>
-    <td><a href="incremental.html#_PY3" class="code" data-type="Variable">_PY3</a></td>
+    <td><code><a href="incremental.html#_PY3">_PY3</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="function private">
     
     <td>Function</td>
-    <td><a href="incremental.html#_cmp" class="code" data-type="Function">_cmp</a></td>
+    <td><code><a href="incremental.html#_cmp">_cmp</a></code></td>
     <td><span>Compare two objects.</span></td>
   </tr><tr class="function private">
     
     <td>Function</td>
-    <td><a href="incremental.html#_comparable" class="code" data-type="Function">_comparable</a></td>
+    <td><code><a href="incremental.html#_comparable">_comparable</a></code></td>
     <td><span>Class decorator that ensures support for the special <code>__cmp__</code> method.</span></td>
   </tr><tr class="function private">
     
     <td>Function</td>
-    <td><a href="incremental.html#_get_version" class="code" data-type="Function">_get_version</a></td>
+    <td><code><a href="incremental.html#_get_version">_get_version</a></code></td>
     <td><span>Get the version from the package listed in the Distribution.</span></td>
   </tr><tr class="class private">
     
     <td>Class</td>
-    <td><a href="incremental._inf.html" class="code" data-type="Class">_inf</a></td>
+    <td><code><a href="incremental._inf.html">_inf</a></code></td>
     <td><span>An object that is bigger than all other objects.</span></td>
   </tr>
 </table>
@@ -124,7 +123,7 @@
   </a>
   <div class="functionHeader">
     
-    _PY3 =
+    <span class="py-defname">_PY3</span> =
     
   </div>
   <div class="functionBody">
@@ -142,7 +141,7 @@
   </a>
   <div class="functionHeader">
     
-    def _cmp(a, b):
+    <span class="py-keyword">def</span> <span class="py-defname">_cmp</span>(a, b):
     
   </div>
   <div class="docstring functionBody">
@@ -160,7 +159,7 @@
   </a>
   <div class="functionHeader">
     
-    def _comparable(klass):
+    <span class="py-keyword">def</span> <span class="py-defname">_comparable</span>(klass):
     
   </div>
   <div class="docstring functionBody">
@@ -178,13 +177,13 @@
   </a>
   <div class="functionHeader">
     
-    def getVersionString(version):
+    <span class="py-keyword">def</span> <span class="py-defname">getVersionString</span>(version):
     
   </div>
   <div class="docstring functionBody">
     
     
-    <div><p>Get a friendly string for the given version object.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">version</td><td>A <a href="incremental.Version.html"><code>Version</code></a> object.</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2">A string containing the package and short version number.</td></tr></table></div>
+    <div><p>Get a friendly string for the given version object.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">version</td><td>A <code><a href="incremental.Version.html">Version</a></code> object.</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2">A string containing the package and short version number.</td></tr></table></div>
   </div>
 </div><div class="basefunction private">
   
@@ -196,7 +195,7 @@
   </a>
   <div class="functionHeader">
     
-    def _get_version(dist, keyword, value):
+    <span class="py-keyword">def</span> <span class="py-defname">_get_version</span>(dist, keyword, value):
     
   </div>
   <div class="docstring functionBody">
@@ -208,7 +207,7 @@
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 20.12.1 at 2021-02-16 21:46:31.
+        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.0 at 2021-03-01 20:38:51.
       </address>
 
     </div>
