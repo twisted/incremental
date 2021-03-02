@@ -1,3 +1,14 @@
+Incremental 21.3.0 (2021-03-01)
+===============================
+
+Bugfixes
+--------
+
+- The output of incremental is now compatible with Black (#56, #60)
+- Incremental now properly supports PEP 440-compliant dev, rc, post suffixes (#62)
+- Incremental now properly supports PEP 440-compliant post releases (#37)
+
+
 Incremental 17.5.0 (2017-05-20)
 ===============================
 
