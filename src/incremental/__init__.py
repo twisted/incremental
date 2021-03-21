@@ -11,91 +11,43 @@ from __future__ import division, absolute_import
 
 import sys
 import warnings
+from typing import TYPE_CHECKING, Any, TypeVar, Generic, Union, Optional, Dict
 
 #
 # Compat functions
 #
 
-if sys.version_info < (3, 0):
-    _PY3 = False
+_T = TypeVar("_T", contravariant=True)
+
+
+if TYPE_CHECKING:
+    from typing_extensions import Literal
+    from distutils.dist import Distribution as _Distribution
+
+    def _cmp(a, b):  # type: (Any, Any) -> int
+        return 0
+
+
 else:
-    _PY3 = True
+    _Distribution = object
 
-try:
-    _cmp = cmp
-except NameError:
+    try:
+        _cmp = cmp
+    except NameError:
 
-    def _cmp(a, b):
-        """
-        Compare two objects.
+        def _cmp(a, b):  # type: (Any, Any) -> int
+            """
+            Compare two objects.
 
-        Returns a negative number if C{a < b}, zero if they are equal, and a
-        positive number if C{a > b}.
-        """
-        if a < b:
-            return -1
-        elif a == b:
-            return 0
-        else:
-            return 1
-
-
-def _comparable(klass):
-    """
-    Class decorator that ensures support for the special C{__cmp__} method.
-
-    On Python 2 this does nothing.
-
-    On Python 3, C{__eq__}, C{__lt__}, etc. methods are added to the class,
-    relying on C{__cmp__} to implement their comparisons.
-    """
-    # On Python 2, __cmp__ will just work, so no need to add extra methods:
-    if not _PY3:
-        return klass
-
-    def __eq__(self, other):
-        c = self.__cmp__(other)
-        if c is NotImplemented:
-            return c
-        return c == 0
-
-    def __ne__(self, other):
-        c = self.__cmp__(other)
-        if c is NotImplemented:
-            return c
-        return c != 0
-
-    def __lt__(self, other):
-        c = self.__cmp__(other)
-        if c is NotImplemented:
-            return c
-        return c < 0
-
-    def __le__(self, other):
-        c = self.__cmp__(other)
-        if c is NotImplemented:
-            return c
-        return c <= 0
-
-    def __gt__(self, other):
-        c = self.__cmp__(other)
-        if c is NotImplemented:
-            return c
-        return c > 0
-
-    def __ge__(self, other):
-        c = self.__cmp__(other)
-        if c is NotImplemented:
-            return c
-        return c >= 0
-
-    klass.__lt__ = __lt__
-    klass.__gt__ = __gt__
-    klass.__le__ = __le__
-    klass.__ge__ = __ge__
-    klass.__eq__ = __eq__
-    klass.__ne__ = __ne__
-    return klass
+            Returns a negative number if C{a < b}, zero if they are equal, and a
+            positive number if C{a > b}.
+            """
+            if a < b:
+                return -1
+            elif a == b:
+                return 0
+            else:
+                return 1
 
 
 #
@@ -103,13 +55,12 @@ def _comparable(klass):
 #
 
 
-@_comparable
-class _inf(object):
+class _Inf(object):
     """
     An object that is bigger than all other objects.
     """
 
-    def __cmp__(self, other):
+    def __cmp__(self, other):  # type: (object) -> int
         """
         @param other: Another object.
         @type other: any
@@ -121,8 +72,46 @@ class _inf(object):
             return 0
         return 1
 
+    if sys.version_info >= (3, 0):
 
-_inf = _inf()
+        def __eq__(self, other):  # type: (object) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c == 0
+
+        def __ne__(self, other):  # type: (object) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c != 0
+
+        def __lt__(self, other):  # type: (object) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c < 0
+
+        def __le__(self, other):  # type: (object) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c <= 0
+
+        def __gt__(self, other):  # type: (object) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c > 0
+
+        def __ge__(self, other):  # type: (object) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c >= 0
+
+
+_inf = _Inf()
 
 
 class IncomparableVersions(TypeError):
@@ -131,7 +120,6 @@ class IncomparableVersions(TypeError):
     """
 
 
-@_comparable
 class Version(object):
     """
     An encapsulation of a version for a project, with support for outputting
@@ -143,14 +131,14 @@ class Version(object):
 
     def __init__(
         self,
-        package,
-        major,
-        minor,
-        micro,
-        release_candidate=None,
-        prerelease=None,
-        post=None,
-        dev=None,
+        package,  # type: str
+        major,  # type: Union[Literal["NEXT"], int]
+        minor,  # type: int
+        micro,  # type: int
+        release_candidate=None,  # type: Optional[int]
+        prerelease=None,  # type: Optional[int]
+        post=None,  # type: Optional[int]
+        dev=None,  # type: Optional[int]
     ):
         """
         @param package: Name of the package that this is a version of.
@@ -199,7 +187,7 @@ class Version(object):
         self.dev = dev
 
     @property
-    def prerelease(self):
+    def prerelease(self):  # type: () -> Optional[int]
         warnings.warn(
             (
                 "Accessing incremental.Version.prerelease was "
@@ -211,7 +199,7 @@ class Version(object):
         ),
         return self.release_candidate
 
-    def public(self):
+    def public(self):  # type: () -> str
         """
         Return a PEP440-compatible "public" representation of this L{Version}.
 
@@ -246,7 +234,7 @@ class Version(object):
     short = public
     local = public
 
-    def __repr__(self):
+    def __repr__(self):  # type: () -> str
 
         if self.release_candidate is None:
             release_candidate = ""
@@ -274,10 +262,10 @@ class Version(object):
             dev,
         )
 
-    def __str__(self):
+    def __str__(self):  # type: () -> str
         return "[%s, version %s]" % (self.package, self.short())
 
-    def __cmp__(self, other):
+    def __cmp__(self, other):  # type: (Version) -> int
         """
         Compare two versions, considering major versions, minor versions, micro
         versions, then release candidates, then postreleases, then dev
@@ -306,12 +294,12 @@ class Version(object):
             raise IncomparableVersions("%r != %r" % (self.package, other.package))
 
         if self.major == "NEXT":
-            major = _inf
+            major = _inf  # type: Union[int, _Inf]
         else:
             major = self.major
 
         if self.release_candidate is None:
-            release_candidate = _inf
+            release_candidate = _inf  # type: Union[int, _Inf]
         else:
             release_candidate = self.release_candidate
 
@@ -321,17 +309,17 @@ class Version(object):
             post = self.post
 
         if self.dev is None:
-            dev = _inf
+            dev = _inf  # type: Union[int, _Inf]
         else:
             dev = self.dev
 
         if other.major == "NEXT":
-            othermajor = _inf
+            othermajor = _inf  # type: Union[int, _Inf]
         else:
             othermajor = other.major
 
         if other.release_candidate is None:
-            otherrc = _inf
+            otherrc = _inf  # type: Union[int, _Inf]
         else:
             otherrc = other.release_candidate
 
@@ -341,7 +329,7 @@ class Version(object):
             otherpost = other.post
 
         if other.dev is None:
-            otherdev = _inf
+            otherdev = _inf  # type: Union[int, _Inf]
         else:
             otherdev = other.dev
 
@@ -351,8 +339,46 @@ class Version(object):
         )
         return x
 
+    if sys.version_info >= (3, 0):
 
-def getVersionString(version):
+        def __eq__(self, other):  # type: (Any) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c == 0
+
+        def __ne__(self, other):  # type: (Any) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c != 0
+
+        def __lt__(self, other):  # type: (Version) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c < 0
+
+        def __le__(self, other):  # type: (Version) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c <= 0
+
+        def __gt__(self, other):  # type: (Version) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c > 0
+
+        def __ge__(self, other):  # type: (Version) -> bool
+            c = self.__cmp__(other)
+            if c is NotImplemented:
+                return c  # type: ignore[return-value]
+            return c >= 0
+
+
+def getVersionString(version):  # type: (Version) -> str
     """
     Get a friendly string for the given version object.
 
@@ -363,7 +389,7 @@ def getVersionString(version):
     return result
 
 
-def _get_version(dist, keyword, value):
+def _get_version(dist, keyword, value):  # type: (_Distribution, object, object) -> None
     """
     Get the version from the package listed in the Distribution.
     """
@@ -375,12 +401,12 @@ def _get_version(dist, keyword, value):
     sp_command = build_py.build_py(dist)
     sp_command.finalize_options()
 
-    for item in sp_command.find_all_modules():
+    for item in sp_command.find_all_modules():  # type: ignore[attr-defined]
         if item[1] == "_version":
-            version_file = {}
+            version_file = {}  # type: Dict[str, Version]
 
             with open(item[2]) as f:
-                exec(f.read(), version_file)
+                exec (f.read(), version_file)
 
             dist.metadata.version = version_file["__version__"].public()
             return None
@@ -391,7 +417,7 @@ def _get_version(dist, keyword, value):
 from ._version import __version__  # noqa
 
 
-def _setuptools_version():
+def _setuptools_version():  # type: () -> str
     return __version__.public()
 
 

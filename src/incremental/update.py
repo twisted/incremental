@@ -6,9 +6,51 @@ from __future__ import absolute_import, division, print_function
 import click
 import os
 import datetime
+from typing import TYPE_CHECKING, Dict, Optional, Callable, Union, Iterable
 
 from incremental import Version
-from twisted.python.filepath import FilePath
+
+if TYPE_CHECKING:
+    from typing_extensions import Protocol
+
+    class _ReadableWritable(Protocol):
+        def read(self):  # type: () -> bytes
+            pass
+
+        def write(self, v):  # type: (bytes) -> object
+            pass
+
+        def __enter__(self):  # type: () -> _ReadableWritable
+            pass
+
+        def __exit__(self, *args, **kwargs):  # type: (object, object) -> Optional[bool]
+            pass
+
+    class FilePath(object):
+        def __init__(self, path):  # type: (str) -> None
+            self.path = path
+
+        def child(self, v):  # type: (str) -> FilePath
+            pass
+
+        def isdir(self):  # type: () -> bool
+            pass
+
+        def isfile(self):  # type: () -> bool
+            pass
+
+        def getContent(self):  # type: () -> bytes
+            pass
+
+        def open(self, mode):  # type: (str) -> _ReadableWritable
+            pass
+
+        def walk(self):  # type: () -> Iterable[FilePath]
+            pass
+
+
+else:
+    from twisted.python.filepath import FilePath
 
 _VERSIONPY_TEMPLATE = '''"""
 Provides {package} version information.
@@ -26,7 +68,7 @@ __all__ = ["__version__"]
 _YEAR_START = 2000
 
 
-def _findPath(path, package):
+def _findPath(path, package):  # type: (str, str) -> FilePath
 
     cwd = FilePath(path)
 
@@ -48,28 +90,28 @@ def _findPath(path, package):
         )
 
 
-def _existing_version(path):
-    version_info = {}
+def _existing_version(path):  # type: (FilePath) -> Version
+    version_info = {}  # type: Dict[str, Version]
 
     with path.child("_version.py").open("r") as f:
-        exec(f.read(), version_info)
+        exec (f.read(), version_info)
 
     return version_info["__version__"]
 
 
 def _run(
-    package,
-    path,
-    newversion,
-    patch,
-    rc,
-    post,
-    dev,
-    create,
-    _date=None,
-    _getcwd=None,
-    _print=print,
-):
+    package,  # type: str
+    path,  # type: Optional[str]
+    newversion,  # type: Optional[str]
+    patch,  # type: bool
+    rc,  # type: bool
+    post,  # type: bool
+    dev,  # type: bool
+    create,  # type: bool
+    _date=None,  # type: Optional[datetime.date]
+    _getcwd=None,  # type: Optional[Callable[[], str]]
+    _print=print,  # type: Callable[[object], object]
+):  # type: (...) -> None
 
     if not _getcwd:
         _getcwd = os.getcwd
@@ -77,13 +119,10 @@ def _run(
     if not _date:
         _date = datetime.date.today()
 
-    if type(package) != str:
+    if not TYPE_CHECKING and type(package) != str:
         package = package.encode("utf8")
 
-    if not path:
-        path = _findPath(_getcwd(), package)
-    else:
-        path = FilePath(path)
+    _path = FilePath(path) if path else _findPath(_getcwd(), package)
 
     if (
         newversion
@@ -117,22 +156,31 @@ def _run(
     if newversion:
         from pkg_resources import parse_version
 
-        existing = _existing_version(path)
-        st_version = parse_version(newversion)._version
+        existing = _existing_version(_path)
+        st_version = parse_version(newversion)._version  # type: ignore[attr-defined]
 
         release = list(st_version.release)
 
+        minor = 0
+        micro = 0
         if len(release) == 1:
-            release.append(0)
-        if len(release) == 2:
-            release.append(0)
+            (major,) = release
+        elif len(release) == 2:
+            (
+                major,
+                minor,
+            ) = release
+        else:
+            major, minor, micro = release
 
         v = Version(
             package,
-            *release,
+            major,
+            minor,
+            micro,
             release_candidate=st_version.pre[1] if st_version.pre else None,
             post=st_version.post[1] if st_version.post else None,
-            dev=st_version.dev[1] if st_version.dev else None
+            dev=st_version.dev[1] if st_version.dev else None,
         )
 
     elif create:
@@ -140,7 +188,7 @@ def _run(
         existing = v
 
     elif rc and not patch:
-        existing = _existing_version(path)
+        existing = _existing_version(_path)
 
         if existing.release_candidate:
             v = Version(
@@ -154,16 +202,17 @@ def _run(
             v = Version(package, _date.year - _YEAR_START, _date.month, 0, 1)
 
     elif patch:
-        if rc:
-            rc = 1
-        else:
-            rc = None
-
-        existing = _existing_version(path)
-        v = Version(package, existing.major, existing.minor, existing.micro + 1, rc)
+        existing = _existing_version(_path)
+        v = Version(
+            package,
+            existing.major,
+            existing.minor,
+            existing.micro + 1,
+            1 if rc else None,
+        )
 
     elif post:
-        existing = _existing_version(path)
+        existing = _existing_version(_path)
 
         if existing.post is None:
             _post = 0
@@ -173,7 +222,7 @@ def _run(
         v = Version(package, existing.major, existing.minor, existing.micro, post=_post)
 
     elif dev:
-        existing = _existing_version(path)
+        existing = _existing_version(_path)
 
         if existing.dev is None:
             _dev = 0
@@ -190,7 +239,7 @@ def _run(
         )
 
     else:
-        existing = _existing_version(path)
+        existing = _existing_version(_path)
 
         if existing.release_candidate:
             v = Version(package, existing.major, existing.minor, existing.micro)
@@ -208,7 +257,7 @@ def _run(
 
     _print("Updating codebase to %s" % (v.public()))
 
-    for x in path.walk():
+    for x in _path.walk():
 
         if not x.isfile():
             continue
@@ -241,8 +290,8 @@ def _run(
             with x.open("w") as f:
                 f.write(content)
 
-    _print("Updating %s/_version.py" % (path.path))
-    with path.child("_version.py").open("w") as f:
+    _print("Updating %s/_version.py" % (_path.path))
+    with _path.child("_version.py").open("w") as f:
         f.write(
             (
                 _VERSIONPY_TEMPLATE.format(package=package, version_repr=version_repr)
@@ -259,8 +308,26 @@ def _run(
 @click.option("--post", is_flag=True)
 @click.option("--dev", is_flag=True)
 @click.option("--create", is_flag=True)
-def run(*args, **kwargs):
-    return _run(*args, **kwargs)
+def run(
+    package,  # type: str
+    path,  # type: Optional[str]
+    newversion,  # type: Optional[str]
+    patch,  # type: bool
+    rc,  # type: bool
+    post,  # type: bool
+    dev,  # type: bool
+    create,  # type: bool
+):  # type: (...) -> None
+    return _run(
+        package=package,
+        path=path,
+        newversion=newversion,
+        patch=patch,
+        rc=rc,
+        post=post,
+        dev=dev,
+        create=create,
+    )
 
 
 if __name__ == "__main__":  # pragma: no cover
