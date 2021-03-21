@@ -119,8 +119,8 @@ def _run(
     if not _date:
         _date = datetime.date.today()
 
-    if not TYPE_CHECKING and type(package) != str:
-        package = package.encode("utf8")
+    if type(package) != str:
+        package = package.encode("utf8")  # type: ignore[assignment]
 
     _path = FilePath(path) if path else _findPath(_getcwd(), package)
 
