@@ -391,4 +391,8 @@ def _get_version(dist, keyword, value):
 from ._version import __version__  # noqa
 
 
+def _setuptools_version():
+    return __version__.public()
+
+
 __all__ = ["__version__", "Version", "getVersionString"]
