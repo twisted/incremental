@@ -7,6 +7,8 @@ Tests for L{incremental}.
 
 from __future__ import division, absolute_import
 
+import sys
+import unittest
 import operator
 
 from incremental import getVersionString, IncomparableVersions
@@ -36,6 +38,29 @@ class VersionsTests(TestCase):
         self.assertTrue(va != vb)
         self.assertTrue(vb == Version("dummy", 0, 1, 0))
         self.assertTrue(vb == vb)
+
+    @unittest.skipIf(sys.version_info < (3, 0), "Comparisons do not raise on py2")
+    def test_versionComparisonNonVersion(self):
+        """
+        Versions can be compared with non-versions.
+        """
+        v = Version("dummy", 1, 0, 0)
+        o = object()
+
+        with self.assertRaises(TypeError):
+            v > o
+
+        with self.assertRaises(TypeError):
+            v < o
+
+        with self.assertRaises(TypeError):
+            v >= o
+
+        with self.assertRaises(TypeError):
+            v <= o
+
+        self.assertFalse(v == o)
+        self.assertTrue(v != o)
 
     def test_versionComparisonCaseInsensitive(self):
         """
