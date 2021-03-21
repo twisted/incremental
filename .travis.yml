@@ -14,8 +14,6 @@ matrix:
   include:
     - python: 2.7
       env: TOX_ENV=tests
-    - python: 3.4
-      env: TOX_ENV=tests
     - python: 3.5
       env: TOX_ENV=tests
     - python: 3.6
