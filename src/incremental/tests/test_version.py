@@ -292,7 +292,14 @@ class VersionsTests(TestCase):
 
         This is a regression test.
         """
+        o = object()
         self.assertEqual(_inf, _inf)
+        self.assertTrue(_inf > o)
+        self.assertFalse(_inf < o)
+        self.assertTrue(_inf >= o)
+        self.assertFalse(_inf <= o)
+        self.assertTrue(_inf != o)
+        self.assertFalse(_inf == o)
 
     def test_disallowBuggyComparisons(self):
         """
