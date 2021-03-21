@@ -94,7 +94,7 @@ def _existing_version(path):  # type: (FilePath) -> Version
     version_info = {}  # type: Dict[str, Version]
 
     with path.child("_version.py").open("r") as f:
-        exec (f.read(), version_info)
+        exec(f.read(), version_info)
 
     return version_info["__version__"]
 

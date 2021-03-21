@@ -406,7 +406,7 @@ def _get_version(dist, keyword, value):  # type: (_Distribution, object, object)
             version_file = {}  # type: Dict[str, Version]
 
             with open(item[2]) as f:
-                exec (f.read(), version_file)
+                exec(f.read(), version_file)
 
             dist.metadata.version = version_file["__version__"].public()
             return None
