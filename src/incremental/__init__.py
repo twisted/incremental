@@ -74,41 +74,17 @@ class _Inf(object):
 
     if sys.version_info >= (3, 0):
 
-        def __eq__(self, other):  # type: (object) -> bool
-            c = self.__cmp__(other)
-            if c is NotImplemented:
-                return c  # type: ignore[return-value]
-            return c == 0
-
-        def __ne__(self, other):  # type: (object) -> bool
-            c = self.__cmp__(other)
-            if c is NotImplemented:
-                return c  # type: ignore[return-value]
-            return c != 0
-
         def __lt__(self, other):  # type: (object) -> bool
-            c = self.__cmp__(other)
-            if c is NotImplemented:
-                return c  # type: ignore[return-value]
-            return c < 0
+            return self.__cmp__(other) < 0
 
         def __le__(self, other):  # type: (object) -> bool
-            c = self.__cmp__(other)
-            if c is NotImplemented:
-                return c  # type: ignore[return-value]
-            return c <= 0
+            return self.__cmp__(other) <= 0
 
         def __gt__(self, other):  # type: (object) -> bool
-            c = self.__cmp__(other)
-            if c is NotImplemented:
-                return c  # type: ignore[return-value]
-            return c > 0
+            return self.__cmp__(other) > 0
 
         def __ge__(self, other):  # type: (object) -> bool
-            c = self.__cmp__(other)
-            if c is NotImplemented:
-                return c  # type: ignore[return-value]
-            return c >= 0
+            return self.__cmp__(other) >= 0
 
 
 _inf = _Inf()
