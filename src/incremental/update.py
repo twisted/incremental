@@ -166,10 +166,7 @@ def _run(
         if len(release) == 1:
             (major,) = release
         elif len(release) == 2:
-            (
-                major,
-                minor,
-            ) = release
+            major, minor = release
         else:
             major, minor, micro = release
 
