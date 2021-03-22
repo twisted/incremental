@@ -26,6 +26,8 @@ if TYPE_CHECKING:
         def __exit__(self, *args, **kwargs):  # type: (object, object) -> Optional[bool]
             pass
 
+    # FilePath is missing type annotations
+    # https://twistedmatrix.com/trac/ticket/10148
     class FilePath(object):
         def __init__(self, path):  # type: (str) -> None
             self.path = path
