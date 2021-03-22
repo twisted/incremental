@@ -24,30 +24,29 @@ if TYPE_CHECKING:
     from typing_extensions import Literal
     from distutils.dist import Distribution as _Distribution
 
-    def _cmp(a, b):  # type: (Any, Any) -> int
-        return 0
-
 
 else:
     _Distribution = object
 
-    try:
-        _cmp = cmp
-    except NameError:
+if sys.version_info > (3,):
 
-        def _cmp(a, b):  # type: (Any, Any) -> int
-            """
-            Compare two objects.
+    def _cmp(a, b):  # type: (Any, Any) -> int
+        """
+        Compare two objects.
 
-            Returns a negative number if C{a < b}, zero if they are equal, and a
-            positive number if C{a > b}.
-            """
-            if a < b:
-                return -1
-            elif a == b:
-                return 0
-            else:
-                return 1
+        Returns a negative number if C{a < b}, zero if they are equal, and a
+        positive number if C{a > b}.
+        """
+        if a < b:
+            return -1
+        elif a == b:
+            return 0
+        else:
+            return 1
+
+
+else:
+    _cmp = cmp
 
 
 #
