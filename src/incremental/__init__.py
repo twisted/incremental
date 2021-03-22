@@ -71,7 +71,7 @@ class _Inf(object):
             return 0
         return 1
 
-    if sys.version_info >= (3, 0):
+    if sys.version_info >= (3,):
 
         def __lt__(self, other):  # type: (object) -> bool
             return self.__cmp__(other) < 0
@@ -314,7 +314,7 @@ class Version(object):
         )
         return x
 
-    if sys.version_info >= (3, 0):
+    if sys.version_info >= (3,):
 
         def __eq__(self, other):  # type: (Any) -> bool
             c = self.__cmp__(other)

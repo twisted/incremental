@@ -39,7 +39,7 @@ class VersionsTests(TestCase):
         self.assertTrue(vb == Version("dummy", 0, 1, 0))
         self.assertTrue(vb == vb)
 
-    @unittest.skipIf(sys.version_info < (3, 0), "Comparisons do not raise on py2")
+    @unittest.skipIf(sys.version_info < (3,), "Comparisons do not raise on py2")
     def test_versionComparisonNonVersion(self):
         """
         Versions can be compared with non-versions.
