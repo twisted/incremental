@@ -3,6 +3,8 @@ include LICENSE
 include NEWS.rst
 include towncrier.ini
 include tox.ini
+exclude mypy.ini
+include src/incremental/py.typed
 
 recursive-include src/incremental *.py
 

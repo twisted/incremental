@@ -1125,6 +1125,50 @@ next_released_version = "inctestpkg 1.0.0"
 """,
         )
 
+    def test_newversion_bare_major_minor(self):
+        """
+        `incremental.update package --newversion=1.1`, will set that
+        version in the package.
+        """
+        out = []
+        _run(
+            u"inctestpkg",
+            path=None,
+            newversion="1.1",
+            patch=False,
+            rc=False,
+            post=False,
+            dev=False,
+            create=False,
+            _date=self.date,
+            _getcwd=self.getcwd,
+            _print=out.append,
+        )
+
+        self.assertEqual(
+            self.packagedir.child("_version.py").getContent(),
+            b'''"""
+Provides inctestpkg version information.
+"""
+
+# This file is auto-generated! Do not edit!
+# Use `python -m incremental.update inctestpkg` to change this file.
+
+from incremental import Version
+
+__version__ = Version("inctestpkg", 1, 1, 0)
+__all__ = ["__version__"]
+''',
+        )
+        self.assertEqual(
+            self.packagedir.child("__init__.py").getContent(),
+            b"""
+from incremental import Version
+introduced_in = Version("inctestpkg", 1, 1, 0).short()
+next_released_version = "inctestpkg 1.1.0"
+""",
+        )
+
 
 class ScriptTests(TestCase):
     def setUp(self):

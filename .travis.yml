@@ -25,6 +25,7 @@ matrix:
     - python: 3.9
       env: TOX_ENV=tests
     - env: TOX_ENV=black
+    - env: TOX_ENV=mypy
     - env: TOX_ENV=apidocs
     - env: PUSH_DOCS=true
     - env: TOX_ENV=check-manifest
