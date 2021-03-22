@@ -3,7 +3,7 @@
           "DTD/xhtml1-strict.dtd">
 <html>
   <head>
-    <title>incremental.tests.test_update.ScriptTests : API documentation</title>
+    <title>incremental.update.FilePath : API documentation</title>
 
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
@@ -23,7 +23,7 @@
     <div class="container">
 
       <div class="page-header">
-        <h1 class="class"><code><code><a href="incremental.html">incremental</a></code>.<code><a href="incremental.tests.html">tests</a></code>.<code><a href="incremental.tests.test_update.html">test_update</a></code>.<code><a href="incremental.tests.test_update.ScriptTests.html">ScriptTests</a></code></code></h1>
+        <h1 class="class"><code><code><a href="incremental.html">incremental</a></code>.<code><a href="incremental.update.html">update</a></code>.<code><a href="incremental.update.FilePath.html">FilePath</a></code></code></h1>
         <div id="showPrivate">
           <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
         </div>
@@ -34,8 +34,8 @@
       </div>
 
       <div class="extrasDocstring">
-        <p><code><span class="py-keyword">class</span> <span class="py-defname">ScriptTests</span>(<span title="twisted.trial.unittest.TestCase">TestCase</span>):</code></p>
-        <p><a href="classIndex.html#incremental.tests.test_update.ScriptTests">View In Hierarchy</a></p>
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">FilePath</span>(<span title="object">object</span>):</code></p>
+        <p><a href="classIndex.html#incremental.update.FilePath">View In Hierarchy</a></p>
       </div>
 
       <div class="moduleDocstring">
@@ -43,43 +43,48 @@
       </div>
 
       <div id="splitTables">
-        <table class="children sortable" id="id12">
+        <table class="children sortable" id="id17">
   
   <tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#setUp">setUp</a></code></td>
+    <td><code><a href="#__init__">__init__</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><code><a href="#srcdir">srcdir</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="instancevariable">
-    
-    <td>Instance Variable</td>
-    <td><code><a href="#getcwd">getcwd</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="instancevariable">
-    
-    <td>Instance Variable</td>
-    <td><code><a href="#packagedir">packagedir</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="instancevariable">
-    
-    <td>Instance Variable</td>
-    <td><code><a href="#date">date</a></code></td>
+    <td><code><a href="#path">path</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_run">test_run</a></code></td>
-    <td><span>Calling run() with no args will cause it to print help.</span></td>
+    <td><code><a href="#child">child</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_insufficient_args">test_insufficient_args</a></code></td>
-    <td><span>Calling run() with no args will cause it to print help.</span></td>
+    <td><code><a href="#isdir">isdir</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#isfile">isfile</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#getContent">getContent</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#open">open</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#walk">walk</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
   </tr>
 </table>
         
@@ -91,15 +96,15 @@
 
         <div class="basemethod">
   
-  <a name="incremental.tests.test_update.ScriptTests.setUp">
+  <a name="incremental.update.FilePath.__init__">
     
   </a>
-  <a name="setUp">
+  <a name="__init__">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">setUp</span>(self):
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, path):
     
   </div>
   <div class="docstring functionBody">
@@ -109,69 +114,15 @@
   </div>
 </div><div class="baseinstancevariable">
   
-  <a name="incremental.tests.test_update.ScriptTests.srcdir">
+  <a name="incremental.update.FilePath.path">
     
   </a>
-  <a name="srcdir">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-defname">srcdir</span> =
-    
-  </div>
-  <div class="functionBody">
-    
-    
-    <div><p class="undocumented">Undocumented</p></div>
-  </div>
-</div><div class="baseinstancevariable">
-  
-  <a name="incremental.tests.test_update.ScriptTests.getcwd">
-    
-  </a>
-  <a name="getcwd">
+  <a name="path">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">getcwd</span> =
-    
-  </div>
-  <div class="functionBody">
-    
-    
-    <div><p class="undocumented">Undocumented</p></div>
-  </div>
-</div><div class="baseinstancevariable">
-  
-  <a name="incremental.tests.test_update.ScriptTests.packagedir">
-    
-  </a>
-  <a name="packagedir">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-defname">packagedir</span> =
-    
-  </div>
-  <div class="functionBody">
-    
-    
-    <div><p class="undocumented">Undocumented</p></div>
-  </div>
-</div><div class="baseinstancevariable">
-  
-  <a name="incremental.tests.test_update.ScriptTests.date">
-    
-  </a>
-  <a name="date">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-defname">date</span> =
+    <span class="py-defname">path</span> =
     
   </div>
   <div class="functionBody">
@@ -181,39 +132,111 @@
   </div>
 </div><div class="basemethod">
   
-  <a name="incremental.tests.test_update.ScriptTests.test_run">
+  <a name="incremental.update.FilePath.child">
     
   </a>
-  <a name="test_run">
+  <a name="child">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">test_run</span>(self):
+    <span class="py-keyword">def</span> <span class="py-defname">child</span>(self, v):
     
   </div>
   <div class="docstring functionBody">
     
     
-    <div><p>Calling run() with no args will cause it to print help.</p></div>
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="basemethod">
   
-  <a name="incremental.tests.test_update.ScriptTests.test_insufficient_args">
+  <a name="incremental.update.FilePath.isdir">
     
   </a>
-  <a name="test_insufficient_args">
+  <a name="isdir">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">test_insufficient_args</span>(self):
+    <span class="py-keyword">def</span> <span class="py-defname">isdir</span>(self):
     
   </div>
   <div class="docstring functionBody">
     
     
-    <div><p>Calling run() with no args will cause it to print help.</p></div>
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.update.FilePath.isfile">
+    
+  </a>
+  <a name="isfile">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">isfile</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.update.FilePath.getContent">
+    
+  </a>
+  <a name="getContent">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">getContent</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.update.FilePath.open">
+    
+  </a>
+  <a name="open">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">open</span>(self, mode):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.update.FilePath.walk">
+    
+  </a>
+  <a name="walk">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">walk</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div>
 
