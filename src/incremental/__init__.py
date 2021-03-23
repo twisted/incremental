@@ -138,11 +138,9 @@ class Version(object):
         elif prerelease and not release_candidate:
             release_candidate = prerelease
             warnings.warn(
-                (
-                    "Passing prerelease to incremental.Version was "
-                    "deprecated in Incremental 16.9.0. Please pass "
-                    "release_candidate instead."
-                ),
+                "Passing prerelease to incremental.Version was "
+                "deprecated in Incremental 16.9.0. Please pass "
+                "release_candidate instead.",
                 DeprecationWarning,
                 stacklevel=2,
             )
@@ -150,7 +148,7 @@ class Version(object):
         if major == "NEXT":
             if minor or micro or release_candidate or post or dev:
                 raise ValueError(
-                    "When using NEXT, all other values except " "Package must be 0."
+                    "When using NEXT, all other values except Package must be 0."
                 )
 
         self.package = package
@@ -164,11 +162,9 @@ class Version(object):
     @property
     def prerelease(self):  # type: () -> Optional[int]
         warnings.warn(
-            (
-                "Accessing incremental.Version.prerelease was "
-                "deprecated in Incremental 16.9.0. Use "
-                "Version.release_candidate instead."
-            ),
+            "Accessing incremental.Version.prerelease was "
+            "deprecated in Incremental 16.9.0. Use "
+            "Version.release_candidate instead.",
             DeprecationWarning,
             stacklevel=2,
         ),
