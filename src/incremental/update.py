@@ -6,7 +6,7 @@ from __future__ import absolute_import, division, print_function
 import click
 import os
 import datetime
-from typing import TYPE_CHECKING, Dict, Optional, Callable, Union, Iterable
+from typing import TYPE_CHECKING, Dict, Optional, Callable, Iterable
 
 from incremental import Version
 
@@ -83,12 +83,10 @@ def _findPath(path, package):  # type: (str, str) -> FilePath
         return current_dir
     else:
         raise ValueError(
-            (
-                "Can't find under `./src` or `./`. Check the "
-                "package name is right (note that we expect your "
-                "package name to be lower cased), or pass it using "
-                "'--path'."
-            )
+            "Can't find under `./src` or `./`. Check the "
+            "package name is right (note that we expect your "
+            "package name to be lower cased), or pass it using "
+            "'--path'."
         )
 
 

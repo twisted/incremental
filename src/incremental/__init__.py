@@ -11,7 +11,7 @@ from __future__ import division, absolute_import
 
 import sys
 import warnings
-from typing import TYPE_CHECKING, Any, TypeVar, Generic, Union, Optional, Dict
+from typing import TYPE_CHECKING, Any, TypeVar, Union, Optional, Dict
 
 #
 # Compat functions
@@ -46,7 +46,7 @@ if sys.version_info > (3,):
 
 
 else:
-    _cmp = cmp
+    _cmp = cmp  # noqa: F821
 
 
 #
@@ -138,11 +138,9 @@ class Version(object):
         elif prerelease and not release_candidate:
             release_candidate = prerelease
             warnings.warn(
-                (
-                    "Passing prerelease to incremental.Version was "
-                    "deprecated in Incremental 16.9.0. Please pass "
-                    "release_candidate instead."
-                ),
+                "Passing prerelease to incremental.Version was "
+                "deprecated in Incremental 16.9.0. Please pass "
+                "release_candidate instead.",
                 DeprecationWarning,
                 stacklevel=2,
             )
@@ -150,7 +148,7 @@ class Version(object):
         if major == "NEXT":
             if minor or micro or release_candidate or post or dev:
                 raise ValueError(
-                    ("When using NEXT, all other values except " "Package must be 0.")
+                    "When using NEXT, all other values except Package must be 0."
                 )
 
         self.package = package
@@ -164,11 +162,9 @@ class Version(object):
     @property
     def prerelease(self):  # type: () -> Optional[int]
         warnings.warn(
-            (
-                "Accessing incremental.Version.prerelease was "
-                "deprecated in Incremental 16.9.0. Use "
-                "Version.release_candidate instead."
-            ),
+            "Accessing incremental.Version.prerelease was "
+            "deprecated in Incremental 16.9.0. Use "
+            "Version.release_candidate instead.",
             DeprecationWarning,
             stacklevel=2,
         ),
@@ -389,7 +385,7 @@ def _get_version(dist, keyword, value):  # type: (_Distribution, object, object)
     raise Exception("No _version.py found.")
 
 
-from ._version import __version__  # noqa
+from ._version import __version__  # noqa: E402
 
 
 def _setuptools_version():  # type: () -> str

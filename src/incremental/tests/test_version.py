@@ -132,10 +132,8 @@ class VersionsTests(TestCase):
         self.assertEqual(len(warnings), 1)
         self.assertEqual(
             warnings[0]["message"],
-            (
-                "Passing prerelease to incremental.Version was deprecated in "
-                "Incremental 16.9.0. Please pass release_candidate instead."
-            ),
+            "Passing prerelease to incremental.Version was deprecated in "
+            "Incremental 16.9.0. Please pass release_candidate instead.",
         )
 
     def test_prereleaseAttributeDeprecated(self):
@@ -148,10 +146,8 @@ class VersionsTests(TestCase):
         self.assertEqual(len(warnings), 1)
         self.assertEqual(
             warnings[0]["message"],
-            (
-                "Accessing incremental.Version.prerelease was deprecated in "
-                "Incremental 16.9.0. Use Version.release_candidate instead."
-            ),
+            "Accessing incremental.Version.prerelease was deprecated in "
+            "Incremental 16.9.0. Use Version.release_candidate instead.",
         )
 
     def test_comparingReleaseCandidatesWithReleases(self):
