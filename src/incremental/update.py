@@ -6,7 +6,7 @@ from __future__ import absolute_import, division, print_function
 import click
 import os
 import datetime
-from typing import TYPE_CHECKING, Dict, Optional, Callable, Union, Iterable
+from typing import TYPE_CHECKING, Dict, Optional, Callable, Iterable
 
 from incremental import Version
 

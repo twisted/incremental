@@ -11,7 +11,7 @@ from __future__ import division, absolute_import
 
 import sys
 import warnings
-from typing import TYPE_CHECKING, Any, TypeVar, Generic, Union, Optional, Dict
+from typing import TYPE_CHECKING, Any, TypeVar, Union, Optional, Dict
 
 #
 # Compat functions
@@ -46,7 +46,7 @@ if sys.version_info > (3,):
 
 
 else:
-    _cmp = cmp
+    _cmp = cmp  # noqa: F821
 
 
 #
@@ -389,7 +389,7 @@ def _get_version(dist, keyword, value):  # type: (_Distribution, object, object)
     raise Exception("No _version.py found.")
 
 
-from ._version import __version__  # noqa
+from ._version import __version__  # noqa: E402
 
 
 def _setuptools_version():  # type: () -> str
