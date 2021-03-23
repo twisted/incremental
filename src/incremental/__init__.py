@@ -150,7 +150,7 @@ class Version(object):
         if major == "NEXT":
             if minor or micro or release_candidate or post or dev:
                 raise ValueError(
-                    ("When using NEXT, all other values except " "Package must be 0.")
+                    "When using NEXT, all other values except " "Package must be 0."
                 )
 
         self.package = package
