@@ -98,8 +98,8 @@ Once the final version is made, it will become:
 - ``<projectname> 17.1.0``
 
 
-.. |coverage| image:: https://codecov.io/github/twisted/incremental/coverage.svg?branch=master
-.. _coverage: https://codecov.io/github/twisted/incremental
+.. |coverage| image:: https://codecov.io/gh/twisted/incremental/branch/master/graph/badge.svg?token=K2ieeL887X
+.. _coverage: https://codecov.io/gh/twisted/incremental
 
 .. |gha| image:: https://github.com/twisted/incremental/actions/workflows/tests.yaml/badge.svg
 .. _gha: https://github.com/twisted/incremental/actions/workflows/tests.yaml
