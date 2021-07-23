@@ -53,25 +53,20 @@ jobs:
 
     - name: Run job via tox
       run: |
-        tox
+        # GitHub Actions VM have 2 CPUs.
+        tox --parallel 2
 
     - name: Publish documentation for push on trunk
       # FIXME:
       # Add push event condition before merge.
       # github.event_name == 'push' && 
       if: contains(matrix['tox-env'], 'apidocs')
-      run: |
-        git clone --branch gh-pages https://github.com/twisted/incremental.git gh-pages
-        rsync -rt --del --exclude=".git" apidocs/* gh-pages/
-        cd gh-pages
-        git add -A
-        git config --global user.email "void@twistedmatrix.com"
-        git config --global user.name "${{ github.actor }}"
-        token_base64=`echo -n x-access-token:${{github.token}} | base64 -`
-        git config --local http.https://github.com/.extraheader 'AUTHORIZATION: basic $token_base64'
-
-        git commit -m "Built from ${{ github.sha }}"
-        git push
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        commit_message: Publish docs for ${{ github.sha }}
+        publish_dir: ./apidocs
+        destination_dir: ./docs
 
     - uses: codecov/codecov-action@v1
       if: always() && matrix.tox-env == 'tests'
