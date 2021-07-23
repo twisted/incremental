@@ -56,6 +56,14 @@ jobs:
         # GitHub Actions VM have 2 CPUs.
         tox --parallel 2
 
+    - name: Prepare GitHub Pages
+      if: contains(matrix['tox-env'], 'apidocs')
+      run: |
+        mkdir website
+        touch website/index.html
+        mv apidocs website/docs
+
+
     - name: Publish documentation for push on trunk
       # FIXME:
       # Add push event condition before merge.
@@ -65,8 +73,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         commit_message: Publish docs for ${{ github.sha }}
-        publish_dir: ./apidocs
-        destination_dir: ./docs
+        publish_dir: ./website
 
     - uses: codecov/codecov-action@v1
       if: always() && matrix.tox-env == 'tests'
