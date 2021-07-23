@@ -65,6 +65,9 @@ jobs:
         rsync -rt --del --exclude=".git" apidocs/* gh-pages/
         cd gh-pages
         git add -A
+        git config --global user.email "void@twistedmatrix.com"
+        git config --global user.name "${{ github.actor }}"
+
         git commit -m "Built from ${{ github.sha }}"
         git push -q "https://github.com/twisted/incremental.git" gh-pages
 
