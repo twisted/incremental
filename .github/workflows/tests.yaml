@@ -71,7 +71,7 @@ jobs:
         git config --local http.https://github.com/.extraheader 'AUTHORIZATION: basic $token_base64'
 
         git commit -m "Built from ${{ github.sha }}"
-        git push -q "https://github.com/twisted/incremental" gh-pages
+        git push
 
     - uses: codecov/codecov-action@v1
       if: always() && matrix.tox-env == 'tests'
