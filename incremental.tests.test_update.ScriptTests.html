@@ -3,7 +3,7 @@
           "DTD/xhtml1-strict.dtd">
 <html>
   <head>
-    <title>incremental.tests.test_update.NonCreatedUpdateTests : API documentation</title>
+    <title>incremental.tests.test_update.ScriptTests : API documentation</title>
 
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
@@ -23,7 +23,7 @@
     <div class="container">
 
       <div class="page-header">
-        <h1 class="class"><code><code><a href="incremental.html">incremental</a></code>.<code><a href="incremental.tests.html">tests</a></code>.<code><a href="incremental.tests.test_update.html">test_update</a></code>.<code><a href="incremental.tests.test_update.NonCreatedUpdateTests.html">NonCreatedUpdateTests</a></code></code></h1>
+        <h1 class="class"><code><code><a href="incremental.html">incremental</a></code>.<code><a href="incremental.tests.html">tests</a></code>.<code><a href="incremental.tests.test_update.html">test_update</a></code>.<code><a href="incremental.tests.test_update.ScriptTests.html">ScriptTests</a></code></code></h1>
         <div id="showPrivate">
           <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
         </div>
@@ -34,8 +34,8 @@
       </div>
 
       <div class="extrasDocstring">
-        <p><code><span class="py-keyword">class</span> <span class="py-defname">NonCreatedUpdateTests</span>(<span title="twisted.trial.unittest.TestCase">TestCase</span>):</code></p>
-        <p><a href="classIndex.html#incremental.tests.test_update.NonCreatedUpdateTests">View In Hierarchy</a></p>
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">ScriptTests</span>(<span title="twisted.trial.unittest.TestCase">TestCase</span>):</code></p>
+        <p><a href="classIndex.html#incremental.tests.test_update.ScriptTests">View In Hierarchy</a></p>
       </div>
 
       <div class="moduleDocstring">
@@ -43,7 +43,7 @@
       </div>
 
       <div id="splitTables">
-        <table class="children sortable" id="id8">
+        <table class="children sortable" id="id12">
   
   <tr class="method">
     
@@ -73,8 +73,13 @@
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_create">test_create</a></code></td>
-    <td><span>`incremental.update package --create` initialises the version.</span></td>
+    <td><code><a href="#test_run">test_run</a></code></td>
+    <td><span>Calling run() with no args will cause it to print help.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_insufficient_args">test_insufficient_args</a></code></td>
+    <td><span>Calling run() with no args will cause it to print help.</span></td>
   </tr>
 </table>
         
@@ -86,7 +91,7 @@
 
         <div class="basemethod">
   
-  <a name="incremental.tests.test_update.NonCreatedUpdateTests.setUp">
+  <a name="incremental.tests.test_update.ScriptTests.setUp">
     
   </a>
   <a name="setUp">
@@ -104,7 +109,7 @@
   </div>
 </div><div class="baseinstancevariable">
   
-  <a name="incremental.tests.test_update.NonCreatedUpdateTests.srcdir">
+  <a name="incremental.tests.test_update.ScriptTests.srcdir">
     
   </a>
   <a name="srcdir">
@@ -122,7 +127,7 @@
   </div>
 </div><div class="baseinstancevariable">
   
-  <a name="incremental.tests.test_update.NonCreatedUpdateTests.getcwd">
+  <a name="incremental.tests.test_update.ScriptTests.getcwd">
     
   </a>
   <a name="getcwd">
@@ -140,7 +145,7 @@
   </div>
 </div><div class="baseinstancevariable">
   
-  <a name="incremental.tests.test_update.NonCreatedUpdateTests.packagedir">
+  <a name="incremental.tests.test_update.ScriptTests.packagedir">
     
   </a>
   <a name="packagedir">
@@ -158,7 +163,7 @@
   </div>
 </div><div class="baseinstancevariable">
   
-  <a name="incremental.tests.test_update.NonCreatedUpdateTests.date">
+  <a name="incremental.tests.test_update.ScriptTests.date">
     
   </a>
   <a name="date">
@@ -176,27 +181,45 @@
   </div>
 </div><div class="basemethod">
   
-  <a name="incremental.tests.test_update.NonCreatedUpdateTests.test_create">
+  <a name="incremental.tests.test_update.ScriptTests.test_run">
     
   </a>
-  <a name="test_create">
+  <a name="test_run">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-keyword">def</span> <span class="py-defname">test_create</span>(self):
+    <span class="py-keyword">def</span> <span class="py-defname">test_run</span>(self):
     
   </div>
   <div class="docstring functionBody">
     
     
-    <div><p>`incremental.update package --create` initialises the version.</p></div>
+    <div><p>Calling run() with no args will cause it to print help.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="incremental.tests.test_update.ScriptTests.test_insufficient_args">
+    
+  </a>
+  <a name="test_insufficient_args">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_insufficient_args</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Calling run() with no args will cause it to print help.</p></div>
   </div>
 </div>
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.2 at 2021-03-22 20:52:02.
+        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.2 at 2021-07-23 15:08:33.
       </address>
 
     </div>
