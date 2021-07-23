@@ -6,7 +6,7 @@ on:
   push:
     branches: [ trunk ]
     tags:
-      - twisted-*
+      - incremental-*
   pull_request:
     branches: [ trunk ]
 
@@ -22,10 +22,7 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       TOXENV: "${{ matrix.tox-env }}"
-      # As of April 2021 GHA VM have 2 CPUs - Azure Standard_DS2_v2
-      # Trial distributed jobs enabled to speed up the CI jobs.
-      TRIAL_ARGS: "-j 4"
-    name: ${{ matrix.python-version }}${{ matrix.noipv6 }}-${{ matrix.tox-env }}
+    name: ${{ matrix.python-version }}-${{ matrix.tox-env }}
     strategy:
       fail-fast: false
       matrix:
@@ -41,7 +38,6 @@ jobs:
           - python-version: 3.9
             tox-env: mypy,apidocs
 
-
     steps:
     - uses: actions/checkout@v2
 
@@ -55,9 +51,22 @@ jobs:
       run: |
         python -m pip install --upgrade pip tox
 
-    - name: Test
+    - name: Run job via tox
       run: |
-        tox -e ${{ matrix.tox-env }}
+        tox
+
+    - name: Publish documentation for push on trunk
+      # FIXME:
+      # Add push event condition before merge.
+      # github.event_name == 'push' && 
+      if: contains(matrix['tox-env'], 'apidocs')
+      run: |
+        git clone --branch gh-pages https://github.com/twisted/incremental.git gh-pages
+        rsync -rt --del --exclude=".git" apidocs/* gh-pages/
+        cd gh-pages
+        git add -A
+        git commit -m "Built from ${{ github.sha }}"
+        git push -q "https://github.com/twisted/incremental.git" gh-pages
 
     - uses: codecov/codecov-action@v1
       if: always() && matrix.tox-env == 'tests'
