@@ -63,12 +63,10 @@ jobs:
         touch website/index.html
         mv apidocs website/docs
 
-
     - name: Publish documentation for push on trunk
       # FIXME:
       # Add push event condition before merge.
-      # github.event_name == 'push' && 
-      if: contains(matrix['tox-env'], 'apidocs')
+      if: contains(matrix['tox-env'], 'apidocs') && github.event_name == 'push'
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
