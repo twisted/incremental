@@ -1,7 +1,7 @@
 Incremental
 ===========
 
-|travis|
+|gha|
 |pypi|
 |coverage|
 
@@ -101,8 +101,8 @@ Once the final version is made, it will become:
 .. |coverage| image:: https://codecov.io/github/twisted/incremental/coverage.svg?branch=master
 .. _coverage: https://codecov.io/github/twisted/incremental
 
-.. |travis| image:: https://travis-ci.org/twisted/incremental.svg?branch=master
-.. _travis: https://travis-ci.org/twisted/incremental
+.. |gha| image:: https://github.com/twisted/incremental/actions/workflows/tests.yaml/badge.svg
+.. _gha: https://github.com/twisted/incremental/actions/workflows/tests.yaml
 
 .. |pypi| image:: http://img.shields.io/pypi/v/incremental.svg
 .. _pypi: https://pypi.python.org/pypi/incremental
