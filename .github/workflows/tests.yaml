@@ -1,0 +1,82 @@
+# Try to get a short workflow name and a job name that start with Python
+# version to make it easier to check the status inside GitHub UI.
+name: CI
+
+on:
+  push:
+    branches: [ trunk ]
+    tags:
+      - incremental-*
+  pull_request:
+    branches: [ trunk ]
+
+
+defaults:
+  run:
+    shell: bash
+
+
+
+jobs:
+  testing:
+    runs-on: ubuntu-20.04
+    env:
+      TOXENV: "${{ matrix.tox-env }}"
+    name: ${{ matrix.python-version }}-${{ matrix.tox-env }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # Run on the minimum micro Python version that we can get on CI.
+        # When updating the minimum Python version here, also update the
+        # `python_requires` from `setup.cfg`.
+        # Run on latest minor release of each major python version.
+        python-version: [2.7, 3.5, 3.6, 3.7, 3.8, 3.9]
+        tox-env: ['tests']
+
+        include:
+          # Run non-python version specific jobs.
+          - python-version: 3.9
+            tox-env: mypy,apidocs
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - uses: twisted/python-info-action@v1
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip tox
+
+    - name: Run job via tox
+      run: |
+        # GitHub Actions VM have 2 CPUs.
+        tox --parallel 2
+
+    - name: Prepare GitHub Pages
+      if: contains(matrix['tox-env'], 'apidocs')
+      run: |
+        mkdir website
+        touch website/index.html
+        mv apidocs website/docs
+
+    - name: Publish documentation for push on trunk
+      # FIXME:
+      # Add push event condition before merge.
+      if: contains(matrix['tox-env'], 'apidocs') && github.event_name == 'push'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        commit_message: Publish docs for ${{ github.sha }}
+        publish_dir: ./website
+
+    - uses: codecov/codecov-action@v1
+      if: always() && matrix.tox-env == 'tests'
+      with:
+        files: coverage.xml
+        name: lnx-${{ matrix.python-version }}-${{ matrix.tox-env }}
+        fail_ci_if_error: true
+        functionalities: gcov,search
