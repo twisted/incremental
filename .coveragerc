@@ -1,7 +1,8 @@
 [run]
-source =
-       incremental
-       tests
+# List of package names.
+source_pkgs = incremental
+# List of directory names.
+source = tests
 branch = True
 
 [paths]
