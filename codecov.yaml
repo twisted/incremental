@@ -8,9 +8,6 @@
 codecov:
   require_ci_to_pass: yes
   notify:
-    # We have at least 10 builds in GitHub Actions and 12 in Azure
-    # and lint + mypy + docs + ReadTheDocs
-    after_n_builds: 15
     wait_for_ci: yes
 
 coverage:
@@ -30,6 +27,13 @@ coverage:
         # swinging coverage that is not triggered by changes in a PR.
         # See: https://twistedmatrix.com/trac/ticket/10170
         threshold: 0.02%
+      tests:
+        # Make sure we run each test at least once.
+        # If we don't have 100% coverage for tests, it meant that some
+        # tests are always skipped.
+        target: 100%
+        paths:
+          - "src/incremental/tests/*"
 
 
 # See https://docs.codecov.io/docs/pull-request-comments
