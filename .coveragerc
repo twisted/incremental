@@ -1,6 +1,7 @@
 [run]
 source =
        incremental
+       tests
 branch = True
 
 [paths]
