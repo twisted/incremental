@@ -32,10 +32,12 @@ coverage:
         threshold: 0.02%
 
 
-# We don't want to receive general PR comments about coverage.
-# We have the commit status checks and that should be enough.
 # See https://docs.codecov.io/docs/pull-request-comments
-comment: false
+comment:
+  layout: "header, diff, files"
+  behavior: default
+  require_changes: true  # if true: only post the comment if coverage changes
+
 
 # See https://docs.codecov.io/docs/github-checks
 github_checks:
