@@ -8,6 +8,15 @@
 codecov:
   require_ci_to_pass: yes
   notify:
+    # Wait a bit before pushing the status.
+    # The number here should be as close as possible to the total
+    # number of python supported versions.
+    # At the same time, if a Python version is removed this might
+    # accidentally cause disabling the coverage reporting as we will
+    # no longer have that many jobs.
+    # I have set it now to 3 to try to reduce as possible the temporary
+    # report for missing coverage.
+    after_n_builds: 3
     wait_for_ci: yes
 
 coverage:
