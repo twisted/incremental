@@ -4,6 +4,10 @@ name: CI
 
 on:
   push:
+    # Make sure to not enable `push` events for other branches as this will
+    # trigger the publishing to gh-pages from any branch.
+    # If you need to enable more branches look below and update
+    # the conditions for which gh-pages are updated.
     branches: [ trunk ]
     tags:
       - incremental-*
@@ -64,8 +68,8 @@ jobs:
         mv apidocs website/docs
 
     - name: Publish documentation for push on trunk
-      # FIXME:
-      # Add push event condition before merge.
+      # Since we don't have a separate job for apidocs gh-pages updating
+      # hijack the normal apidoc test and publish the resulting files. 
       if: contains(matrix['tox-env'], 'apidocs') && github.event_name == 'push'
       uses: peaceiris/actions-gh-pages@v3
       with:
