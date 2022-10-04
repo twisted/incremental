@@ -1,3 +1,12 @@
+Incremental 22.10.0.rc1 (2022-10-04)
+====================================
+
+Features
+--------
+
+- Incremental now supports type-checking with Mypy (#69)
+
+
 Incremental 21.3.0 (2021-03-01)
 ===============================
 
