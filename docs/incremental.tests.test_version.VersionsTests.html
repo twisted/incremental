@@ -2,1129 +2,1047 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
           "DTD/xhtml1-strict.dtd">
 <html>
-  <head>
-    <title>incremental.tests.test_version.VersionsTests : API documentation</title>
+  
 
+  <head>
+    
+    <title>incremental.tests.test_version.VersionsTests</title>
+    <meta name="generator" content="pydoctor 22.9.1"> 
+        
+    </meta>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="apidocs.css" />
-  </head>
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
   <body>
 
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header navbar-brand">
-          incremental
-          <a href="index.html">API Documentation</a>
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          incremental <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
         </div>
       </div>
-    </nav>
 
-    <div class="container">
+    </div>
 
-      <div class="page-header">
-        <h1 class="class"><code><code><a href="incremental.html">incremental</a></code>.<code><a href="incremental.tests.html">tests</a></code>.<code><a href="incremental.tests.test_version.html">test_version</a></code>.<code><a href="incremental.tests.test_version.VersionsTests.html">VersionsTests</a></code></code></h1>
-        <div id="showPrivate">
-          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="incremental.tests.test_version.VersionsTests.html" class="internal-link" title="This class"><wbr></wbr>Versions<wbr></wbr>Tests</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_base" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_base">test<wbr></wbr>_base</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_baseWithDev" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithDev">test_base<wbr></wbr>With<wbr></wbr>Dev</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_baseWithDevAndPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithDevAndPost">test_base<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>Post</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_baseWithDevAndRC" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithDevAndRC">test_base<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>RC</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_baseWithNEXT" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithNEXT">test_base<wbr></wbr>With<wbr></wbr>NEXT</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_baseWithPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithPost">test_base<wbr></wbr>With<wbr></wbr>Post</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_baseWithPrerelease" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithPrerelease">test_base<wbr></wbr>With<wbr></wbr>Prerelease</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_baseWithReleaseCandidate" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithReleaseCandidate">test_base<wbr></wbr>With<wbr></wbr>Release<wbr></wbr>Candidate</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingDev" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingDev">test_comparing<wbr></wbr>Dev</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingDevAndRC" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingDevAndRC">test_comparing<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>RC</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingDevAndRCDifferent" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingDevAndRCDifferent">test_comparing<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>RCDifferent</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingDevReleasesWithPreviousPostReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithPreviousPostReleases">test_comparing<wbr></wbr>Dev<wbr></wbr>Releases<wbr></wbr>With<wbr></wbr>Previous<wbr></wbr>Post<wbr></wbr>Releases</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingDevReleasesWithReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithReleases">test_comparing<wbr></wbr>Dev<wbr></wbr>Releases<wbr></wbr>With<wbr></wbr>Releases</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingNEXTReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingNEXTReleases">test_comparing<wbr></wbr>NEXTReleases</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingNEXTReleasesEqual" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingNEXTReleasesEqual">test_comparing<wbr></wbr>NEXTReleases<wbr></wbr>Equal</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingPost">test_comparing<wbr></wbr>Post</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingPostReleasesWithReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingPostReleasesWithReleases">test_comparing<wbr></wbr>Post<wbr></wbr>Releases<wbr></wbr>With<wbr></wbr>Releases</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingPrereleasesWithReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingPrereleasesWithReleases">test_comparing<wbr></wbr>Prereleases<wbr></wbr>With<wbr></wbr>Releases</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingReleaseCandidates" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingReleaseCandidates">test_comparing<wbr></wbr>Release<wbr></wbr>Candidates</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_comparingReleaseCandidatesWithReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingReleaseCandidatesWithReleases">test_comparing<wbr></wbr>Release<wbr></wbr>Candidates<wbr></wbr>With<wbr></wbr>Releases</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_disallowBuggyComparisons" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_disallowBuggyComparisons">test_disallow<wbr></wbr>Buggy<wbr></wbr>Comparisons</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_getVersionString" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionString">test_get<wbr></wbr>Version<wbr></wbr>String</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_getVersionStringWithDev" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDev">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Dev</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_getVersionStringWithDevAndPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDevAndPost">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>Post</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_getVersionStringWithDevAndRC" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDevAndRC">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>RC</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_getVersionStringWithPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithPost">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Post</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_getVersionStringWithPrerelease" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithPrerelease">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Prerelease</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_getVersionStringWithReleaseCandidate" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithReleaseCandidate">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Release<wbr></wbr>Candidate</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_infComparison" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_infComparison">test_inf<wbr></wbr>Comparison</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_localIsShort" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_localIsShort">test_local<wbr></wbr>Is<wbr></wbr>Short</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_NEXTMustBeAlone" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_NEXTMustBeAlone">test_<wbr></wbr>NEXTMust<wbr></wbr>Be<wbr></wbr>Alone</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_notImplementedComparisons" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_notImplementedComparisons">test_not<wbr></wbr>Implemented<wbr></wbr>Comparisons</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_prereleaseAttributeDeprecated" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_prereleaseAttributeDeprecated">test_prerelease<wbr></wbr>Attribute<wbr></wbr>Deprecated</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_prereleaseDeprecated" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_prereleaseDeprecated">test_prerelease<wbr></wbr>Deprecated</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_rcEqualspre" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_rcEqualspre">test_rc<wbr></wbr>Equalspre</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_rcOrpreButNotBoth" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_rcOrpreButNotBoth">test_rc<wbr></wbr>Orpre<wbr></wbr>But<wbr></wbr>Not<wbr></wbr>Both</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_repr" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_repr">test<wbr></wbr>_repr</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_reprWithDev" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_reprWithDev">test_repr<wbr></wbr>With<wbr></wbr>Dev</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_reprWithPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_reprWithPost">test_repr<wbr></wbr>With<wbr></wbr>Post</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_reprWithPrerelease" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_reprWithPrerelease">test_repr<wbr></wbr>With<wbr></wbr>Prerelease</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_reprWithReleaseCandidate" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_reprWithReleaseCandidate">test_repr<wbr></wbr>With<wbr></wbr>Release<wbr></wbr>Candidate</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_str" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_str">test<wbr></wbr>_str</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_strWithDev" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithDev">test_str<wbr></wbr>With<wbr></wbr>Dev</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_strWithDevAndPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithDevAndPost">test_str<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>Post</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_strWithDevAndReleaseCandidate" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithDevAndReleaseCandidate">test_str<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>Release<wbr></wbr>Candidate</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_strWithPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithPost">test_str<wbr></wbr>With<wbr></wbr>Post</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_strWithPrerelease" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithPrerelease">test_str<wbr></wbr>With<wbr></wbr>Prerelease</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_strWithReleaseCandidate" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithReleaseCandidate">test_str<wbr></wbr>With<wbr></wbr>Release<wbr></wbr>Candidate</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_versionComparison" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_versionComparison">test_version<wbr></wbr>Comparison</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_versionComparisonCaseInsensitive" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_versionComparisonCaseInsensitive">test_version<wbr></wbr>Comparison<wbr></wbr>Case<wbr></wbr>Insensitive</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#test_versionComparisonNonVersion" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_versionComparisonNonVersion">test_version<wbr></wbr>Comparison<wbr></wbr>Non<wbr></wbr>Version</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#testShort" class="internal-link" title="incremental.tests.test_version.VersionsTests.testShort">test<wbr></wbr>Short</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="incremental.tests.test_version.html" class="internal-link" title="The parent of this class">test<wbr></wbr>_version</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="incremental.tests.test_version.VersionsTests.html" class="internal-link" title="incremental.tests.test_version.VersionsTests"><wbr></wbr>Versions<wbr></wbr>Tests</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
         </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
       </div>
 
-      <div class="categoryHeader">
-        class documentation
-      </div>
+      <div id="main" class="">
+        
 
-      <div class="extrasDocstring">
-        <p><code><span class="py-keyword">class</span> <span class="py-defname">VersionsTests</span>(<span title="twisted.trial.unittest.TestCase">TestCase</span>):</code></p>
-        <p><a href="classIndex.html#incremental.tests.test_version.VersionsTests">View In Hierarchy</a></p>
-      </div>
+        
 
-      <div class="moduleDocstring">
-        <div><p class="undocumented">Undocumented</p></div>
-      </div>
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">incremental</a></code><wbr></wbr>.<code><a href="incremental.tests.html" class="internal-link" title="incremental.tests">tests</a></code><wbr></wbr>.<code><a href="incremental.tests.test_version.html" class="internal-link" title="incremental.tests.test_version">test_version</a></code><wbr></wbr>.<code><a href="incremental.tests.test_version.VersionsTests.html" class="internal-link" title="incremental.tests.test_version.VersionsTests">VersionsTests</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
 
-      <div id="splitTables">
-        <table class="children sortable" id="id14">
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p><code><span class="py-keyword">class</span> <span class="py-defname">VersionsTests</span>(TestCase):</code></p>
+          <p><a href="classIndex.html#incremental.tests.test_version.VersionsTests">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="undocumented">Undocumented</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id12">
+  
   
   <tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_localIsShort">test_localIsShort</a></code></td>
-    <td><span>The local version is the same as the short version.</span></td>
+    <td><code><a href="#test_base" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_base">test<wbr></wbr>_base</a></code></td>
+    <td>The <tt class="rst-docutils literal">base</tt> method returns a very simple representation of the version.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_versionComparison">test_versionComparison</a></code></td>
-    <td><span>Versions can be compared for equality and order.</span></td>
+    <td><code><a href="#test_baseWithDev" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithDev">test_base<wbr></wbr>With<wbr></wbr>Dev</a></code></td>
+    <td>The base version includes 'devX' for versions with dev releases.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_versionComparisonNonVersion">test_versionComparisonNonVersion</a></code></td>
-    <td><span>Versions can be compared with non-versions.</span></td>
+    <td><code><a href="#test_baseWithDevAndPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithDevAndPost">test_base<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>Post</a></code></td>
+    <td>The base version includes 'postXdevX' for versions with dev releases and a postrelease.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_versionComparisonCaseInsensitive">test_versionComparisonCaseInsensitive</a></code></td>
-    <td><span>Version package names are case insensitive.</span></td>
+    <td><code><a href="#test_baseWithDevAndRC" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithDevAndRC">test_base<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>RC</a></code></td>
+    <td>The base version includes 'rcXdevX' for versions with dev releases and a release candidate.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingNEXTReleases">test_comparingNEXTReleases</a></code></td>
-    <td><span>NEXT releases are always larger than numbered releases.</span></td>
+    <td><code><a href="#test_baseWithNEXT" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithNEXT">test_base<wbr></wbr>With<wbr></wbr>NEXT</a></code></td>
+    <td>The <tt class="rst-docutils literal">base</tt> method returns just "NEXT" when NEXT is the major version.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_NEXTMustBeAlone">test_NEXTMustBeAlone</a></code></td>
-    <td><span>NEXT releases must always have the rest of the numbers set to 0.</span></td>
+    <td><code><a href="#test_baseWithPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithPost">test_base<wbr></wbr>With<wbr></wbr>Post</a></code></td>
+    <td>The base version includes 'postX' for versions with postreleases.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingNEXTReleasesEqual">test_comparingNEXTReleasesEqual</a></code></td>
-    <td><span>NEXT releases are equal to each other.</span></td>
+    <td><code><a href="#test_baseWithPrerelease" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithPrerelease">test_base<wbr></wbr>With<wbr></wbr>Prerelease</a></code></td>
+    <td>The base version includes 'rcX' for versions with prereleases.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingPrereleasesWithReleases">test_comparingPrereleasesWithReleases</a></code></td>
-    <td><span>Prereleases are always less than versions without prereleases.</span></td>
+    <td><code><a href="#test_baseWithReleaseCandidate" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_baseWithReleaseCandidate">test_base<wbr></wbr>With<wbr></wbr>Release<wbr></wbr>Candidate</a></code></td>
+    <td>The base version includes 'rcX' for versions with prereleases.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_prereleaseDeprecated">test_prereleaseDeprecated</a></code></td>
-    <td><span>Passing 'prerelease' to Version is deprecated.</span></td>
+    <td><code><a href="#test_comparingDev" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingDev">test_comparing<wbr></wbr>Dev</a></code></td>
+    <td>The value specified as the dev release is used in version comparisons.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_prereleaseAttributeDeprecated">test_prereleaseAttributeDeprecated</a></code></td>
-    <td><span>Accessing 'prerelease' on a Version is deprecated.</span></td>
+    <td><code><a href="#test_comparingDevAndRC" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingDevAndRC">test_comparing<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>RC</a></code></td>
+    <td>The value specified as the dev release and release candidate is used in version comparisons.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingReleaseCandidatesWithReleases">test_comparingReleaseCandidatesWithReleases</a></code></td>
-    <td><span>Release Candidates are always less than versions without release candidates.</span></td>
+    <td><code><a href="#test_comparingDevAndRCDifferent" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingDevAndRCDifferent">test_comparing<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>RCDifferent</a></code></td>
+    <td>The value specified as the dev release and release candidate is used in version comparisons.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingPostReleasesWithReleases">test_comparingPostReleasesWithReleases</a></code></td>
-    <td><span>Post releases are always greater than versions without post releases.</span></td>
+    <td><code><a href="#test_comparingDevReleasesWithPreviousPostReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithPreviousPostReleases">test_comparing<wbr></wbr>Dev<wbr></wbr>Releases<wbr></wbr>With<wbr></wbr>Previous<wbr></wbr>Post<wbr></wbr>Releases</a></code></td>
+    <td>Dev releases are always greater than postreleases based on previous releases.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingDevReleasesWithPreviousPostReleases">test_comparingDevReleasesWithPreviousPostReleases</a></code></td>
-    <td><span>Dev releases are always greater than postreleases based on previous releases.</span></td>
+    <td><code><a href="#test_comparingDevReleasesWithReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithReleases">test_comparing<wbr></wbr>Dev<wbr></wbr>Releases<wbr></wbr>With<wbr></wbr>Releases</a></code></td>
+    <td>Dev releases are always less than versions without dev releases.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingDevReleasesWithReleases">test_comparingDevReleasesWithReleases</a></code></td>
-    <td><span>Dev releases are always less than versions without dev releases.</span></td>
+    <td><code><a href="#test_comparingNEXTReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingNEXTReleases">test_comparing<wbr></wbr>NEXTReleases</a></code></td>
+    <td>NEXT releases are always larger than numbered releases.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_rcEqualspre">test_rcEqualspre</a></code></td>
-    <td><span>Release Candidates are equal to prereleases.</span></td>
+    <td><code><a href="#test_comparingNEXTReleasesEqual" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingNEXTReleasesEqual">test_comparing<wbr></wbr>NEXTReleases<wbr></wbr>Equal</a></code></td>
+    <td>NEXT releases are equal to each other.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_rcOrpreButNotBoth">test_rcOrpreButNotBoth</a></code></td>
-    <td><span>Release Candidate and prerelease can't both be given.</span></td>
+    <td><code><a href="#test_comparingPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingPost">test_comparing<wbr></wbr>Post</a></code></td>
+    <td>The value specified as the postrelease is used in version comparisons.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingReleaseCandidates">test_comparingReleaseCandidates</a></code></td>
-    <td><span>The value specified as the release candidate is used in version comparisons.</span></td>
+    <td><code><a href="#test_comparingPostReleasesWithReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingPostReleasesWithReleases">test_comparing<wbr></wbr>Post<wbr></wbr>Releases<wbr></wbr>With<wbr></wbr>Releases</a></code></td>
+    <td>Post releases are always greater than versions without post releases.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingPost">test_comparingPost</a></code></td>
-    <td><span>The value specified as the postrelease is used in version comparisons.</span></td>
+    <td><code><a href="#test_comparingPrereleasesWithReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingPrereleasesWithReleases">test_comparing<wbr></wbr>Prereleases<wbr></wbr>With<wbr></wbr>Releases</a></code></td>
+    <td>Prereleases are always less than versions without prereleases.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingDev">test_comparingDev</a></code></td>
-    <td><span>The value specified as the dev release is used in version comparisons.</span></td>
+    <td><code><a href="#test_comparingReleaseCandidates" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingReleaseCandidates">test_comparing<wbr></wbr>Release<wbr></wbr>Candidates</a></code></td>
+    <td>The value specified as the release candidate is used in version comparisons.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingDevAndRC">test_comparingDevAndRC</a></code></td>
-    <td><span>The value specified as the dev release and release candidate is used in version comparisons.</span></td>
+    <td><code><a href="#test_comparingReleaseCandidatesWithReleases" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_comparingReleaseCandidatesWithReleases">test_comparing<wbr></wbr>Release<wbr></wbr>Candidates<wbr></wbr>With<wbr></wbr>Releases</a></code></td>
+    <td>Release Candidates are always less than versions without release candidates.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_comparingDevAndRCDifferent">test_comparingDevAndRCDifferent</a></code></td>
-    <td><span>The value specified as the dev release and release candidate is used in version comparisons.</span></td>
+    <td><code><a href="#test_disallowBuggyComparisons" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_disallowBuggyComparisons">test_disallow<wbr></wbr>Buggy<wbr></wbr>Comparisons</a></code></td>
+    <td>The package names of the Version objects need to be the same.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_infComparison">test_infComparison</a></code></td>
-    <td><span><code><a href="incremental.html#_inf">_inf</a></code> is equal to <code><a href="incremental.html#_inf">_inf</a></code>.</span></td>
+    <td><code><a href="#test_getVersionString" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionString">test_get<wbr></wbr>Version<wbr></wbr>String</a></code></td>
+    <td><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> returns a string with the package name and the short version number.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_disallowBuggyComparisons">test_disallowBuggyComparisons</a></code></td>
-    <td><span>The package names of the Version objects need to be the same.</span></td>
+    <td><code><a href="#test_getVersionStringWithDev" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDev">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Dev</a></code></td>
+    <td><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the dev release, if any.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_notImplementedComparisons">test_notImplementedComparisons</a></code></td>
-    <td><span>Comparing a <code><a href="incremental.Version.html">Version</a></code> to some other object type results in <code>NotImplemented</code>.</span></td>
+    <td><code><a href="#test_getVersionStringWithDevAndPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDevAndPost">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>Post</a></code></td>
+    <td><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the dev release and postrelease, if any.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_repr">test_repr</a></code></td>
-    <td><span>Calling <code>repr</code> on a version returns a human-readable string representation of the version.</span></td>
+    <td><code><a href="#test_getVersionStringWithDevAndRC" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDevAndRC">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>RC</a></code></td>
+    <td><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the dev release and release candidate, if any.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_reprWithPrerelease">test_reprWithPrerelease</a></code></td>
-    <td><span>Calling <code>repr</code> on a version with a prerelease returns a human-readable string representation of the version including the prerelease as a release candidate..</span></td>
+    <td><code><a href="#test_getVersionStringWithPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithPost">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Post</a></code></td>
+    <td><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the postrelease, if any.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_reprWithReleaseCandidate">test_reprWithReleaseCandidate</a></code></td>
-    <td><span>Calling <code>repr</code> on a version with a release candidate returns a human-readable string representation of the version including the rc.</span></td>
+    <td><code><a href="#test_getVersionStringWithPrerelease" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithPrerelease">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Prerelease</a></code></td>
+    <td><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the prerelease as a release candidate, if any.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_reprWithPost">test_reprWithPost</a></code></td>
-    <td><span>Calling <code>repr</code> on a version with a postrelease returns a human-readable string representation of the version including the postrelease.</span></td>
+    <td><code><a href="#test_getVersionStringWithReleaseCandidate" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithReleaseCandidate">test_get<wbr></wbr>Version<wbr></wbr>String<wbr></wbr>With<wbr></wbr>Release<wbr></wbr>Candidate</a></code></td>
+    <td><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the release candidate, if any.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_reprWithDev">test_reprWithDev</a></code></td>
-    <td><span>Calling <code>repr</code> on a version with a dev release returns a human-readable string representation of the version including the dev release.</span></td>
+    <td><code><a href="#test_infComparison" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_infComparison">test_inf<wbr></wbr>Comparison</a></code></td>
+    <td><code><a href="index.html#_inf" class="internal-link" title="incremental._inf">_inf</a></code> is equal to <code><a href="index.html#_inf" class="internal-link" title="incremental._inf">_inf</a></code>.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_str">test_str</a></code></td>
-    <td><span>Calling <code>str</code> on a version returns a human-readable string representation of the version.</span></td>
+    <td><code><a href="#test_localIsShort" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_localIsShort">test_local<wbr></wbr>Is<wbr></wbr>Short</a></code></td>
+    <td>The local version is the same as the short version.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_strWithPrerelease">test_strWithPrerelease</a></code></td>
-    <td><span>Calling <code>str</code> on a version with a prerelease includes the prerelease as a release candidate.</span></td>
+    <td><code><a href="#test_NEXTMustBeAlone" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_NEXTMustBeAlone">test_<wbr></wbr>NEXTMust<wbr></wbr>Be<wbr></wbr>Alone</a></code></td>
+    <td>NEXT releases must always have the rest of the numbers set to 0.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_strWithReleaseCandidate">test_strWithReleaseCandidate</a></code></td>
-    <td><span>Calling <code>str</code> on a version with a release candidate includes the release candidate.</span></td>
+    <td><code><a href="#test_notImplementedComparisons" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_notImplementedComparisons">test_not<wbr></wbr>Implemented<wbr></wbr>Comparisons</a></code></td>
+    <td>Comparing a <code><a href="incremental.Version.html" class="internal-link" title="incremental.Version">Version</a></code> to some other object type results in <tt class="rst-docutils literal">NotImplemented</tt>.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_strWithPost">test_strWithPost</a></code></td>
-    <td><span>Calling <code>str</code> on a version with a postrelease includes the postrelease.</span></td>
+    <td><code><a href="#test_prereleaseAttributeDeprecated" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_prereleaseAttributeDeprecated">test_prerelease<wbr></wbr>Attribute<wbr></wbr>Deprecated</a></code></td>
+    <td>Accessing 'prerelease' on a Version is deprecated.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_strWithDevAndReleaseCandidate">test_strWithDevAndReleaseCandidate</a></code></td>
-    <td><span>Calling <code>str</code> on a version with a release candidate and dev release includes the release candidate and the dev release.</span></td>
+    <td><code><a href="#test_prereleaseDeprecated" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_prereleaseDeprecated">test_prerelease<wbr></wbr>Deprecated</a></code></td>
+    <td>Passing 'prerelease' to Version is deprecated.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_strWithDev">test_strWithDev</a></code></td>
-    <td><span>Calling <code>str</code> on a version with a dev release includes the dev release.</span></td>
+    <td><code><a href="#test_rcEqualspre" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_rcEqualspre">test_rc<wbr></wbr>Equalspre</a></code></td>
+    <td>Release Candidates are equal to prereleases.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#test_strWithDevAndPost">test_strWithDevAndPost</a></code></td>
-    <td><span>Calling <code>str</code> on a version with a postrelease and dev release includes the postrelease and the dev release.</span></td>
+    <td><code><a href="#test_rcOrpreButNotBoth" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_rcOrpreButNotBoth">test_rc<wbr></wbr>Orpre<wbr></wbr>But<wbr></wbr>Not<wbr></wbr>Both</a></code></td>
+    <td>Release Candidate and prerelease can't both be given.</td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#testShort">testShort</a></code></td>
+    <td><code><a href="#test_repr" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_repr">test<wbr></wbr>_repr</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">repr</tt> on a version returns a human-readable string representation of the version.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_reprWithDev" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_reprWithDev">test_repr<wbr></wbr>With<wbr></wbr>Dev</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">repr</tt> on a version with a dev release returns a human-readable string representation of the version including the dev release.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_reprWithPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_reprWithPost">test_repr<wbr></wbr>With<wbr></wbr>Post</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">repr</tt> on a version with a postrelease returns a human-readable string representation of the version including the postrelease.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_reprWithPrerelease" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_reprWithPrerelease">test_repr<wbr></wbr>With<wbr></wbr>Prerelease</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">repr</tt> on a version with a prerelease returns a human-readable string representation of the version including the prerelease as a release candidate..</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_reprWithReleaseCandidate" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_reprWithReleaseCandidate">test_repr<wbr></wbr>With<wbr></wbr>Release<wbr></wbr>Candidate</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">repr</tt> on a version with a release candidate returns a human-readable string representation of the version including the rc.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_str" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_str">test<wbr></wbr>_str</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">str</tt> on a version returns a human-readable string representation of the version.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_strWithDev" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithDev">test_str<wbr></wbr>With<wbr></wbr>Dev</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">str</tt> on a version with a dev release includes the dev release.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_strWithDevAndPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithDevAndPost">test_str<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>Post</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">str</tt> on a version with a postrelease and dev release includes the postrelease and the dev release.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_strWithDevAndReleaseCandidate" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithDevAndReleaseCandidate">test_str<wbr></wbr>With<wbr></wbr>Dev<wbr></wbr>And<wbr></wbr>Release<wbr></wbr>Candidate</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">str</tt> on a version with a release candidate and dev release includes the release candidate and the dev release.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_strWithPost" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithPost">test_str<wbr></wbr>With<wbr></wbr>Post</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">str</tt> on a version with a postrelease includes the postrelease.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_strWithPrerelease" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithPrerelease">test_str<wbr></wbr>With<wbr></wbr>Prerelease</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">str</tt> on a version with a prerelease includes the prerelease as a release candidate.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_strWithReleaseCandidate" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_strWithReleaseCandidate">test_str<wbr></wbr>With<wbr></wbr>Release<wbr></wbr>Candidate</a></code></td>
+    <td>Calling <tt class="rst-docutils literal">str</tt> on a version with a release candidate includes the release candidate.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_versionComparison" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_versionComparison">test_version<wbr></wbr>Comparison</a></code></td>
+    <td>Versions can be compared for equality and order.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_versionComparisonCaseInsensitive" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_versionComparisonCaseInsensitive">test_version<wbr></wbr>Comparison<wbr></wbr>Case<wbr></wbr>Insensitive</a></code></td>
+    <td>Version package names are case insensitive.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#test_versionComparisonNonVersion" class="internal-link" title="incremental.tests.test_version.VersionsTests.test_versionComparisonNonVersion">test_version<wbr></wbr>Comparison<wbr></wbr>Non<wbr></wbr>Version</a></code></td>
+    <td>Versions can be compared with non-versions.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#testShort" class="internal-link" title="incremental.tests.test_version.VersionsTests.testShort">test<wbr></wbr>Short</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_getVersionString">test_getVersionString</a></code></td>
-    <td><span><code><a href="incremental.html#getVersionString">getVersionString</a></code> returns a string with the package name and the short version number.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_getVersionStringWithPrerelease">test_getVersionStringWithPrerelease</a></code></td>
-    <td><span><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the prerelease as a release candidate, if any.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_getVersionStringWithReleaseCandidate">test_getVersionStringWithReleaseCandidate</a></code></td>
-    <td><span><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the release candidate, if any.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_getVersionStringWithPost">test_getVersionStringWithPost</a></code></td>
-    <td><span><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the postrelease, if any.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_getVersionStringWithDev">test_getVersionStringWithDev</a></code></td>
-    <td><span><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the dev release, if any.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_getVersionStringWithDevAndRC">test_getVersionStringWithDevAndRC</a></code></td>
-    <td><span><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the dev release and release candidate, if any.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_getVersionStringWithDevAndPost">test_getVersionStringWithDevAndPost</a></code></td>
-    <td><span><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the dev release and postrelease, if any.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_baseWithNEXT">test_baseWithNEXT</a></code></td>
-    <td><span>The <code>base</code> method returns just "NEXT" when NEXT is the major version.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_base">test_base</a></code></td>
-    <td><span>The <code>base</code> method returns a very simple representation of the version.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_baseWithPrerelease">test_baseWithPrerelease</a></code></td>
-    <td><span>The base version includes 'rcX' for versions with prereleases.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_baseWithPost">test_baseWithPost</a></code></td>
-    <td><span>The base version includes 'postX' for versions with postreleases.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_baseWithDev">test_baseWithDev</a></code></td>
-    <td><span>The base version includes 'devX' for versions with dev releases.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_baseWithReleaseCandidate">test_baseWithReleaseCandidate</a></code></td>
-    <td><span>The base version includes 'rcX' for versions with prereleases.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_baseWithDevAndRC">test_baseWithDevAndRC</a></code></td>
-    <td><span>The base version includes 'rcXdevX' for versions with dev releases and a release candidate.</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#test_baseWithDevAndPost">test_baseWithDevAndPost</a></code></td>
-    <td><span>The base version includes 'postXdevX' for versions with dev releases and a postrelease.</span></td>
   </tr>
 </table>
-        
-
           
-      </div>
 
-      <div id="childList">
+            
+        </div>
 
-        <div class="basemethod">
+        <div id="childList">
+          <div class="basemethod">
   
-  <a name="incremental.tests.test_version.VersionsTests.test_localIsShort">
-    
-  </a>
-  <a name="test_localIsShort">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_localIsShort</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The local version is the same as the short version.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_versionComparison">
-    
-  </a>
-  <a name="test_versionComparison">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_versionComparison</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Versions can be compared for equality and order.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_versionComparisonNonVersion">
-    
-  </a>
-  <a name="test_versionComparisonNonVersion">
-    
-  </a>
-  <div class="functionHeader">
-    @unittest.skipIf(sys.version_info &lt; (3,), 'Comparisons do not raise on py2')<br />
-    <span class="py-keyword">def</span> <span class="py-defname">test_versionComparisonNonVersion</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Versions can be compared with non-versions.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_versionComparisonCaseInsensitive">
-    
-  </a>
-  <a name="test_versionComparisonCaseInsensitive">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_versionComparisonCaseInsensitive</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Version package names are case insensitive.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingNEXTReleases">
-    
-  </a>
-  <a name="test_comparingNEXTReleases">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingNEXTReleases</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>NEXT releases are always larger than numbered releases.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_NEXTMustBeAlone">
-    
-  </a>
-  <a name="test_NEXTMustBeAlone">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_NEXTMustBeAlone</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>NEXT releases must always have the rest of the numbers set to 0.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingNEXTReleasesEqual">
-    
-  </a>
-  <a name="test_comparingNEXTReleasesEqual">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingNEXTReleasesEqual</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>NEXT releases are equal to each other.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingPrereleasesWithReleases">
-    
-  </a>
-  <a name="test_comparingPrereleasesWithReleases">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingPrereleasesWithReleases</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Prereleases are always less than versions without prereleases.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_prereleaseDeprecated">
-    
-  </a>
-  <a name="test_prereleaseDeprecated">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_prereleaseDeprecated</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Passing 'prerelease' to Version is deprecated.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_prereleaseAttributeDeprecated">
-    
-  </a>
-  <a name="test_prereleaseAttributeDeprecated">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_prereleaseAttributeDeprecated</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Accessing 'prerelease' on a Version is deprecated.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingReleaseCandidatesWithReleases">
-    
-  </a>
-  <a name="test_comparingReleaseCandidatesWithReleases">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingReleaseCandidatesWithReleases</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Release Candidates are always less than versions without release candidates.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingPostReleasesWithReleases">
-    
-  </a>
-  <a name="test_comparingPostReleasesWithReleases">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingPostReleasesWithReleases</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Post releases are always greater than versions without post releases.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithPreviousPostReleases">
-    
-  </a>
-  <a name="test_comparingDevReleasesWithPreviousPostReleases">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingDevReleasesWithPreviousPostReleases</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Dev releases are always greater than postreleases based on previous releases.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithReleases">
-    
-  </a>
-  <a name="test_comparingDevReleasesWithReleases">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingDevReleasesWithReleases</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Dev releases are always less than versions without dev releases.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_rcEqualspre">
-    
-  </a>
-  <a name="test_rcEqualspre">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_rcEqualspre</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Release Candidates are equal to prereleases.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_rcOrpreButNotBoth">
-    
-  </a>
-  <a name="test_rcOrpreButNotBoth">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_rcOrpreButNotBoth</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Release Candidate and prerelease can't both be given.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingReleaseCandidates">
-    
-  </a>
-  <a name="test_comparingReleaseCandidates">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingReleaseCandidates</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The value specified as the release candidate is used in version comparisons.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingPost">
-    
-  </a>
-  <a name="test_comparingPost">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingPost</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The value specified as the postrelease is used in version comparisons.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingDev">
-    
-  </a>
-  <a name="test_comparingDev">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingDev</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The value specified as the dev release is used in version comparisons.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingDevAndRC">
-    
-  </a>
-  <a name="test_comparingDevAndRC">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingDevAndRC</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The value specified as the dev release and release candidate is used in version comparisons.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_comparingDevAndRCDifferent">
-    
-  </a>
-  <a name="test_comparingDevAndRCDifferent">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_comparingDevAndRCDifferent</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The value specified as the dev release and release candidate is used in version comparisons.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_infComparison">
-    
-  </a>
-  <a name="test_infComparison">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_infComparison</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p><code><a href="incremental.html#_inf">_inf</a></code> is equal to <code><a href="incremental.html#_inf">_inf</a></code>.</p><p>This is a regression test.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_disallowBuggyComparisons">
-    
-  </a>
-  <a name="test_disallowBuggyComparisons">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_disallowBuggyComparisons</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The package names of the Version objects need to be the same.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_notImplementedComparisons">
-    
-  </a>
-  <a name="test_notImplementedComparisons">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_notImplementedComparisons</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Comparing a <code><a href="incremental.Version.html">Version</a></code> to some other object type results in <code>NotImplemented</code>.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_repr">
-    
-  </a>
-  <a name="test_repr">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_repr</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>repr</code> on a version returns a human-readable string representation of the version.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_reprWithPrerelease">
-    
-  </a>
-  <a name="test_reprWithPrerelease">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_reprWithPrerelease</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>repr</code> on a version with a prerelease returns a human-readable string representation of the version including the prerelease as a release candidate..</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_reprWithReleaseCandidate">
-    
-  </a>
-  <a name="test_reprWithReleaseCandidate">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_reprWithReleaseCandidate</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>repr</code> on a version with a release candidate returns a human-readable string representation of the version including the rc.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_reprWithPost">
-    
-  </a>
-  <a name="test_reprWithPost">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_reprWithPost</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>repr</code> on a version with a postrelease returns a human-readable string representation of the version including the postrelease.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_reprWithDev">
-    
-  </a>
-  <a name="test_reprWithDev">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_reprWithDev</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>repr</code> on a version with a dev release returns a human-readable string representation of the version including the dev release.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_str">
-    
-  </a>
-  <a name="test_str">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_str</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>str</code> on a version returns a human-readable string representation of the version.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_strWithPrerelease">
-    
-  </a>
-  <a name="test_strWithPrerelease">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_strWithPrerelease</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>str</code> on a version with a prerelease includes the prerelease as a release candidate.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_strWithReleaseCandidate">
-    
-  </a>
-  <a name="test_strWithReleaseCandidate">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_strWithReleaseCandidate</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>str</code> on a version with a release candidate includes the release candidate.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_strWithPost">
-    
-  </a>
-  <a name="test_strWithPost">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_strWithPost</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>str</code> on a version with a postrelease includes the postrelease.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_strWithDevAndReleaseCandidate">
-    
-  </a>
-  <a name="test_strWithDevAndReleaseCandidate">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_strWithDevAndReleaseCandidate</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>str</code> on a version with a release candidate and dev release includes the release candidate and the dev release.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_strWithDev">
-    
-  </a>
-  <a name="test_strWithDev">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_strWithDev</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>str</code> on a version with a dev release includes the dev release.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_strWithDevAndPost">
-    
-  </a>
-  <a name="test_strWithDevAndPost">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_strWithDevAndPost</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>Calling <code>str</code> on a version with a postrelease and dev release includes the postrelease and the dev release.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.testShort">
-    
-  </a>
-  <a name="testShort">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">testShort</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p class="undocumented">Undocumented</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_getVersionString">
-    
-  </a>
-  <a name="test_getVersionString">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionString</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p><code><a href="incremental.html#getVersionString">getVersionString</a></code> returns a string with the package name and the short version number.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithPrerelease">
-    
-  </a>
-  <a name="test_getVersionStringWithPrerelease">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithPrerelease</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the prerelease as a release candidate, if any.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithReleaseCandidate">
-    
-  </a>
-  <a name="test_getVersionStringWithReleaseCandidate">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithReleaseCandidate</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the release candidate, if any.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithPost">
-    
-  </a>
-  <a name="test_getVersionStringWithPost">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithPost</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the postrelease, if any.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDev">
-    
-  </a>
-  <a name="test_getVersionStringWithDev">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithDev</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the dev release, if any.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDevAndRC">
-    
-  </a>
-  <a name="test_getVersionStringWithDevAndRC">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithDevAndRC</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the dev release and release candidate, if any.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDevAndPost">
-    
-  </a>
-  <a name="test_getVersionStringWithDevAndPost">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithDevAndPost</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p><code><a href="incremental.html#getVersionString">getVersionString</a></code> includes the dev release and postrelease, if any.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_baseWithNEXT">
-    
-  </a>
-  <a name="test_baseWithNEXT">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_baseWithNEXT</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The <code>base</code> method returns just "NEXT" when NEXT is the major version.</p></div>
-  </div>
-</div><div class="basemethod">
   
   <a name="incremental.tests.test_version.VersionsTests.test_base">
     
@@ -1136,49 +1054,19 @@
     
     <span class="py-keyword">def</span> <span class="py-defname">test_base</span>(self):
     
+    <a class="headerLink" href="#test_base" title="incremental.tests.test_version.VersionsTests.test_base">
+      
+      
+      ¶
+    </a>
   </div>
   <div class="docstring functionBody">
     
-    
-    <div><p>The <code>base</code> method returns a very simple representation of the version.</p></div>
+    <div><p>The <tt class="rst-docutils literal">base</tt> method returns a very simple representation of the version.</p>
+</div>
   </div>
 </div><div class="basemethod">
   
-  <a name="incremental.tests.test_version.VersionsTests.test_baseWithPrerelease">
-    
-  </a>
-  <a name="test_baseWithPrerelease">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_baseWithPrerelease</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The base version includes 'rcX' for versions with prereleases.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_baseWithPost">
-    
-  </a>
-  <a name="test_baseWithPost">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_baseWithPost</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The base version includes 'postX' for versions with postreleases.</p></div>
-  </div>
-</div><div class="basemethod">
   
   <a name="incremental.tests.test_version.VersionsTests.test_baseWithDev">
     
@@ -1190,49 +1078,19 @@
     
     <span class="py-keyword">def</span> <span class="py-defname">test_baseWithDev</span>(self):
     
+    <a class="headerLink" href="#test_baseWithDev" title="incremental.tests.test_version.VersionsTests.test_baseWithDev">
+      
+      
+      ¶
+    </a>
   </div>
   <div class="docstring functionBody">
     
-    
-    <div><p>The base version includes 'devX' for versions with dev releases.</p></div>
+    <div><p>The base version includes 'devX' for versions with dev releases.</p>
+</div>
   </div>
 </div><div class="basemethod">
   
-  <a name="incremental.tests.test_version.VersionsTests.test_baseWithReleaseCandidate">
-    
-  </a>
-  <a name="test_baseWithReleaseCandidate">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_baseWithReleaseCandidate</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The base version includes 'rcX' for versions with prereleases.</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.tests.test_version.VersionsTests.test_baseWithDevAndRC">
-    
-  </a>
-  <a name="test_baseWithDevAndRC">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">test_baseWithDevAndRC</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p>The base version includes 'rcXdevX' for versions with dev releases and a release candidate.</p></div>
-  </div>
-</div><div class="basemethod">
   
   <a name="incremental.tests.test_version.VersionsTests.test_baseWithDevAndPost">
     
@@ -1244,21 +1102,1216 @@
     
     <span class="py-keyword">def</span> <span class="py-defname">test_baseWithDevAndPost</span>(self):
     
+    <a class="headerLink" href="#test_baseWithDevAndPost" title="incremental.tests.test_version.VersionsTests.test_baseWithDevAndPost">
+      
+      
+      ¶
+    </a>
   </div>
   <div class="docstring functionBody">
     
+    <div><p>The base version includes 'postXdevX' for versions with dev releases and a postrelease.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_baseWithDevAndRC">
     
-    <div><p>The base version includes 'postXdevX' for versions with dev releases and a postrelease.</p></div>
+  </a>
+  <a name="test_baseWithDevAndRC">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_baseWithDevAndRC</span>(self):
+    
+    <a class="headerLink" href="#test_baseWithDevAndRC" title="incremental.tests.test_version.VersionsTests.test_baseWithDevAndRC">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The base version includes 'rcXdevX' for versions with dev releases and a release candidate.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_baseWithNEXT">
+    
+  </a>
+  <a name="test_baseWithNEXT">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_baseWithNEXT</span>(self):
+    
+    <a class="headerLink" href="#test_baseWithNEXT" title="incremental.tests.test_version.VersionsTests.test_baseWithNEXT">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The <tt class="rst-docutils literal">base</tt> method returns just "NEXT" when NEXT is the major version.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_baseWithPost">
+    
+  </a>
+  <a name="test_baseWithPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_baseWithPost</span>(self):
+    
+    <a class="headerLink" href="#test_baseWithPost" title="incremental.tests.test_version.VersionsTests.test_baseWithPost">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The base version includes 'postX' for versions with postreleases.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_baseWithPrerelease">
+    
+  </a>
+  <a name="test_baseWithPrerelease">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_baseWithPrerelease</span>(self):
+    
+    <a class="headerLink" href="#test_baseWithPrerelease" title="incremental.tests.test_version.VersionsTests.test_baseWithPrerelease">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The base version includes 'rcX' for versions with prereleases.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_baseWithReleaseCandidate">
+    
+  </a>
+  <a name="test_baseWithReleaseCandidate">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_baseWithReleaseCandidate</span>(self):
+    
+    <a class="headerLink" href="#test_baseWithReleaseCandidate" title="incremental.tests.test_version.VersionsTests.test_baseWithReleaseCandidate">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The base version includes 'rcX' for versions with prereleases.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingDev">
+    
+  </a>
+  <a name="test_comparingDev">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingDev</span>(self):
+    
+    <a class="headerLink" href="#test_comparingDev" title="incremental.tests.test_version.VersionsTests.test_comparingDev">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The value specified as the dev release is used in version comparisons.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingDevAndRC">
+    
+  </a>
+  <a name="test_comparingDevAndRC">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingDevAndRC</span>(self):
+    
+    <a class="headerLink" href="#test_comparingDevAndRC" title="incremental.tests.test_version.VersionsTests.test_comparingDevAndRC">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The value specified as the dev release and release candidate is used in version comparisons.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingDevAndRCDifferent">
+    
+  </a>
+  <a name="test_comparingDevAndRCDifferent">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingDevAndRCDifferent</span>(self):
+    
+    <a class="headerLink" href="#test_comparingDevAndRCDifferent" title="incremental.tests.test_version.VersionsTests.test_comparingDevAndRCDifferent">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The value specified as the dev release and release candidate is used in version comparisons.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithPreviousPostReleases">
+    
+  </a>
+  <a name="test_comparingDevReleasesWithPreviousPostReleases">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingDevReleasesWithPreviousPostReleases</span>(self):
+    
+    <a class="headerLink" href="#test_comparingDevReleasesWithPreviousPostReleases" title="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithPreviousPostReleases">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Dev releases are always greater than postreleases based on previous releases.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithReleases">
+    
+  </a>
+  <a name="test_comparingDevReleasesWithReleases">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingDevReleasesWithReleases</span>(self):
+    
+    <a class="headerLink" href="#test_comparingDevReleasesWithReleases" title="incremental.tests.test_version.VersionsTests.test_comparingDevReleasesWithReleases">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Dev releases are always less than versions without dev releases.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingNEXTReleases">
+    
+  </a>
+  <a name="test_comparingNEXTReleases">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingNEXTReleases</span>(self):
+    
+    <a class="headerLink" href="#test_comparingNEXTReleases" title="incremental.tests.test_version.VersionsTests.test_comparingNEXTReleases">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>NEXT releases are always larger than numbered releases.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingNEXTReleasesEqual">
+    
+  </a>
+  <a name="test_comparingNEXTReleasesEqual">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingNEXTReleasesEqual</span>(self):
+    
+    <a class="headerLink" href="#test_comparingNEXTReleasesEqual" title="incremental.tests.test_version.VersionsTests.test_comparingNEXTReleasesEqual">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>NEXT releases are equal to each other.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingPost">
+    
+  </a>
+  <a name="test_comparingPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingPost</span>(self):
+    
+    <a class="headerLink" href="#test_comparingPost" title="incremental.tests.test_version.VersionsTests.test_comparingPost">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The value specified as the postrelease is used in version comparisons.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingPostReleasesWithReleases">
+    
+  </a>
+  <a name="test_comparingPostReleasesWithReleases">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingPostReleasesWithReleases</span>(self):
+    
+    <a class="headerLink" href="#test_comparingPostReleasesWithReleases" title="incremental.tests.test_version.VersionsTests.test_comparingPostReleasesWithReleases">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Post releases are always greater than versions without post releases.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingPrereleasesWithReleases">
+    
+  </a>
+  <a name="test_comparingPrereleasesWithReleases">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingPrereleasesWithReleases</span>(self):
+    
+    <a class="headerLink" href="#test_comparingPrereleasesWithReleases" title="incremental.tests.test_version.VersionsTests.test_comparingPrereleasesWithReleases">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Prereleases are always less than versions without prereleases.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingReleaseCandidates">
+    
+  </a>
+  <a name="test_comparingReleaseCandidates">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingReleaseCandidates</span>(self):
+    
+    <a class="headerLink" href="#test_comparingReleaseCandidates" title="incremental.tests.test_version.VersionsTests.test_comparingReleaseCandidates">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The value specified as the release candidate is used in version comparisons.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_comparingReleaseCandidatesWithReleases">
+    
+  </a>
+  <a name="test_comparingReleaseCandidatesWithReleases">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_comparingReleaseCandidatesWithReleases</span>(self):
+    
+    <a class="headerLink" href="#test_comparingReleaseCandidatesWithReleases" title="incremental.tests.test_version.VersionsTests.test_comparingReleaseCandidatesWithReleases">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Release Candidates are always less than versions without release candidates.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_disallowBuggyComparisons">
+    
+  </a>
+  <a name="test_disallowBuggyComparisons">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_disallowBuggyComparisons</span>(self):
+    
+    <a class="headerLink" href="#test_disallowBuggyComparisons" title="incremental.tests.test_version.VersionsTests.test_disallowBuggyComparisons">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The package names of the Version objects need to be the same.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_getVersionString">
+    
+  </a>
+  <a name="test_getVersionString">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionString</span>(self):
+    
+    <a class="headerLink" href="#test_getVersionString" title="incremental.tests.test_version.VersionsTests.test_getVersionString">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> returns a string with the package name and the short version number.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDev">
+    
+  </a>
+  <a name="test_getVersionStringWithDev">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithDev</span>(self):
+    
+    <a class="headerLink" href="#test_getVersionStringWithDev" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDev">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the dev release, if any.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDevAndPost">
+    
+  </a>
+  <a name="test_getVersionStringWithDevAndPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithDevAndPost</span>(self):
+    
+    <a class="headerLink" href="#test_getVersionStringWithDevAndPost" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDevAndPost">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the dev release and postrelease, if any.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDevAndRC">
+    
+  </a>
+  <a name="test_getVersionStringWithDevAndRC">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithDevAndRC</span>(self):
+    
+    <a class="headerLink" href="#test_getVersionStringWithDevAndRC" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithDevAndRC">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the dev release and release candidate, if any.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithPost">
+    
+  </a>
+  <a name="test_getVersionStringWithPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithPost</span>(self):
+    
+    <a class="headerLink" href="#test_getVersionStringWithPost" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithPost">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the postrelease, if any.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithPrerelease">
+    
+  </a>
+  <a name="test_getVersionStringWithPrerelease">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithPrerelease</span>(self):
+    
+    <a class="headerLink" href="#test_getVersionStringWithPrerelease" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithPrerelease">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the prerelease as a release candidate, if any.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_getVersionStringWithReleaseCandidate">
+    
+  </a>
+  <a name="test_getVersionStringWithReleaseCandidate">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_getVersionStringWithReleaseCandidate</span>(self):
+    
+    <a class="headerLink" href="#test_getVersionStringWithReleaseCandidate" title="incremental.tests.test_version.VersionsTests.test_getVersionStringWithReleaseCandidate">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p><code><a href="index.html#getVersionString" class="internal-link" title="incremental.getVersionString">getVersionString</a></code> includes the release candidate, if any.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_infComparison">
+    
+  </a>
+  <a name="test_infComparison">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_infComparison</span>(self):
+    
+    <a class="headerLink" href="#test_infComparison" title="incremental.tests.test_version.VersionsTests.test_infComparison">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p><code><a href="index.html#_inf" class="internal-link" title="incremental._inf">_inf</a></code> is equal to <code><a href="index.html#_inf" class="internal-link" title="incremental._inf">_inf</a></code>.</p>
+<p>This is a regression test.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_localIsShort">
+    
+  </a>
+  <a name="test_localIsShort">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_localIsShort</span>(self):
+    
+    <a class="headerLink" href="#test_localIsShort" title="incremental.tests.test_version.VersionsTests.test_localIsShort">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>The local version is the same as the short version.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_NEXTMustBeAlone">
+    
+  </a>
+  <a name="test_NEXTMustBeAlone">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_NEXTMustBeAlone</span>(self):
+    
+    <a class="headerLink" href="#test_NEXTMustBeAlone" title="incremental.tests.test_version.VersionsTests.test_NEXTMustBeAlone">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>NEXT releases must always have the rest of the numbers set to 0.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_notImplementedComparisons">
+    
+  </a>
+  <a name="test_notImplementedComparisons">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_notImplementedComparisons</span>(self):
+    
+    <a class="headerLink" href="#test_notImplementedComparisons" title="incremental.tests.test_version.VersionsTests.test_notImplementedComparisons">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Comparing a <code><a href="incremental.Version.html" class="internal-link" title="incremental.Version">Version</a></code> to some other object type results in <tt class="rst-docutils literal">NotImplemented</tt>.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_prereleaseAttributeDeprecated">
+    
+  </a>
+  <a name="test_prereleaseAttributeDeprecated">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_prereleaseAttributeDeprecated</span>(self):
+    
+    <a class="headerLink" href="#test_prereleaseAttributeDeprecated" title="incremental.tests.test_version.VersionsTests.test_prereleaseAttributeDeprecated">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Accessing 'prerelease' on a Version is deprecated.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_prereleaseDeprecated">
+    
+  </a>
+  <a name="test_prereleaseDeprecated">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_prereleaseDeprecated</span>(self):
+    
+    <a class="headerLink" href="#test_prereleaseDeprecated" title="incremental.tests.test_version.VersionsTests.test_prereleaseDeprecated">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Passing 'prerelease' to Version is deprecated.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_rcEqualspre">
+    
+  </a>
+  <a name="test_rcEqualspre">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_rcEqualspre</span>(self):
+    
+    <a class="headerLink" href="#test_rcEqualspre" title="incremental.tests.test_version.VersionsTests.test_rcEqualspre">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Release Candidates are equal to prereleases.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_rcOrpreButNotBoth">
+    
+  </a>
+  <a name="test_rcOrpreButNotBoth">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_rcOrpreButNotBoth</span>(self):
+    
+    <a class="headerLink" href="#test_rcOrpreButNotBoth" title="incremental.tests.test_version.VersionsTests.test_rcOrpreButNotBoth">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Release Candidate and prerelease can't both be given.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_repr">
+    
+  </a>
+  <a name="test_repr">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_repr</span>(self):
+    
+    <a class="headerLink" href="#test_repr" title="incremental.tests.test_version.VersionsTests.test_repr">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">repr</tt> on a version returns a human-readable string representation of the version.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_reprWithDev">
+    
+  </a>
+  <a name="test_reprWithDev">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_reprWithDev</span>(self):
+    
+    <a class="headerLink" href="#test_reprWithDev" title="incremental.tests.test_version.VersionsTests.test_reprWithDev">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">repr</tt> on a version with a dev release returns a human-readable string representation of the version including the dev release.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_reprWithPost">
+    
+  </a>
+  <a name="test_reprWithPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_reprWithPost</span>(self):
+    
+    <a class="headerLink" href="#test_reprWithPost" title="incremental.tests.test_version.VersionsTests.test_reprWithPost">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">repr</tt> on a version with a postrelease returns a human-readable string representation of the version including the postrelease.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_reprWithPrerelease">
+    
+  </a>
+  <a name="test_reprWithPrerelease">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_reprWithPrerelease</span>(self):
+    
+    <a class="headerLink" href="#test_reprWithPrerelease" title="incremental.tests.test_version.VersionsTests.test_reprWithPrerelease">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">repr</tt> on a version with a prerelease returns a human-readable string representation of the version including the prerelease as a release candidate..</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_reprWithReleaseCandidate">
+    
+  </a>
+  <a name="test_reprWithReleaseCandidate">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_reprWithReleaseCandidate</span>(self):
+    
+    <a class="headerLink" href="#test_reprWithReleaseCandidate" title="incremental.tests.test_version.VersionsTests.test_reprWithReleaseCandidate">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">repr</tt> on a version with a release candidate returns a human-readable string representation of the version including the rc.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_str">
+    
+  </a>
+  <a name="test_str">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_str</span>(self):
+    
+    <a class="headerLink" href="#test_str" title="incremental.tests.test_version.VersionsTests.test_str">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">str</tt> on a version returns a human-readable string representation of the version.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_strWithDev">
+    
+  </a>
+  <a name="test_strWithDev">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_strWithDev</span>(self):
+    
+    <a class="headerLink" href="#test_strWithDev" title="incremental.tests.test_version.VersionsTests.test_strWithDev">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">str</tt> on a version with a dev release includes the dev release.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_strWithDevAndPost">
+    
+  </a>
+  <a name="test_strWithDevAndPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_strWithDevAndPost</span>(self):
+    
+    <a class="headerLink" href="#test_strWithDevAndPost" title="incremental.tests.test_version.VersionsTests.test_strWithDevAndPost">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">str</tt> on a version with a postrelease and dev release includes the postrelease and the dev release.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_strWithDevAndReleaseCandidate">
+    
+  </a>
+  <a name="test_strWithDevAndReleaseCandidate">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_strWithDevAndReleaseCandidate</span>(self):
+    
+    <a class="headerLink" href="#test_strWithDevAndReleaseCandidate" title="incremental.tests.test_version.VersionsTests.test_strWithDevAndReleaseCandidate">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">str</tt> on a version with a release candidate and dev release includes the release candidate and the dev release.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_strWithPost">
+    
+  </a>
+  <a name="test_strWithPost">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_strWithPost</span>(self):
+    
+    <a class="headerLink" href="#test_strWithPost" title="incremental.tests.test_version.VersionsTests.test_strWithPost">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">str</tt> on a version with a postrelease includes the postrelease.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_strWithPrerelease">
+    
+  </a>
+  <a name="test_strWithPrerelease">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_strWithPrerelease</span>(self):
+    
+    <a class="headerLink" href="#test_strWithPrerelease" title="incremental.tests.test_version.VersionsTests.test_strWithPrerelease">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">str</tt> on a version with a prerelease includes the prerelease as a release candidate.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_strWithReleaseCandidate">
+    
+  </a>
+  <a name="test_strWithReleaseCandidate">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_strWithReleaseCandidate</span>(self):
+    
+    <a class="headerLink" href="#test_strWithReleaseCandidate" title="incremental.tests.test_version.VersionsTests.test_strWithReleaseCandidate">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Calling <tt class="rst-docutils literal">str</tt> on a version with a release candidate includes the release candidate.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_versionComparison">
+    
+  </a>
+  <a name="test_versionComparison">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_versionComparison</span>(self):
+    
+    <a class="headerLink" href="#test_versionComparison" title="incremental.tests.test_version.VersionsTests.test_versionComparison">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Versions can be compared for equality and order.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_versionComparisonCaseInsensitive">
+    
+  </a>
+  <a name="test_versionComparisonCaseInsensitive">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">test_versionComparisonCaseInsensitive</span>(self):
+    
+    <a class="headerLink" href="#test_versionComparisonCaseInsensitive" title="incremental.tests.test_version.VersionsTests.test_versionComparisonCaseInsensitive">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Version package names are case insensitive.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.test_versionComparisonNonVersion">
+    
+  </a>
+  <a name="test_versionComparisonNonVersion">
+    
+  </a>
+  <div class="functionHeader">
+    @unittest.skipIf(<wbr></wbr>(sys.version_info &lt; (3,)), <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">Comparisons do not raise on py2</span><span class="rst-variable-quote">'</span>)<br />
+    <span class="py-keyword">def</span> <span class="py-defname">test_versionComparisonNonVersion</span>(self):
+    
+    <a class="headerLink" href="#test_versionComparisonNonVersion" title="incremental.tests.test_version.VersionsTests.test_versionComparisonNonVersion">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Versions can be compared with non-versions.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.tests.test_version.VersionsTests.testShort">
+    
+  </a>
+  <a name="testShort">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">testShort</span>(self):
+    
+    <a class="headerLink" href="#testShort" title="incremental.tests.test_version.VersionsTests.testShort">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div>
-
+        </div>
+      
       </div>
-      <address>
-        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.2 at 2021-08-08 16:41:33.
-      </address>
-
     </div>
 
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for incremental,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.9.1 at 2022-10-15 07:40:37.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
     <script src="pydoctor.js" type="text/javascript"></script>
 
   </body>

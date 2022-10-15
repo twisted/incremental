@@ -2,23 +2,135 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
           "DTD/xhtml1-strict.dtd">
 <html>
+  
+  
   <head>
+    
     <title>Module Index</title>
+    <meta name="generator" content="pydoctor 22.9.1"> 
+        
+    </meta>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="apidocs.css" />
-  </head>
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header navbar-brand">
-          incremental
-          <a href="index.html">API Documentation</a>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          incremental <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
         </div>
       </div>
-    </nav>
 
-    <div class="container">
+    </div>
+
+
+  </div>
+</nav>
+
+    <div class="container-fluid">
 
       <div class="page-header">
         <h1>Module Index</h1>
@@ -27,9 +139,26 @@
         </div>
       </div>
 
-      <ul id="summaryTree"><li><code><a href="incremental.html">incremental</a></code> - <span>Versions for Python packages.</span><ul><li class="private"><code><a href="incremental._version.html">incremental._version</a></code> - <span>Provides Incremental version information.</span></li><li><code><a href="incremental.tests.html">incremental.tests</a></code> - <span class="undocumented">No package docstring; 2/2 modules documented</span><ul><li><code><a href="incremental.tests.test_update.html">incremental.tests.test_update</a></code> - <span>Tests for <code><a href="incremental.update.html">incremental.update</a></code>.</span></li><li><code><a href="incremental.tests.test_version.html">incremental.tests.test_version</a></code> - <span>Tests for <code><a href="incremental.html">incremental</a></code>.</span></li></ul></li><li><code><a href="incremental.update.html">incremental.update</a></code> - <span class="undocumented">Undocumented</span></li></ul></li></ul>
+      <ul id="summaryTree"><li><code><a href="index.html" class="internal-link">incremental</a></code> - Versions for Python packages.<ul><li><code><a href="incremental.tests.html" class="internal-link" title="incremental.tests">tests</a></code> - <span class="undocumented">No package docstring; 2/2 modules documented</span><ul><li><code><a href="incremental.tests.test_update.html" class="internal-link" title="incremental.tests.test_update">test_update</a></code> - Tests for <code><a href="incremental.update.html" class="internal-link" title="incremental.update">incremental.update</a></code>.</li><li><code><a href="incremental.tests.test_version.html" class="internal-link" title="incremental.tests.test_version">test_version</a></code> - Tests for <code><a href="index.html" class="internal-link" title="incremental">incremental</a></code>.</li></ul></li><li><code><a href="incremental.update.html" class="internal-link" title="incremental.update">update</a></code> - <span class="undocumented">Undocumented</span></li><li class="private"><code><a href="incremental._version.html" class="internal-link" title="incremental._version">_version</a></code> - Provides Incremental version information.</li></ul></li></ul>
 
     </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for incremental,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.9.1 at 2022-10-15 07:40:37.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
 
     <script src="pydoctor.js" type="text/javascript"></script>
 

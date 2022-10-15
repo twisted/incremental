@@ -2,99 +2,466 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
           "DTD/xhtml1-strict.dtd">
 <html>
-  <head>
-    <title>incremental.update.FilePath : API documentation</title>
+  
 
+  <head>
+    
+    <title>incremental.update.FilePath</title>
+    <meta name="generator" content="pydoctor 22.9.1"> 
+        
+    </meta>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="apidocs.css" />
-  </head>
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
   <body>
 
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header navbar-brand">
-          incremental
-          <a href="index.html">API Documentation</a>
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          incremental <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
         </div>
       </div>
-    </nav>
 
-    <div class="container">
+    </div>
 
-      <div class="page-header">
-        <h1 class="class"><code><code><a href="incremental.html">incremental</a></code>.<code><a href="incremental.update.html">update</a></code>.<code><a href="incremental.update.FilePath.html">FilePath</a></code></code></h1>
-        <div id="showPrivate">
-          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="incremental.update.FilePath.html" class="internal-link" title="This class"><wbr></wbr>File<wbr></wbr>Path</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="incremental.update.FilePath.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#child" class="internal-link" title="incremental.update.FilePath.child">child</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#getContent" class="internal-link" title="incremental.update.FilePath.getContent">get<wbr></wbr>Content</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#isdir" class="internal-link" title="incremental.update.FilePath.isdir">isdir</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#isfile" class="internal-link" title="incremental.update.FilePath.isfile">isfile</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#open" class="internal-link" title="incremental.update.FilePath.open">open</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#walk" class="internal-link" title="incremental.update.FilePath.walk">walk</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#path" class="internal-link" title="incremental.update.FilePath.path">path</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="incremental.update.html" class="internal-link" title="The parent of this class">update</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="incremental.update.FilePath.html" class="internal-link" title="incremental.update.FilePath"><wbr></wbr>File<wbr></wbr>Path</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="incremental.update._ReadableWritable.html" class="internal-link" title="incremental.update._ReadableWritable">_<wbr></wbr>Readable<wbr></wbr>Writable</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        <div class="childrenKindTitle">Functions</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="incremental.update.html#run" class="internal-link" title="incremental.update.run">run</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="incremental.update.html#_existing_version" class="internal-link" title="incremental.update._existing_version">_existing<wbr></wbr>_version</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="incremental.update.html#_findPath" class="internal-link" title="incremental.update._findPath">_find<wbr></wbr>Path</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="incremental.update.html#_run" class="internal-link" title="incremental.update._run">_run</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Variables</div>
+        <ul>
+    
+    <li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="incremental.update.html#_VERSIONPY_TEMPLATE" class="internal-link" title="incremental.update._VERSIONPY_TEMPLATE">_VERSIONPY<wbr></wbr>_TEMPLATE</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="incremental.update.html#_YEAR_START" class="internal-link" title="incremental.update._YEAR_START">_YEAR<wbr></wbr>_START</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
         </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
       </div>
 
-      <div class="categoryHeader">
-        class documentation
-      </div>
+      <div id="main" class="">
+        
 
-      <div class="extrasDocstring">
-        <p><code><span class="py-keyword">class</span> <span class="py-defname">FilePath</span>(<span title="object">object</span>):</code></p>
-        <p><a href="classIndex.html#incremental.update.FilePath">View In Hierarchy</a></p>
-      </div>
+        
 
-      <div class="moduleDocstring">
-        <div><p class="undocumented">Undocumented</p></div>
-      </div>
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">incremental</a></code><wbr></wbr>.<code><a href="incremental.update.html" class="internal-link" title="incremental.update">update</a></code><wbr></wbr>.<code><a href="incremental.update.FilePath.html" class="internal-link" title="incremental.update.FilePath">FilePath</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
 
-      <div id="splitTables">
-        <table class="children sortable" id="id17">
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p><code><span class="py-keyword">class</span> <span class="py-defname">FilePath</span>(object):</code></p>
+          <p><a href="classIndex.html#incremental.update.FilePath">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="undocumented">Undocumented</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id15">
+  
   
   <tr class="method">
     
     <td>Method</td>
-    <td><code><a href="#__init__">__init__</a></code></td>
+    <td><code><a href="#__init__" class="internal-link" title="incremental.update.FilePath.__init__">__init__</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#child" class="internal-link" title="incremental.update.FilePath.child">child</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#getContent" class="internal-link" title="incremental.update.FilePath.getContent">get<wbr></wbr>Content</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#isdir" class="internal-link" title="incremental.update.FilePath.isdir">isdir</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#isfile" class="internal-link" title="incremental.update.FilePath.isfile">isfile</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#open" class="internal-link" title="incremental.update.FilePath.open">open</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#walk" class="internal-link" title="incremental.update.FilePath.walk">walk</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><code><a href="#path">path</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#child">child</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#isdir">isdir</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#isfile">isfile</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#getContent">getContent</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#open">open</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="method">
-    
-    <td>Method</td>
-    <td><code><a href="#walk">walk</a></code></td>
+    <td><code><a href="#path" class="internal-link" title="incremental.update.FilePath.path">path</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr>
 </table>
-        
-
           
-      </div>
 
-      <div id="childList">
+            
+        </div>
 
-        <div class="basemethod">
+        <div id="childList">
+          <div class="basemethod">
+  
   
   <a name="incremental.update.FilePath.__init__">
     
@@ -106,31 +473,18 @@
     
     <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, path):
     
+    <a class="headerLink" href="#__init__" title="incremental.update.FilePath.__init__">
+      
+      
+      ¶
+    </a>
   </div>
   <div class="docstring functionBody">
-    
-    
-    <div><p class="undocumented">Undocumented</p></div>
-  </div>
-</div><div class="baseinstancevariable">
-  
-  <a name="incremental.update.FilePath.path">
-    
-  </a>
-  <a name="path">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-defname">path</span> =
-    
-  </div>
-  <div class="functionBody">
-    
     
     <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="basemethod">
+  
   
   <a name="incremental.update.FilePath.child">
     
@@ -142,49 +496,18 @@
     
     <span class="py-keyword">def</span> <span class="py-defname">child</span>(self, v):
     
+    <a class="headerLink" href="#child" title="incremental.update.FilePath.child">
+      
+      
+      ¶
+    </a>
   </div>
   <div class="docstring functionBody">
-    
     
     <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="basemethod">
   
-  <a name="incremental.update.FilePath.isdir">
-    
-  </a>
-  <a name="isdir">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">isdir</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p class="undocumented">Undocumented</p></div>
-  </div>
-</div><div class="basemethod">
-  
-  <a name="incremental.update.FilePath.isfile">
-    
-  </a>
-  <a name="isfile">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-keyword">def</span> <span class="py-defname">isfile</span>(self):
-    
-  </div>
-  <div class="docstring functionBody">
-    
-    
-    <div><p class="undocumented">Undocumented</p></div>
-  </div>
-</div><div class="basemethod">
   
   <a name="incremental.update.FilePath.getContent">
     
@@ -196,13 +519,64 @@
     
     <span class="py-keyword">def</span> <span class="py-defname">getContent</span>(self):
     
+    <a class="headerLink" href="#getContent" title="incremental.update.FilePath.getContent">
+      
+      
+      ¶
+    </a>
   </div>
   <div class="docstring functionBody">
-    
     
     <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="basemethod">
+  
+  
+  <a name="incremental.update.FilePath.isdir">
+    
+  </a>
+  <a name="isdir">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">isdir</span>(self):
+    
+    <a class="headerLink" href="#isdir" title="incremental.update.FilePath.isdir">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="incremental.update.FilePath.isfile">
+    
+  </a>
+  <a name="isfile">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">isfile</span>(self):
+    
+    <a class="headerLink" href="#isfile" title="incremental.update.FilePath.isfile">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
   
   <a name="incremental.update.FilePath.open">
     
@@ -214,13 +588,18 @@
     
     <span class="py-keyword">def</span> <span class="py-defname">open</span>(self, mode):
     
+    <a class="headerLink" href="#open" title="incremental.update.FilePath.open">
+      
+      
+      ¶
+    </a>
   </div>
   <div class="docstring functionBody">
-    
     
     <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="basemethod">
+  
   
   <a name="incremental.update.FilePath.walk">
     
@@ -232,21 +611,63 @@
     
     <span class="py-keyword">def</span> <span class="py-defname">walk</span>(self):
     
+    <a class="headerLink" href="#walk" title="incremental.update.FilePath.walk">
+      
+      
+      ¶
+    </a>
   </div>
   <div class="docstring functionBody">
     
-    
     <div><p class="undocumented">Undocumented</p></div>
   </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="incremental.update.FilePath.path">
+    
+  </a>
+  <a name="path">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">path</span> =
+    
+    <a class="headerLink" href="#path" title="incremental.update.FilePath.path">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
 </div>
-
+        </div>
+      
       </div>
-      <address>
-        <a href="index.html">API Documentation</a> for incremental, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.2 at 2021-08-08 16:41:33.
-      </address>
-
     </div>
 
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for incremental,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.9.1 at 2022-10-15 07:40:37.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
     <script src="pydoctor.js" type="text/javascript"></script>
 
   </body>
