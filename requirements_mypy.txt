@@ -5,10 +5,8 @@
 #    pip-compile --output-file=requirements_mypy.txt requirements_mypy.in
 #
 attrs==23.2.0
-    # via
-    #   automat
-    #   twisted
-automat==22.10.0
+    # via twisted
+automat==24.8.1
     # via twisted
 constantly==23.10.4
     # via twisted
@@ -18,7 +16,7 @@ hyperlink==21.0.0
     # via twisted
 idna==3.7
     # via hyperlink
-incremental==22.10.0
+incremental==24.7.2
     # via twisted
 mypy==0.812
     # via -r requirements_mypy.in
@@ -30,13 +28,13 @@ pathspec==0.12.1
     # via hatchling
 pluggy==1.5.0
     # via hatchling
-six==1.16.0
-    # via automat
 tomli==2.0.1
-    # via hatchling
+    # via
+    #   hatchling
+    #   incremental
 trove-classifiers==2024.7.2
     # via hatchling
-twisted==24.3.0
+twisted==24.10.0
     # via -r requirements_mypy.in
 typed-ast==1.4.3
     # via mypy
