@@ -28,7 +28,7 @@ click==8.1.7
     #   userpath
 constantly==23.10.4
     # via twisted
-coverage==7.5.4
+coverage==7.6.8
     # via
     #   -r requirements_tests.in
     #   coverage-p
