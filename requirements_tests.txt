@@ -85,7 +85,7 @@ more-itertools==10.3.0
     # via
     #   jaraco-classes
     #   jaraco-functools
-packaging==24.1
+packaging==24.2
     # via
     #   build
     #   hatch
