@@ -10,7 +10,7 @@ automat==24.8.1
     # via twisted
 constantly==23.10.4
     # via twisted
-hatchling==1.25.0
+hatchling==1.26.3
     # via -r requirements_mypy.in
 hyperlink==21.0.0
     # via twisted
@@ -22,7 +22,7 @@ mypy==1.13.0
     # via -r requirements_mypy.in
 mypy-extensions==1.0.0
     # via mypy
-packaging==24.1
+packaging==24.2
     # via hatchling
 pathspec==0.12.1
     # via hatchling
