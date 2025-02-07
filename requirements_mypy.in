@@ -1,3 +1,3 @@
-mypy==1.14.1
+mypy==1.15.0
 twisted
 hatchling  # for types
