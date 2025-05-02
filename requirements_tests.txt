@@ -30,7 +30,7 @@ coverage==7.5.4
     # via
     #   -r requirements_tests.in
     #   coverage-p
-coverage-p==24.7.0
+coverage-p==25.2.0
     # via -r requirements_tests.in
 cryptography==44.0.1
     # via secretstorage
