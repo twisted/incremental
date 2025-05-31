@@ -18,14 +18,16 @@ idna==3.7
     # via hyperlink
 incremental==24.7.2
     # via twisted
-mypy==1.15.0
+mypy==1.16.0
     # via -r requirements_mypy.in
 mypy-extensions==1.0.0
     # via mypy
 packaging==25.0
     # via hatchling
 pathspec==0.12.1
-    # via hatchling
+    # via
+    #   hatchling
+    #   mypy
 pluggy==1.5.0
     # via hatchling
 tomli==2.0.1
