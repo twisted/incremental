@@ -37,7 +37,7 @@ tomli==2.0.1
     #   mypy
 trove-classifiers==2024.7.2
     # via hatchling
-twisted==24.11.0
+twisted==25.5.0
     # via -r requirements_mypy.in
 typing-extensions==4.12.2
     # via
