@@ -129,7 +129,7 @@ tomlkit==0.13.0
     # via hatch
 trove-classifiers==2024.7.2
     # via hatchling
-twisted==24.11.0
+twisted==25.5.0
     # via -r requirements_tests.in
 typing-extensions==4.12.2
     # via
