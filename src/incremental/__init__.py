@@ -507,7 +507,8 @@ def _load_pyproject_toml(toml_path: str) -> _IncrementalConfig:
             pass
     if package is None:
         # We can't proceed without a project name.
-        raise ValueError("""\
+        raise ValueError(
+            """\
 Incremental failed to extract the project name from pyproject.toml. Specify it like:
 
     [project]
@@ -518,7 +519,8 @@ Or:
     [tool.incremental]
     name = "Foo"
 
-""")
+"""
+        )
     if not isinstance(package, str):
         raise TypeError(f"The project name must be a string, but found {type(package)}")
 
