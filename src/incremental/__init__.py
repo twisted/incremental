@@ -548,4 +548,4 @@ def _extract_tool_incremental(data: Dict[str, object]) -> Optional[Dict[str, obj
 
 from ._version import __version__  # noqa: E402
 
-__all__ = ["__version__", "Version", "getVersionString"]
+__all__ = ["Version", "__version__", "getVersionString"]
