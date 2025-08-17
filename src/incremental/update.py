@@ -48,14 +48,10 @@ def _run(
         path = _findPath(_getcwd(), package)
 
     if (
-        (newversion
-        and patch)
-        or (newversion
-        and dev)
-        or (newversion
-        and rc)
-        or (newversion
-        and post)
+        (newversion and patch)
+        or (newversion and dev)
+        or (newversion and rc)
+        or (newversion and post)
     ):
         raise ValueError("Only give --newversion")
 
@@ -63,16 +59,11 @@ def _run(
         raise ValueError("Only give --dev")
 
     if (
-        (create
-        and dev)
-        or (create
-        and patch)
-        or (create
-        and rc)
-        or (create
-        and post)
-        or (create
-        and newversion)
+        (create and dev)
+        or (create and patch)
+        or (create and rc)
+        or (create and post)
+        or (create and newversion)
     ):
         raise ValueError("Only give --create")
 
