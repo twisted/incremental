@@ -146,7 +146,7 @@ zipp==3.19.2
     # via importlib-metadata
 zope-interface==6.4.post2
     # via twisted
-zstandard==0.22.0
+zstandard==0.25.0
     # via hatch
 
 # The following packages are considered to be unsafe in a requirements file:
