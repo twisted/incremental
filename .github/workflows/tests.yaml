@@ -33,7 +33,7 @@ jobs:
 
     steps:
 
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - uses: ./.github/actions/build-dist
 
@@ -60,7 +60,7 @@ jobs:
             skip-coverage: true
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Set up Python
       uses: actions/setup-python@v6
@@ -114,7 +114,7 @@ jobs:
     needs:
       - testing  # Wait for test jobs.
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         fetch-depth: 0
 
