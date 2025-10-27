@@ -14,7 +14,7 @@ hatchling==1.27.0
     # via -r requirements_mypy.in
 hyperlink==21.0.0
     # via twisted
-idna==3.7
+idna==3.11
     # via hyperlink
 incremental==24.7.2
     # via twisted
