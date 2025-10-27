@@ -142,7 +142,7 @@ virtualenv==20.28.0
     # via hatch
 zipp==3.19.2
     # via importlib-metadata
-zope-interface==6.4.post2
+zope-interface==8.0.1
     # via twisted
 zstandard==0.25.0
     # via hatch
