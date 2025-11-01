@@ -98,7 +98,7 @@ jobs:
 
     - name: Store coverage file
       if: ${{ !cancelled() && !matrix.skip-coverage }}
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: coverage-${{ matrix.python-version }}-${{ matrix.tox-env }}
         path: .coverage-job-*
@@ -153,7 +153,7 @@ jobs:
 
     - name: Upload HTML report on failure
       if: ${{ failure() }}
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: html-report
         path: htmlcov
