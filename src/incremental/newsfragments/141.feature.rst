@@ -1,1 +1,0 @@
-Incremental now depends on packaging instead of setuptools at runtime

@@ -1,2 +1,0 @@
-Incremental's CLI no longer depends on Click, so you no longer need to install ``incremental[scripts]`` for it to function.
-The ``scripts`` extra is deprecated.

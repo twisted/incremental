@@ -1,2 +1,0 @@
-Incremental now provides a CLI script, ``incremental``, allowing you to run it with ``pipx run incremental``.
-The ``incremental update`` subcommand offers the same functionality as ``python -m incremental.update``.

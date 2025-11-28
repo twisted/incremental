@@ -1,3 +1,41 @@
+Incremental 24.11.0 (2025-11-27)
+================================
+
+Features
+--------
+
+- Incremental now provides a CLI script, ``incremental``, allowing you to run it with ``pipx run incremental``.
+  The ``incremental update`` subcommand offers the same functionality as ``python -m incremental.update``. (`#99 <https://github.com/twisted/incremental/issues/99>`__)
+- Incremental now depends on packaging instead of setuptools at runtime (`#141 <https://github.com/twisted/incremental/issues/141>`__)
+- Add Python 3.13 and 3.14 to the test matrix. (`#179 <https://github.com/twisted/incremental/issues/179>`__)
+
+
+Bugfixes
+--------
+
+- Build Incremental itself with Hatchling, working around failures with certain versions of setuptools (`#122 <https://github.com/twisted/incremental/issues/122>`__)
+
+
+Improved Documentation
+----------------------
+
+- Incremental's documentation now highlights its primary features: CalVer and indeterminate versions (NEXT). (`#2 <https://github.com/twisted/incremental/issues/2>`__)
+
+
+Deprecations and Removals
+-------------------------
+
+- Incremental's CLI no longer depends on Click, so you no longer need to install ``incremental[scripts]`` for it to function.
+  The ``scripts`` extra is deprecated. (`#99 <https://github.com/twisted/incremental/issues/99>`__)
+- Drop support for Python 3.8, which has been end-of-life since October 2024. (`#179 <https://github.com/twisted/incremental/issues/179>`__)
+
+
+Misc
+----
+
+- `#105 <https://github.com/twisted/incremental/issues/105>`__, `#116 <https://github.com/twisted/incremental/issues/116>`__
+
+
 Incremental 24.7.2 (2024-07-29)
 ===============================
 
