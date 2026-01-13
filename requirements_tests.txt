@@ -38,7 +38,7 @@ distlib==0.3.8
     # via virtualenv
 exceptiongroup==1.2.1
     # via anyio
-filelock==3.15.4
+filelock==3.19.1
     # via virtualenv
 h11==0.16.0
     # via httpcore
@@ -129,16 +129,17 @@ trove-classifiers==2024.7.2
     # via hatchling
 twisted==25.5.0
     # via -r requirements_tests.in
-typing-extensions==4.12.2
+typing-extensions==4.15.0
     # via
     #   anyio
     #   automat
     #   twisted
+    #   virtualenv
 userpath==1.9.2
     # via hatch
 uv==0.9.6
     # via hatch
-virtualenv==20.28.0
+virtualenv==20.36.1
     # via hatch
 zipp==3.19.2
     # via importlib-metadata
