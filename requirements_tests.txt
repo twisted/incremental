@@ -32,7 +32,7 @@ coverage==7.5.4
     #   coverage-p
 coverage-p==25.2.0
     # via -r requirements_tests.in
-cryptography==45.0.7
+cryptography==46.0.5
     # via secretstorage
 distlib==0.3.8
     # via virtualenv
@@ -129,10 +129,11 @@ trove-classifiers==2024.7.2
     # via hatchling
 twisted==25.5.0
     # via -r requirements_tests.in
-typing-extensions==4.12.2
+typing-extensions==4.15.0
     # via
     #   anyio
     #   automat
+    #   cryptography
     #   twisted
 userpath==1.9.2
     # via hatch
