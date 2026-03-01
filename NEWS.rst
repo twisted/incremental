@@ -1,6 +1,10 @@
 Incremental 24.11.0 (2025-11-27)
 ================================
 
+.. note::
+
+    The date above is correct — 25.11.0 was mistakenly released with this version number.
+
 Features
 --------
 
