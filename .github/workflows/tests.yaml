@@ -73,7 +73,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip tox
 
-    - uses: actions/download-artifact@v7
+    - uses: actions/download-artifact@v8
       with:
         name: dist
         path: dist/
@@ -124,7 +124,7 @@ jobs:
         python -m pip install --upgrade coverage[toml] diff_cover
 
     - name: Download coverage reports
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         pattern: coverage-*
         merge-multiple: true
