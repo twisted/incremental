@@ -18,7 +18,9 @@ idna==3.11
     # via hyperlink
 incremental==24.7.2
     # via twisted
-mypy==1.18.2
+librt==0.8.1
+    # via mypy
+mypy==1.19.1
     # via -r requirements_mypy.in
 mypy-extensions==1.0.0
     # via mypy
