@@ -137,7 +137,7 @@ typing-extensions==4.15.0
     #   twisted
 userpath==1.9.2
     # via hatch
-uv==0.9.6
+uv==0.11.6
     # via hatch
 virtualenv==20.28.0
     # via hatch
