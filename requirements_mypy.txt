@@ -24,7 +24,7 @@ mypy==1.19.1
     # via -r requirements_mypy.in
 mypy-extensions==1.0.0
     # via mypy
-packaging==26.0
+packaging==26.1
     # via hatchling
 pathspec==0.12.1
     # via
