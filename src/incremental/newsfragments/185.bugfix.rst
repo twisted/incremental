@@ -1,0 +1,1 @@
+Add release automation to prevent errors like the mis-numbered 24.11.0 release.
