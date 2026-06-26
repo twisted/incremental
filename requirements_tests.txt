@@ -5,19 +5,17 @@
 #    pip-compile --output-file=requirements_tests.txt requirements_tests.in
 #
 anyio==4.4.0
-    # via httpx
+    # via httpx2
 attrs==23.2.0
     # via twisted
 automat==24.8.1
     # via twisted
 backports-tarfile==1.2.0
     # via jaraco-context
-build==1.4.2
+backports-zstd==1.6.0
+    # via hatch
+build==1.5.0
     # via -r requirements_tests.in
-certifi==2025.10.5
-    # via
-    #   httpcore
-    #   httpx
 cffi==2.0.0
     # via cryptography
 click==8.1.7
@@ -36,19 +34,23 @@ cryptography==46.0.7
     # via secretstorage
 distlib==0.3.8
     # via virtualenv
+distro==1.9.0
+    # via hatch
 exceptiongroup==1.2.1
     # via anyio
-filelock==3.15.4
-    # via virtualenv
+filelock==3.29.4
+    # via
+    #   python-discovery
+    #   virtualenv
 h11==0.16.0
-    # via httpcore
-hatch==1.15.1
+    # via httpcore2
+hatch==1.17.0
     # via -r requirements_tests.in
-hatchling==1.27.0
+hatchling==1.30.1
     # via hatch
-httpcore==1.0.9
-    # via httpx
-httpx==0.28.1
+httpcore2==2.3.0
+    # via httpx2
+httpx2==2.3.0
     # via hatch
 hyperlink==21.0.0
     # via
@@ -57,12 +59,10 @@ hyperlink==21.0.0
 idna==3.11
     # via
     #   anyio
-    #   httpx
+    #   httpx2
     #   hyperlink
 importlib-metadata==8.0.0
-    # via
-    #   build
-    #   keyring
+    # via keyring
 incremental==24.7.2
     # via twisted
 jaraco-classes==3.4.0
@@ -85,7 +85,7 @@ more-itertools==10.3.0
     # via
     #   jaraco-classes
     #   jaraco-functools
-packaging==26.0
+packaging==26.2
     # via
     #   build
     #   hatch
@@ -94,9 +94,10 @@ pathspec==0.12.1
     # via hatchling
 pexpect==4.9.0
     # via hatch
-platformdirs==4.2.2
+platformdirs==4.10.0
     # via
     #   hatch
+    #   python-discovery
     #   virtualenv
 pluggy==1.5.0
     # via hatchling
@@ -107,7 +108,13 @@ pycparser==2.22
 pygments==2.20.0
     # via rich
 pyproject-hooks==1.1.0
-    # via build
+    # via
+    #   build
+    #   hatch
+python-discovery==1.4.2
+    # via
+    #   hatch
+    #   virtualenv
 rich==13.7.1
     # via hatch
 secretstorage==3.3.3
@@ -127,26 +134,28 @@ tomlkit==0.13.0
     # via hatch
 trove-classifiers==2024.7.2
     # via hatchling
+truststore==0.10.4
+    # via
+    #   httpcore2
+    #   httpx2
 twisted==25.5.0
     # via -r requirements_tests.in
 typing-extensions==4.15.0
     # via
     #   anyio
-    #   automat
     #   cryptography
     #   twisted
+    #   virtualenv
 userpath==1.9.2
     # via hatch
 uv==0.11.6
     # via hatch
-virtualenv==20.28.0
+virtualenv==21.5.1
     # via hatch
 zipp==3.19.2
     # via importlib-metadata
 zope-interface==8.0.1
     # via twisted
-zstandard==0.25.0
-    # via hatch
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
