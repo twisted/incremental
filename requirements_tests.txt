@@ -60,9 +60,7 @@ idna==3.11
     #   httpx
     #   hyperlink
 importlib-metadata==8.0.0
-    # via
-    #   build
-    #   keyring
+    # via keyring
 incremental==24.7.2
     # via twisted
 jaraco-classes==3.4.0
@@ -127,12 +125,11 @@ tomlkit==0.13.0
     # via hatch
 trove-classifiers==2024.7.2
     # via hatchling
-twisted==25.5.0
+twisted==26.10.0rc1
     # via -r requirements_tests.in
 typing-extensions==4.15.0
     # via
     #   anyio
-    #   automat
     #   cryptography
     #   twisted
 userpath==1.9.2
