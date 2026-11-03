@@ -14,7 +14,7 @@ backports-tarfile==1.2.0
     # via jaraco-context
 build==1.4.2
     # via -r requirements_tests.in
-certifi==2025.10.5
+certifi==2026.10.18
     # via
     #   httpcore
     #   httpx
@@ -60,9 +60,7 @@ idna==3.11
     #   httpx
     #   hyperlink
 importlib-metadata==8.0.0
-    # via
-    #   build
-    #   keyring
+    # via keyring
 incremental==24.7.2
     # via twisted
 jaraco-classes==3.4.0
@@ -132,7 +130,6 @@ twisted==25.5.0
 typing-extensions==4.15.0
     # via
     #   anyio
-    #   automat
     #   cryptography
     #   twisted
 userpath==1.9.2
