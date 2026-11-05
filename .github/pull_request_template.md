@@ -23,7 +23,4 @@ Below is a non-exhaustive list (as a reminder):
 * [ ] The title of the PR should describe the changes and starts with the associated issue number, like `#1234 Brief description`.
 * [ ] A release notes news fragment file was create in src/incremental/newsfragments/ (see: [Release notes fragments docs.](https://docs.twisted.org/en/latest/development/dev-process.html))
 * [ ] The automated tests were updated.
-* [ ] Once all checks are green, request a review by leaving a comment that contains exactly the string `please review`.
 * [ ] I have not directly included the output of any generative AI system in this pull request, as per our [policy on generative AI](https://docs.twisted.org/en/latest/development/ai-policy.html).
-  Our bot will trigger the review process, by applying the pending review label
-  and requesting a review from the Twisted dev team.

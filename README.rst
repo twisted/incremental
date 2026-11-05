@@ -23,11 +23,6 @@ Theory of Operation
 - Changing the version also updates any `indeterminate versions`_ in your codebase, like "Shrubbery NEXT", so you can reference the upcoming release in documentation.
   That's how Incremental supports the future.
 
-AI Policy
----------
-
-This repository does not allow the inclusion of the outputs of generative AI tools, following the `Twisted AI Policy <https://docs.twisted.org/en/latest/development/ai-policy.html>`_.
-
 Quick Start
 -----------
 
@@ -203,6 +198,10 @@ Once the final version is made, it will become:
 - ``Version("<projectname>", 17, 1, 0)``
 - ``<projectname> 17.1.0``
 
+AI Policy
+---------
+
+This repository does not allow the inclusion of the outputs of generative AI tools, following the `Twisted AI Policy <https://docs.twisted.org/en/latest/development/ai-policy.html>`_.
 
 .. |pypi| image:: http://img.shields.io/pypi/v/incremental.svg
     :alt: PyPI
